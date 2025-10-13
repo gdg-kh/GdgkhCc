@@ -15,7 +15,8 @@
     "generate:community": "node generate-community-pages.js",
     "generate:staff": "node generate-staff-pages.js",
     "generate:markets": "node generate-market-pages.js",
-    "generate:all": "npm run generate:speakers && npm run generate:sponsors && npm run generate:community && npm run generate:staff && npm run generate:markets"
+    "generate:about": "node generate-about-pages.js",
+    "generate:all": "npm run generate:speakers && npm run generate:sponsors && npm run generate:community && npm run generate:staff && npm run generate:markets && npm run generate:about"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
