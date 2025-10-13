@@ -9,8 +9,10 @@
     "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
     "serve": "npx serve .",
     "generate:speakers": "node generate-speaker-pages.js",
-    "generate:og-images": "node generate-og-images.js",
-    "generate:all": "npm run generate:speakers && npm run generate:og-images"
+    "generate:speaker-og-images": "node generate-og-images.js",
+    "generate:sponsors": "node generate-sponsor-pages.js",
+    "generate:sponsor-og-images": "node generate-sponsor-og-images.js",
+    "generate:all": "npm run generate:speakers && npm run generate:sponsors"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
