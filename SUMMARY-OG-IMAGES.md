@@ -11,20 +11,20 @@
 
 ## 📊 生成詳情
 
-| 講者 ID | 講者姓名 | 圖片大小 | 狀態 |
-|---------|---------|---------|------|
-| ray_yuan_liu | 劉瑞元 / RayYuan Liu | 104KB | ✅ |
-| leo_he | 何崧宇 / LeoHe | 123KB | ✅ |
-| matthias_geisler | Matthias Geisler | 109KB | ✅ |
-| yung_chun | 瓦特老師 / CHENG, YUNG-CHUN | 110KB | ✅ |
-| kevin_chiu_1 | 邱哲綸 / Kevin Chiu | 136KB | ✅ |
-| simon_liu_1 | 劉育維 / Simon Liu | 138KB | ✅ |
-| arturs_vancans | 韋亞圖 / Arturs Vancans | 120KB | ✅ |
-| denken_chen | Denken Chen | 105KB | ✅ |
-| steve_yeh | 史蒂夫•葉 / Steve Yeh | 120KB | ✅ |
-| simon_liu_2 | 劉育維 / Simon Liu | 134KB | ✅ |
-| kevin_chiu_2 | 邱哲綸 / Kevin Chiu | 137KB | ✅ |
-| aaron_ng | 黃立仁 / Aaron Ng | 114KB | ✅ |
+| 講者 ID          | 講者姓名                    | 圖片大小 | 狀態 |
+| ---------------- | --------------------------- | -------- | ---- |
+| ray_yuan_liu     | 劉瑞元 / RayYuan Liu        | 104KB    | ✅   |
+| leo_he           | 何崧宇 / LeoHe              | 123KB    | ✅   |
+| matthias_geisler | Matthias Geisler            | 109KB    | ✅   |
+| yung_chun        | 瓦特老師 / CHENG, YUNG-CHUN | 110KB    | ✅   |
+| kevin_chiu_1     | 邱哲綸 / Kevin Chiu         | 136KB    | ✅   |
+| simon_liu_1      | 劉育維 / Simon Liu          | 138KB    | ✅   |
+| arturs_vancans   | 韋亞圖 / Arturs Vancans     | 120KB    | ✅   |
+| denken_chen      | Denken Chen                 | 105KB    | ✅   |
+| steve_yeh        | 史蒂夫•葉 / Steve Yeh       | 120KB    | ✅   |
+| simon_liu_2      | 劉育維 / Simon Liu          | 134KB    | ✅   |
+| kevin_chiu_2     | 邱哲綸 / Kevin Chiu         | 137KB    | ✅   |
+| aaron_ng         | 黃立仁 / Aaron Ng           | 114KB    | ✅   |
 
 ---
 
@@ -70,11 +70,13 @@ npm run serve
 ## 🌐 測試連結
 
 ### 本地測試
+
 - **測試頁面**: http://localhost:8000/test-speaker-pages.html
 - **圖片生成器**: http://localhost:8000/og-image-generator.html
 - **講者範例**: http://localhost:8000/speakers/ray_yuan_liu/
 
 ### 正式環境 URL 格式
+
 ```
 https://devfest2025.gdgkaohsiung.org/speakers/講者id/
 ```
@@ -84,6 +86,7 @@ https://devfest2025.gdgkaohsiung.org/speakers/講者id/
 ## 🎨 OG 圖片特色
 
 每個 OG 圖片包含：
+
 - ✅ **尺寸**: 1200 x 630 (符合 Open Graph 標準)
 - ✅ **背景**: Material Design 3 漸層 (#667eea → #764ba2)
 - ✅ **講者照片**: 圓形裁切 + 白色邊框
@@ -99,17 +102,17 @@ https://devfest2025.gdgkaohsiung.org/speakers/講者id/
 
 ```html
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/">
-<meta property="og:title" content="劉瑞元 / RayYuan Liu | Gemini in Android development">
-<meta property="og:description" content="今年 Gemini 整合更多功能到 Android Studio 裡頭了...">
-<meta property="og:image" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:type" content="profile" />
+<meta property="og:url" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/" />
+<meta property="og:title" content="劉瑞元 / RayYuan Liu | Gemini in Android development" />
+<meta property="og:description" content="今年 Gemini 整合更多功能到 Android Studio 裡頭了..." />
+<meta property="og:image" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/og-image.png">
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/og-image.png" />
 ```
 
 ---

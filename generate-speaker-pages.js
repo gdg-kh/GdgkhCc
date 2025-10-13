@@ -9,9 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 讀取講者資料
-const speakersData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'data', 'speakers.json'), 'utf-8')
-);
+const speakersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'speakers.json'), 'utf-8'));
 
 // 輸出目錄
 const OUTPUT_DIR = path.join(__dirname, 'speakers');

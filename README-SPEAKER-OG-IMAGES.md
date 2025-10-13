@@ -131,6 +131,7 @@ graph TD
 - **自動重導向**：訪客會被重導向到主網站並定位到該講者
 
 範例 URL：
+
 - 開發環境：`http://localhost:8000/speakers/ray_yuan_liu/`
 - 正式環境：`https://devfest2025.gdgkaohsiung.org/speakers/ray_yuan_liu/`
 
@@ -162,8 +163,8 @@ Node.js 腳本，負責：
 ```javascript
 // 背景漸層
 const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-gradient.addColorStop(0, '#667eea');  // 起始顏色
-gradient.addColorStop(1, '#764ba2');  // 結束顏色
+gradient.addColorStop(0, '#667eea'); // 起始顏色
+gradient.addColorStop(1, '#764ba2'); // 結束顏色
 ctx.fillStyle = gradient;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -201,6 +202,7 @@ const html = `<!DOCTYPE html>
 ### Q2: OG 圖片無法顯示講者照片？
 
 **A:** 檢查以下幾點：
+
 1. 講者照片路徑是否正確（`data/speakers.json` 中的 `photo` 欄位）
 2. 圖片檔案是否存在於 `images/` 資料夾
 3. 瀏覽器控制台是否有 CORS 或載入錯誤
@@ -208,6 +210,7 @@ const html = `<!DOCTYPE html>
 ### Q3: 如何測試 OG 圖片是否正確顯示？
 
 **A:** 使用以下工具測試：
+
 - **Facebook Sharing Debugger**: [https://developers.facebook.com/tools/debug/](https://developers.facebook.com/tools/debug/)
 - **Twitter Card Validator**: [https://cards-dev.twitter.com/validator](https://cards-dev.twitter.com/validator)
 - **LinkedIn Post Inspector**: [https://www.linkedin.com/post-inspector/](https://www.linkedin.com/post-inspector/)
@@ -215,6 +218,7 @@ const html = `<!DOCTYPE html>
 ### Q4: 可以批次生成所有 OG 圖片嗎？
 
 **A:** 目前 `og-image-generator.html` 是手動工具。如果需要批次生成，可以考慮：
+
 1. 使用 Puppeteer 或 Playwright 自動化瀏覽器操作
 2. 使用 Node.js Canvas 套件（需安裝額外依賴）
 3. 使用雲端服務如 Cloudinary、Imgix 等
@@ -222,6 +226,7 @@ const html = `<!DOCTYPE html>
 ### Q5: 講者 URL 會實際跳轉到主頁嗎？
 
 **A:** 是的，講者專屬頁面會自動重導向到 `index.html#講者id`，這樣可以：
+
 - 保持 SEO 和社交媒體分享的優勢
 - 維持單頁應用的使用體驗
 - 確保 OG 圖片能正確顯示
@@ -229,6 +234,7 @@ const html = `<!DOCTYPE html>
 ### Q6: 如何修改講者資訊？
 
 **A:**
+
 1. 編輯 `data/speakers.json`
 2. 重新執行 `npm run generate:speakers`
 3. 如果標題或視覺資訊有改變，重新生成該講者的 OG 圖片

@@ -10,9 +10,7 @@ const path = require('path');
 const { createCanvas, loadImage, registerFont } = require('canvas');
 
 // 讀取講者資料
-const speakersData = JSON.parse(
-  fs.readFileSync(path.join(__dirname, 'data', 'speakers.json'), 'utf-8')
-);
+const speakersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'speakers.json'), 'utf-8'));
 
 // Canvas 尺寸（Open Graph 標準）
 const CANVAS_WIDTH = 1200;
@@ -236,7 +234,7 @@ async function main() {
     }
   }
 
-  console.log('\n' + '='.repeat(60));
+  console.log(`\n${'='.repeat(60)}`);
   console.log(`✅ 完成！成功: ${successCount} 個，失敗: ${errorCount} 個`);
   console.log('='.repeat(60));
 
@@ -244,9 +242,7 @@ async function main() {
     console.log('\n📋 下一步：');
     console.log('1. 檢查生成的圖片: speakers/講者id/og-image.png');
     console.log('2. 測試講者頁面: http://localhost:8000/speakers/講者id/');
-    console.log(
-      '3. 使用社交媒體測試工具驗證 OG 圖片是否正確顯示'
-    );
+    console.log('3. 使用社交媒體測試工具驗證 OG 圖片是否正確顯示');
   }
 
   if (errorCount > 0) {

@@ -1,218 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">Loading... - DevFest 2025</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">Loading... - DevFest 2025</title>
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="" id="ogUrl">
-  <meta property="og:title" content="" id="ogTitle">
-  <meta property="og:description" content="" id="ogDescription">
-  <meta property="og:image" content="" id="ogImage">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="" id="ogImageAlt">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="" id="ogUrl" />
+    <meta property="og:title" content="" id="ogTitle" />
+    <meta property="og:description" content="" id="ogDescription" />
+    <meta property="og:image" content="" id="ogImage" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="" id="ogImageAlt" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="" id="twitterUrl">
-  <meta property="twitter:title" content="" id="twitterTitle">
-  <meta property="twitter:description" content="" id="twitterDescription">
-  <meta property="twitter:image" content="" id="twitterImage">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="" id="twitterUrl" />
+    <meta property="twitter:title" content="" id="twitterTitle" />
+    <meta property="twitter:description" content="" id="twitterDescription" />
+    <meta property="twitter:image" content="" id="twitterImage" />
 
-  <!-- Additional Meta Tags -->
-  <meta name="description" content="" id="metaDescription">
-  <meta name="author" content="" id="metaAuthor">
-  <meta name="keywords" content="" id="metaKeywords">
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="" id="metaDescription" />
+    <meta name="author" content="" id="metaAuthor" />
+    <meta name="keywords" content="" id="metaKeywords" />
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="" id="canonicalUrl">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="" id="canonicalUrl" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
 
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-    .loading-container {
-      text-align: center;
-      padding: 2rem;
-    }
-    .spinner {
-      border: 4px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top: 4px solid white;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin: 0;
-    }
-    p {
-      margin: 0.5rem 0 0;
-      opacity: 0.8;
-    }
-    .error-container {
-      background: rgba(211, 47, 47, 0.9);
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 500px;
-    }
-    .error-container h1 {
-      margin-bottom: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="loading-container" id="loadingContainer">
-    <div class="spinner"></div>
-    <h1>正在載入講者資訊...</h1>
-    <p>Loading speaker information...</p>
-  </div>
-
-  <script>
-    // 從 URL 獲取講者 ID
-    function getSpeakerId() {
-      const pathParts = window.location.pathname.split('/').filter(Boolean);
-      const speakersIndex = pathParts.indexOf('speakers');
-      if (speakersIndex !== -1 && pathParts[speakersIndex + 1]) {
-        return pathParts[speakersIndex + 1];
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
       }
-      return null;
-    }
-
-    // 載入講者資料
-    async function loadSpeakerData(speakerId) {
-      try {
-        const response = await fetch('../../data/speakers.json');
-        if (!response.ok) {
-          throw new Error('Failed to load speaker data');
-        }
-
-        const data = await response.json();
-        const speaker = data.speakers.find(s => s.id === speakerId);
-
-        if (!speaker) {
-          throw new Error('Speaker not found');
-        }
-
-        return speaker;
-      } catch (error) {
-        console.error('Error loading speaker data:', error);
-        throw error;
+      .loading-container {
+        text-align: center;
+        padding: 2rem;
       }
-    }
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid white;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0;
+      }
+      p {
+        margin: 0.5rem 0 0;
+        opacity: 0.8;
+      }
+      .error-container {
+        background: rgba(211, 47, 47, 0.9);
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 500px;
+      }
+      .error-container h1 {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-container" id="loadingContainer">
+      <div class="spinner"></div>
+      <h1>正在載入講者資訊...</h1>
+      <p>Loading speaker information...</p>
+    </div>
 
-    // 更新頁面 meta 標籤
-    function updateMetaTags(speaker) {
-      const baseUrl = 'https://devfest2025.gdgkaohsiung.org';
-      const speakerId = speaker.id;
-      const speakerUrl = `${baseUrl}/speakers/${speakerId}/`;
-      const ogImageUrl = `${baseUrl}/speakers/${speakerId}/og-image.png`;
+    <script>
+      // 從 URL 獲取講者 ID
+      function getSpeakerId() {
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const speakersIndex = pathParts.indexOf('speakers');
+        if (speakersIndex !== -1 && pathParts[speakersIndex + 1]) {
+          return pathParts[speakersIndex + 1];
+        }
+        return null;
+      }
 
-      const nameZh = speaker.name.zh || speaker.name.en;
-      const nameEn = speaker.name.en;
-      const orgZh = speaker.org.zh || speaker.org.en;
-      const sessionNameZh = speaker.session?.name?.zh || '';
-      const sessionAbstractZh = speaker.session?.abstract?.zh || '';
-      const bioZh = speaker.bio.zh || speaker.bio.en;
+      // 載入講者資料
+      async function loadSpeakerData(speakerId) {
+        try {
+          const response = await fetch('../../data/speakers.json');
+          if (!response.ok) {
+            throw new Error('Failed to load speaker data');
+          }
 
-      const title = `${nameZh} - DevFest Kaohsiung X S. TW Communities Gathering 2025`;
-      const ogTitle = `${nameZh} | ${sessionNameZh}`;
-      const description = sessionAbstractZh.substring(0, 200) + '...';
-      const bioDescription = bioZh.substring(0, 160);
-      const keywords = `DevFest, Kaohsiung, ${nameZh}, ${sessionNameZh}, Google Developer`;
+          const data = await response.json();
+          const speaker = data.speakers.find((s) => s.id === speakerId);
 
-      // 更新 title
-      document.title = title;
-      document.getElementById('pageTitle').textContent = title;
+          if (!speaker) {
+            throw new Error('Speaker not found');
+          }
 
-      // 更新 Open Graph
-      document.getElementById('ogUrl').setAttribute('content', speakerUrl);
-      document.getElementById('ogTitle').setAttribute('content', ogTitle);
-      document.getElementById('ogDescription').setAttribute('content', description);
-      document.getElementById('ogImage').setAttribute('content', ogImageUrl);
-      document.getElementById('ogImageAlt').setAttribute('content', `${nameZh} - ${orgZh}`);
+          return speaker;
+        } catch (error) {
+          console.error('Error loading speaker data:', error);
+          throw error;
+        }
+      }
 
-      // 更新 Twitter
-      document.getElementById('twitterUrl').setAttribute('content', speakerUrl);
-      document.getElementById('twitterTitle').setAttribute('content', ogTitle);
-      document.getElementById('twitterDescription').setAttribute('content', description);
-      document.getElementById('twitterImage').setAttribute('content', ogImageUrl);
+      // 更新頁面 meta 標籤
+      function updateMetaTags(speaker) {
+        const baseUrl = 'https://devfest2025.gdgkaohsiung.org';
+        const speakerId = speaker.id;
+        const speakerUrl = `${baseUrl}/speakers/${speakerId}/`;
+        const ogImageUrl = `${baseUrl}/speakers/${speakerId}/og-image.png`;
 
-      // 更新其他 meta
-      document.getElementById('metaDescription').setAttribute('content', bioDescription);
-      document.getElementById('metaAuthor').setAttribute('content', nameEn);
-      document.getElementById('metaKeywords').setAttribute('content', keywords);
-      document.getElementById('canonicalUrl').setAttribute('href', speakerUrl);
-    }
+        const nameZh = speaker.name.zh || speaker.name.en;
+        const nameEn = speaker.name.en;
+        const orgZh = speaker.org.zh || speaker.org.en;
+        const sessionNameZh = speaker.session?.name?.zh || '';
+        const sessionAbstractZh = speaker.session?.abstract?.zh || '';
+        const bioZh = speaker.bio.zh || speaker.bio.en;
 
-    // 重導向到主頁
-    function redirectToMainPage(speakerId) {
-      const mainPageUrl = `../../index.html#${speakerId}`;
-      window.location.href = mainPageUrl;
-    }
+        const title = `${nameZh} - DevFest Kaohsiung X S. TW Communities Gathering 2025`;
+        const ogTitle = `${nameZh} | ${sessionNameZh}`;
+        const description = sessionAbstractZh.substring(0, 200) + '...';
+        const bioDescription = bioZh.substring(0, 160);
+        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${sessionNameZh}, Google Developer`;
 
-    // 顯示錯誤訊息
-    function showError(message) {
-      const container = document.getElementById('loadingContainer');
-      container.className = 'error-container';
-      container.innerHTML = `
+        // 更新 title
+        document.title = title;
+        document.getElementById('pageTitle').textContent = title;
+
+        // 更新 Open Graph
+        document.getElementById('ogUrl').setAttribute('content', speakerUrl);
+        document.getElementById('ogTitle').setAttribute('content', ogTitle);
+        document.getElementById('ogDescription').setAttribute('content', description);
+        document.getElementById('ogImage').setAttribute('content', ogImageUrl);
+        document.getElementById('ogImageAlt').setAttribute('content', `${nameZh} - ${orgZh}`);
+
+        // 更新 Twitter
+        document.getElementById('twitterUrl').setAttribute('content', speakerUrl);
+        document.getElementById('twitterTitle').setAttribute('content', ogTitle);
+        document.getElementById('twitterDescription').setAttribute('content', description);
+        document.getElementById('twitterImage').setAttribute('content', ogImageUrl);
+
+        // 更新其他 meta
+        document.getElementById('metaDescription').setAttribute('content', bioDescription);
+        document.getElementById('metaAuthor').setAttribute('content', nameEn);
+        document.getElementById('metaKeywords').setAttribute('content', keywords);
+        document.getElementById('canonicalUrl').setAttribute('href', speakerUrl);
+      }
+
+      // 重導向到主頁
+      function redirectToMainPage(speakerId) {
+        const mainPageUrl = `../../index.html#${speakerId}`;
+        window.location.href = mainPageUrl;
+      }
+
+      // 顯示錯誤訊息
+      function showError(message) {
+        const container = document.getElementById('loadingContainer');
+        container.className = 'error-container';
+        container.innerHTML = `
         <h1>⚠️ 載入失敗</h1>
         <p>${message}</p>
         <p style="margin-top: 1rem;">
           <a href="../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
         </p>
       `;
-    }
-
-    // 主執行函式
-    async function init() {
-      const speakerId = getSpeakerId();
-
-      if (!speakerId) {
-        showError('無效的講者 ID');
-        return;
       }
 
-      try {
-        // 載入講者資料
-        const speaker = await loadSpeakerData(speakerId);
+      // 主執行函式
+      async function init() {
+        const speakerId = getSpeakerId();
 
-        // 更新 meta 標籤
-        updateMetaTags(speaker);
+        if (!speakerId) {
+          showError('無效的講者 ID');
+          return;
+        }
 
-        // 等待一小段時間讓爬蟲讀取 meta 標籤
-        await new Promise(resolve => setTimeout(resolve, 100));
+        try {
+          // 載入講者資料
+          const speaker = await loadSpeakerData(speakerId);
 
-        // 重導向到主頁
-        redirectToMainPage(speakerId);
+          // 更新 meta 標籤
+          updateMetaTags(speaker);
 
-      } catch (error) {
-        showError('無法載入講者資料，請確認講者 ID 是否正確。');
+          // 等待一小段時間讓爬蟲讀取 meta 標籤
+          await new Promise((resolve) => setTimeout(resolve, 100));
+
+          // 重導向到主頁
+          redirectToMainPage(speakerId);
+        } catch (error) {
+          showError('無法載入講者資料，請確認講者 ID 是否正確。');
+        }
       }
-    }
 
-    // 執行初始化
-    init();
-  </script>
-</body>
+      // 執行初始化
+      init();
+    </script>
+  </body>
 </html>
