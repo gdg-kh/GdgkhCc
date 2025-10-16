@@ -80,6 +80,8 @@ class DynamicContentManager {
     this.renderCommunity();
     this.renderStaff();
     this.renderAbout();
+    // 綁定所有分享按鈕的事件
+    this.bindShareButtons();
   }
 
   // 渲染輪播圖
@@ -294,7 +296,9 @@ class DynamicContentManager {
     card.id = speaker.id; // 設定 ID 以支援 URL hash 導航
 
     const tagsHTML = speaker.tags.map((tag) => `<span>#${tag}</span>`).join('');
-    const socialLinks = this.createSocialLinks(speaker.social);
+    // 生成講者的靜態頁面網址
+    const shareUrl = `${window.location.origin}/speakers/${speaker.id}/`;
+    const socialLinks = this.createSocialLinks(speaker.social, shareUrl);
 
     // 取得「查看更多」和「顯示較少」的多語言文字
     let viewMoreText = '查看更多';
@@ -396,7 +400,9 @@ class DynamicContentManager {
     card.setAttribute('data-booth-id', booth.id);
     card.id = booth.id; // 設定 ID 以支援 URL hash 導航
 
-    const socialLinks = this.createSocialLinks(booth.social);
+    // 生成攤位的靜態頁面網址
+    const shareUrl = `${window.location.origin}/markets/${booth.id}/`;
+    const socialLinks = this.createSocialLinks(booth.social, shareUrl);
 
     // 創建優化的圖片
     const imageContainer = window.imageLoader?.createOptimizedImage(booth.logo, `${this.getText(booth.name)} Logo`, {
@@ -448,7 +454,9 @@ class DynamicContentManager {
     card.setAttribute('data-sponsor-id', sponsor.id);
     card.id = sponsor.id; // 設定 ID 以支援 URL hash 導航
 
-    const socialLinks = this.createSocialLinks(sponsor.social);
+    // 生成贊助商的靜態頁面網址
+    const shareUrl = `${window.location.origin}/sponsors/${sponsor.id}/`;
+    const socialLinks = this.createSocialLinks(sponsor.social, shareUrl);
 
     // 使用 category 作為贊助類型 (partner 或其他類型)
     const sponsorType = sponsor.type || 'company'; // 預設為公司
@@ -512,7 +520,9 @@ class DynamicContentManager {
     card.setAttribute('data-community-id', community.id);
     card.id = community.id; // 設定 ID 以支援 URL hash 導航
 
-    const socialLinks = this.createSocialLinks(community.social);
+    // 生成社群的靜態頁面網址
+    const shareUrl = `${window.location.origin}/community/${community.id}/`;
+    const socialLinks = this.createSocialLinks(community.social, shareUrl);
 
     // 創建優化的圖片
     const imageContainer = window.imageLoader?.createOptimizedImage(
@@ -603,17 +613,118 @@ class DynamicContentManager {
   }
 
   // 建立社群連結
-  createSocialLinks(social) {
-    if (!social) return '';
+  createSocialLinks(social, shareUrl = null) {
+    // 創建分享按鈕（如果提供了分享網址）
+    let shareButton = '';
+    if (shareUrl) {
+      const shareText = this.getShareButtonText();
+      shareButton = `<button class="share-link" data-share-url="${shareUrl}" title="${shareText}">${shareText}</button>`;
+    }
 
-    const links = Object.entries(social)
-      .map(([platform, url]) => {
-        const platformName = platform.charAt(0).toUpperCase() + platform.slice(1);
-        return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="social-link">${platformName}</a>`;
-      })
-      .join(' ');
+    // 如果沒有社群連結且沒有分享按鈕，返回空字串
+    if (!social && !shareButton) return '';
 
-    return `<div class="social-links">${links}</div>`;
+    // 創建社群連結
+    const links = social
+      ? Object.entries(social)
+          .map(([platform, url]) => {
+            const platformName = platform.charAt(0).toUpperCase() + platform.slice(1);
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="social-link">${platformName}</a>`;
+          })
+          .join(' ')
+      : '';
+
+    // 將分享按鈕放在最前面
+    return `<div class="social-links">${shareButton}${shareButton && links ? ' ' : ''}${links}</div>`;
+  }
+
+  // 取得分享按鈕的多語言文字
+  getShareButtonText() {
+    if (this.currentLanguage === 'en') {
+      return 'Share';
+    } else if (this.currentLanguage === 'ja') {
+      return '共有';
+    } else {
+      return '分享';
+    }
+  }
+
+  // 取得複製成功的多語言文字
+  getCopiedText() {
+    if (this.currentLanguage === 'en') {
+      return 'Copied!';
+    } else if (this.currentLanguage === 'ja') {
+      return 'コピー済み';
+    } else {
+      return '已複製！';
+    }
+  }
+
+  // 綁定所有分享按鈕的點擊事件
+  bindShareButtons() {
+    const shareButtons = document.querySelectorAll('.share-link');
+    shareButtons.forEach((button) => {
+      button.addEventListener('click', async (e) => {
+        e.stopPropagation(); // 防止觸發卡片的其他點擊事件
+        e.preventDefault();
+
+        const url = button.getAttribute('data-share-url');
+        if (!url) return;
+
+        try {
+          // 使用 Clipboard API 複製網址
+          await navigator.clipboard.writeText(url);
+
+          // 保存原始文字
+          const originalText = button.textContent;
+
+          // 顯示複製成功的回饋
+          button.textContent = this.getCopiedText();
+          button.classList.add('copied');
+
+          // 2 秒後恢復原始狀態
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('複製失敗:', err);
+          // 如果 Clipboard API 不可用，使用舊方法
+          this.fallbackCopyText(url, button);
+        }
+      });
+    });
+  }
+
+  // 備用的複製方法（適用於不支援 Clipboard API 的瀏覽器）
+  fallbackCopyText(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    try {
+      document.execCommand('copy');
+
+      // 保存原始文字
+      const originalText = button.textContent;
+
+      // 顯示複製成功的回饋
+      button.textContent = this.getCopiedText();
+      button.classList.add('copied');
+
+      // 2 秒後恢復原始狀態
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.error('備用複製方法失敗:', err);
+    } finally {
+      document.body.removeChild(textArea);
+    }
   }
 
   // 綁定講者卡片點擊事件
@@ -685,7 +796,9 @@ class DynamicContentManager {
     card.setAttribute('data-staff-id', staff.id);
     card.id = staff.id; // 設定 ID 以支援 URL hash 導航
 
-    const socialLinks = this.createSocialLinks(staff.social);
+    // 生成工作人員的靜態頁面網址
+    const shareUrl = `${window.location.origin}/staff/${staff.id}/`;
+    const socialLinks = this.createSocialLinks(staff.social, shareUrl);
 
     // 組織和職稱（如果有的話）
     const orgHTML = staff.org ? `<p class="staff-org">${this.getText(staff.org)}</p>` : '';

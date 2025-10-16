@@ -3200,6 +3200,37 @@ html.page-switching {
   color: var(--md-sys-color-on-primary);
 }
 
+/* 分享按鈕樣式 - 保持與 social-link 一致 */
+.share-link {
+  padding: 6px 12px;
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.share-link:hover {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.share-link:active {
+  transform: scale(0.95);
+}
+
+/* 複製成功提示 */
+.share-link.copied {
+  background: var(--md-sys-color-secondary);
+  color: var(--md-sys-color-on-secondary);
+}
+
 .about-activities {
   margin: 16px 0;
 }
