@@ -3186,19 +3186,17 @@ html.page-switching {
 }
 
 .social-link {
-  padding: 8px 16px;
+  padding: 4px 10px;
   background: var(--md-sys-color-surface-variant);
   color: var(--md-sys-color-on-surface-variant);
   text-decoration: none;
   border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  min-height: 36px;
 }
 
 .social-link:hover {
@@ -3208,13 +3206,12 @@ html.page-switching {
 
 /* 分享按鈕樣式 - 保持與 social-link 一致 */
 .share-link {
-  padding: 8px 16px;
+  padding: 4px 10px;
   background: var(--md-sys-color-surface-variant);
   color: var(--md-sys-color-on-surface-variant);
   border: none;
   border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -3222,7 +3219,6 @@ html.page-switching {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  min-height: 36px;
 }
 
 .share-link:hover {
@@ -3346,10 +3342,9 @@ html.page-switching {
 
 .speaker-info .social-link,
 .speaker-info .share-link {
-  font-size: 12px;
-  padding: 6px 12px;
+  font-size: 11px;
+  padding: 4px 10px;
   border-radius: 10px;
-  min-height: 32px;
 }
 
 /* 講者卡片高亮效果 */
