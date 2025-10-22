@@ -15,7 +15,13 @@
       "Bash(python:*)",
       "Bash(code:*)",
       "Bash(dir)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(node generate-market-pages.js:*)",
+      "Bash(node generate-community-pages.js:*)",
+      "Bash(node generate-sponsor-pages.js:*)",
+      "Bash(node generate-speaker-pages.js:*)",
+      "Bash(node generate-staff-pages.js:*)",
+      "Bash(node generate-about-pages.js:*)"
     ],
     "deny": [],
     "ask": []
