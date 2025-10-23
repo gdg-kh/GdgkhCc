@@ -8,45 +8,66 @@ This is a static website for "DevFest Kaohsiung X S. TW Communities Gathering 20
 
 **Base URL**: `gdgkh.cc` - All URLs and links should use this canonical domain.
 
+**IMPORTANT**: The site uses a **year-based directory structure**. Each year's content is organized in its own subdirectory (e.g., `/2025/`, `/2026/`). The root `index.html` automatically redirects to the current year's site.
+
 ## Project Structure
 
 ```
 /
-├── index.html                    # Main HTML file with all page content
-├── json-editor.html              # Visual JSON content editor (no technical knowledge required)
-├── og-image-generator.html       # Generated OG image creator tool
-├── css/
-│   └── style.css                # All styles, Material 3 design system
-├── js/
-│   ├── main.js                  # Core JavaScript with i18n and navigation
-│   └── dynamic-content.js       # Dynamic content management system
-├── data/                        # JSON data files for dynamic content
-│   ├── speakers.json            # Speaker information
-│   ├── twm.json                 # Tech creation market booths
-│   ├── thanks.json              # Thanks list information
-│   ├── community.json           # Community participants
-│   ├── staff.json               # Staff and volunteer information
-│   ├── about.json               # About us information
-│   └── carousel.json            # Homepage carousel slides
-├── images/                      # Event images and assets
-├── share/                       # Generated pages directory (organized by type)
-│   ├── speakers/                # Individual speaker pages with OG meta tags
-│   ├── thanks/                  # Individual thanks list pages with OG meta tags
-│   ├── community/               # Individual community pages with OG meta tags
-│   ├── staff/                   # Individual staff pages with OG meta tags
-│   ├── twm/                     # Individual tech creation market booth pages with OG meta tags
-│   └── about/                   # Individual about pages with OG meta tags
-├── generate-*.js                # Node.js scripts for generating individual pages
-├── *-template.html              # HTML templates for generated pages
-├── favicon.svg                  # Site favicon
-└── README-DYNAMIC-CONTENT.md    # Dynamic content system documentation
+├── index.html                    # Root redirect page (auto-redirects to /2025/)
+├── CNAME                         # Domain configuration for GitHub Pages
+├── 2025/                         # 2025 年活動網站目錄
+│   ├── index.html                # Main HTML file with all page content
+│   ├── json-editor.html          # Visual JSON content editor
+│   ├── og-image-generator.html   # OG image creator tool
+│   ├── css/
+│   │   └── style.css            # All styles, Material 3 design system
+│   ├── js/
+│   │   ├── main.js              # Core JavaScript with i18n and navigation
+│   │   └── dynamic-content.js   # Dynamic content management system
+│   ├── data/                    # JSON data files for dynamic content
+│   │   ├── speakers.json        # Speaker information
+│   │   ├── twm.json             # Tech creation market booths
+│   │   ├── thanks.json          # Thanks list information
+│   │   ├── community.json       # Community participants
+│   │   ├── staff.json           # Staff and volunteer information
+│   │   ├── about.json           # About us information
+│   │   └── carousel.json        # Homepage carousel slides
+│   ├── images/                  # Event images and assets
+│   ├── share/                   # Generated pages directory (organized by type)
+│   │   ├── speakers/            # Individual speaker pages with OG meta tags
+│   │   ├── thanks/              # Individual thanks list pages with OG meta tags
+│   │   ├── community/           # Individual community pages with OG meta tags
+│   │   ├── staff/               # Individual staff pages with OG meta tags
+│   │   ├── twm/                 # Individual tech creation market booth pages with OG meta tags
+│   │   └── about/               # Individual about pages with OG meta tags
+│   ├── generate-*.js            # Node.js scripts for generating individual pages
+│   ├── *-template.html          # HTML templates for generated pages
+│   └── favicon.svg              # Site favicon
+├── 2026/                         # (Future) 2026 年活動網站目錄
+├── package.json                  # NPM dependencies (shared across all years)
+├── eslint.config.js              # ESLint configuration (shared)
+└── README-DYNAMIC-CONTENT.md     # Dynamic content system documentation
 ```
+
+### Year-Based Architecture
+
+- **Root Directory**: Contains only the redirect `index.html` and configuration files
+- **Year Subdirectories** (e.g., `/2025/`): Each contains a complete, self-contained website
+- **URL Structure**:
+  - Root: `https://gdgkh.cc/` → Auto-redirects to current year
+  - Current Year: `https://gdgkh.cc/2025/`
+  - Generated Pages: `https://gdgkh.cc/2025/share/speakers/speaker-id/`
+- **For Next Year**: Copy the current year's directory (e.g., `/2025/`) to `/2026/`, update content, and modify the root `index.html` redirect target
 
 ## Development Commands
 
 This is a static website with no build system. Development workflow:
 
 ```bash
+# IMPORTANT: Always work from within the year directory (e.g., 2025/)
+cd 2025
+
 # Serve the site locally (required for JSON loading due to CORS)
 python -m http.server 8000
 # or
@@ -55,6 +76,7 @@ npm run serve
 npx serve .
 
 # Then open http://localhost:8000 in your browser
+# To test the root redirect: http://localhost:8000/../
 ```
 
 **Code Quality Commands**:
@@ -76,39 +98,42 @@ npm run format:check
 **Page Generation Commands** (creates individual pages for SEO and social sharing):
 
 ```bash
+# IMPORTANT: Run these commands from the year directory (e.g., cd 2025)
+cd 2025
+
 # Generate individual speaker pages with dynamic OG meta tags
-npm run generate:speakers
+node generate-speaker-pages.js
 
 # Generate OG images for speakers (opens browser tool)
-npm run generate:speaker-og-images
+node generate-og-images.js
 
 # Generate individual thanks list pages
-npm run generate:thanks
+node generate-thanks-pages.js
 
 # Generate OG images for thanks list
-npm run generate:thanks-og-images
+node generate-thanks-og-images.js
 
 # Generate individual community pages
-npm run generate:community
+node generate-community-pages.js
 
 # Generate individual staff pages
-npm run generate:staff
+node generate-staff-pages.js
 
 # Generate individual tech creation market booth pages
-npm run generate:twm
+node generate-twm-pages.js
 
 # Generate individual about pages
-npm run generate:about
+node generate-about-pages.js
 
-# Generate all pages at once
-npm run generate:all
+# You can also use npm scripts from the root directory:
+# npm run generate:speakers (runs: cd 2025 && node generate-speaker-pages.js)
 ```
 
 **Important**:
 
 - Due to CORS restrictions, you must use a local server to test the dynamic content features. Opening `index.html` directly in a browser will not load the JSON data files.
 - ESLint is configured with Prettier integration - run `npm run lint:fix` and `npm run format` before committing changes.
-- **NEVER manually edit generated pages**: Files in `share/speakers/`, `share/thanks/`, `share/community/`, `share/staff/`, `share/twm/`, and `share/about/` directories are auto-generated from templates and JSON data. Any manual edits will be overwritten. Always edit the source JSON files in `data/` and the template files (`*-template.html`), then regenerate using the appropriate `npm run generate:*` command.
+- **NEVER manually edit generated pages**: Files in `2025/share/speakers/`, `2025/share/thanks/`, `2025/share/community/`, `2025/share/staff/`, `2025/share/twm/`, and `2025/share/about/` directories are auto-generated from templates and JSON data. Any manual edits will be overwritten. Always edit the source JSON files in `2025/data/` and the template files (`2025/*-template.html`), then regenerate using the appropriate generation script.
 
 ## Architecture
 
@@ -338,8 +363,8 @@ Individual pages are generated for each content item to improve SEO and social s
 
 ### Adding New Speakers
 
-1. Edit `data/speakers.json`
-2. Add speaker photo to `images/` directory
+1. Edit `2025/data/speakers.json`
+2. Add speaker photo to `2025/images/` directory
 3. Assign `topic_category` to one of the five predefined categories:
    - "Gemini AI 的生成式實踐" (Gemini AI in Practice) - Blue
    - "Google Cloud 的雲端實踐" (Google Cloud in Practice) - Green
@@ -348,19 +373,19 @@ Individual pages are generated for each content item to improve SEO and social s
    - "第二屆 AI 生成大賽" (The 2nd AI Generative Contest) - Black
 4. If linking to schedule, add `schedule.session_id` field matching the schedule item's `data-i18n-key`
 5. Follow the JSON schema in `README-DYNAMIC-CONTENT.md`
-6. Run `npm run generate:speakers` to create individual speaker pages
-7. Optionally generate OG images with `npm run generate:speaker-og-images`
+6. Run `cd 2025 && node generate-speaker-pages.js` to create individual speaker pages
+7. Optionally generate OG images with `cd 2025 && node generate-og-images.js`
 
 ### Adding New Thanks List Items
 
-1. Edit `data/thanks.json`
-2. Add logo to `images/` directory
+1. Edit `2025/data/thanks.json`
+2. Add logo to `2025/images/` directory
 3. Specify `type` (company/partner) and `category` for proper styling
-4. Run `npm run generate:thanks` to create individual thanks pages
+4. Run `cd 2025 && node generate-thanks-pages.js` to create individual thanks pages
 
 ### Modifying Event Schedule
 
-- Edit the schedule translations in `js/main.js`
+- Edit the schedule translations in `2025/js/main.js`
 - To link a speaker to a schedule item, ensure the speaker's `schedule.session_id` matches the schedule's `data-i18n-key`
 - Schedule items with matching speakers will automatically display speaker info and become clickable
 
@@ -376,11 +401,71 @@ Individual pages are generated for each content item to improve SEO and social s
 After editing JSON files, regenerate the individual pages:
 
 ```bash
-# Regenerate specific content type
-npm run generate:speakers
+# Change to the year directory
+cd 2025
 
-# Or regenerate everything
-npm run generate:all
+# Regenerate specific content type
+node generate-speaker-pages.js
+
+# Or regenerate everything by running all generation scripts
+node generate-speaker-pages.js && \
+node generate-thanks-pages.js && \
+node generate-community-pages.js && \
+node generate-staff-pages.js && \
+node generate-twm-pages.js && \
+node generate-about-pages.js
 ```
 
 This ensures that the individual pages stay in sync with the main site data.
+
+### Preparing for Next Year's Event
+
+When it's time to create next year's website (e.g., 2026):
+
+1. **Copy the Current Year's Directory**:
+
+   ```bash
+   # Copy the entire 2025 directory to 2026
+   cp -r 2025 2026
+   ```
+
+2. **Update Content in the New Directory**:
+   - Edit `2026/data/*.json` files with new event data
+   - Replace images in `2026/images/` as needed
+   - Update event details in `2026/js/main.js`
+   - Update the year references in `2026/index.html`
+
+3. **Update Open Graph URLs** (if needed):
+   - Update baseUrl in all `2026/generate-*.js` scripts from `/2025` to `/2026`
+   - Update meta tags in `2026/index.html` if needed
+
+4. **Update Root Redirect**:
+   - Edit the root `index.html` file
+   - Change the redirect URL from `/2025/` to `/2026/`:
+     ```javascript
+     window.location.href = '/2026/';
+     ```
+   - Update the backup link as well
+
+5. **Regenerate All Pages**:
+
+   ```bash
+   cd 2026
+   node generate-speaker-pages.js && \
+   node generate-thanks-pages.js && \
+   node generate-community-pages.js && \
+   node generate-staff-pages.js && \
+   node generate-twm-pages.js && \
+   node generate-about-pages.js
+   ```
+
+6. **Test Everything**:
+   - Test the root redirect: `http://localhost:8000/` → should redirect to `/2026/`
+   - Test the main site: `http://localhost:8000/2026/`
+   - Verify all dynamic content loads correctly
+   - Check generated pages: `http://localhost:8000/2026/share/speakers/...`
+
+7. **Commit and Deploy**:
+   - The 2025 site will remain accessible at `https://gdgkh.cc/2025/`
+   - The new 2026 site will be at `https://gdgkh.cc/2026/`
+   - Root domain will automatically redirect to the latest year
