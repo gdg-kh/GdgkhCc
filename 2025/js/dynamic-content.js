@@ -297,7 +297,7 @@ class DynamicContentManager {
 
     const tagsHTML = speaker.tags.map((tag) => `<span>#${tag}</span>`).join('');
     // 生成講者的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/speakers/${speaker.id}/`;
+    const shareUrl = `${window.location.origin}/2025/share/speakers/${speaker.id}/`;
     const socialLinks = this.createSocialLinks(speaker.social, shareUrl);
 
     // 取得「查看更多」和「顯示較少」的多語言文字
@@ -401,7 +401,7 @@ class DynamicContentManager {
     card.id = booth.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成攤位的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/twm/${booth.id}/`;
+    const shareUrl = `${window.location.origin}/2025/share/twm/${booth.id}/`;
     const socialLinks = this.createSocialLinks(booth.social, shareUrl);
 
     // 創建優化的圖片
@@ -455,7 +455,7 @@ class DynamicContentManager {
     card.id = thank.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成感謝名單的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/thanks/${thank.id}/`;
+    const shareUrl = `${window.location.origin}/2025/share/thanks/${thank.id}/`;
     const socialLinks = this.createSocialLinks(thank.social, shareUrl);
 
     // 使用 category 作為感謝類型 (partner 或其他類型)
@@ -517,7 +517,7 @@ class DynamicContentManager {
     card.id = community.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成社群的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/community/${community.id}/`;
+    const shareUrl = `${window.location.origin}/2025/share/community/${community.id}/`;
     const socialLinks = this.createSocialLinks(community.social, shareUrl);
 
     // 創建優化的圖片
@@ -793,7 +793,7 @@ class DynamicContentManager {
     card.id = staff.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成工作人員的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/staff/${staff.id}/`;
+    const shareUrl = `${window.location.origin}/2025/share/staff/${staff.id}/`;
     const socialLinks = this.createSocialLinks(staff.social, shareUrl);
 
     // 組織和職稱（如果有的話）
