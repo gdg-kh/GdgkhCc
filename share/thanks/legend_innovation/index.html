@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">誠研創新 - DevFest Kaohsiung X S. TW Communities Gathering 2025</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gdgkh.cc/share/thanks/legend_innovation/" id="ogUrl" />
+    <meta property="og:title" content="誠研創新 - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="ogTitle" />
+    <meta property="og:description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="ogDescription" />
+    <meta property="og:image" content="https://gdgkh.cc/share/thanks/legend_innovation/og-image.png" id="ogImage" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="誠研創新" id="ogImageAlt" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://gdgkh.cc/share/thanks/legend_innovation/" id="twitterUrl" />
+    <meta property="twitter:title" content="誠研創新 - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="twitterTitle" />
+    <meta property="twitter:description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="twitterDescription" />
+    <meta property="twitter:image" content="https://gdgkh.cc/share/thanks/legend_innovation/og-image.png" id="twitterImage" />
+
+    <!-- Additional Meta Tags -->
+    <meta name="description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="metaDescription" />
+    <meta name="keywords" content="DevFest, Kaohsiung, 誠研創新, Thanks, Google Developer" id="metaKeywords" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gdgkh.cc/share/thanks/legend_innovation/" id="canonicalUrl" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #764ba2 100%);
+        color: white;
+      }
+      .loading-container {
+        text-align: center;
+        padding: 2rem;
+      }
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid white;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0;
+      }
+      p {
+        margin: 0.5rem 0 0;
+        opacity: 0.8;
+      }
+      .error-container {
+        background: rgba(211, 47, 47, 0.9);
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 500px;
+      }
+      .error-container h1 {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-container" id="loadingContainer">
+      <div class="spinner"></div>
+      <h1>正在載入感謝名單資訊...</h1>
+      <p>Loading thanks information...</p>
+    </div>
+
+    <script>
+      // 從 URL 獲取感謝名單 ID
+      function getThanksId() {
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const thanksIndex = pathParts.indexOf('thanks');
+        if (thanksIndex !== -1 && pathParts[thanksIndex + 1]) {
+          return pathParts[thanksIndex + 1];
+        }
+        return null;
+      }
+
+      // 載入感謝名單資料
+      async function loadThanksData(thanksId) {
+        try {
+          const response = await fetch('../../../data/thanks.json');
+          if (!response.ok) {
+            throw new Error('Failed to load thanks data');
+          }
+
+          const data = await response.json();
+          const thanks = data.thanks.find((s) => s.id === thanksId);
+
+          if (!thanks) {
+            throw new Error('Thanks not found');
+          }
+
+          return thanks;
+        } catch (error) {
+          console.error('Error loading thanks data:', error);
+          throw error;
+        }
+      }
+
+      // 更新頁面 meta 標籤
+      function updateMetaTags(thanks) {
+        const baseUrl = 'https://gdgkh.cc';
+        const thanksId = thanks.id;
+        const thanksUrl = `${baseUrl}/share/thanks/${thanksId}/`;
+        const ogImageUrl = `${baseUrl}/share/thanks/${thanksId}/og-image.png`;
+
+        const nameZh = thanks.name.zh || thanks.name.en;
+        const descriptionZh = thanks.description.zh || thanks.description.en;
+        const categoryZh = thanks.category?.zh || '感謝名單';
+
+        const title = `${nameZh} - DevFest Kaohsiung X S. TW Communities Gathering 2025`;
+        const ogTitle = `${nameZh} - DevFest 2025 高雄場`;
+        const description =
+          '今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢，並且與眾多技術社群一同交流學習。';
+        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${categoryZh}, Thanks, Google Developer`;
+
+        // 更新 title
+        document.title = title;
+        document.getElementById('pageTitle').textContent = title;
+
+        // 更新 Open Graph
+        document.getElementById('ogUrl').setAttribute('content', thanksUrl);
+        document.getElementById('ogTitle').setAttribute('content', ogTitle);
+        document.getElementById('ogDescription').setAttribute('content', description);
+        document.getElementById('ogImage').setAttribute('content', ogImageUrl);
+        document.getElementById('ogImageAlt').setAttribute('content', nameZh);
+
+        // 更新 Twitter
+        document.getElementById('twitterUrl').setAttribute('content', thanksUrl);
+        document.getElementById('twitterTitle').setAttribute('content', ogTitle);
+        document.getElementById('twitterDescription').setAttribute('content', description);
+        document.getElementById('twitterImage').setAttribute('content', ogImageUrl);
+
+        // 更新其他 meta
+        document.getElementById('metaDescription').setAttribute('content', description);
+        document.getElementById('metaKeywords').setAttribute('content', keywords);
+        document.getElementById('canonicalUrl').setAttribute('href', thanksUrl);
+      }
+
+      // 重導向到主頁
+      function redirectToMainPage(thanksId) {
+        const mainPageUrl = `../../../index.html#thanks-${thanksId}`;
+        window.location.href = mainPageUrl;
+      }
+
+      // 顯示錯誤訊息
+      function showError(message) {
+        const container = document.getElementById('loadingContainer');
+        container.className = 'error-container';
+        container.innerHTML = `
+        <h1>⚠️ 載入失敗</h1>
+        <p>${message}</p>
+        <p style="margin-top: 1rem;">
+          <a href="../../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
+        </p>
+      `;
+      }
+
+      // 主執行函式
+      async function init() {
+        const thanksId = getThanksId();
+
+        if (!thanksId) {
+          showError('無效的感謝名單 ID');
+          return;
+        }
+
+        try {
+          // 載入感謝名單資料
+          const thanks = await loadThanksData(thanksId);
+
+          // 更新 meta 標籤
+          updateMetaTags(thanks);
+
+          // 等待一小段時間讓爬蟲讀取 meta 標籤
+          await new Promise((resolve) => setTimeout(resolve, 100));
+
+          // 重導向到主頁
+          redirectToMainPage(thanksId);
+        } catch (error) {
+          showError('無法載入感謝名單資料，請確認感謝名單 ID 是否正確。');
+        }
+      }
+
+      // 執行初始化
+      init();
+    </script>
+  </body>
+</html>

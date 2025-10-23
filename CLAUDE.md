@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a static website for "DevFest Kaohsiung X S. TW Communities Gathering 2025" - a tech conference event. The site is built with vanilla HTML, CSS, and JavaScript without any build system or package manager, featuring a modern dynamic content management system.
 
+**Base URL**: `gdgkh.cc` - All URLs and links should use this canonical domain.
+
 ## Project Structure
 
 ```
@@ -20,19 +22,20 @@ This is a static website for "DevFest Kaohsiung X S. TW Communities Gathering 20
 │   └── dynamic-content.js       # Dynamic content management system
 ├── data/                        # JSON data files for dynamic content
 │   ├── speakers.json            # Speaker information
-│   ├── markets.json             # Tech creation market booths
-│   ├── sponsors.json            # Sponsor information
+│   ├── twm.json                 # Tech creation market booths
+│   ├── thanks.json              # Thanks list information
 │   ├── community.json           # Community participants
 │   ├── staff.json               # Staff and volunteer information
 │   ├── about.json               # About us information
 │   └── carousel.json            # Homepage carousel slides
 ├── images/                      # Event images and assets
-├── speakers/                    # Generated: Individual speaker pages with OG meta tags
-├── sponsors/                    # Generated: Individual sponsor pages with OG meta tags
-├── community/                   # Generated: Individual community pages with OG meta tags
-├── staff/                       # Generated: Individual staff pages with OG meta tags
-├── markets/                     # Generated: Individual market booth pages with OG meta tags
-├── about/                       # Generated: Individual about pages with OG meta tags
+├── share/                       # Generated pages directory (organized by type)
+│   ├── speakers/                # Individual speaker pages with OG meta tags
+│   ├── thanks/                  # Individual thanks list pages with OG meta tags
+│   ├── community/               # Individual community pages with OG meta tags
+│   ├── staff/                   # Individual staff pages with OG meta tags
+│   ├── twm/                     # Individual tech creation market booth pages with OG meta tags
+│   └── about/                   # Individual about pages with OG meta tags
 ├── generate-*.js                # Node.js scripts for generating individual pages
 ├── *-template.html              # HTML templates for generated pages
 ├── favicon.svg                  # Site favicon
@@ -79,11 +82,11 @@ npm run generate:speakers
 # Generate OG images for speakers (opens browser tool)
 npm run generate:speaker-og-images
 
-# Generate individual sponsor pages
-npm run generate:sponsors
+# Generate individual thanks list pages
+npm run generate:thanks
 
-# Generate OG images for sponsors
-npm run generate:sponsor-og-images
+# Generate OG images for thanks list
+npm run generate:thanks-og-images
 
 # Generate individual community pages
 npm run generate:community
@@ -91,8 +94,8 @@ npm run generate:community
 # Generate individual staff pages
 npm run generate:staff
 
-# Generate individual market booth pages
-npm run generate:markets
+# Generate individual tech creation market booth pages
+npm run generate:twm
 
 # Generate individual about pages
 npm run generate:about
@@ -105,7 +108,7 @@ npm run generate:all
 
 - Due to CORS restrictions, you must use a local server to test the dynamic content features. Opening `index.html` directly in a browser will not load the JSON data files.
 - ESLint is configured with Prettier integration - run `npm run lint:fix` and `npm run format` before committing changes.
-- Generated pages in `speakers/`, `sponsors/`, etc. are created from templates and should not be edited manually. Edit the JSON data files and templates instead, then regenerate.
+- **NEVER manually edit generated pages**: Files in `share/speakers/`, `share/thanks/`, `share/community/`, `share/staff/`, `share/twm/`, and `share/about/` directories are auto-generated from templates and JSON data. Any manual edits will be overwritten. Always edit the source JSON files in `data/` and the template files (`*-template.html`), then regenerate using the appropriate `npm run generate:*` command.
 
 ## Architecture
 
@@ -115,7 +118,7 @@ npm run generate:all
 - **Multi-language Support**: Built-in i18n system with Traditional Chinese (zh-Hant), English, and Japanese
 - **Material Design 3**: Uses Google's Material Web Components and expressive color system
 - **Responsive Design**: Mobile-first approach with hamburger navigation
-- **Dynamic Content Management**: JSON-based content system for speakers, sponsors, and other dynamic data
+- **Dynamic Content Management**: JSON-based content system for speakers, thanks list, and other dynamic data
 - **Static Page Generation**: Node.js scripts generate individual pages from templates for SEO optimization
 
 ### Key Systems
@@ -136,7 +139,7 @@ npm run generate:all
    - `DynamicContentManager` class handles all dynamic content
    - JSON-based data loading from `/data` directory
    - Multi-language content support in JSON files
-   - Automatic rendering of speakers, sponsors, community booths, etc.
+   - Automatic rendering of speakers, thanks list, community booths, etc.
    - Content validation and error handling
 
 4. **Static Page Generation System** (`generate-*.js` scripts):
@@ -150,7 +153,7 @@ npm run generate:all
    - Multi-day schedule with track-based organization
    - Speaker cards with expandable bio sections organized by category
    - Five speaker categories with distinct colors (see `js/dynamic-content.js:221-252`)
-   - Sponsor tier system with partner and company types
+   - Thanks list tier system with partner and company types
    - Tech creation market booth displays
 
 ### Content Management Architecture
@@ -164,10 +167,36 @@ The site features two content management approaches:
 
 **Dynamic Content** (`data/*.json` + `js/dynamic-content.js`):
 
-- Speakers, sponsors, community participants, staff
+- Speakers, thanks list, community participants, staff
 - JSON files with multi-language objects
 - Dynamically loaded and rendered
 - Structured data format with validation
+
+## Git Workflow
+
+**Main Branch**: `master`
+
+**Branch Naming Conventions**:
+
+- Feature branches: `feature/description`
+- Hotfix branches: `hotfix/description`
+- Development branch: `develop` (for staging changes before merge to master)
+
+**Important Git Considerations**:
+
+- Generated files in `share/` directories should be committed after regeneration
+- Always run `npm run generate:all` after updating JSON data files before committing
+- Run `npm run lint:fix` and `npm run format` before creating commits
+- When updating content, commit both the source JSON files and the regenerated pages together
+
+**Typical Workflow**:
+
+1. Create feature/hotfix branch from `master` or `develop`
+2. Make changes to source files (JSON data, templates, or core code)
+3. If JSON data changed, run `npm run generate:all`
+4. Run `npm run lint:fix` and `npm run format`
+5. Commit both source changes and generated files
+6. Merge to `develop` for testing, then to `master` for production
 
 ## CSS Architecture
 
@@ -207,7 +236,7 @@ Key color system variables:
 Each `generate-*.js` script follows a similar pattern:
 
 1. Reads JSON data from `data/*.json`
-2. Creates a directory for each item (e.g., `speakers/speaker-id/`)
+2. Creates a directory for each item (e.g., `share/speakers/speaker-id/`)
 3. Copies the template file (`*-template.html`) as `index.html` in each directory
 4. Templates dynamically load data from JSON files at runtime
 5. Some scripts also generate OG image creator tools
@@ -236,10 +265,10 @@ The project uses ESLint and Prettier for code quality:
 ### Dynamic Content
 
 - **Speakers**: `data/speakers.json` - Speaker profiles with sessions and bios
-- **Sponsors**: `data/sponsors.json` - Sponsor information with tiers
+- **Thanks**: `data/thanks.json` - Thanks list information with tiers
 - **Community**: `data/community.json` - Participating community groups
 - **Staff**: `data/staff.json` - Volunteer and staff information
-- **Markets**: `data/markets.json` - Tech creation market booth information
+- **TWM (Tech Creation Market)**: `data/twm.json` - Tech creation market booth information
 - **About**: `data/about.json` - About us and organization information
 - **Carousel**: `data/carousel.json` - Homepage carousel slides
 
@@ -292,7 +321,7 @@ The system automatically enhances the event schedule with speaker information (`
 
 Supports direct linking to specific content items (`js/dynamic-content.js:1026+`):
 
-- Format: `#speaker-id`, `#booth-id`, `#sponsor-id`, etc.
+- Format: `#speaker-id`, `#booth-id`, `#thanks-id`, etc.
 - Automatically switches to correct page and scrolls to item
 - Highlights the target item briefly for user feedback
 
@@ -300,7 +329,7 @@ Supports direct linking to specific content items (`js/dynamic-content.js:1026+`
 
 Individual pages are generated for each content item to improve SEO and social sharing:
 
-- Each item gets its own URL (e.g., `/speakers/speaker-id/`)
+- Each item gets its own URL (e.g., `/share/speakers/speaker-id/`)
 - Pages include proper meta tags for social media preview
 - OG images can be generated using browser-based tools
 - Templates dynamically load data from JSON files, ensuring consistency with main site
@@ -322,12 +351,12 @@ Individual pages are generated for each content item to improve SEO and social s
 6. Run `npm run generate:speakers` to create individual speaker pages
 7. Optionally generate OG images with `npm run generate:speaker-og-images`
 
-### Adding New Sponsors
+### Adding New Thanks List Items
 
-1. Edit `data/sponsors.json`
-2. Add sponsor logo to `images/` directory
+1. Edit `data/thanks.json`
+2. Add logo to `images/` directory
 3. Specify `type` (company/partner) and `category` for proper styling
-4. Run `npm run generate:sponsors` to create individual sponsor pages
+4. Run `npm run generate:thanks` to create individual thanks pages
 
 ### Modifying Event Schedule
 

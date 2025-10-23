@@ -31,7 +31,7 @@
     <link rel="canonical" href="" id="canonicalUrl" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
 
     <style>
       body {
@@ -41,7 +41,7 @@
         align-items: center;
         min-height: 100vh;
         margin: 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #667eea 50%, #764ba2 100%);
         color: white;
       }
       .loading-container {
@@ -106,7 +106,7 @@
       // 載入工作人員資料
       async function loadStaffData(staffId) {
         try {
-          const response = await fetch('../../data/staff.json');
+          const response = await fetch('../../../data/staff.json');
           if (!response.ok) {
             throw new Error('Failed to load staff data');
           }
@@ -173,7 +173,7 @@
 
       // 重導向到主頁
       function redirectToMainPage(staffId) {
-        const mainPageUrl = `../../index.html#staff-${staffId}`;
+        const mainPageUrl = `../../../index.html#staff-${staffId}`;
         window.location.href = mainPageUrl;
       }
 
@@ -185,7 +185,7 @@
         <h1>⚠️ 載入失敗</h1>
         <p>${message}</p>
         <p style="margin-top: 1rem;">
-          <a href="../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
+          <a href="../../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
         </p>
       `;
       }

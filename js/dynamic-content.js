@@ -6,8 +6,8 @@ class DynamicContentManager {
     this.currentLanguage = 'zh-Hant';
     this.data = {
       speakers: [],
-      markets: [],
-      sponsors: [],
+      twm: [],
+      thanks: [],
       community: [],
       staff: [],
       about: [],
@@ -36,10 +36,10 @@ class DynamicContentManager {
   // 載入所有資料
   async loadAllData() {
     try {
-      const [speakers, markets, sponsors, community, staff, about, carousel] = await Promise.all([
+      const [speakers, twm, thanks, community, staff, about, carousel] = await Promise.all([
         this.loadJSON('data/speakers.json'),
-        this.loadJSON('data/markets.json'),
-        this.loadJSON('data/sponsors.json'),
+        this.loadJSON('data/twm.json'),
+        this.loadJSON('data/thanks.json'),
         this.loadJSON('data/community.json'),
         this.loadJSON('data/staff.json'),
         this.loadJSON('data/about.json'),
@@ -47,8 +47,8 @@ class DynamicContentManager {
       ]);
 
       this.data.speakers = speakers.speakers || [];
-      this.data.markets = markets.booths || [];
-      this.data.sponsors = sponsors.sponsors || [];
+      this.data.twm = twm.booths || [];
+      this.data.thanks = thanks.thanks || [];
       this.data.community = community.community || [];
       this.data.staff = staff.staff || [];
       this.data.about = about.about || [];
@@ -75,8 +75,8 @@ class DynamicContentManager {
   renderAllContent() {
     this.renderCarousel();
     this.renderSpeakers();
-    this.renderMarkets();
-    this.renderSponsors();
+    this.renderTwm();
+    this.renderThanks();
     this.renderCommunity();
     this.renderStaff();
     this.renderAbout();
@@ -297,7 +297,7 @@ class DynamicContentManager {
 
     const tagsHTML = speaker.tags.map((tag) => `<span>#${tag}</span>`).join('');
     // 生成講者的靜態頁面網址
-    const shareUrl = `${window.location.origin}/speakers/${speaker.id}/`;
+    const shareUrl = `${window.location.origin}/share/speakers/${speaker.id}/`;
     const socialLinks = this.createSocialLinks(speaker.social, shareUrl);
 
     // 取得「查看更多」和「顯示較少」的多語言文字
@@ -381,40 +381,40 @@ class DynamicContentManager {
   }
 
   // 渲染技術創作市集
-  renderMarkets() {
-    const container = document.querySelector('#tech-creation-market .market-grid');
+  renderTwm() {
+    const container = document.querySelector('#tech-creation-market .twm-grid');
     if (!container) return;
 
     container.innerHTML = '';
 
-    this.data.markets.forEach((booth) => {
-      const boothCard = this.createMarketCard(booth);
+    this.data.twm.forEach((booth) => {
+      const boothCard = this.createTwmCard(booth);
       container.appendChild(boothCard);
     });
   }
 
-  // 建立技術市集卡片
-  createMarketCard(booth) {
+  // 建立技術創作市集卡片
+  createTwmCard(booth) {
     const card = document.createElement('div');
-    card.className = 'market-booth-card';
+    card.className = 'twm-booth-card';
     card.setAttribute('data-booth-id', booth.id);
     card.id = booth.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成攤位的靜態頁面網址
-    const shareUrl = `${window.location.origin}/markets/${booth.id}/`;
+    const shareUrl = `${window.location.origin}/share/twm/${booth.id}/`;
     const socialLinks = this.createSocialLinks(booth.social, shareUrl);
 
     // 創建優化的圖片
     const imageContainer = window.imageLoader?.createOptimizedImage(booth.logo, `${this.getText(booth.name)} Logo`, {
-      className: 'market-booth-image',
+      className: 'twm-booth-image',
       loading: 'lazy',
       placeholder: true,
     });
 
     card.innerHTML = `
-            <div class="market-booth-info">
-                <h3 class="market-booth-title">${this.getText(booth.name)}</h3>
-                <div class="market-booth-description">${this.getText(booth.description)}</div>
+            <div class="twm-booth-info">
+                <h3 class="twm-booth-title">${this.getText(booth.name)}</h3>
+                <div class="twm-booth-description">${this.getText(booth.description)}</div>
                 ${socialLinks}
             </div>
         `;
@@ -424,7 +424,7 @@ class DynamicContentManager {
       card.insertBefore(imageContainer, card.firstChild);
     } else {
       const img = document.createElement('img');
-      img.className = 'market-booth-image';
+      img.className = 'twm-booth-image';
       img.src = booth.logo;
       img.alt = `${this.getText(booth.name)} Logo`;
       img.loading = 'lazy';
@@ -434,51 +434,47 @@ class DynamicContentManager {
     return card;
   }
 
-  // 渲染贊助夥伴
-  renderSponsors() {
-    const container = document.querySelector('#sponsors .sponsors-grid');
+  // 渲染感謝名單
+  renderThanks() {
+    const container = document.querySelector('#thanks .thanks-grid');
     if (!container) return;
 
     container.innerHTML = '';
 
-    this.data.sponsors.forEach((sponsor) => {
-      const sponsorCard = this.createSponsorCard(sponsor);
-      container.appendChild(sponsorCard);
+    this.data.thanks.forEach((thank) => {
+      const thanksCard = this.createThanksCard(thank);
+      container.appendChild(thanksCard);
     });
   }
 
-  // 建立贊助商卡片
-  createSponsorCard(sponsor) {
+  // 建立感謝名單卡片
+  createThanksCard(thank) {
     const card = document.createElement('div');
-    card.className = 'sponsor-card';
-    card.setAttribute('data-sponsor-id', sponsor.id);
-    card.id = sponsor.id; // 設定 ID 以支援 URL hash 導航
+    card.className = 'thanks-card';
+    card.setAttribute('data-thanks-id', thank.id);
+    card.id = thank.id; // 設定 ID 以支援 URL hash 導航
 
-    // 生成贊助商的靜態頁面網址
-    const shareUrl = `${window.location.origin}/sponsors/${sponsor.id}/`;
-    const socialLinks = this.createSocialLinks(sponsor.social, shareUrl);
+    // 生成感謝名單的靜態頁面網址
+    const shareUrl = `${window.location.origin}/share/thanks/${thank.id}/`;
+    const socialLinks = this.createSocialLinks(thank.social, shareUrl);
 
-    // 使用 category 作為贊助類型 (partner 或其他類型)
-    const sponsorType = sponsor.type || 'company'; // 預設為公司
-    const categoryText = this.getText(sponsor.category);
+    // 使用 category 作為感謝類型 (partner 或其他類型)
+    const thanksType = thank.type || 'company'; // 預設為公司
+    const categoryText = this.getText(thank.category);
 
     // 創建優化的圖片
-    const imageContainer = window.imageLoader?.createOptimizedImage(
-      sponsor.logo,
-      `${this.getText(sponsor.name)} Logo`,
-      {
-        className: 'sponsor-image',
-        loading: 'lazy',
-        placeholder: true,
-        onClick: () => window.open(sponsor.website, '_blank'),
-      }
-    );
+    const imageContainer = window.imageLoader?.createOptimizedImage(thank.logo, `${this.getText(thank.name)} Logo`, {
+      className: 'thanks-image',
+      loading: 'lazy',
+      placeholder: true,
+      onClick: () => window.open(thank.website, '_blank'),
+    });
 
     card.innerHTML = `
-            <div class="sponsor-info">
-                <div class="sponsor-type ${sponsorType}">${categoryText}</div>
-                <h3 class="sponsor-title">${this.getText(sponsor.name)}</h3>
-                <div class="sponsor-description">${this.getText(sponsor.description)}</div>
+            <div class="thanks-info">
+                <div class="thanks-type ${thanksType}">${categoryText}</div>
+                <h3 class="thanks-title">${this.getText(thank.name)}</h3>
+                <div class="thanks-description">${this.getText(thank.description)}</div>
                 ${socialLinks}
             </div>
         `;
@@ -488,12 +484,12 @@ class DynamicContentManager {
       card.insertBefore(imageContainer, card.firstChild);
     } else {
       const img = document.createElement('img');
-      img.className = 'sponsor-image';
-      img.src = sponsor.logo;
-      img.alt = `${this.getText(sponsor.name)} Logo`;
+      img.className = 'thanks-image';
+      img.src = thank.logo;
+      img.alt = `${this.getText(thank.name)} Logo`;
       img.loading = 'lazy';
       img.style.cursor = 'pointer';
-      img.onclick = () => window.open(sponsor.website, '_blank');
+      img.onclick = () => window.open(thank.website, '_blank');
       card.insertBefore(img, card.firstChild);
     }
 
@@ -521,7 +517,7 @@ class DynamicContentManager {
     card.id = community.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成社群的靜態頁面網址
-    const shareUrl = `${window.location.origin}/community/${community.id}/`;
+    const shareUrl = `${window.location.origin}/share/community/${community.id}/`;
     const socialLinks = this.createSocialLinks(community.social, shareUrl);
 
     // 創建優化的圖片
@@ -755,18 +751,18 @@ class DynamicContentManager {
     this.renderSpeakers();
   }
 
-  // 新增技術市集攤位
-  async addMarketBooth(boothData) {
-    this.data.markets.push(boothData);
-    await this.saveData('markets', { booths: this.data.markets });
-    this.renderMarkets();
+  // 新增技術創作市集攤位
+  async addTwmBooth(boothData) {
+    this.data.twm.push(boothData);
+    await this.saveData('twm', { booths: this.data.twm });
+    this.renderTwm();
   }
 
-  // 新增贊助商
-  async addSponsor(sponsorData) {
-    this.data.sponsors.push(sponsorData);
-    await this.saveData('sponsors', { sponsors: this.data.sponsors });
-    this.renderSponsors();
+  // 新增感謝名單
+  async addThanks(thanksData) {
+    this.data.thanks.push(thanksData);
+    await this.saveData('thanks', { thanks: this.data.thanks });
+    this.renderThanks();
   }
 
   // 新增參與社群
@@ -797,7 +793,7 @@ class DynamicContentManager {
     card.id = staff.id; // 設定 ID 以支援 URL hash 導航
 
     // 生成工作人員的靜態頁面網址
-    const shareUrl = `${window.location.origin}/staff/${staff.id}/`;
+    const shareUrl = `${window.location.origin}/share/staff/${staff.id}/`;
     const socialLinks = this.createSocialLinks(staff.social, shareUrl);
 
     // 組織和職稱（如果有的話）
@@ -1108,8 +1104,8 @@ class DynamicContentManager {
     // 頁面類型對應表
     const pageMapping = {
       speakers: 'speakers',
-      markets: 'tech-creation-market',
-      sponsors: 'sponsors',
+      twm: 'tech-creation-market',
+      thanks: 'thanks',
       community: 'community',
       staff: 'staff',
     };
@@ -1148,17 +1144,17 @@ class DynamicContentManager {
       return;
     }
 
-    // 檢查是否為技術市集 ID
-    const booth = this.data.markets.find((m) => m.id === hash);
+    // 檢查是否為技術創作市集 ID
+    const booth = this.data.twm.find((m) => m.id === hash);
     if (booth) {
-      this.navigateToItem(hash, 'markets');
+      this.navigateToItem(hash, 'twm');
       return;
     }
 
-    // 檢查是否為贊助商 ID
-    const sponsor = this.data.sponsors.find((s) => s.id === hash);
-    if (sponsor) {
-      this.navigateToItem(hash, 'sponsors');
+    // 檢查是否為感謝名單 ID
+    const thank = this.data.thanks.find((s) => s.id === hash);
+    if (thank) {
+      this.navigateToItem(hash, 'thanks');
       return;
     }
 

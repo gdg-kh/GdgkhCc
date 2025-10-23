@@ -1893,8 +1893,8 @@ main {
   font-weight: 500;
 }
 
-/* Sponsors Section */
-.sponsors-grid {
+/* Thanks Section */
+.thanks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 24px;
@@ -1902,7 +1902,7 @@ main {
   margin: 0 auto;
 }
 
-.sponsor-card {
+.thanks-card {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1914,12 +1914,12 @@ main {
   color: inherit;
 }
 
-.sponsor-card:hover {
+.thanks-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.sponsor-logo-container {
+.thanks-logo-container {
   aspect-ratio: 1 / 1; /* Square ratio */
   display: flex;
   align-items: center;
@@ -1928,14 +1928,14 @@ main {
   background-color: #f8f9fa;
 }
 
-.sponsor-logo {
+.thanks-logo {
   width: 100%; /* Scale by width */
   height: 100%;
   object-fit: contain;
-  object-position: center; /* Center alignment for sponsors */
+  object-position: center; /* Center alignment for thanks */
 }
 
-.sponsor-info {
+.thanks-info {
   padding: 20px;
   min-height: 150px; /* Text area - 1 part of 2:1 ratio */
   display: flex;
@@ -1943,26 +1943,26 @@ main {
   justify-content: flex-start;
 }
 
-.sponsor-name {
+.thanks-name {
   font-size: 20px;
   font-weight: 700;
   margin: 0 0 8px 0;
 }
 
-.sponsor-description {
+.thanks-description {
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
 }
 
-.sponsor-tags {
+.thanks-tags {
   margin-top: 16px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.sponsor-tags span {
+.thanks-tags span {
   background-color: var(--color-light-gray);
   color: var(--color-dark-gray);
   padding: 4px 10px;
@@ -2949,12 +2949,12 @@ html.page-switching {
     gap: 32px;
   }
 
-  .market-grid {
+  .twm-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .sponsors-grid {
+  .thanks-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -2965,7 +2965,7 @@ html.page-switching {
     gap: 12px;
   }
 
-  .sponsor-header {
+  .thanks-header {
     flex-direction: column;
     text-align: center;
     gap: 12px;
@@ -2973,7 +2973,7 @@ html.page-switching {
 }
 
 /* === Dynamic Content Styles === */
-.market-grid {
+.twm-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 24px;
@@ -2981,7 +2981,7 @@ html.page-switching {
   margin: 0 auto;
 }
 
-.market-booth-card {
+.twm-booth-card {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -2991,39 +2991,39 @@ html.page-switching {
   overflow: hidden;
 }
 
-.market-booth-card:hover {
+.twm-booth-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.market-booth-image {
+.twm-booth-image {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
 }
 
-.market-booth-info {
+.twm-booth-info {
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.market-booth-title {
+.twm-booth-title {
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 12px 0;
   color: var(--md-sys-color-on-surface);
 }
 
-.market-booth-description {
+.twm-booth-description {
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 16px 0;
   color: var(--md-sys-color-on-surface-variant);
 }
 
-.market-booth-items {
+.twm-booth-items {
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 16px 0;
@@ -3063,14 +3063,14 @@ html.page-switching {
   margin-bottom: 16px;
 }
 
-.sponsors-grid {
+.thanks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 24px;
   margin-top: 32px;
 }
 
-.sponsor-card {
+.thanks-card {
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -3082,12 +3082,12 @@ html.page-switching {
   color: inherit;
 }
 
-.sponsor-card:hover {
+.thanks-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.sponsor-image {
+.thanks-image {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: contain;
@@ -3096,17 +3096,17 @@ html.page-switching {
   transition: opacity 0.3s ease;
 }
 
-.sponsor-image:hover {
+.thanks-image:hover {
   opacity: 0.8;
 }
 
-.sponsor-info {
+.thanks-info {
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.sponsor-type {
+.thanks-type {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 8px 0;
@@ -3115,57 +3115,57 @@ html.page-switching {
   letter-spacing: 0.5px;
 }
 
-.sponsor-type.company {
+.thanks-type.company {
   color: #1976d2;
 }
 
-.sponsor-type.individual {
+.thanks-type.individual {
   color: #388e3c;
 }
 
-.sponsor-title {
+.thanks-title {
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 4px 0;
   color: var(--md-sys-color-on-surface);
 }
 
-.sponsor-category {
+.thanks-category {
   font-size: 13px;
   font-weight: 500;
   margin: 0 0 12px 0;
   color: var(--md-sys-color-on-surface-variant);
 }
 
-.sponsor-description {
+.thanks-description {
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 16px 0;
   color: var(--md-sys-color-on-surface-variant);
 }
 
-.sponsor-header {
+.thanks-header {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.sponsor-logo {
+.thanks-logo {
   width: 60px;
   height: 60px;
   border-radius: 8px;
   object-fit: cover;
 }
 
-.sponsor-name {
+.thanks-name {
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 4px 0;
   color: var(--md-sys-color-on-surface);
 }
 
-.sponsor-category {
+.thanks-category {
   font-size: 12px;
   background: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
@@ -3173,7 +3173,7 @@ html.page-switching {
   border-radius: 12px;
 }
 
-.sponsor-description {
+.thanks-description {
   line-height: 1.6;
   color: var(--md-sys-color-on-surface-variant);
   margin-bottom: 16px;

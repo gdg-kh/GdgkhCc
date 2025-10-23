@@ -327,9 +327,9 @@
 
       <div class="tabs">
         <button class="tab active" onclick="switchTab('speakers')">📢 講者管理</button>
-        <button class="tab" onclick="switchTab('sponsors')">💼 贊助商管理</button>
+        <button class="tab" onclick="switchTab('thanks')">💼 感謝名單管理</button>
         <button class="tab" onclick="switchTab('community')">🌐 社群管理</button>
-        <button class="tab" onclick="switchTab('markets')">🛒 市集管理</button>
+        <button class="tab" onclick="switchTab('twm')">🛒 市集管理</button>
         <button class="tab" onclick="switchTab('staff')">👥 工作人員管理</button>
         <button class="tab" onclick="switchTab('about')">📋 關於我們管理</button>
       </div>
@@ -588,36 +588,36 @@
           </div>
         </div>
 
-        <!-- Sponsors Section -->
-        <div class="section" id="sponsors">
-          <h2>💼 贊助商管理</h2>
-          <div id="sponsor-form">
+        <!-- Thanks Section -->
+        <div class="section" id="thanks">
+          <h2>💼 感謝名單管理</h2>
+          <div id="thanks-form">
             <div class="form-group">
-              <label>贊助商 ID (英文，用於系統識別)</label>
-              <input id="sponsor-id" placeholder="例如：google_taiwan" type="text" />
+              <label>感謝名單 ID (英文，用於系統識別)</label>
+              <input id="thanks-id" placeholder="例如：google_taiwan" type="text" />
             </div>
 
             <div class="form-group">
               <label>名稱</label>
               <div class="lang-tabs">
-                <div class="lang-tab active" onclick="switchLang('sponsor-name', 'zh')">中文</div>
-                <div class="lang-tab" onclick="switchLang('sponsor-name', 'en')">English</div>
-                <div class="lang-tab" onclick="switchLang('sponsor-name', 'ja')">日本語</div>
+                <div class="lang-tab active" onclick="switchLang('thanks-name', 'zh')">中文</div>
+                <div class="lang-tab" onclick="switchLang('thanks-name', 'en')">English</div>
+                <div class="lang-tab" onclick="switchLang('thanks-name', 'ja')">日本語</div>
               </div>
               <div class="lang-content active" data-lang="zh">
-                <input id="sponsor-name-zh" placeholder="贊助商中文名稱" type="text" />
+                <input id="thanks-name-zh" placeholder="感謝名單中文名稱" type="text" />
               </div>
               <div class="lang-content" data-lang="en">
-                <input id="sponsor-name-en" placeholder="Sponsor English Name" type="text" />
+                <input id="thanks-name-en" placeholder="Thanks English Name" type="text" />
               </div>
               <div class="lang-content" data-lang="ja">
-                <input id="sponsor-name-ja" placeholder="スポンサー日本語名" type="text" />
+                <input id="thanks-name-ja" placeholder="謝意日本語名" type="text" />
               </div>
             </div>
 
             <div class="form-group">
               <label>類型</label>
-              <select id="sponsor-type">
+              <select id="thanks-type">
                 <option value="partner">合作夥伴</option>
                 <option value="company">公司</option>
                 <option value="community">社群</option>
@@ -626,11 +626,11 @@
             </div>
 
             <div class="form-group">
-              <label>贊助等級</label>
-              <select id="sponsor-tier">
-                <option value="gold">金級贊助</option>
-                <option value="silver">銀級贊助</option>
-                <option value="bronze">銅級贊助</option>
+              <label>感謝等級</label>
+              <select id="thanks-tier">
+                <option value="gold">金級感謝</option>
+                <option value="silver">銀級感謝</option>
+                <option value="bronze">銅級感謝</option>
                 <option value="community">社群支持</option>
               </select>
             </div>
@@ -638,22 +638,22 @@
             <div class="form-group">
               <label>描述</label>
               <div class="lang-tabs">
-                <div class="lang-tab active" onclick="switchLang('sponsor-desc', 'zh')">中文</div>
-                <div class="lang-tab" onclick="switchLang('sponsor-desc', 'en')">English</div>
-                <div class="lang-tab" onclick="switchLang('sponsor-desc', 'ja')">日本語</div>
+                <div class="lang-tab active" onclick="switchLang('thanks-desc', 'zh')">中文</div>
+                <div class="lang-tab" onclick="switchLang('thanks-desc', 'en')">English</div>
+                <div class="lang-tab" onclick="switchLang('thanks-desc', 'ja')">日本語</div>
               </div>
               <div class="lang-content active" data-lang="zh">
-                <textarea id="sponsor-desc-zh" placeholder="請輸入中文描述"></textarea>
+                <textarea id="thanks-desc-zh" placeholder="請輸入中文描述"></textarea>
               </div>
               <div class="lang-content" data-lang="en">
                 <textarea
-                  id="sponsor-desc-en"
+                  id="thanks-desc-en"
                   placeholder="Please enter English description"
                 ></textarea>
               </div>
               <div class="lang-content" data-lang="ja">
                 <textarea
-                  id="sponsor-desc-ja"
+                  id="thanks-desc-ja"
                   placeholder="日本語の説明を入力してください"
                 ></textarea>
               </div>
@@ -662,48 +662,46 @@
             <div class="form-group">
               <label>Logo 檔案路徑</label>
               <input
-                id="sponsor-logo"
-                placeholder="例如：images/sponsor-logo-company.png"
+                id="thanks-logo"
+                placeholder="例如：images/thanks-logo-company.png"
                 type="text"
               />
             </div>
 
             <div class="form-group">
               <label>官網</label>
-              <input id="sponsor-website" placeholder="公司官網 URL" type="text" />
+              <input id="thanks-website" placeholder="公司官網 URL" type="text" />
             </div>
 
             <div class="form-group">
               <label>社群連結</label>
               <div class="social-inputs">
-                <input id="sponsor-homepage" placeholder="Homepage URL" type="text" />
-                <input id="sponsor-linkedin" placeholder="LinkedIn URL" type="text" />
-                <input id="sponsor-facebook" placeholder="Facebook URL" type="text" />
-                <input id="sponsor-twitter" placeholder="Twitter URL" type="text" />
-                <input id="sponsor-github" placeholder="GitHub URL" type="text" />
+                <input id="thanks-homepage" placeholder="Homepage URL" type="text" />
+                <input id="thanks-linkedin" placeholder="LinkedIn URL" type="text" />
+                <input id="thanks-facebook" placeholder="Facebook URL" type="text" />
+                <input id="thanks-twitter" placeholder="Twitter URL" type="text" />
+                <input id="thanks-github" placeholder="GitHub URL" type="text" />
               </div>
             </div>
 
             <div style="margin-top: 30px">
-              <button class="btn" onclick="addSponsor()">➕ 新增贊助商</button>
-              <button class="btn btn-secondary" onclick="clearSponsorForm()">🗑️ 清空表單</button>
-              <button class="btn btn-success" onclick="generateSponsorsJSON()">📄 產生 JSON</button>
-              <button class="btn btn-secondary" onclick="loadSponsorsFile()">
-                📁 載入現有檔案
-              </button>
+              <button class="btn" onclick="addThanks()">➕ 新增感謝名單</button>
+              <button class="btn btn-secondary" onclick="clearThanksForm()">🗑️ 清空表單</button>
+              <button class="btn btn-success" onclick="generateThanksJSON()">📄 產生 JSON</button>
+              <button class="btn btn-secondary" onclick="loadThanksFile()">📁 載入現有檔案</button>
             </div>
           </div>
 
           <div class="items-list">
-            <h3>📋 目前贊助商列表</h3>
-            <div id="sponsors-list"></div>
+            <h3>📋 目前感謝名單列表</h3>
+            <div id="thanks-list"></div>
           </div>
 
           <div class="output-section">
             <h3>📄 JSON 輸出</h3>
-            <pre id="sponsors-output">JSON 將在這裡顯示...</pre>
-            <button class="btn" onclick="copySponsorsJSON()">📋 複製 JSON</button>
-            <button class="btn btn-success" onclick="downloadSponsorsJSON()">💾 下載檔案</button>
+            <pre id="thanks-output">JSON 將在這裡顯示...</pre>
+            <button class="btn" onclick="copyThanksJSON()">📋 複製 JSON</button>
+            <button class="btn btn-success" onclick="downloadThanksJSON()">💾 下載檔案</button>
           </div>
         </div>
 
@@ -828,55 +826,55 @@
           </div>
         </div>
 
-        <!-- Markets Section -->
-        <div class="section" id="markets">
+        <!-- TWM Section -->
+        <div class="section" id="twm">
           <h2>🛒 市集管理</h2>
-          <div id="market-form">
+          <div id="twm-form">
             <div class="form-group">
               <label>攤位 ID (英文，用於系統識別)</label>
-              <input id="market-id" placeholder="例如：kotlin_booth" type="text" />
+              <input id="twm-id" placeholder="例如：kotlin_booth" type="text" />
             </div>
 
             <div class="form-group">
               <label>攤位名稱</label>
               <div class="lang-tabs">
-                <div class="lang-tab active" onclick="switchLang('market-name', 'zh')">中文</div>
-                <div class="lang-tab" onclick="switchLang('market-name', 'en')">English</div>
-                <div class="lang-tab" onclick="switchLang('market-name', 'ja')">日本語</div>
+                <div class="lang-tab active" onclick="switchLang('twm-name', 'zh')">中文</div>
+                <div class="lang-tab" onclick="switchLang('twm-name', 'en')">English</div>
+                <div class="lang-tab" onclick="switchLang('twm-name', 'ja')">日本語</div>
               </div>
               <div class="lang-content active" data-lang="zh">
-                <input id="market-name-zh" placeholder="攤位中文名稱" type="text" />
+                <input id="twm-name-zh" placeholder="攤位中文名稱" type="text" />
               </div>
               <div class="lang-content" data-lang="en">
-                <input id="market-name-en" placeholder="Booth English Name" type="text" />
+                <input id="twm-name-en" placeholder="Booth English Name" type="text" />
               </div>
               <div class="lang-content" data-lang="ja">
-                <input id="market-name-ja" placeholder="ブース日本語名" type="text" />
+                <input id="twm-name-ja" placeholder="ブース日本語名" type="text" />
               </div>
             </div>
 
             <div class="form-group">
               <label>攤位描述</label>
               <div class="lang-tabs">
-                <div class="lang-tab active" onclick="switchLang('market-desc', 'zh')">中文</div>
-                <div class="lang-tab" onclick="switchLang('market-desc', 'en')">English</div>
-                <div class="lang-tab" onclick="switchLang('market-desc', 'ja')">日本語</div>
+                <div class="lang-tab active" onclick="switchLang('twm-desc', 'zh')">中文</div>
+                <div class="lang-tab" onclick="switchLang('twm-desc', 'en')">English</div>
+                <div class="lang-tab" onclick="switchLang('twm-desc', 'ja')">日本語</div>
               </div>
               <div class="lang-content active" data-lang="zh">
                 <textarea
-                  id="market-desc-zh"
+                  id="twm-desc-zh"
                   placeholder="請輸入攤位描述，可包含販售物品等資訊"
                 ></textarea>
               </div>
               <div class="lang-content" data-lang="en">
                 <textarea
-                  id="market-desc-en"
+                  id="twm-desc-en"
                   placeholder="Please enter booth description and items for sale"
                 ></textarea>
               </div>
               <div class="lang-content" data-lang="ja">
                 <textarea
-                  id="market-desc-ja"
+                  id="twm-desc-ja"
                   placeholder="ブースの説明と販売アイテムを入力してください"
                 ></textarea>
               </div>
@@ -884,47 +882,43 @@
 
             <div class="form-group">
               <label>Logo 檔案路徑</label>
-              <input
-                id="market-logo"
-                placeholder="例如：images/market-logo-booth.png"
-                type="text"
-              />
+              <input id="twm-logo" placeholder="例如：images/twm-logo-booth.png" type="text" />
             </div>
 
             <div class="form-group">
               <label>官網</label>
-              <input id="market-website" placeholder="攤位相關網站 URL" type="text" />
+              <input id="twm-website" placeholder="攤位相關網站 URL" type="text" />
             </div>
 
             <div class="form-group">
               <label>社群連結</label>
               <div class="social-inputs">
-                <input id="market-homepage" placeholder="Homepage URL" type="text" />
-                <input id="market-facebook" placeholder="Facebook URL" type="text" />
-                <input id="market-instagram" placeholder="Instagram URL" type="text" />
-                <input id="market-twitter" placeholder="Twitter URL" type="text" />
-                <input id="market-github" placeholder="GitHub URL" type="text" />
+                <input id="twm-homepage" placeholder="Homepage URL" type="text" />
+                <input id="twm-facebook" placeholder="Facebook URL" type="text" />
+                <input id="twm-instagram" placeholder="Instagram URL" type="text" />
+                <input id="twm-twitter" placeholder="Twitter URL" type="text" />
+                <input id="twm-github" placeholder="GitHub URL" type="text" />
               </div>
             </div>
 
             <div style="margin-top: 30px">
-              <button class="btn" onclick="addMarket()">➕ 新增攤位</button>
-              <button class="btn btn-secondary" onclick="clearMarketForm()">🗑️ 清空表單</button>
-              <button class="btn btn-success" onclick="generateMarketsJSON()">📄 產生 JSON</button>
-              <button class="btn btn-secondary" onclick="loadMarketsFile()">📁 載入現有檔案</button>
+              <button class="btn" onclick="addTwm()">➕ 新增攤位</button>
+              <button class="btn btn-secondary" onclick="clearTwmForm()">🗑️ 清空表單</button>
+              <button class="btn btn-success" onclick="generateTwmJSON()">📄 產生 JSON</button>
+              <button class="btn btn-secondary" onclick="loadTwmFile()">📁 載入現有檔案</button>
             </div>
           </div>
 
           <div class="items-list">
             <h3>📋 目前攤位列表</h3>
-            <div id="markets-list"></div>
+            <div id="twm-list"></div>
           </div>
 
           <div class="output-section">
             <h3>📄 JSON 輸出</h3>
-            <pre id="markets-output">JSON 將在這裡顯示...</pre>
-            <button class="btn" onclick="copyMarketsJSON()">📋 複製 JSON</button>
-            <button class="btn btn-success" onclick="downloadMarketsJSON()">💾 下載檔案</button>
+            <pre id="twm-output">JSON 將在這裡顯示...</pre>
+            <button class="btn" onclick="copyTwmJSON()">📋 複製 JSON</button>
+            <button class="btn btn-success" onclick="downloadTwmJSON()">💾 下載檔案</button>
           </div>
         </div>
 
@@ -1178,9 +1172,9 @@
     <script>
       // 全域變量
       let speakers = [];
-      let sponsors = [];
+      let thanks = [];
       let communities = [];
-      let markets = [];
+      let twm = [];
       let staff = [];
       let about = [];
 
@@ -1553,187 +1547,187 @@
       }
 
       // ===========================================
-      // SPONSORS 贊助商管理功能
+      // THANKS 感謝名單管理功能
       // ===========================================
 
-      function clearSponsorForm() {
+      function clearThanksForm() {
         const inputs = document.querySelectorAll(
-          '#sponsor-form input, #sponsor-form textarea, #sponsor-form select'
+          '#thanks-form input, #thanks-form textarea, #thanks-form select'
         );
         inputs.forEach((input) => (input.value = ''));
       }
 
-      function addSponsor() {
-        const id = document.getElementById('sponsor-id').value.trim();
+      function addThanks() {
+        const id = document.getElementById('thanks-id').value.trim();
         if (!id) {
-          alert('請輸入贊助商 ID');
+          alert('請輸入感謝名單 ID');
           return;
         }
 
-        if (sponsors.find((s) => s.id === id)) {
-          alert('贊助商 ID 已存在，請使用不同的 ID');
+        if (thanks.find((s) => s.id === id)) {
+          alert('感謝名單 ID 已存在，請使用不同的 ID');
           return;
         }
 
-        const sponsorType = document.getElementById('sponsor-type').value;
+        const thanksType = document.getElementById('thanks-type').value;
 
         // 根據類型自動生成 category
         let category = {};
-        if (sponsorType === 'partner') {
+        if (thanksType === 'partner') {
           category = {
             zh: '合作夥伴',
             en: 'Partners',
             ja: 'パートナー',
           };
-        } else if (sponsorType === 'company') {
+        } else if (thanksType === 'company') {
           category = {
-            zh: '公司贊助',
-            en: 'Company Sponsorship',
-            ja: '企業スポンサー',
+            zh: '公司感謝',
+            en: 'Company Thanks',
+            ja: '企業の謝意',
           };
         } else {
           category = {
-            zh: '個人贊助',
-            en: 'Individual Sponsorship',
-            ja: '個人スポンサー',
+            zh: '個人感謝',
+            en: 'Individual Thanks',
+            ja: '個人の謝意',
           };
         }
 
-        const sponsor = {
+        const thank = {
           id: id,
           name: {
-            zh: document.getElementById('sponsor-name-zh').value.trim(),
-            en: document.getElementById('sponsor-name-en').value.trim(),
-            ja: document.getElementById('sponsor-name-ja').value.trim(),
+            zh: document.getElementById('thanks-name-zh').value.trim(),
+            en: document.getElementById('thanks-name-en').value.trim(),
+            ja: document.getElementById('thanks-name-ja').value.trim(),
           },
-          type: sponsorType,
-          tier: document.getElementById('sponsor-tier').value,
+          type: thanksType,
+          tier: document.getElementById('thanks-tier').value,
           description: {
-            zh: document.getElementById('sponsor-desc-zh').value.trim(),
-            en: document.getElementById('sponsor-desc-en').value.trim(),
-            ja: document.getElementById('sponsor-desc-ja').value.trim(),
+            zh: document.getElementById('thanks-desc-zh').value.trim(),
+            en: document.getElementById('thanks-desc-en').value.trim(),
+            ja: document.getElementById('thanks-desc-ja').value.trim(),
           },
           category: category,
-          logo: document.getElementById('sponsor-logo').value.trim(),
-          website: document.getElementById('sponsor-website').value.trim(),
+          logo: document.getElementById('thanks-logo').value.trim(),
+          website: document.getElementById('thanks-website').value.trim(),
           social: {},
         };
 
         const socialLinks = {
-          Homepage: 'sponsor-homepage',
-          Linkedin: 'sponsor-linkedin',
-          Facebook: 'sponsor-facebook',
-          Twitter: 'sponsor-twitter',
-          GitHub: 'sponsor-github',
+          Homepage: 'thanks-homepage',
+          Linkedin: 'thanks-linkedin',
+          Facebook: 'thanks-facebook',
+          Twitter: 'thanks-twitter',
+          GitHub: 'thanks-github',
         };
 
         Object.keys(socialLinks).forEach((key) => {
           const value = document.getElementById(socialLinks[key]).value.trim();
           if (value) {
-            sponsor.social[key] = value;
+            thank.social[key] = value;
           }
         });
 
-        sponsors.push(sponsor);
-        updateSponsorsList();
-        generateSponsorsJSON();
-        clearSponsorForm();
-        showAlert('success', `贊助商 "${sponsor.name.zh || sponsor.name.en}" 已成功添加！`);
+        thanks.push(thank);
+        updateThanksList();
+        generateThanksJSON();
+        clearThanksForm();
+        showAlert('success', `感謝名單 "${thank.name.zh || thank.name.en}" 已成功添加！`);
       }
 
-      function updateSponsorsList() {
-        const listElement = document.getElementById('sponsors-list');
+      function updateThanksList() {
+        const listElement = document.getElementById('thanks-list');
         listElement.innerHTML = '';
 
-        if (sponsors.length === 0) {
+        if (thanks.length === 0) {
           listElement.innerHTML =
-            '<p style="text-align: center; color: #666; padding: 20px;">目前沒有贊助商資料</p>';
+            '<p style="text-align: center; color: #666; padding: 20px;">目前沒有感謝名單資料</p>';
           return;
         }
 
-        sponsors.forEach((sponsor, index) => {
+        thanks.forEach((thank, index) => {
           const itemDiv = document.createElement('div');
           itemDiv.className = 'item-card';
           itemDiv.innerHTML = `
                 <div class="item-header">
-                    <span class="item-id">${sponsor.id}</span>
+                    <span class="item-id">${thank.id}</span>
                 </div>
-                <div class="item-name"><strong>${sponsor.name.zh || sponsor.name.en}</strong></div>
-                <div style="color: #666; margin: 5px 0;">🏢 ${sponsor.type} - ${sponsor.tier}</div>
+                <div class="item-name"><strong>${thank.name.zh || thank.name.en}</strong></div>
+                <div style="color: #666; margin: 5px 0;">🏢 ${thank.type} - ${thank.tier}</div>
                 <div class="item-actions">
-                    <button class="btn btn-secondary" onclick="editSponsor(${index})">✏️ 編輯</button>
-                    <button class="btn btn-danger" onclick="deleteSponsor(${index})">🗑️ 刪除</button>
+                    <button class="btn btn-secondary" onclick="editThanks(${index})">✏️ 編輯</button>
+                    <button class="btn btn-danger" onclick="deleteThanks(${index})">🗑️ 刪除</button>
                 </div>
             `;
           listElement.appendChild(itemDiv);
         });
       }
 
-      function deleteSponsor(index) {
+      function deleteThanks(index) {
         if (
-          confirm(`確定要刪除贊助商 "${sponsors[index].name.zh || sponsors[index].name.en}" 嗎？`)
+          confirm(`確定要刪除感謝名單 "${thanks[index].name.zh || thanks[index].name.en}" 嗎？`)
         ) {
-          sponsors.splice(index, 1);
-          updateSponsorsList();
-          generateSponsorsJSON();
-          showAlert('success', '贊助商已成功刪除！');
+          thanks.splice(index, 1);
+          updateThanksList();
+          generateThanksJSON();
+          showAlert('success', '感謝名單已成功刪除！');
         }
       }
 
-      function editSponsor(index) {
-        const sponsor = sponsors[index];
-        document.getElementById('sponsor-id').value = sponsor.id;
-        document.getElementById('sponsor-name-zh').value = sponsor.name.zh || '';
-        document.getElementById('sponsor-name-en').value = sponsor.name.en || '';
-        document.getElementById('sponsor-name-ja').value = sponsor.name.ja || '';
-        document.getElementById('sponsor-type').value = sponsor.type || 'company';
-        document.getElementById('sponsor-tier').value = sponsor.tier || 'bronze';
-        document.getElementById('sponsor-desc-zh').value = sponsor.description.zh || '';
-        document.getElementById('sponsor-desc-en').value = sponsor.description.en || '';
-        document.getElementById('sponsor-desc-ja').value = sponsor.description.ja || '';
-        document.getElementById('sponsor-logo').value = sponsor.logo || '';
-        document.getElementById('sponsor-website').value = sponsor.website || '';
+      function editThanks(index) {
+        const thank = thanks[index];
+        document.getElementById('thanks-id').value = thank.id;
+        document.getElementById('thanks-name-zh').value = thank.name.zh || '';
+        document.getElementById('thanks-name-en').value = thank.name.en || '';
+        document.getElementById('thanks-name-ja').value = thank.name.ja || '';
+        document.getElementById('thanks-type').value = thank.type || 'company';
+        document.getElementById('thanks-tier').value = thank.tier || 'bronze';
+        document.getElementById('thanks-desc-zh').value = thank.description.zh || '';
+        document.getElementById('thanks-desc-en').value = thank.description.en || '';
+        document.getElementById('thanks-desc-ja').value = thank.description.ja || '';
+        document.getElementById('thanks-logo').value = thank.logo || '';
+        document.getElementById('thanks-website').value = thank.website || '';
 
-        document.getElementById('sponsor-homepage').value = sponsor.social.Homepage || '';
-        document.getElementById('sponsor-linkedin').value = sponsor.social.Linkedin || '';
-        document.getElementById('sponsor-facebook').value = sponsor.social.Facebook || '';
-        document.getElementById('sponsor-twitter').value = sponsor.social.Twitter || '';
-        document.getElementById('sponsor-github').value = sponsor.social.GitHub || '';
+        document.getElementById('thanks-homepage').value = thank.social.Homepage || '';
+        document.getElementById('thanks-linkedin').value = thank.social.Linkedin || '';
+        document.getElementById('thanks-facebook').value = thank.social.Facebook || '';
+        document.getElementById('thanks-twitter').value = thank.social.Twitter || '';
+        document.getElementById('thanks-github').value = thank.social.GitHub || '';
 
-        sponsors.splice(index, 1);
-        updateSponsorsList();
-        generateSponsorsJSON();
+        thanks.splice(index, 1);
+        updateThanksList();
+        generateThanksJSON();
         window.scrollTo(0, 0);
-        showAlert('success', '贊助商資料已載入表單,請修改後重新添加');
+        showAlert('success', '感謝名單資料已載入表單,請修改後重新添加');
       }
 
-      function generateSponsorsJSON() {
-        const output = { sponsors: sponsors };
-        document.getElementById('sponsors-output').textContent = JSON.stringify(output, null, 2);
+      function generateThanksJSON() {
+        const output = { thanks: thanks };
+        document.getElementById('thanks-output').textContent = JSON.stringify(output, null, 2);
       }
 
-      function copySponsorsJSON() {
-        const jsonText = document.getElementById('sponsors-output').textContent;
+      function copyThanksJSON() {
+        const jsonText = document.getElementById('thanks-output').textContent;
         navigator.clipboard.writeText(jsonText).then(() => {
           showAlert('success', 'JSON 已複製到剪貼簿！');
         });
       }
 
-      function downloadSponsorsJSON() {
-        const jsonText = document.getElementById('sponsors-output').textContent;
+      function downloadThanksJSON() {
+        const jsonText = document.getElementById('thanks-output').textContent;
         const blob = new Blob([jsonText], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'sponsors.json';
+        a.download = 'thanks.json';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        showAlert('success', 'sponsors.json 檔案已下載！');
+        showAlert('success', 'thanks.json 檔案已下載！');
       }
 
-      function loadSponsorsFile() {
+      function loadThanksFile() {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = '.json';
@@ -1745,13 +1739,13 @@
           reader.onload = function (e) {
             try {
               const data = JSON.parse(e.target.result);
-              if (data.sponsors && Array.isArray(data.sponsors)) {
-                sponsors = data.sponsors;
-                updateSponsorsList();
-                generateSponsorsJSON();
-                showAlert('success', `已載入 ${sponsors.length} 個贊助商資料！`);
+              if (data.thanks && Array.isArray(data.thanks)) {
+                thanks = data.thanks;
+                updateThanksList();
+                generateThanksJSON();
+                showAlert('success', `已載入 ${thanks.length} 個感謝名單資料！`);
               } else {
-                showAlert('error', '檔案格式不正確，請確認是有效的 sponsors.json 檔案');
+                showAlert('error', '檔案格式不正確，請確認是有效的 thanks.json 檔案');
               }
             } catch (error) {
               showAlert('error', '無法解析 JSON 檔案，請確認檔案格式是否正確');
@@ -1967,153 +1961,153 @@
       }
 
       // ===========================================
-      // MARKETS 市集管理功能
+      // TWM 市集管理功能
       // ===========================================
 
-      function clearMarketForm() {
-        const inputs = document.querySelectorAll('#market-form input, #market-form textarea');
+      function clearTwmForm() {
+        const inputs = document.querySelectorAll('#twm-form input, #twm-form textarea');
         inputs.forEach((input) => (input.value = ''));
       }
 
-      function addMarket() {
-        const id = document.getElementById('market-id').value.trim();
+      function addTwm() {
+        const id = document.getElementById('twm-id').value.trim();
         if (!id) {
           alert('請輸入攤位 ID');
           return;
         }
 
-        if (markets.find((m) => m.id === id)) {
+        if (twm.find((m) => m.id === id)) {
           alert('攤位 ID 已存在，請使用不同的 ID');
           return;
         }
 
-        const market = {
+        const booth = {
           id: id,
           name: {
-            zh: document.getElementById('market-name-zh').value.trim(),
-            en: document.getElementById('market-name-en').value.trim(),
-            ja: document.getElementById('market-name-ja').value.trim(),
+            zh: document.getElementById('twm-name-zh').value.trim(),
+            en: document.getElementById('twm-name-en').value.trim(),
+            ja: document.getElementById('twm-name-ja').value.trim(),
           },
           description: {
-            zh: document.getElementById('market-desc-zh').value.trim(),
-            en: document.getElementById('market-desc-en').value.trim(),
-            ja: document.getElementById('market-desc-ja').value.trim(),
+            zh: document.getElementById('twm-desc-zh').value.trim(),
+            en: document.getElementById('twm-desc-en').value.trim(),
+            ja: document.getElementById('twm-desc-ja').value.trim(),
           },
-          logo: document.getElementById('market-logo').value.trim(),
-          website: document.getElementById('market-website').value.trim(),
+          logo: document.getElementById('twm-logo').value.trim(),
+          website: document.getElementById('twm-website').value.trim(),
           social: {},
         };
 
         const socialLinks = {
-          Homepage: 'market-homepage',
-          Facebook: 'market-facebook',
-          Instagram: 'market-instagram',
-          Twitter: 'market-twitter',
-          GitHub: 'market-github',
+          Homepage: 'twm-homepage',
+          Facebook: 'twm-facebook',
+          Instagram: 'twm-instagram',
+          Twitter: 'twm-twitter',
+          GitHub: 'twm-github',
         };
 
         Object.keys(socialLinks).forEach((key) => {
           const value = document.getElementById(socialLinks[key]).value.trim();
           if (value) {
-            market.social[key] = value;
+            booth.social[key] = value;
           }
         });
 
-        markets.push(market);
-        updateMarketsList();
-        generateMarketsJSON();
-        clearMarketForm();
-        showAlert('success', `攤位 "${market.name.zh || market.name.en}" 已成功添加！`);
+        twm.push(booth);
+        updateTwmList();
+        generateTwmJSON();
+        clearTwmForm();
+        showAlert('success', `攤位 "${booth.name.zh || booth.name.en}" 已成功添加！`);
       }
 
-      function updateMarketsList() {
-        const listElement = document.getElementById('markets-list');
+      function updateTwmList() {
+        const listElement = document.getElementById('twm-list');
         listElement.innerHTML = '';
 
-        if (markets.length === 0) {
+        if (twm.length === 0) {
           listElement.innerHTML =
             '<p style="text-align: center; color: #666; padding: 20px;">目前沒有攤位資料</p>';
           return;
         }
 
-        markets.forEach((market, index) => {
+        twm.forEach((booth, index) => {
           const itemDiv = document.createElement('div');
           itemDiv.className = 'item-card';
           itemDiv.innerHTML = `
                 <div class="item-header">
-                    <span class="item-id">${market.id}</span>
+                    <span class="item-id">${booth.id}</span>
                 </div>
-                <div class="item-name"><strong>${market.name.zh || market.name.en}</strong></div>
+                <div class="item-name"><strong>${booth.name.zh || booth.name.en}</strong></div>
                 <div class="item-actions">
-                    <button class="btn btn-secondary" onclick="editMarket(${index})">✏️ 編輯</button>
-                    <button class="btn btn-danger" onclick="deleteMarket(${index})">🗑️ 刪除</button>
+                    <button class="btn btn-secondary" onclick="editTwm(${index})">✏️ 編輯</button>
+                    <button class="btn btn-danger" onclick="deleteTwm(${index})">🗑️ 刪除</button>
                 </div>
             `;
           listElement.appendChild(itemDiv);
         });
       }
 
-      function deleteMarket(index) {
-        if (confirm(`確定要刪除攤位 "${markets[index].name.zh || markets[index].name.en}" 嗎？`)) {
-          markets.splice(index, 1);
-          updateMarketsList();
-          generateMarketsJSON();
+      function deleteTwm(index) {
+        if (confirm(`確定要刪除攤位 "${twm[index].name.zh || twm[index].name.en}" 嗎？`)) {
+          twm.splice(index, 1);
+          updateTwmList();
+          generateTwmJSON();
           showAlert('success', '攤位已成功刪除！');
         }
       }
 
-      function editMarket(index) {
-        const market = markets[index];
-        document.getElementById('market-id').value = market.id;
-        document.getElementById('market-name-zh').value = market.name.zh || '';
-        document.getElementById('market-name-en').value = market.name.en || '';
-        document.getElementById('market-name-ja').value = market.name.ja || '';
-        document.getElementById('market-desc-zh').value = market.description.zh || '';
-        document.getElementById('market-desc-en').value = market.description.en || '';
-        document.getElementById('market-desc-ja').value = market.description.ja || '';
-        document.getElementById('market-logo').value = market.logo || '';
-        document.getElementById('market-website').value = market.website || '';
+      function editTwm(index) {
+        const booth = twm[index];
+        document.getElementById('twm-id').value = booth.id;
+        document.getElementById('twm-name-zh').value = booth.name.zh || '';
+        document.getElementById('twm-name-en').value = booth.name.en || '';
+        document.getElementById('twm-name-ja').value = booth.name.ja || '';
+        document.getElementById('twm-desc-zh').value = booth.description.zh || '';
+        document.getElementById('twm-desc-en').value = booth.description.en || '';
+        document.getElementById('twm-desc-ja').value = booth.description.ja || '';
+        document.getElementById('twm-logo').value = booth.logo || '';
+        document.getElementById('twm-website').value = booth.website || '';
 
-        document.getElementById('market-homepage').value = market.social.Homepage || '';
-        document.getElementById('market-facebook').value = market.social.Facebook || '';
-        document.getElementById('market-instagram').value = market.social.Instagram || '';
-        document.getElementById('market-twitter').value = market.social.Twitter || '';
-        document.getElementById('market-github').value = market.social.GitHub || '';
+        document.getElementById('twm-homepage').value = booth.social.Homepage || '';
+        document.getElementById('twm-facebook').value = booth.social.Facebook || '';
+        document.getElementById('twm-instagram').value = booth.social.Instagram || '';
+        document.getElementById('twm-twitter').value = booth.social.Twitter || '';
+        document.getElementById('twm-github').value = booth.social.GitHub || '';
 
-        markets.splice(index, 1);
-        updateMarketsList();
-        generateMarketsJSON();
+        twm.splice(index, 1);
+        updateTwmList();
+        generateTwmJSON();
         window.scrollTo(0, 0);
         showAlert('success', '攤位資料已載入表單，請修改後重新添加');
       }
 
-      function generateMarketsJSON() {
-        const output = { booths: markets };
-        document.getElementById('markets-output').textContent = JSON.stringify(output, null, 2);
+      function generateTwmJSON() {
+        const output = { booths: twm };
+        document.getElementById('twm-output').textContent = JSON.stringify(output, null, 2);
       }
 
-      function copyMarketsJSON() {
-        const jsonText = document.getElementById('markets-output').textContent;
+      function copyTwmJSON() {
+        const jsonText = document.getElementById('twm-output').textContent;
         navigator.clipboard.writeText(jsonText).then(() => {
           showAlert('success', 'JSON 已複製到剪貼簿！');
         });
       }
 
-      function downloadMarketsJSON() {
-        const jsonText = document.getElementById('markets-output').textContent;
+      function downloadTwmJSON() {
+        const jsonText = document.getElementById('twm-output').textContent;
         const blob = new Blob([jsonText], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'markets.json';
+        a.download = 'twm.json';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        showAlert('success', 'markets.json 檔案已下載！');
+        showAlert('success', 'twm.json 檔案已下載！');
       }
 
-      function loadMarketsFile() {
+      function loadTwmFile() {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = '.json';
@@ -2126,12 +2120,12 @@
             try {
               const data = JSON.parse(e.target.result);
               if (data.booths && Array.isArray(data.booths)) {
-                markets = data.booths;
-                updateMarketsList();
-                generateMarketsJSON();
-                showAlert('success', `已載入 ${markets.length} 個攤位資料！`);
+                twm = data.booths;
+                updateTwmList();
+                generateTwmJSON();
+                showAlert('success', `已載入 ${twm.length} 個攤位資料！`);
               } else {
-                showAlert('error', '檔案格式不正確，請確認是有效的 markets.json 檔案');
+                showAlert('error', '檔案格式不正確，請確認是有效的 twm.json 檔案');
               }
             } catch (error) {
               showAlert('error', '無法解析 JSON 檔案，請確認檔案格式是否正確');
@@ -2530,12 +2524,12 @@
       document.addEventListener('DOMContentLoaded', function () {
         updateSpeakersList();
         generateSpeakersJSON();
-        updateSponsorsList();
-        generateSponsorsJSON();
+        updateThanksList();
+        generateThanksJSON();
         updateCommunityList();
         generateCommunityJSON();
-        updateMarketsList();
-        generateMarketsJSON();
+        updateTwmList();
+        generateTwmJSON();
         updateStaffList();
         generateStaffJSON();
         updateAboutList();

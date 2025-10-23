@@ -12,7 +12,7 @@ const path = require('path');
 const speakersData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'speakers.json'), 'utf-8'));
 
 // 輸出目錄
-const OUTPUT_DIR = path.join(__dirname, 'speakers');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'speakers');
 
 // 確保輸出目錄存在
 if (!fs.existsSync(OUTPUT_DIR)) {
@@ -51,8 +51,8 @@ function generateSpeakerPage(speaker) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const speakerUrl = `${baseUrl}/speakers/${speakerId}/`;
-  const ogImageUrl = `${baseUrl}/speakers/${speakerId}/og-image.png`;
+  const speakerUrl = `${baseUrl}/share/speakers/${speakerId}/`;
+  const ogImageUrl = `${baseUrl}/share/speakers/${speakerId}/og-image.png`;
 
   const nameZh = speaker.name.zh || speaker.name.en;
   const orgZh = speaker.org.zh || speaker.org.en || '';
@@ -135,7 +135,7 @@ function generateSpeakerPage(speaker) {
   const htmlPath = path.join(speakerDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
 
-  console.log(`✓ Generated: speakers/${speakerId}/index.html`);
+  console.log(`✓ Generated: share/speakers/${speakerId}/index.html`);
 
   return {
     speakerId,
@@ -583,7 +583,7 @@ function main() {
   console.log('3. 為每個講者生成並下載 OG 圖片');
   console.log('4. 將圖片重新命名為 og-image.png，並放入對應的 speakers/講者id/ 資料夾');
   console.log('\n🌐 講者頁面 URL 格式:');
-  console.log('   https://devfest2025.gdgkaohsiung.org/speakers/講者id/');
+  console.log('   https://gdgkh.cc/share/speakers/講者id/');
 }
 
 // 執行腳本

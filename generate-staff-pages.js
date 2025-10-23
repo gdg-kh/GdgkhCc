@@ -6,7 +6,7 @@ const path = require('path');
 // 檔案路徑
 const STAFF_JSON = path.join(__dirname, 'data', 'staff.json');
 const TEMPLATE_FILE = path.join(__dirname, 'staff-template.html');
-const OUTPUT_DIR = path.join(__dirname, 'staff');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'staff');
 
 /**
  * 讀取工作人員資料
@@ -63,8 +63,8 @@ function generateStaffPage(staff, template) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const staffUrl = `${baseUrl}/staff/${staffId}/`;
-  const ogImageUrl = `${baseUrl}/staff/${staffId}/og-image.png`;
+  const staffUrl = `${baseUrl}/share/staff/${staffId}/`;
+  const ogImageUrl = `${baseUrl}/share/staff/${staffId}/og-image.png`;
 
   const nameZh = staff.name.zh || staff.name.en;
   const roleZh = staff.role?.zh || staff.role?.en || '';
@@ -140,12 +140,12 @@ function generateStaffPage(staff, template) {
   // 寫入檔案
   const htmlPath = path.join(staffDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`✓ 產生頁面: staff/${staffId}/index.html`);
+  console.log(`✓ 產生頁面: share/staff/${staffId}/index.html`);
 
   // 提示需要手動添加 og-image.png
   const ogImagePath = path.join(staffDir, 'og-image.png');
   if (!fs.existsSync(ogImagePath)) {
-    console.log(`  ⚠ 請手動添加: staff/${staffId}/og-image.png`);
+    console.log(`  ⚠ 請手動添加: share/staff/${staffId}/og-image.png`);
   }
 }
 

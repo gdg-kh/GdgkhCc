@@ -16,12 +16,20 @@
       "Bash(code:*)",
       "Bash(dir)",
       "Bash(timeout:*)",
-      "Bash(node generate-market-pages.js:*)",
+      "Bash(node generate-twm-pages.js:*)",
       "Bash(node generate-community-pages.js:*)",
       "Bash(node generate-sponsor-pages.js:*)",
       "Bash(node generate-speaker-pages.js:*)",
       "Bash(node generate-staff-pages.js:*)",
-      "Bash(node generate-about-pages.js:*)"
+      "Bash(node generate-about-pages.js:*)",
+      "Bash(dir speakers sponsors community staff twm about)",
+      "Bash(npm run generate:all:*)",
+      "Bash(dir:*)",
+      "Bash(move \"share\\markets\" \"share\\twm\")",
+      "Bash(npm run lint:fix:*)",
+      "Bash(npm run format:*)",
+      "Bash(if exist \"share\\sponsors\" rmdir /s /q \"share\\sponsors\")",
+      "Bash(node generate-thanks-pages.js:*)"
     ],
     "deny": [],
     "ask": []

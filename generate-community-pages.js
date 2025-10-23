@@ -6,7 +6,7 @@ const path = require('path');
 // 檔案路徑
 const COMMUNITY_JSON = path.join(__dirname, 'data', 'community.json');
 const TEMPLATE_FILE = path.join(__dirname, 'community-template.html');
-const OUTPUT_DIR = path.join(__dirname, 'community');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'community');
 
 /**
  * 讀取社群資料
@@ -63,8 +63,8 @@ function generateCommunityPage(community, template) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const communityUrl = `${baseUrl}/community/${communityId}/`;
-  const ogImageUrl = `${baseUrl}/community/${communityId}/og-image.png`;
+  const communityUrl = `${baseUrl}/share/community/${communityId}/`;
+  const ogImageUrl = `${baseUrl}/share/community/${communityId}/og-image.png`;
 
   const nameZh = community.name.zh || community.name.en;
   const descriptionZh = (community.description.zh || community.description.en)
@@ -144,12 +144,12 @@ function generateCommunityPage(community, template) {
   // 寫入檔案
   const htmlPath = path.join(communityDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`✓ 產生頁面: community/${communityId}/index.html`);
+  console.log(`✓ 產生頁面: share/community/${communityId}/index.html`);
 
   // 提示需要手動添加 og-image.png
   const ogImagePath = path.join(communityDir, 'og-image.png');
   if (!fs.existsSync(ogImagePath)) {
-    console.log(`  ⚠ 請手動添加: community/${communityId}/og-image.png`);
+    console.log(`  ⚠ 請手動添加: share/community/${communityId}/og-image.png`);
   }
 }
 

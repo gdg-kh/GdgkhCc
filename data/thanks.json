@@ -1,0 +1,178 @@
+{
+  "thanks": [
+    {
+      "id": "googel_for_developers",
+      "name": {
+        "zh": "Google for Developers",
+        "en": "Google for Developers",
+        "ja": "Google for Developers"
+      },
+      "type": "partner",
+      "tier": "gold",
+      "description": {
+        "zh": "探索開發者資源、社群活動與啟發人心的故事，協助您更高效地開發、更迅速地發布產品。",
+        "en": "Explore developer resources, community events, and inspirational stories to help you build smarter and ship faster.",
+        "ja": "開発者向けリソース、コミュニティイベント、そしてインスピレーションを与えるストーリーを探索し、よりスマートな開発と迅速なリリースを実現しましょう。"
+      },
+      "category": {
+        "zh": "合作夥伴",
+        "en": "Partners",
+        "ja": "パートナー"
+      },
+      "logo": "images/sponsor-logo-google_for_develop.png",
+      "website": "https://developers.google.com",
+      "social": {
+        "Homepage": "https://developers.google.com"
+      }
+    },
+    {
+      "id": "edbkcg",
+      "name": {
+        "zh": "高雄市政府經濟發展局",
+        "en": "Economic Development Bureau,Kaohsiung City Government",
+        "ja": "高雄市政府經濟發展局"
+      },
+      "type": "partner",
+      "tier": "",
+      "description": {
+        "zh": "高雄近年來積極招商引資，更致力於扶植新創及軟體開發創新應用，鼓勵在高雄打拼的夥伴們，從 Google 等大廠中發展出屬於自己的品牌與生態，帶動更多創新企業一起搶佔全球市場商機。",
+        "en": "In recent years, Kaohsiung has actively courted investment and dedicated itself to fostering startups and innovative software development applications. The city encourages partners working hard in Kaohsiung to develop their own brands and ecosystems based on experience from major companies like Google, thereby driving more innovative enterprises to seize global market opportunities together.",
+        "ja": "高雄は近年、積極的に企業誘致と投資を行い、スタートアップ企業や革新的なソフトウェア開発アプリケーションの育成に尽力しています。 この地で奮闘するパートナーたちが、Google などの大手企業から得た経験を活かし、独自のブランドとエコシステムを発展させるよう奨励することで、より多くの革新的な企業を牽引し、共に世界市場のビジネスチャンスを掴むことを目指しています。"
+      },
+      "category": {
+        "zh": "合作夥伴",
+        "en": "Partners",
+        "ja": "パートナー"
+      },
+      "logo": "images/sponsor-logo-_edbkcg.png",
+      "website": "https://edbkcg.kcg.gov.tw/",
+      "social": {
+        "Homepage": "https://edbkcg.kcg.gov.tw/"
+      }
+    },
+    {
+      "id": "legend_innovation",
+      "name": {
+        "zh": "誠研創新",
+        "en": "Legend Innovation",
+        "ja": "Legend Innovation"
+      },
+      "type": "",
+      "tier": "partner",
+      "description": {
+        "zh": "誠研創新是一家註冊在台灣並深耕科技事業產業化與國際化的專業機構。 我們專注於前研技術探勘與早期新創投資育成、企業科技諮詢與數位轉型。 誠研創新期許成為台灣及華人圈科技新創公司與中堅企業邁向IPO以及策略(數位)轉型成功的最佳平台。<br><br>熱情、專業、誠信、穩健是誠研創新的品牌保證。",
+        "en": "Legend Innovation is a professional organization registered in Taiwan that is deeply involved in the industrialization and internationalization of the technology sector. We offer cutting-edge technology scouting, early-stage startup incubation, corporate technology consulting and digital transformation services. Legend Innovation aspires to be the best platform for technology startups and mid-sized enterprises in Taiwan and the Chinese community ,enabling them to successfully progress towards IPO and strategic (digital) transformation.<br><br>Passion, professionalism, integrity, and steady are the brand guarantees of Legend Innovation.",
+        "ja": "Legend Innovation (誠研創新) は、台湾に登録され、テクノロジー事業の産業化と国際化を深く推進する専門機関です。私たちは、先端技術の調査、初期段階のスタートアップ投資および育成、企業向けテクノロジーコンサルティング、デジタル変革に注力しています。Sincerity & Innovation は、台湾および中華圏のテック系スタートアップ企業と中堅企業が IPO や戦略的（デジタル）変革を成功させるための最高のプラットフォームとなることを目指しています。<br><br>情熱、専門性、誠実さ、堅実さが、Sincerity & Innovation のブランド保証です。"
+      },
+      "category": {
+        "zh": "合作夥伴",
+        "en": "Partners",
+        "ja": "パートナー"
+      },
+      "logo": "images/sponsor-logo-legend_innovation.png",
+      "website": "https://www.legendinno.com.tw/",
+      "social": {
+        "Homepage": "https://www.legendinno.com.tw/"
+      }
+    },
+    {
+      "id": "ko_in",
+      "name": {
+        "zh": "KO-IN 智高點",
+        "en": "KO-IN",
+        "ja": "KO-IN"
+      },
+      "type": "",
+      "tier": "",
+      "description": {
+        "zh": "KO-IN 智高點成立之目標與願景為發展高雄智慧城市及其相關智慧科技為主題，透過新創事業加速以及既有產(企)業創新輔導之精神，最終以翻轉南臺灣產業架構，注入新的成長動能並促進新創產業形成群聚，進而帶動南部產業的蓬勃發展。",
+        "en": "The goal and vision of KO-IN establishment focus on developing Kaohsiung Smart City and related Smart Technology, by accelerating entrepreneurship with the existing spirit of industrial/enterprise innovation guidance, to eventually convert and breath new growing momentum into the industrial structure of Southern Taiwan, facilitating the start-ups to form an industrial cluster, and driving further prosperity of industry in the South.",
+        "ja": "KO-IN（智高點）設立の目標とビジョンは、高雄スマートシティおよびその関連するスマート技術をテーマに発展させることです。新規事業のアクセラレーションと既存産業（企業）のイノベーション支援という精神を通じて、最終的には南台湾の産業構造を転換し、新たな成長の原動力を注入し、スタートアップ産業のクラスター形成を促進し、ひいては南部産業の活発な発展を牽引することを目指しています。"
+      },
+      "category": {
+        "zh": "合作夥伴",
+        "en": "Partners",
+        "ja": "パートナー"
+      },
+      "logo": "images/sponsor-logo-ko_in.png",
+      "website": "https://koin.koda.net.tw/en/index.html",
+      "social": {
+        "Homepage": "https://koin.koda.net.tw/en/index.html"
+      }
+    },
+    {
+      "id": "colosscious",
+      "name": {
+        "zh": "嵙思科技股份有限公司",
+        "en": "嵙思科技股份有限公司",
+        "ja": "嵙思科技股份有限公司"
+      },
+      "type": "company",
+      "description": {
+        "zh": "嵙思專為 #生技製藥 打造智慧化實驗室，讓生成式 AI 作為實驗室的智慧代理人。<br><br>打造 Lab → QA 無縫數位化，協助生技製藥實驗室提升效率與可靠度<br><br>實驗室智慧化，LIMS 不只是工具，而是下一代研發的核心競爭力。",
+        "en": "Colosscious specializes in creating smart laboratories for the #Biotech and Pharmaceutical industries, enabling Generative AI to act as the laboratory's intelligent agent.<br><br>We build seamless digital integration from Lab to QA, helping biotech and pharmaceutical laboratories enhance efficiency and reliability.<br><br>With lab intelligence, LIMS (Laboratory Information Management System) is not just a tool, but the core competitiveness for next-generation R&D.",
+        "ja": "Colosscious は、#バイオ・製薬業界 向けに特化したスマートなラボを実現し、生成AI をラボのインテリジェントエージェントとして機能させます。<br><br>ラボから QA までのシームレスなデジタル化を構築し、バイオ・製薬ラボの効率と信頼性の向上を支援します。<br><br>ラボのスマート化において、LIMS (Laboratory Information Management System) は単なるツールではなく、次世代の研究開発における核となる競争力です。"
+      },
+      "category": {
+        "zh": "公司贊助",
+        "en": "Company Sponsorship",
+        "ja": "企業スポンサー"
+      },
+      "logo": "images/sponsor-logo-colosscious.png",
+      "website": "https://www.colosscious.com/home",
+      "social": {
+        "Homepage": "https://www.colosscious.com/home"
+      }
+    },
+    {
+      "id": "titansoft",
+      "name": {
+        "zh": "新加坡商鈦坦科技股份有限公司 台灣分公司",
+        "en": "新加坡商鈦坦科技股份有限公司 台灣分公司",
+        "ja": "新加坡商鈦坦科技股份有限公司 台灣分公司"
+      },
+      "type": "company",
+      "description": {
+        "zh": "鈦坦科技，是一間總部位於新加坡的軟體開發公司，提供線上軟體平台客製開發與維護，以及代理 Atlassian 旗下產品 Jira Software & Confluence，以自身實際使用經驗提供一站式導入服務。身處快速變動的軟體產業，我們採用敏捷開發，同時將敏捷思維注入公司文化，實⾏〔彈性⼯時〕、採⽤〔⾃主升遷〕、實踐〔薪資透明〕，在多年導入及迭代的經驗下，我們也開始提供企業客製化敏捷課程及顧問諮詢服務，並積極參與產業、社群與教育活動推廣敏捷精神。<br><br>全頻道認識鈦坦：portaly.cc/titansoft",
+        "en": "Titansoft is a software development company headquartered in Singapore, providing custom development and maintenance of online software platforms, as well as serving as a distributor for Atlassian products such as Jira Software & Confluence, offering one-stop implementation services based on our own practical experience. Operating in the rapidly changing software industry, we adopt agile development while infusing agile thinking into our company culture, implementing [flexible working hours], adopting [self-directed promotion], and practicing [salary transparency]. With years of implementation and iteration experience, we have also begun offering customized enterprise agile training and consulting services, and actively participate in industry, community, and educational activities to promote agile principles.<br><br>Get to know Titansoft through all our channels: portaly.cc/titansoft",
+        "ja": "Titansoft はシンガポールに本社を置くソフトウェア開発会社で、オンラインソフトウェアプラットフォームのカスタム開発と保守を提供しています。また、Atlassian 製品である Jira Software & Confluence の代理店でもあり、自社の実際の使用経験に基づいたワンストップの導入サービスを提供しています。変化の激しいソフトウェア業界において、私たちはアジャイル開発を採用し、アジャイル思考を企業文化に注入しています。具体的には、**〔フレキシブルな勤務時間〕の実施、〔自主的な昇進制度〕の採用、〔給与の透明性〕**の実践を行っています。長年の導入と改善の経験に基づき、現在では企業向けにカスタマイズされたアジャイル研修やコンサルティングサービスも提供しており、アジャイルの精神を広めるために業界、コミュニティ、教育活動に積極的に参加しています。<br><br>Titansoft の全チャンネルはこちら：portaly.cc/titansoft"
+      },
+      "category": {
+        "zh": "公司贊助",
+        "en": "Company Sponsorship",
+        "ja": "企業スポンサー"
+      },
+      "logo": "images/sponsor-logo-titansoft.png",
+      "website": "https://portaly.cc/titansoft",
+      "social": {
+        "Homepage": "https://portaly.cc/titansoft"
+      }
+    },
+    {
+      "id": "cdc_kh",
+      "name": {
+        "zh": "國泰 CDC 小聚",
+        "en": "國泰 CDC 小聚",
+        "ja": "國泰 CDC 小聚"
+      },
+      "type": "company",
+      "tier": "",
+      "description": {
+        "zh": "坐擁亞灣黃金地段，面向尊爵不凡無敵海景，在高雄亞灣區，藏身著一座「雲端開發基地」。我們是「高雄 CDC」，我們看見南台灣的技術軟實力，致力推動高雄在地金融科技與雲端技術交流，邀請有共同熱愛的你一起來到南台灣金融科技新據點！",
+        "en": "Nestled in the prime location of Asia's New Bay Area (亞灣) and facing a magnificent, unparalleled sea view, a \"Cloud Development Base\" is discreetly housed in Kaohsiung's Asia's New Bay Area.We are \"Kaohsiung CDC\" (高雄 CDC). We recognize the burgeoning soft power of technology in Southern Taiwan and are dedicated to promoting local FinTech and Cloud Technology exchange in Kaohsiung. We invite you, who share this passion, to join us at this new hub for financial technology in Southern Taiwan!",
+        "ja": "亞湾のゴールデンエリアに位置し、比類なき壮大な海の景色を望む、高雄の亞湾地区に「クラウド開発拠点」がひっそりと佇んでいます。私たちは「高雄 CDC」です。私たちは台湾南部の持つ技術的なソフトパワーに着目し、高雄におけるフィンテック（FinTech）とクラウド技術交流の推進に尽力しています。同じ熱意を持つあなたを、台湾南部における金融技術の新しい拠点へとご招待します！"
+      },
+      "category": {
+        "zh": "公司贊助",
+        "en": "Company Sponsorship",
+        "ja": "企業スポンサー"
+      },
+      "logo": "images/sponsor-logo-cdc.png",
+      "website": "https://cdckh.kktix.cc/",
+      "social": {
+        "Homepage": "https://cdckh.kktix.cc/",
+        "Line": "https://reurl.cc/3MvZMR"
+      }
+    }
+  ]
+}
