@@ -14,25 +14,48 @@
 
 ## 🏗️ 專案架構
 
+本專案採用**年份分類架構**，每年的活動網站獨立管理：
+
 ```
 /
-├── index.html                    # 主要網站頁面
-├── json-editor.html              # JSON 內容管理工具
-├── css/
-│   └── style.css                # 樣式檔案 (Material 3 設計系統)
-├── js/
-│   ├── main.js                  # 核心功能和國際化
-│   └── dynamic-content.js       # 動態內容管理系統
-├── data/                        # JSON 資料檔案
-│   ├── speakers.json            # 講者資訊
-│   ├── thanks.json              # 感謝名單
-│   ├── community.json           # 社群參與者
-│   ├── twm.json                 # 技術創作市集
-│   ├── staff.json               # 工作人員資訊
-│   └── about.json               # 關於我們
-├── images/                      # 圖片資源
-└── favicon.svg                  # 網站圖示
+├── index.html                    # 根目錄重定向頁面（自動跳轉到當前年份）
+├── CNAME                         # 網域配置
+├── 2025/                         # 2025 年活動網站
+│   ├── index.html                # 主要網站頁面
+│   ├── json-editor.html          # JSON 內容管理工具
+│   ├── css/
+│   │   └── style.css            # 樣式檔案 (Material 3 設計系統)
+│   ├── js/
+│   │   ├── main.js              # 核心功能和國際化
+│   │   └── dynamic-content.js   # 動態內容管理系統
+│   ├── data/                    # JSON 資料檔案
+│   │   ├── speakers.json        # 講者資訊
+│   │   ├── thanks.json          # 感謝名單
+│   │   ├── community.json       # 社群參與者
+│   │   ├── twm.json             # 技術創作市集
+│   │   ├── staff.json           # 工作人員資訊
+│   │   └── about.json           # 關於我們
+│   ├── images/                  # 圖片資源
+│   ├── share/                   # 生成的靜態頁面（SEO 優化）
+│   └── favicon.svg              # 網站圖示
+├── 2026/                         # （未來）2026 年活動網站
+└── package.json                  # 專案配置（所有年份共用）
 ```
+
+### 年份架構說明
+
+- **根目錄 (`index.html`)**: 自動重定向到當前年份的網站
+- **年份子目錄 (`/2025/`, `/2026/`, ...)**: 每年的完整獨立網站
+- **URL 結構**:
+  - 根網域: `https://gdgkh.cc` → 自動跳轉到最新年份
+  - 當前年度: `https://gdgkh.cc/2025/`
+  - 靜態頁面: `https://gdgkh.cc/2025/share/speakers/{id}/`
+
+這個架構的優點：
+- ✅ 每年活動獨立管理，互不影響
+- ✅ 歷史活動網站永久保留可訪問
+- ✅ 明年只需複製目錄並更新內容
+- ✅ 根網域始終指向最新活動
 
 ## 🚀 快速開始
 
@@ -41,6 +64,9 @@
 由於瀏覽器的 CORS 安全限制，必須使用本地伺服器才能正常載入 JSON 資料：
 
 ```bash
+# 重要：請先進入年份目錄
+cd 2025
+
 # 方法 1: Python 內建伺服器
 python -m http.server 8000
 
@@ -53,6 +79,8 @@ npx serve .
 
 然後開啟瀏覽器訪問 `http://localhost:8000`
 
+**測試根目錄重定向**: 訪問 `http://localhost:8000/../` 可測試自動跳轉功能
+
 ## 📝 內容管理
 
 ### 使用 JSON 編輯器 (json-editor.html)
@@ -61,7 +89,7 @@ npx serve .
 
 #### 存取編輯器
 
-1. 啟動本地伺服器（參考上述快速開始步驟）
+1. 啟動本地伺服器（參考上述快速開始步驟，記得先 `cd 2025`）
 2. 在瀏覽器中開啟 `http://localhost:8000/json-editor.html`
 
 #### 編輯器功能
@@ -71,7 +99,7 @@ npx serve .
 ##### 1. 📢 講者管理 (Speakers)
 
 - **功能**：管理活動講者資訊
-- **資料檔案**：`data/speakers.json`
+- **資料檔案**：`2025/data/speakers.json`
 - **支援欄位**：
   - 講者姓名（三語）
   - 職稱（三語）
@@ -83,7 +111,7 @@ npx serve .
 ##### 2. 🤝 感謝名單管理 (Thanks)
 
 - **功能**：管理活動感謝名單資訊
-- **資料檔案**：`data/thanks.json`
+- **資料檔案**：`2025/data/thanks.json`
 - **支援欄位**：
   - 名稱（三語）
   - 分類等級（金牌/銀牌/銅牌）
@@ -94,7 +122,7 @@ npx serve .
 ##### 3. 🏘️ 社群管理 (Community)
 
 - **功能**：管理參與的社群組織
-- **資料檔案**：`data/community.json`
+- **資料檔案**：`2025/data/community.json`
 - **支援欄位**：
   - 社群名稱（三語）
   - 社群描述（三語）
@@ -104,7 +132,7 @@ npx serve .
 ##### 4. 🛍️ 技術創作市集 (TWM)
 
 - **功能**：管理技術創作市集攤位
-- **資料檔案**：`data/twm.json`
+- **資料檔案**：`2025/data/twm.json`
 - **支援欄位**：
   - 攤位名稱（三語）
   - 攤位描述（三語）
@@ -115,7 +143,7 @@ npx serve .
 ##### 5. 👥 工作人員管理 (Staff)
 
 - **功能**：管理工作人員和志工資訊
-- **資料檔案**：`data/staff.json`
+- **資料檔案**：`2025/data/staff.json`
 - **支援欄位**：
   - 姓名（三語）
   - 職務（三語）
@@ -126,7 +154,7 @@ npx serve .
 ##### 6. ℹ️ 關於我們 (About)
 
 - **功能**：管理組織和活動相關資訊
-- **資料檔案**：`data/about.json`
+- **資料檔案**：`2025/data/about.json`
 - **支援欄位**：
   - 組織資訊（三語）
   - 活動說明（三語）
@@ -160,14 +188,14 @@ npx serve .
 
 ### 手動編輯 JSON 檔案
 
-如果您熟悉 JSON 格式，也可以直接編輯 `data/` 資料夾中的檔案：
+如果您熟悉 JSON 格式，也可以直接編輯 `2025/data/` 資料夾中的檔案：
 
-- `speakers.json` - 講者資訊
-- `thanks.json` - 感謝名單
-- `community.json` - 社群資訊
-- `twm.json` - 技術創作市集
-- `staff.json` - 工作人員
-- `about.json` - 關於我們
+- `2025/data/speakers.json` - 講者資訊
+- `2025/data/thanks.json` - 感謝名單
+- `2025/data/community.json` - 社群資訊
+- `2025/data/twm.json` - 技術創作市集
+- `2025/data/staff.json` - 工作人員
+- `2025/data/about.json` - 關於我們
 
 詳細的資料格式說明請參考 `README-DYNAMIC-CONTENT.md`。
 
@@ -214,19 +242,19 @@ npx serve .
 
 如需新增新的內容類型：
 
-1. 在 `data/` 建立新的 JSON 檔案
-2. 在 `js/dynamic-content.js` 新增對應的載入和渲染函式
-3. 在 `json-editor.html` 新增對應的編輯表單
+1. 在 `2025/data/` 建立新的 JSON 檔案
+2. 在 `2025/js/dynamic-content.js` 新增對應的載入和渲染函式
+3. 在 `2025/json-editor.html` 新增對應的編輯表單
 
 ### 新增語言支援
 
-1. 在 `js/main.js` 的 `translations` 物件新增語言
-2. 更新所有 JSON 檔案中的多語言欄位
+1. 在 `2025/js/main.js` 的 `translations` 物件新增語言
+2. 更新 `2025/data/` 中所有 JSON 檔案的多語言欄位
 3. 在語言切換選單新增選項
 
 ### 客製化樣式
 
-所有樣式集中在 `css/style.css`，使用 CSS 客製屬性方便主題切換：
+所有樣式集中在 `2025/css/style.css`，使用 CSS 客製屬性方便主題切換：
 
 ```css
 :root {

@@ -15,25 +15,48 @@ multilingual support and dynamic content management.
 
 ## 🏗️ Project Architecture
 
+This project uses a **year-based directory structure**, with each year's event website managed independently:
+
 ```
 /
-├── index.html                    # Main website page
-├── json-editor.html              # JSON content management tool
-├── css/
-│   └── style.css                # Stylesheet (Material 3 Design System)
-├── js/
-│   ├── main.js                  # Core functionality and internationalization
-│   └── dynamic-content.js       # Dynamic content management system
-├── data/                        # JSON data files
-│   ├── speakers.json            # Speaker information
-│   ├── thanks.json              # Thanks list information
-│   ├── community.json           # Community participants
-│   ├── twm.json                 # Tech Creation Market
-│   ├── staff.json               # Staff information
-│   └── about.json               # About us
-├── images/                      # Image resources
-└── favicon.svg                  # Website icon
+├── index.html                    # Root redirect page (auto-redirects to current year)
+├── CNAME                         # Domain configuration
+├── 2025/                         # 2025 event website
+│   ├── index.html                # Main website page
+│   ├── json-editor.html          # JSON content management tool
+│   ├── css/
+│   │   └── style.css            # Stylesheet (Material 3 Design System)
+│   ├── js/
+│   │   ├── main.js              # Core functionality and internationalization
+│   │   └── dynamic-content.js   # Dynamic content management system
+│   ├── data/                    # JSON data files
+│   │   ├── speakers.json        # Speaker information
+│   │   ├── thanks.json          # Thanks list information
+│   │   ├── community.json       # Community participants
+│   │   ├── twm.json             # Tech Creation Market
+│   │   ├── staff.json           # Staff information
+│   │   └── about.json           # About us
+│   ├── images/                  # Image resources
+│   ├── share/                   # Generated static pages (SEO optimized)
+│   └── favicon.svg              # Website icon
+├── 2026/                         # (Future) 2026 event website
+└── package.json                  # Project configuration (shared across years)
 ```
+
+### Year-Based Architecture
+
+- **Root Directory (`index.html`)**: Auto-redirects to the current year's website
+- **Year Subdirectories (`/2025/`, `/2026/`, ...)**: Complete independent website for each year
+- **URL Structure**:
+  - Root domain: `https://gdgkh.cc` → Auto-redirects to latest year
+  - Current year: `https://gdgkh.cc/2025/`
+  - Static pages: `https://gdgkh.cc/2025/share/speakers/{id}/`
+
+Benefits of this architecture:
+- ✅ Each year's event is managed independently without interference
+- ✅ Historical event websites remain permanently accessible
+- ✅ Next year only requires copying the directory and updating content
+- ✅ Root domain always points to the latest event
 
 ## 🚀 Quick Start
 
@@ -42,6 +65,9 @@ multilingual support and dynamic content management.
 Due to browser CORS security restrictions, you must use a local server to properly load JSON data:
 
 ```bash
+# Important: Enter the year directory first
+cd 2025
+
 # Method 1: Python built-in server
 python -m http.server 8000
 
@@ -53,6 +79,8 @@ npx serve .
 ```
 
 Then open your browser and visit `http://localhost:8000`
+
+**Test root redirect**: Visit `http://localhost:8000/../` to test the auto-redirect functionality
 
 ## 📝 Content Management
 
@@ -72,7 +100,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 1. 📢 Speaker Management (Speakers)
 
 - **Function**: Manage event speaker information
-- **Data File**: `data/speakers.json`
+- **Data File**: `2025/data/speakers.json`
 - **Supported Fields**:
   - Speaker name (trilingual)
   - Job title (trilingual)
@@ -84,7 +112,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 2. 🤝 Thanks List Management (Thanks)
 
 - **Function**: Manage event thanks list information
-- **Data File**: `data/thanks.json`
+- **Data File**: `2025/data/thanks.json`
 - **Supported Fields**:
   - Name (trilingual)
   - Classification level (Gold/Silver/Bronze)
@@ -95,7 +123,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 3. 🏘️ Community Management (Community)
 
 - **Function**: Manage participating community organizations
-- **Data File**: `data/community.json`
+- **Data File**: `2025/data/community.json`
 - **Supported Fields**:
   - Community name (trilingual)
   - Community description (trilingual)
@@ -105,7 +133,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 4. 🛍️ Tech Creation Market (TWM)
 
 - **Function**: Manage tech creation market booths
-- **Data File**: `data/twm.json`
+- **Data File**: `2025/data/twm.json`
 - **Supported Fields**:
   - Booth name (trilingual)
   - Booth description (trilingual)
@@ -116,7 +144,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 5. 👥 Staff Management (Staff)
 
 - **Function**: Manage staff and volunteer information
-- **Data File**: `data/staff.json`
+- **Data File**: `2025/data/staff.json`
 - **Supported Fields**:
   - Name (trilingual)
   - Position (trilingual)
@@ -127,7 +155,7 @@ The editor provides six tabs corresponding to different content types:
 ##### 6. ℹ️ About Us (About)
 
 - **Function**: Manage organization and event information
-- **Data File**: `data/about.json`
+- **Data File**: `2025/data/about.json`
 - **Supported Fields**:
   - Organization information (trilingual)
   - Event description (trilingual)
@@ -140,10 +168,10 @@ The editor provides six tabs corresponding to different content types:
 3. **Edit Content**:
    - Fill in or modify data in the form
    - All text fields support Traditional Chinese, English, and Japanese
-   - For image fields, enter the filename (images should be placed in the `images/` folder)
+   - For image fields, enter the filename (images should be placed in the `2025/images/` folder)
 4. **Preview Data**: Preview the JSON format below after editing
 5. **Download File**: Click "Download JSON" to download the edited data locally
-6. **Update Website**: Replace the corresponding files in the `data/` folder with the downloaded JSON files
+6. **Update Website**: Replace the corresponding files in the `2025/data/` folder with the downloaded JSON files
 
 #### Multilingual Content Format
 
@@ -161,14 +189,14 @@ All text content uses the following format:
 
 ### Manual JSON File Editing
 
-If you're familiar with JSON format, you can also directly edit files in the `data/` folder:
+If you're familiar with JSON format, you can also directly edit files in the `2025/data/` folder:
 
-- `speakers.json` - Speaker information
-- `thanks.json` - Thanks list information
-- `community.json` - Community information
-- `twm.json` - Tech Creation Market
-- `staff.json` - Staff
-- `about.json` - About us
+- `2025/data/speakers.json` - Speaker information
+- `2025/data/thanks.json` - Thanks list information
+- `2025/data/community.json` - Community information
+- `2025/data/twm.json` - Tech Creation Market
+- `2025/data/staff.json` - Staff
+- `2025/data/about.json` - About us
 
 For detailed data format specifications, please refer to `README-DYNAMIC-CONTENT.md`.
 
