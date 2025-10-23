@@ -6,7 +6,7 @@
 
 - 👨‍🏫 **講者介紹**
 - 🛍️ **技術創作市集**
-- 🤝 **贊助夥伴**
+- 🤝 **特別感謝**
 - 🏪 **社群擺攤**
 
 ## 📁 檔案結構
@@ -16,7 +16,7 @@
 ├── data/
 │   ├── speakers.json      # 講者資料
 │   ├── twm.json           # 技術創作市集攤位
-│   ├── sponsors.json      # 贊助夥伴
+│   ├── thanks.json        # 特別感謝
 │   └── about.json         # 關於我們
 ├── js/
 │   ├── dynamic-content.js # 動態內容管理核心
@@ -73,7 +73,7 @@
 }
 ```
 
-2. **新增贊助商**：編輯 `data/sponsors.json`
+2. **新增感謝名單**：編輯 `data/thanks.json`
 3. **新增關於我們**：編輯 `data/about.json`
 4. **新增技術創作市集攤位**：編輯 `data/twm.json`
 
@@ -94,8 +94,8 @@ const newSpeaker = {
 };
 await window.dynamicContentManager.addSpeaker(newSpeaker);
 
-// 新增贊助商
-await window.dynamicContentManager.addSponsor(sponsorData);
+// 新增感謝名單
+await window.dynamicContentManager.addThanks(thanksData);
 
 // 新增社群擺攤
 await window.dynamicContentManager.addBooth(boothData);
@@ -125,7 +125,7 @@ await window.dynamicContentManager.addTwmBooth(boothData);
 }
 ```
 
-### 贊助商 (sponsors.json)
+### 感謝名單 (thanks.json)
 
 ```json
 {
