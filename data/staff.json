@@ -408,6 +408,70 @@
       "social": {
         "Instagram": "https://www.instagram.com/lsf_0619/?hl=zh-tw"
       }
+    },
+    {
+      "id": "a_ju",
+      "name": {
+        "zh": "A-Ju",
+        "en": "A-Ju",
+        "ja": "A-Ju"
+      },
+      "org": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "photo": "images/staff-default-woman.png",
+      "social": {
+        "Facebook": "https://www.facebook.com/VickyJu725"
+      }
+    },
+    {
+      "id": "corey",
+      "name": {
+        "zh": "種子",
+        "en": "Corey",
+        "ja": "種子"
+      },
+      "org": {
+        "zh": "AUO",
+        "en": "AUO",
+        "ja": "AUO"
+      },
+      "title": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "description": {
+        "zh": "哈囉大家好，我是 Corey，也可以叫我種子～<br>我之前主要在幾家新創公司打滾了 9 年多，從 MIS 到全端開發、系統分析、帶過技術團隊，常常不小心變成網站工程界打雜的一條龍。",
+        "en": "Hello everyone, I'm Corey, you can also call me Seed (種子). I previously worked at several startups for over 9 years, transitioning from MIS to Full-Stack Development, System Analysis, and leading technical teams. I often unintentionally became the \"one-stop-shop\" jack-of-all-trades in the world of web engineering.",
+        "ja": "皆様、こんにちは、Corey です。「種子（Seede）」と呼んでいただいても構いません。 以前はいくつかのスタートアップ企業で9年以上にわたり勤務し、MIS からフルスタック開発、システム分析、技術チームのリードまで経験しました。私はウェブエンジニアリング界隈で、いつの間にか**何でも屋の「ワンストップサービス」**になってしまうことが多いです。"
+      },
+      "category": {
+        "zh": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "photo": "images/staff-corey.png",
+      "social": {
+        "Facebook": "https://www.facebook.com/corey924"
+      }
     }
   ]
 }
