@@ -7,7 +7,7 @@ class DynamicContentManager {
     this.data = {
       speakers: [],
       twm: [],
-      sponsors: [],
+      thanks: [],
       community: [],
       staff: [],
       about: [],
@@ -36,10 +36,10 @@ class DynamicContentManager {
   // 載入所有資料
   async loadAllData() {
     try {
-      const [speakers, twm, sponsors, community, staff, about, carousel] = await Promise.all([
+      const [speakers, twm, thanks, community, staff, about, carousel] = await Promise.all([
         this.loadJSON('data/speakers.json'),
         this.loadJSON('data/twm.json'),
-        this.loadJSON('data/sponsors.json'),
+        this.loadJSON('data/thanks.json'),
         this.loadJSON('data/community.json'),
         this.loadJSON('data/staff.json'),
         this.loadJSON('data/about.json'),
@@ -48,7 +48,7 @@ class DynamicContentManager {
 
       this.data.speakers = speakers.speakers || [];
       this.data.twm = twm.booths || [];
-      this.data.sponsors = sponsors.sponsors || [];
+      this.data.thanks = thanks.thanks || [];
       this.data.community = community.community || [];
       this.data.staff = staff.staff || [];
       this.data.about = about.about || [];
@@ -76,7 +76,7 @@ class DynamicContentManager {
     this.renderCarousel();
     this.renderSpeakers();
     this.renderTwm();
-    this.renderSponsors();
+    this.renderThanks();
     this.renderCommunity();
     this.renderStaff();
     this.renderAbout();
@@ -434,51 +434,47 @@ class DynamicContentManager {
     return card;
   }
 
-  // 渲染贊助夥伴
-  renderSponsors() {
-    const container = document.querySelector('#sponsors .sponsors-grid');
+  // 渲染感謝名單
+  renderThanks() {
+    const container = document.querySelector('#thanks .thanks-grid');
     if (!container) return;
 
     container.innerHTML = '';
 
-    this.data.sponsors.forEach((sponsor) => {
-      const sponsorCard = this.createSponsorCard(sponsor);
-      container.appendChild(sponsorCard);
+    this.data.thanks.forEach((thank) => {
+      const thanksCard = this.createThanksCard(thank);
+      container.appendChild(thanksCard);
     });
   }
 
-  // 建立贊助商卡片
-  createSponsorCard(sponsor) {
+  // 建立感謝名單卡片
+  createThanksCard(thank) {
     const card = document.createElement('div');
-    card.className = 'sponsor-card';
-    card.setAttribute('data-sponsor-id', sponsor.id);
-    card.id = sponsor.id; // 設定 ID 以支援 URL hash 導航
+    card.className = 'thanks-card';
+    card.setAttribute('data-thanks-id', thank.id);
+    card.id = thank.id; // 設定 ID 以支援 URL hash 導航
 
-    // 生成贊助商的靜態頁面網址
-    const shareUrl = `${window.location.origin}/share/sponsors/${sponsor.id}/`;
-    const socialLinks = this.createSocialLinks(sponsor.social, shareUrl);
+    // 生成感謝名單的靜態頁面網址
+    const shareUrl = `${window.location.origin}/share/thanks/${thank.id}/`;
+    const socialLinks = this.createSocialLinks(thank.social, shareUrl);
 
-    // 使用 category 作為贊助類型 (partner 或其他類型)
-    const sponsorType = sponsor.type || 'company'; // 預設為公司
-    const categoryText = this.getText(sponsor.category);
+    // 使用 category 作為感謝類型 (partner 或其他類型)
+    const thanksType = thank.type || 'company'; // 預設為公司
+    const categoryText = this.getText(thank.category);
 
     // 創建優化的圖片
-    const imageContainer = window.imageLoader?.createOptimizedImage(
-      sponsor.logo,
-      `${this.getText(sponsor.name)} Logo`,
-      {
-        className: 'sponsor-image',
-        loading: 'lazy',
-        placeholder: true,
-        onClick: () => window.open(sponsor.website, '_blank'),
-      }
-    );
+    const imageContainer = window.imageLoader?.createOptimizedImage(thank.logo, `${this.getText(thank.name)} Logo`, {
+      className: 'thanks-image',
+      loading: 'lazy',
+      placeholder: true,
+      onClick: () => window.open(thank.website, '_blank'),
+    });
 
     card.innerHTML = `
-            <div class="sponsor-info">
-                <div class="sponsor-type ${sponsorType}">${categoryText}</div>
-                <h3 class="sponsor-title">${this.getText(sponsor.name)}</h3>
-                <div class="sponsor-description">${this.getText(sponsor.description)}</div>
+            <div class="thanks-info">
+                <div class="thanks-type ${thanksType}">${categoryText}</div>
+                <h3 class="thanks-title">${this.getText(thank.name)}</h3>
+                <div class="thanks-description">${this.getText(thank.description)}</div>
                 ${socialLinks}
             </div>
         `;
@@ -488,12 +484,12 @@ class DynamicContentManager {
       card.insertBefore(imageContainer, card.firstChild);
     } else {
       const img = document.createElement('img');
-      img.className = 'sponsor-image';
-      img.src = sponsor.logo;
-      img.alt = `${this.getText(sponsor.name)} Logo`;
+      img.className = 'thanks-image';
+      img.src = thank.logo;
+      img.alt = `${this.getText(thank.name)} Logo`;
       img.loading = 'lazy';
       img.style.cursor = 'pointer';
-      img.onclick = () => window.open(sponsor.website, '_blank');
+      img.onclick = () => window.open(thank.website, '_blank');
       card.insertBefore(img, card.firstChild);
     }
 
@@ -762,11 +758,11 @@ class DynamicContentManager {
     this.renderTwm();
   }
 
-  // 新增贊助商
-  async addSponsor(sponsorData) {
-    this.data.sponsors.push(sponsorData);
-    await this.saveData('sponsors', { sponsors: this.data.sponsors });
-    this.renderSponsors();
+  // 新增感謝名單
+  async addThanks(thanksData) {
+    this.data.thanks.push(thanksData);
+    await this.saveData('thanks', { thanks: this.data.thanks });
+    this.renderThanks();
   }
 
   // 新增參與社群
@@ -1109,7 +1105,7 @@ class DynamicContentManager {
     const pageMapping = {
       speakers: 'speakers',
       twm: 'tech-creation-market',
-      sponsors: 'sponsors',
+      thanks: 'thanks',
       community: 'community',
       staff: 'staff',
     };
@@ -1155,10 +1151,10 @@ class DynamicContentManager {
       return;
     }
 
-    // 檢查是否為贊助商 ID
-    const sponsor = this.data.sponsors.find((s) => s.id === hash);
-    if (sponsor) {
-      this.navigateToItem(hash, 'sponsors');
+    // 檢查是否為感謝名單 ID
+    const thank = this.data.thanks.find((s) => s.id === hash);
+    if (thank) {
+      this.navigateToItem(hash, 'thanks');
       return;
     }
 

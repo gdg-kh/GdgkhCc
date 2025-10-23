@@ -87,73 +87,73 @@
   <body>
     <div class="loading-container" id="loadingContainer">
       <div class="spinner"></div>
-      <h1>正在載入贊助商資訊...</h1>
-      <p>Loading sponsor information...</p>
+      <h1>正在載入感謝名單資訊...</h1>
+      <p>Loading thanks information...</p>
     </div>
 
     <script>
-      // 從 URL 獲取贊助商 ID
-      function getSponsorId() {
+      // 從 URL 獲取感謝名單 ID
+      function getThanksId() {
         const pathParts = window.location.pathname.split('/').filter(Boolean);
-        const sponsorsIndex = pathParts.indexOf('sponsors');
-        if (sponsorsIndex !== -1 && pathParts[sponsorsIndex + 1]) {
-          return pathParts[sponsorsIndex + 1];
+        const thanksIndex = pathParts.indexOf('thanks');
+        if (thanksIndex !== -1 && pathParts[thanksIndex + 1]) {
+          return pathParts[thanksIndex + 1];
         }
         return null;
       }
 
-      // 載入贊助商資料
-      async function loadSponsorData(sponsorId) {
+      // 載入感謝名單資料
+      async function loadThanksData(thanksId) {
         try {
-          const response = await fetch('../../../data/sponsors.json');
+          const response = await fetch('../../../data/thanks.json');
           if (!response.ok) {
-            throw new Error('Failed to load sponsor data');
+            throw new Error('Failed to load thanks data');
           }
 
           const data = await response.json();
-          const sponsor = data.sponsors.find((s) => s.id === sponsorId);
+          const thanks = data.thanks.find((s) => s.id === thanksId);
 
-          if (!sponsor) {
-            throw new Error('Sponsor not found');
+          if (!thanks) {
+            throw new Error('Thanks not found');
           }
 
-          return sponsor;
+          return thanks;
         } catch (error) {
-          console.error('Error loading sponsor data:', error);
+          console.error('Error loading thanks data:', error);
           throw error;
         }
       }
 
       // 更新頁面 meta 標籤
-      function updateMetaTags(sponsor) {
-        const baseUrl = 'https://devfest2025.gdgkaohsiung.org';
-        const sponsorId = sponsor.id;
-        const sponsorUrl = `${baseUrl}/sponsors/${sponsorId}/`;
-        const ogImageUrl = `${baseUrl}/sponsors/${sponsorId}/og-image.png`;
+      function updateMetaTags(thanks) {
+        const baseUrl = 'https://gdgkh.cc';
+        const thanksId = thanks.id;
+        const thanksUrl = `${baseUrl}/share/thanks/${thanksId}/`;
+        const ogImageUrl = `${baseUrl}/share/thanks/${thanksId}/og-image.png`;
 
-        const nameZh = sponsor.name.zh || sponsor.name.en;
-        const descriptionZh = sponsor.description.zh || sponsor.description.en;
-        const categoryZh = sponsor.category?.zh || '贊助商';
+        const nameZh = thanks.name.zh || thanks.name.en;
+        const descriptionZh = thanks.description.zh || thanks.description.en;
+        const categoryZh = thanks.category?.zh || '感謝名單';
 
         const title = `${nameZh} - DevFest Kaohsiung X S. TW Communities Gathering 2025`;
         const ogTitle = `${nameZh} - DevFest 2025 高雄場`;
         const description =
           '今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢，並且與眾多技術社群一同交流學習。';
-        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${categoryZh}, Sponsor, Google Developer`;
+        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${categoryZh}, Thanks, Google Developer`;
 
         // 更新 title
         document.title = title;
         document.getElementById('pageTitle').textContent = title;
 
         // 更新 Open Graph
-        document.getElementById('ogUrl').setAttribute('content', sponsorUrl);
+        document.getElementById('ogUrl').setAttribute('content', thanksUrl);
         document.getElementById('ogTitle').setAttribute('content', ogTitle);
         document.getElementById('ogDescription').setAttribute('content', description);
         document.getElementById('ogImage').setAttribute('content', ogImageUrl);
         document.getElementById('ogImageAlt').setAttribute('content', nameZh);
 
         // 更新 Twitter
-        document.getElementById('twitterUrl').setAttribute('content', sponsorUrl);
+        document.getElementById('twitterUrl').setAttribute('content', thanksUrl);
         document.getElementById('twitterTitle').setAttribute('content', ogTitle);
         document.getElementById('twitterDescription').setAttribute('content', description);
         document.getElementById('twitterImage').setAttribute('content', ogImageUrl);
@@ -161,12 +161,12 @@
         // 更新其他 meta
         document.getElementById('metaDescription').setAttribute('content', description);
         document.getElementById('metaKeywords').setAttribute('content', keywords);
-        document.getElementById('canonicalUrl').setAttribute('href', sponsorUrl);
+        document.getElementById('canonicalUrl').setAttribute('href', thanksUrl);
       }
 
       // 重導向到主頁
-      function redirectToMainPage(sponsorId) {
-        const mainPageUrl = `../../../index.html#sponsor-${sponsorId}`;
+      function redirectToMainPage(thanksId) {
+        const mainPageUrl = `../../../index.html#thanks-${thanksId}`;
         window.location.href = mainPageUrl;
       }
 
@@ -185,27 +185,27 @@
 
       // 主執行函式
       async function init() {
-        const sponsorId = getSponsorId();
+        const thanksId = getThanksId();
 
-        if (!sponsorId) {
-          showError('無效的贊助商 ID');
+        if (!thanksId) {
+          showError('無效的感謝名單 ID');
           return;
         }
 
         try {
-          // 載入贊助商資料
-          const sponsor = await loadSponsorData(sponsorId);
+          // 載入感謝名單資料
+          const thanks = await loadThanksData(thanksId);
 
           // 更新 meta 標籤
-          updateMetaTags(sponsor);
+          updateMetaTags(thanks);
 
           // 等待一小段時間讓爬蟲讀取 meta 標籤
           await new Promise((resolve) => setTimeout(resolve, 100));
 
           // 重導向到主頁
-          redirectToMainPage(sponsorId);
+          redirectToMainPage(thanksId);
         } catch (error) {
-          showError('無法載入贊助商資料，請確認贊助商 ID 是否正確。');
+          showError('無法載入感謝名單資料，請確認感謝名單 ID 是否正確。');
         }
       }
 

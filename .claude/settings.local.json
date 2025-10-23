@@ -27,7 +27,9 @@
       "Bash(dir:*)",
       "Bash(move \"share\\markets\" \"share\\twm\")",
       "Bash(npm run lint:fix:*)",
-      "Bash(npm run format:*)"
+      "Bash(npm run format:*)",
+      "Bash(if exist \"share\\sponsors\" rmdir /s /q \"share\\sponsors\")",
+      "Bash(node generate-thanks-pages.js:*)"
     ],
     "deny": [],
     "ask": []
