@@ -26,7 +26,7 @@ multilingual support and dynamic content management.
 │   └── dynamic-content.js       # Dynamic content management system
 ├── data/                        # JSON data files
 │   ├── speakers.json            # Speaker information
-│   ├── sponsors.json            # Sponsor information
+│   ├── thanks.json              # Thanks list information
 │   ├── community.json           # Community participants
 │   ├── twm.json                 # Tech Creation Market
 │   ├── staff.json               # Staff information
@@ -81,13 +81,13 @@ The editor provides six tabs corresponding to different content types:
   - Photo filename
   - Social links
 
-##### 2. 🤝 Sponsor Management (Sponsors)
+##### 2. 🤝 Thanks List Management (Thanks)
 
-- **Function**: Manage event sponsor information
-- **Data File**: `data/sponsors.json`
+- **Function**: Manage event thanks list information
+- **Data File**: `data/thanks.json`
 - **Supported Fields**:
-  - Sponsor name (trilingual)
-  - Sponsorship level (Gold/Silver/Bronze)
+  - Name (trilingual)
+  - Classification level (Gold/Silver/Bronze)
   - Company description (trilingual)
   - Logo filename
   - Official website link
@@ -164,7 +164,7 @@ All text content uses the following format:
 If you're familiar with JSON format, you can also directly edit files in the `data/` folder:
 
 - `speakers.json` - Speaker information
-- `sponsors.json` - Sponsor information
+- `thanks.json` - Thanks list information
 - `community.json` - Community information
 - `twm.json` - Tech Creation Market
 - `staff.json` - Staff
@@ -196,7 +196,7 @@ Language switching functionality automatically saves user preferences.
 - **Single Page Application (SPA)**: Smooth page switching experience
 - **Event Schedule**: Complete event agenda
 - **Speaker Showcase**: Speaker introductions and presentation topics
-- **Sponsor Display**: Multi-tier sponsor showcase support
+- **Thanks Display**: Multi-tier thanks list showcase support
 - **Community Participation**: Participating community organization display
 - **Creator Market**: Booth information display
 - **Responsive Navigation**: Mobile hamburger menu

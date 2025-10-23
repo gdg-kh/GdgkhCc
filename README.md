@@ -25,7 +25,7 @@
 │   └── dynamic-content.js       # 動態內容管理系統
 ├── data/                        # JSON 資料檔案
 │   ├── speakers.json            # 講者資訊
-│   ├── sponsors.json            # 贊助商資訊
+│   ├── thanks.json              # 感謝名單
 │   ├── community.json           # 社群參與者
 │   ├── twm.json                 # 技術創作市集
 │   ├── staff.json               # 工作人員資訊
@@ -80,13 +80,13 @@ npx serve .
   - 照片檔案名稱
   - 社群連結
 
-##### 2. 🤝 贊助商管理 (Sponsors)
+##### 2. 🤝 感謝名單管理 (Thanks)
 
-- **功能**：管理活動贊助商資訊
-- **資料檔案**：`data/sponsors.json`
+- **功能**：管理活動感謝名單資訊
+- **資料檔案**：`data/thanks.json`
 - **支援欄位**：
-  - 贊助商名稱（三語）
-  - 贊助等級（金牌/銀牌/銅牌）
+  - 名稱（三語）
+  - 分類等級（金牌/銀牌/銅牌）
   - 公司描述（三語）
   - 標誌檔案名稱
   - 官方網站連結
@@ -163,7 +163,7 @@ npx serve .
 如果您熟悉 JSON 格式，也可以直接編輯 `data/` 資料夾中的檔案：
 
 - `speakers.json` - 講者資訊
-- `sponsors.json` - 贊助商資訊
+- `thanks.json` - 感謝名單
 - `community.json` - 社群資訊
 - `twm.json` - 技術創作市集
 - `staff.json` - 工作人員

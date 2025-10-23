@@ -25,7 +25,7 @@
 │   └── dynamic-content.js       # 動的コンテンツ管理システム
 ├── data/                        # JSONデータファイル
 │   ├── speakers.json            # スピーカー情報
-│   ├── sponsors.json            # スポンサー情報
+│   ├── thanks.json              # 感謝リスト情報
 │   ├── community.json           # コミュニティ参加者
 │   ├── twm.json                 # テック創作マーケット
 │   ├── staff.json               # スタッフ情報
@@ -80,10 +80,10 @@ npx serve .
   - 写真ファイル名
   - SNSリンク
 
-##### 2. 🤝 スポンサー管理（Sponsors）
+##### 2. 🤝 感謝リスト管理（Thanks）
 
-- **機能**: イベントスポンサー情報の管理
-- **データファイル**: `data/sponsors.json`
+- **機能**: イベント感謝リスト情報の管理
+- **データファイル**: `data/thanks.json`
 - **対応フィールド**:
   - スポンサー名（3言語）
   - スポンサーレベル（ゴールド/シルバー/ブロンズ）
@@ -163,7 +163,7 @@ npx serve .
 JSON形式に慣れている場合は、`data/` フォルダ内のファイルを直接編集することも可能です：
 
 - `speakers.json` - スピーカー情報
-- `sponsors.json` - スポンサー情報
+- `thanks.json` - 感謝リスト情報
 - `community.json` - コミュニティ情報
 - `twm.json` - テック創作マーケット
 - `staff.json` - スタッフ
