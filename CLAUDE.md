@@ -27,12 +27,13 @@ This is a static website for "DevFest Kaohsiung X S. TW Communities Gathering 20
 │   ├── about.json               # About us information
 │   └── carousel.json            # Homepage carousel slides
 ├── images/                      # Event images and assets
-├── speakers/                    # Generated: Individual speaker pages with OG meta tags
-├── sponsors/                    # Generated: Individual sponsor pages with OG meta tags
-├── community/                   # Generated: Individual community pages with OG meta tags
-├── staff/                       # Generated: Individual staff pages with OG meta tags
-├── markets/                     # Generated: Individual market booth pages with OG meta tags
-├── about/                       # Generated: Individual about pages with OG meta tags
+├── share/                       # Generated pages directory (organized by type)
+│   ├── speakers/                # Individual speaker pages with OG meta tags
+│   ├── sponsors/                # Individual sponsor pages with OG meta tags
+│   ├── community/               # Individual community pages with OG meta tags
+│   ├── staff/                   # Individual staff pages with OG meta tags
+│   ├── markets/                 # Individual market booth pages with OG meta tags
+│   └── about/                   # Individual about pages with OG meta tags
 ├── generate-*.js                # Node.js scripts for generating individual pages
 ├── *-template.html              # HTML templates for generated pages
 ├── favicon.svg                  # Site favicon
@@ -105,7 +106,7 @@ npm run generate:all
 
 - Due to CORS restrictions, you must use a local server to test the dynamic content features. Opening `index.html` directly in a browser will not load the JSON data files.
 - ESLint is configured with Prettier integration - run `npm run lint:fix` and `npm run format` before committing changes.
-- Generated pages in `speakers/`, `sponsors/`, etc. are created from templates and should not be edited manually. Edit the JSON data files and templates instead, then regenerate.
+- Generated pages in `share/speakers/`, `share/sponsors/`, etc. are created from templates and should not be edited manually. Edit the JSON data files and templates instead, then regenerate.
 
 ## Architecture
 
@@ -207,7 +208,7 @@ Key color system variables:
 Each `generate-*.js` script follows a similar pattern:
 
 1. Reads JSON data from `data/*.json`
-2. Creates a directory for each item (e.g., `speakers/speaker-id/`)
+2. Creates a directory for each item (e.g., `share/speakers/speaker-id/`)
 3. Copies the template file (`*-template.html`) as `index.html` in each directory
 4. Templates dynamically load data from JSON files at runtime
 5. Some scripts also generate OG image creator tools
@@ -300,7 +301,7 @@ Supports direct linking to specific content items (`js/dynamic-content.js:1026+`
 
 Individual pages are generated for each content item to improve SEO and social sharing:
 
-- Each item gets its own URL (e.g., `/speakers/speaker-id/`)
+- Each item gets its own URL (e.g., `/share/speakers/speaker-id/`)
 - Pages include proper meta tags for social media preview
 - OG images can be generated using browser-based tools
 - Templates dynamically load data from JSON files, ensuring consistency with main site

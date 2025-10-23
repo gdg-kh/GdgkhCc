@@ -30,7 +30,7 @@
     <link rel="canonical" href="" id="canonicalUrl" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
 
     <style>
       body {
@@ -105,7 +105,7 @@
       // 載入贊助商資料
       async function loadSponsorData(sponsorId) {
         try {
-          const response = await fetch('../../data/sponsors.json');
+          const response = await fetch('../../../data/sponsors.json');
           if (!response.ok) {
             throw new Error('Failed to load sponsor data');
           }
@@ -166,7 +166,7 @@
 
       // 重導向到主頁
       function redirectToMainPage(sponsorId) {
-        const mainPageUrl = `../../index.html#sponsor-${sponsorId}`;
+        const mainPageUrl = `../../../index.html#sponsor-${sponsorId}`;
         window.location.href = mainPageUrl;
       }
 
@@ -178,7 +178,7 @@
         <h1>⚠️ 載入失敗</h1>
         <p>${message}</p>
         <p style="margin-top: 1rem;">
-          <a href="../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
+          <a href="../../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
         </p>
       `;
       }

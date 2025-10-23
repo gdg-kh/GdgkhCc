@@ -30,7 +30,7 @@
     <link rel="canonical" href="" id="canonicalUrl" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
 
     <style>
       body {
@@ -105,7 +105,7 @@
       // 載入市集攤位資料
       async function loadBoothData(boothId) {
         try {
-          const response = await fetch('../../data/markets.json');
+          const response = await fetch('../../../data/markets.json');
           if (!response.ok) {
             throw new Error('Failed to load market data');
           }
@@ -165,7 +165,7 @@
 
       // 重導向到主頁
       function redirectToMainPage(boothId) {
-        const mainPageUrl = `../../index.html#booth-${boothId}`;
+        const mainPageUrl = `../../../index.html#booth-${boothId}`;
         window.location.href = mainPageUrl;
       }
 
@@ -177,7 +177,7 @@
         <h1>⚠️ 載入失敗</h1>
         <p>${message}</p>
         <p style="margin-top: 1rem;">
-          <a href="../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
+          <a href="../../../index.html" style="color: white; text-decoration: underline;">返回主頁</a>
         </p>
       `;
       }

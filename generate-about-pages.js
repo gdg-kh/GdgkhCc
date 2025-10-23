@@ -6,7 +6,7 @@ const path = require('path');
 // 檔案路徑
 const ABOUT_JSON = path.join(__dirname, 'data', 'about.json');
 const TEMPLATE_FILE = path.join(__dirname, 'about-template.html');
-const OUTPUT_DIR = path.join(__dirname, 'about');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'about');
 
 /**
  * 讀取關於我們資料
@@ -63,8 +63,8 @@ function generateAboutPage(about, template) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const aboutUrl = `${baseUrl}/about/${aboutId}/`;
-  const ogImageUrl = `${baseUrl}/about/${aboutId}/og-image.png`;
+  const aboutUrl = `${baseUrl}/share/about/${aboutId}/`;
+  const ogImageUrl = `${baseUrl}/share/about/${aboutId}/og-image.png`;
 
   const nameZh = about.name.zh || about.name.en;
   const descriptionZh = (about.description.zh || about.description.en)
@@ -144,12 +144,12 @@ function generateAboutPage(about, template) {
   // 寫入檔案
   const htmlPath = path.join(aboutDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`✓ 產生頁面: about/${aboutId}/index.html`);
+  console.log(`✓ 產生頁面: share/about/${aboutId}/index.html`);
 
   // 提示需要手動添加 og-image.png
   const ogImagePath = path.join(aboutDir, 'og-image.png');
   if (!fs.existsSync(ogImagePath)) {
-    console.log(`  ⚠ 請手動添加: about/${aboutId}/og-image.png`);
+    console.log(`  ⚠ 請手動添加: share/about/${aboutId}/og-image.png`);
   }
 }
 

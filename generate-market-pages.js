@@ -6,7 +6,7 @@ const path = require('path');
 // 檔案路徑
 const MARKETS_JSON = path.join(__dirname, 'data', 'markets.json');
 const TEMPLATE_FILE = path.join(__dirname, 'market-template.html');
-const OUTPUT_DIR = path.join(__dirname, 'markets');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'markets');
 
 /**
  * 讀取市集攤位資料
@@ -63,8 +63,8 @@ function generateMarketPage(booth, template) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const boothUrl = `${baseUrl}/markets/${boothId}/`;
-  const ogImageUrl = `${baseUrl}/markets/${boothId}/og-image.png`;
+  const boothUrl = `${baseUrl}/share/markets/${boothId}/`;
+  const ogImageUrl = `${baseUrl}/share/markets/${boothId}/og-image.png`;
 
   const nameZh = booth.name.zh || booth.name.en;
   const descriptionZh = (booth.description.zh || booth.description.en)
@@ -143,12 +143,12 @@ function generateMarketPage(booth, template) {
   // 寫入檔案
   const htmlPath = path.join(boothDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`✓ 產生頁面: markets/${boothId}/index.html`);
+  console.log(`✓ 產生頁面: share/markets/${boothId}/index.html`);
 
   // 提示需要手動添加 og-image.png
   const ogImagePath = path.join(boothDir, 'og-image.png');
   if (!fs.existsSync(ogImagePath)) {
-    console.log(`  ⚠ 請手動添加: markets/${boothId}/og-image.png`);
+    console.log(`  ⚠ 請手動添加: share/markets/${boothId}/og-image.png`);
   }
 }
 

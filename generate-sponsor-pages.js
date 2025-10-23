@@ -6,7 +6,7 @@ const path = require('path');
 // 檔案路徑
 const SPONSORS_JSON = path.join(__dirname, 'data', 'sponsors.json');
 const TEMPLATE_FILE = path.join(__dirname, 'sponsor-template.html');
-const OUTPUT_DIR = path.join(__dirname, 'sponsors');
+const OUTPUT_DIR = path.join(__dirname, 'share', 'sponsors');
 
 /**
  * 讀取贊助商資料
@@ -63,8 +63,8 @@ function generateSponsorPage(sponsor, template) {
 
   // 準備 meta tags 資料
   const baseUrl = 'https://gdgkh.cc';
-  const sponsorUrl = `${baseUrl}/sponsors/${sponsorId}/`;
-  const ogImageUrl = `${baseUrl}/sponsors/${sponsorId}/og-image.png`;
+  const sponsorUrl = `${baseUrl}/share/sponsors/${sponsorId}/`;
+  const ogImageUrl = `${baseUrl}/share/sponsors/${sponsorId}/og-image.png`;
 
   const nameZh = sponsor.name.zh || sponsor.name.en;
   const descriptionZh = (sponsor.description.zh || sponsor.description.en)
@@ -144,13 +144,13 @@ function generateSponsorPage(sponsor, template) {
   // 寫入檔案
   const htmlPath = path.join(sponsorDir, 'index.html');
   fs.writeFileSync(htmlPath, html, 'utf-8');
-  console.log(`✓ 產生頁面: sponsors/${sponsorId}/index.html`);
+  console.log(`✓ 產生頁面: share/sponsors/${sponsorId}/index.html`);
 
   // 建立 og-image.png 的佔位檔案(如果不存在)
   const ogImagePath = path.join(sponsorDir, 'og-image.png');
   if (!fs.existsSync(ogImagePath)) {
     // 不建立實際檔案,只是提示需要手動添加
-    console.log(`  ⚠ 請手動添加: sponsors/${sponsorId}/og-image.png`);
+    console.log(`  ⚠ 請手動添加: share/sponsors/${sponsorId}/og-image.png`);
   }
 }
 

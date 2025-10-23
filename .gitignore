@@ -25,3 +25,6 @@ yarn-error.log*
 # Package manager (除了 package-lock.json 需要給 CI/CD 使用)
 yarn.lock
 pnpm-lock.yaml
+
+# Generated pages (auto-generated from scripts)
+share/
