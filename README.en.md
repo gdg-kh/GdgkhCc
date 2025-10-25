@@ -53,6 +53,7 @@ This project uses a **year-based directory structure**, with each year's event w
   - Static pages: `https://gdgkh.cc/2025/share/speakers/{id}/`
 
 Benefits of this architecture:
+
 - ✅ Each year's event is managed independently without interference
 - ✅ Historical event websites remain permanently accessible
 - ✅ Next year only requires copying the directory and updating content

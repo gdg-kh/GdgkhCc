@@ -3354,6 +3354,16 @@ html.page-switching {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
+  /* 修復手機版卡片內容顯示 - 移除最小高度限制以確保分享按鈕可見 */
+  .speaker-info,
+  .thanks-info,
+  .community-info,
+  .staff-info,
+  .twm-booth-info,
+  .about-info-new {
+    min-height: auto !important;
+  }
+
   .speaker-info-inline {
     gap: 8px;
     padding: 6px;
