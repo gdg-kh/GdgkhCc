@@ -729,7 +729,8 @@ class DynamicContentManager {
 
   // 綁定講者卡片點擊事件
   bindSpeakerEvents() {
-    const speakerCards = document.querySelectorAll('.speaker-card');
+    // 只選擇講者頁面中的卡片,不包括 Modal 中的卡片
+    const speakerCards = document.querySelectorAll('#speakers .speaker-card');
     speakerCards.forEach((card) => {
       card.addEventListener('click', () => {
         // Toggle the clicked card
@@ -924,12 +925,13 @@ class DynamicContentManager {
       // 更新議程標題為講者的實際議程名稱
       titleEl.textContent = this.getText(speaker.session.name);
 
-      // 讓議程標題可以點擊連結到講者頁面
+      // 讓議程標題可以點擊開啟講者 Modal
       titleEl.classList.add('clickable');
 
+      // 議程標題點擊事件:直接開啟 Modal(桌面版和手機版都一樣)
       titleEl.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.navigateToSpeaker(speaker.id);
+        this.showSpeakerModal(speaker.id);
       });
 
       // 創建並插入 tags 標籤到標題下方
@@ -949,8 +951,8 @@ class DynamicContentManager {
         sessionInfoEl.appendChild(expandableContentEl);
       }
 
-      // 添加摺疊/展開功能
-      this.addToggleExpandFunctionality(sessionEl, speaker.id);
+      // 添加摺疊/展開功能(僅手機版有效)
+      this.addToggleExpandFunctionalityMobile(sessionEl, speaker.id);
     });
   }
 
@@ -1041,20 +1043,21 @@ class DynamicContentManager {
     return expandableContent;
   }
 
-  // 添加摺疊/展開功能
-  addToggleExpandFunctionality(sessionEl, speakerId) {
-    sessionEl.style.cursor = 'pointer';
+  // 添加摺疊/展開功能(僅手機版)
+  addToggleExpandFunctionalityMobile(sessionEl, speakerId) {
+    // 只在手機版設定卡片可點擊的游標樣式
+    if (window.innerWidth <= 768) {
+      sessionEl.style.cursor = 'pointer';
+    }
 
     // 使用命名函數來確保可以移除舊的事件監聽器
     const clickHandler = (e) => {
       // 檢查是否為手機版 (寬度小於768px)
       if (window.innerWidth <= 768) {
-        e.stopPropagation();
+        // 手機版:點擊卡片展開/收合
         this.toggleSessionExpansion(sessionEl);
-      } else {
-        // 桌面版直接跳轉到講者頁面
-        this.navigateToSpeaker(speakerId);
       }
+      // 桌面版:不處理卡片點擊(只有標題可以點擊開啟 Modal)
     };
 
     // 儲存事件處理器的引用,以便之後可以移除
@@ -1199,6 +1202,129 @@ class DynamicContentManager {
         this.handleHashChange();
       }, 500);
     }
+
+    // 初始化講者 Modal
+    this.initSpeakerModal();
+  }
+
+  // 初始化講者 Modal
+  initSpeakerModal() {
+    const modal = document.getElementById('speaker-modal');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+    const modalClose = modal.querySelector('.modal-close');
+
+    // 點擊遮罩關閉 Modal
+    modalOverlay.addEventListener('click', () => {
+      this.closeSpeakerModal();
+    });
+
+    // 點擊關閉按鈕關閉 Modal
+    modalClose.addEventListener('click', () => {
+      this.closeSpeakerModal();
+    });
+
+    // ESC 鍵關閉 Modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        this.closeSpeakerModal();
+      }
+    });
+  }
+
+  // 顯示講者 Modal
+  showSpeakerModal(speakerId) {
+    // 找到對應的講者資料
+    const speaker = this.data.speakers.find((s) => s.id === speakerId);
+    if (!speaker) {
+      console.warn(`Speaker with id "${speakerId}" not found`);
+      return;
+    }
+
+    // 取得 Modal 元素
+    const modal = document.getElementById('speaker-modal');
+    const container = document.getElementById('speaker-modal-card-container');
+
+    // 清空容器
+    container.innerHTML = '';
+
+    // 建立講者卡片
+    const speakerCard = this.createSpeakerCard(speaker);
+
+    // 插入卡片到容器
+    container.appendChild(speakerCard);
+
+    // 預設展開卡片並隱藏展開/收合按鈕
+    speakerCard.classList.add('expanded');
+    const expandHint = speakerCard.querySelector('.speaker-expand-hint');
+    if (expandHint) {
+      expandHint.style.display = 'none';
+    }
+
+    // 移除卡片的點擊事件,避免被收合
+    speakerCard.style.cursor = 'default';
+    speakerCard.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // 綁定 Modal 中的分享按鈕
+    const shareButton = speakerCard.querySelector('.share-link');
+    if (shareButton) {
+      shareButton.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        const url = shareButton.getAttribute('data-share-url');
+        if (!url) return;
+
+        try {
+          await navigator.clipboard.writeText(url);
+          const originalText = shareButton.textContent;
+          shareButton.textContent = this.getCopiedText();
+          shareButton.classList.add('copied');
+
+          setTimeout(() => {
+            shareButton.textContent = originalText;
+            shareButton.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('複製失敗:', err);
+          this.fallbackCopyText(url, shareButton);
+        }
+      });
+    }
+
+    // 顯示 Modal
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    // 防止背景滾動
+    document.body.style.overflow = 'hidden';
+
+    // 將焦點移到 Modal
+    setTimeout(() => {
+      const closeButton = modal.querySelector('.modal-close');
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }, 100);
+  }
+
+  // 關閉講者 Modal
+  closeSpeakerModal() {
+    const modal = document.getElementById('speaker-modal');
+    const container = document.getElementById('speaker-modal-card-container');
+
+    // 隱藏 Modal
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+
+    // 恢復背景滾動
+    document.body.style.overflow = '';
+
+    // 延遲清空內容，等待動畫完成
+    setTimeout(() => {
+      container.innerHTML = '';
+    }, 300);
   }
 }
 
