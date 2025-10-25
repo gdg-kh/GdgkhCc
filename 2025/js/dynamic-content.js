@@ -575,8 +575,12 @@ class DynamicContentManager {
   createAboutCard(booth) {
     const card = document.createElement('div');
     card.className = 'about-card';
+    card.setAttribute('data-about-id', booth.id);
+    card.id = booth.id; // 設定 ID 以支援 URL hash 導航
 
-    const socialLinks = this.createSocialLinks(booth.social);
+    // 生成關於我們的靜態頁面網址
+    const shareUrl = `${window.location.origin}/2025/share/about/${booth.id}/`;
+    const socialLinks = this.createSocialLinks(booth.social, shareUrl);
 
     // 創建優化的圖片
     const imageContainer = window.imageLoader?.createOptimizedImage(booth.logo, `${this.getText(booth.name)} Logo`, {
@@ -1108,6 +1112,7 @@ class DynamicContentManager {
       thanks: 'thanks',
       community: 'community',
       staff: 'staff',
+      about: 'about',
     };
 
     // 切換到對應頁面
@@ -1169,6 +1174,13 @@ class DynamicContentManager {
     const staff = this.data.staff.find((s) => s.id === hash);
     if (staff) {
       this.navigateToItem(hash, 'staff');
+      return;
+    }
+
+    // 檢查是否為關於我們 ID
+    const about = this.data.about.find((a) => a.id === hash);
+    if (about) {
+      this.navigateToItem(hash, 'about');
       return;
     }
   }
