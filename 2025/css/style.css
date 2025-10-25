@@ -3510,6 +3510,12 @@ html.page-switching {
     overflow: visible;
   }
 
+  /* 手機版確保可點擊的標題獨立成行 */
+  .session-title.clickable {
+    display: block !important;
+    width: 100%;
+  }
+
   /* 會場標籤優化 */
   .session-track {
     font-size: 11px;
