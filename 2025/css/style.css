@@ -3114,17 +3114,20 @@ html.page-switching {
   font-size: 12px;
   font-weight: 600;
   margin: 0 0 8px 0;
-  color: var(--md-sys-color-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.thanks-type.company {
-  color: #1976d2;
+.thanks-type.partner {
+  color: #34a853;
 }
 
-.thanks-type.individual {
-  color: #388e3c;
+.thanks-type.company {
+  color: #4285f4;
+}
+
+.thanks-type.personal {
+  color: #f9ab00;
 }
 
 .thanks-title {

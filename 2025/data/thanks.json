@@ -8,7 +8,6 @@
         "ja": "Google for Developers"
       },
       "type": "partner",
-      "tier": "gold",
       "description": {
         "zh": "探索開發者資源、社群活動與啟發人心的故事，協助您更高效地開發、更迅速地發布產品。",
         "en": "Explore developer resources, community events, and inspirational stories to help you build smarter and ship faster.",
@@ -33,7 +32,6 @@
         "ja": "高雄市政府經濟發展局"
       },
       "type": "partner",
-      "tier": "",
       "description": {
         "zh": "高雄近年來積極招商引資，更致力於扶植新創及軟體開發創新應用，鼓勵在高雄打拼的夥伴們，從 Google 等大廠中發展出屬於自己的品牌與生態，帶動更多創新企業一起搶佔全球市場商機。",
         "en": "In recent years, Kaohsiung has actively courted investment and dedicated itself to fostering startups and innovative software development applications. The city encourages partners working hard in Kaohsiung to develop their own brands and ecosystems based on experience from major companies like Google, thereby driving more innovative enterprises to seize global market opportunities together.",
@@ -57,8 +55,7 @@
         "en": "Legend Innovation",
         "ja": "Legend Innovation"
       },
-      "type": "",
-      "tier": "partner",
+      "type": "partner",
       "description": {
         "zh": "誠研創新是一家註冊在台灣並深耕科技事業產業化與國際化的專業機構。 我們專注於前研技術探勘與早期新創投資育成、企業科技諮詢與數位轉型。 誠研創新期許成為台灣及華人圈科技新創公司與中堅企業邁向IPO以及策略(數位)轉型成功的最佳平台。<br><br>熱情、專業、誠信、穩健是誠研創新的品牌保證。",
         "en": "Legend Innovation is a professional organization registered in Taiwan that is deeply involved in the industrialization and internationalization of the technology sector. We offer cutting-edge technology scouting, early-stage startup incubation, corporate technology consulting and digital transformation services. Legend Innovation aspires to be the best platform for technology startups and mid-sized enterprises in Taiwan and the Chinese community ,enabling them to successfully progress towards IPO and strategic (digital) transformation.<br><br>Passion, professionalism, integrity, and steady are the brand guarantees of Legend Innovation.",
@@ -82,8 +79,7 @@
         "en": "KO-IN",
         "ja": "KO-IN"
       },
-      "type": "",
-      "tier": "",
+      "type": "partner",
       "description": {
         "zh": "KO-IN 智高點成立之目標與願景為發展高雄智慧城市及其相關智慧科技為主題，透過新創事業加速以及既有產(企)業創新輔導之精神，最終以翻轉南臺灣產業架構，注入新的成長動能並促進新創產業形成群聚，進而帶動南部產業的蓬勃發展。",
         "en": "The goal and vision of KO-IN establishment focus on developing Kaohsiung Smart City and related Smart Technology, by accelerating entrepreneurship with the existing spirit of industrial/enterprise innovation guidance, to eventually convert and breath new growing momentum into the industrial structure of Southern Taiwan, facilitating the start-ups to form an industrial cluster, and driving further prosperity of industry in the South.",
@@ -183,7 +179,6 @@
         "ja": "國泰 CDC 小聚"
       },
       "type": "company",
-      "tier": "",
       "description": {
         "zh": "坐擁亞灣黃金地段，面向尊爵不凡無敵海景，在高雄亞灣區，藏身著一座「雲端開發基地」。我們是「高雄 CDC」，我們看見南台灣的技術軟實力，致力推動高雄在地金融科技與雲端技術交流，邀請有共同熱愛的你一起來到南台灣金融科技新據點！",
         "en": "Nestled in the prime location of Asia's New Bay Area (亞灣) and facing a magnificent, unparalleled sea view, a \"Cloud Development Base\" is discreetly housed in Kaohsiung's Asia's New Bay Area.We are \"Kaohsiung CDC\" (高雄 CDC). We recognize the burgeoning soft power of technology in Southern Taiwan and are dedicated to promoting local FinTech and Cloud Technology exchange in Kaohsiung. We invite you, who share this passion, to join us at this new hub for financial technology in Southern Taiwan!",
