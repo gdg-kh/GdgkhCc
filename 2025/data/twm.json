@@ -1,6 +1,38 @@
 {
   "booths": [
     {
+      "id": "mantou",
+      "name": {
+        "zh": "饅頭圖形筆記",
+        "en": "Mantou Graphic Notes",
+        "ja": "Mantou 視覚的ノート"
+      },
+      "description": {
+        "zh": "不知道要寫什麼 XD",
+        "en": "I don't know what to write 🙂",
+        "ja": "何を書いたらいいか分からない XD"
+      },
+      "logo": "images/twm-logo-mantou.png",
+      "website": "",
+      "social": {}
+    },
+    {
+      "id": "mantou_friends",
+      "name": {
+        "zh": "饅頭與他的快樂夥伴鐵人研究室",
+        "en": "Mantou and His Happy Ironman Research Lab",
+        "ja": "饅頭（マントウ）とその愉快な仲間たち アイアンマン研究室"
+      },
+      "description": {
+        "zh": "饅頭與身邊一群參加 2025 ithome 寫到上癮的鐵人們的聚集地。<br>從 AI 到設計、從前後端到命令列，甚至是刷題，什麼都寫、什麼都玩。<br>我們用每天一篇的毅力，把靈感變成程式，把鐵人賽變成生活方式！",
+        "en": "This is the gathering place for Mantou and a group of \"Ironmen\" who participated in the 2025 iThome \"Write-Until-Addicted\" Ironman Challenge. We write about and play with everything: from AI to design, from front-end/back-end to the command line, and even competitive programming. With the perseverance of writing one article every day, we turn inspiration into code and the Ironman Challenge into a way of life!",
+        "ja": "ここは、饅頭（マントウ）と、2025年の iThome 「書くことに夢中になる」アイアンマン・チャレンジに参加した仲間たちが集まる場所です。 AI からデザイン、フロントエンド・バックエンドからコマンドライン、さらには競技プログラミングまで、何でも書いて、何でも遊びます。 私たちは「毎日一篇」の忍耐力で、インスピレーションをコードに変え、アイアンマン・チャレンジをライフスタイルに変えています！"
+      },
+      "logo": "images/twm-logo-mantou_friends.png",
+      "website": "",
+      "social": {}
+    },
+    {
       "id": "tkug",
       "name": {
         "zh": "Taiwan Kotlin User Group 攤位展示",
@@ -33,22 +65,6 @@
       "social": {
         "Homepage": "https://anoni.net/"
       }
-    },
-    {
-      "id": "mantou",
-      "name": {
-        "zh": "饅頭圖形筆記",
-        "en": "Mantou Graphic Notes",
-        "ja": "Mantou 視覚的ノート"
-      },
-      "description": {
-        "zh": "不知道要寫什麼 XD",
-        "en": "I don't know what to write \uD83D\uDE42",
-        "ja": "何を書いたらいいか分からない XD"
-      },
-      "logo": "images/twm-logo-mantou.png",
-      "website": "",
-      "social": {}
     }
   ]
 }
