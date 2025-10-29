@@ -3,32 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="pageTitle">種子 - DevFest Kaohsiung X S. TW Communities Gathering 2025</title>
+    <title id="pageTitle">JetBrains - DevFest Kaohsiung X S. TW Communities Gathering 2025</title>
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="profile" />
-    <meta property="og:url" content="https://gdgkh.cc/2025/share/staff/corey/" id="ogUrl" />
-    <meta property="og:title" content="種子 - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="ogTitle" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gdgkh.cc/2025/share/thanks/jetbrains/" id="ogUrl" />
+    <meta property="og:title" content="JetBrains - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="ogTitle" />
     <meta property="og:description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="ogDescription" />
-    <meta property="og:image" content="https://gdgkh.cc/2025/share/staff/corey/og-image.png" id="ogImage" />
+    <meta property="og:image" content="https://gdgkh.cc/2025/share/thanks/jetbrains/og-image.png" id="ogImage" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="種子" id="ogImageAlt" />
+    <meta property="og:image:alt" content="JetBrains" id="ogImageAlt" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://gdgkh.cc/2025/share/staff/corey/" id="twitterUrl" />
-    <meta property="twitter:title" content="種子 - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="twitterTitle" />
+    <meta property="twitter:url" content="https://gdgkh.cc/2025/share/thanks/jetbrains/" id="twitterUrl" />
+    <meta property="twitter:title" content="JetBrains - DevFest 高雄場 X 南臺灣技術社群大聚 2025" id="twitterTitle" />
     <meta property="twitter:description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="twitterDescription" />
-    <meta property="twitter:image" content="https://gdgkh.cc/2025/share/staff/corey/og-image.png" id="twitterImage" />
+    <meta property="twitter:image" content="https://gdgkh.cc/2025/share/thanks/jetbrains/og-image.png" id="twitterImage" />
 
     <!-- Additional Meta Tags -->
     <meta name="description" content="今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢,並且與眾多技術社群一同交流學習。" id="metaDescription" />
-    <meta name="author" content="" id="metaAuthor" />
-    <meta name="keywords" content="DevFest, Kaohsiung, 種子, Staff, Google Developer" id="metaKeywords" />
+    <meta name="keywords" content="DevFest, Kaohsiung, JetBrains, Thanks, Google Developer" id="metaKeywords" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://gdgkh.cc/2025/share/staff/corey/" id="canonicalUrl" />
+    <link rel="canonical" href="https://gdgkh.cc/2025/share/thanks/jetbrains/" id="canonicalUrl" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
@@ -88,92 +87,86 @@
   <body>
     <div class="loading-container" id="loadingContainer">
       <div class="spinner"></div>
-      <h1>正在載入工作人員資訊...</h1>
-      <p>Loading staff information...</p>
+      <h1>正在載入感謝名單資訊...</h1>
+      <p>Loading thanks information...</p>
     </div>
 
     <script>
-      // 從 URL 獲取工作人員 ID
-      function getStaffId() {
+      // 從 URL 獲取感謝名單 ID
+      function getThanksId() {
         const pathParts = window.location.pathname.split('/').filter(Boolean);
-        const staffIndex = pathParts.indexOf('staff');
-        if (staffIndex !== -1 && pathParts[staffIndex + 1]) {
-          return pathParts[staffIndex + 1];
+        const thanksIndex = pathParts.indexOf('thanks');
+        if (thanksIndex !== -1 && pathParts[thanksIndex + 1]) {
+          return pathParts[thanksIndex + 1];
         }
         return null;
       }
 
-      // 載入工作人員資料
-      async function loadStaffData(staffId) {
+      // 載入感謝名單資料
+      async function loadThanksData(thanksId) {
         try {
-          const response = await fetch('../../../data/staff.json');
+          const response = await fetch('../../../data/thanks.json');
           if (!response.ok) {
-            throw new Error('Failed to load staff data');
+            throw new Error('Failed to load thanks data');
           }
 
           const data = await response.json();
-          const staff = data.staff.find((s) => s.id === staffId);
+          const thanks = data.thanks.find((s) => s.id === thanksId);
 
-          if (!staff) {
-            throw new Error('Staff not found');
+          if (!thanks) {
+            throw new Error('Thanks not found');
           }
 
-          return staff;
+          return thanks;
         } catch (error) {
-          console.error('Error loading staff data:', error);
+          console.error('Error loading thanks data:', error);
           throw error;
         }
       }
 
       // 更新頁面 meta 標籤
-      function updateMetaTags(staff) {
-        const baseUrl = 'https://devfest2025.gdgkaohsiung.org';
-        const staffId = staff.id;
-        const staffUrl = `${baseUrl}/staff/${staffId}/`;
-        const ogImageUrl = `${baseUrl}/staff/${staffId}/og-image.png`;
+      function updateMetaTags(thanks) {
+        const baseUrl = 'https://gdgkh.cc';
+        const thanksId = thanks.id;
+        const thanksUrl = `${baseUrl}/share/thanks/${thanksId}/`;
+        const ogImageUrl = `${baseUrl}/share/thanks/${thanksId}/og-image.png`;
 
-        const nameZh = staff.name.zh || staff.name.en;
-        const nameEn = staff.name.en;
-        const orgZh = staff.org.zh || staff.org.en || '';
-        const titleZh = staff.title.zh || staff.title.en || '';
-        const descriptionZh = staff.description.zh || staff.description.en || '';
-        const categoryZh = staff.category?.zh || '工作人員';
+        const nameZh = thanks.name.zh || thanks.name.en;
+        const descriptionZh = thanks.description.zh || thanks.description.en;
+        const categoryZh = thanks.category?.zh || '感謝名單';
 
         const title = `${nameZh} - DevFest Kaohsiung X S. TW Communities Gathering 2025`;
         const ogTitle = `${nameZh} - DevFest 2025 高雄場`;
         const description =
           '今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會 - 一起探索 Google Cloud、Gemini AI、Android 開發及科技向善的最新趨勢，並且與眾多技術社群一同交流學習。';
-        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${categoryZh}, Staff, Volunteer`;
+        const keywords = `DevFest, Kaohsiung, ${nameZh}, ${categoryZh}, Thanks, Google Developer`;
 
         // 更新 title
         document.title = title;
         document.getElementById('pageTitle').textContent = title;
 
         // 更新 Open Graph
-        document.getElementById('ogUrl').setAttribute('content', staffUrl);
+        document.getElementById('ogUrl').setAttribute('content', thanksUrl);
         document.getElementById('ogTitle').setAttribute('content', ogTitle);
         document.getElementById('ogDescription').setAttribute('content', description);
         document.getElementById('ogImage').setAttribute('content', ogImageUrl);
-        document
-          .getElementById('ogImageAlt')
-          .setAttribute('content', `${nameZh}${orgZh ? ' - ' + orgZh : ''}`);
+        document.getElementById('ogImageAlt').setAttribute('content', nameZh);
 
         // 更新 Twitter
-        document.getElementById('twitterUrl').setAttribute('content', staffUrl);
+        document.getElementById('twitterUrl').setAttribute('content', thanksUrl);
         document.getElementById('twitterTitle').setAttribute('content', ogTitle);
         document.getElementById('twitterDescription').setAttribute('content', description);
         document.getElementById('twitterImage').setAttribute('content', ogImageUrl);
 
         // 更新其他 meta
         document.getElementById('metaDescription').setAttribute('content', description);
-        document.getElementById('metaAuthor').setAttribute('content', nameEn);
         document.getElementById('metaKeywords').setAttribute('content', keywords);
-        document.getElementById('canonicalUrl').setAttribute('href', staffUrl);
+        document.getElementById('canonicalUrl').setAttribute('href', thanksUrl);
       }
 
       // 重導向到主頁
-      function redirectToMainPage(staffId) {
-        const mainPageUrl = `../../../index.html#staff-${staffId}`;
+      function redirectToMainPage(thanksId) {
+        const mainPageUrl = `../../../index.html#thanks-${thanksId}`;
         window.location.href = mainPageUrl;
       }
 
@@ -192,27 +185,27 @@
 
       // 主執行函式
       async function init() {
-        const staffId = getStaffId();
+        const thanksId = getThanksId();
 
-        if (!staffId) {
-          showError('無效的工作人員 ID');
+        if (!thanksId) {
+          showError('無效的感謝名單 ID');
           return;
         }
 
         try {
-          // 載入工作人員資料
-          const staff = await loadStaffData(staffId);
+          // 載入感謝名單資料
+          const thanks = await loadThanksData(thanksId);
 
           // 更新 meta 標籤
-          updateMetaTags(staff);
+          updateMetaTags(thanks);
 
           // 等待一小段時間讓爬蟲讀取 meta 標籤
           await new Promise((resolve) => setTimeout(resolve, 100));
 
           // 重導向到主頁
-          redirectToMainPage(staffId);
+          redirectToMainPage(thanksId);
         } catch (error) {
-          showError('無法載入工作人員資料，請確認工作人員 ID 是否正確。');
+          showError('無法載入感謝名單資料，請確認感謝名單 ID 是否正確。');
         }
       }
 
