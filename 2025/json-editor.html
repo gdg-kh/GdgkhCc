@@ -619,19 +619,9 @@
               <label>類型</label>
               <select id="thanks-type">
                 <option value="partner">合作夥伴</option>
-                <option value="company">公司</option>
-                <option value="community">社群</option>
-                <option value="organization">組織</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>感謝等級</label>
-              <select id="thanks-tier">
-                <option value="gold">金級感謝</option>
-                <option value="silver">銀級感謝</option>
-                <option value="bronze">銅級感謝</option>
-                <option value="community">社群支持</option>
+                <option value="company">公司贊助</option>
+                <option value="personal">個人贊助</option>
+                <option value="anonymous">匿名贊助</option>
               </select>
             </div>
 
@@ -1581,15 +1571,27 @@
           };
         } else if (thanksType === 'company') {
           category = {
-            zh: '公司感謝',
-            en: 'Company Thanks',
-            ja: '企業の謝意',
+            zh: '公司贊助',
+            en: 'Company Sponsorship',
+            ja: '企業スポンサー',
+          };
+        } else if (thanksType === 'personal') {
+          category = {
+            zh: '個人贊助',
+            en: 'Personal Sponsorship',
+            ja: '個人スポンサー',
+          };
+        } else if (thanksType === 'anonymous') {
+          category = {
+            zh: '匿名贊助',
+            en: 'Anonymous Sponsor',
+            ja: '匿名スポンサー',
           };
         } else {
           category = {
-            zh: '個人感謝',
-            en: 'Individual Thanks',
-            ja: '個人の謝意',
+            zh: '其他',
+            en: 'Other',
+            ja: 'その他',
           };
         }
 
@@ -1601,7 +1603,6 @@
             ja: document.getElementById('thanks-name-ja').value.trim(),
           },
           type: thanksType,
-          tier: document.getElementById('thanks-tier').value,
           description: {
             zh: document.getElementById('thanks-desc-zh').value.trim(),
             en: document.getElementById('thanks-desc-en').value.trim(),
@@ -1653,7 +1654,7 @@
                     <span class="item-id">${thank.id}</span>
                 </div>
                 <div class="item-name"><strong>${thank.name.zh || thank.name.en}</strong></div>
-                <div style="color: #666; margin: 5px 0;">🏢 ${thank.type} - ${thank.tier}</div>
+                <div style="color: #666; margin: 5px 0;">🏷️ ${thank.category.zh || thank.category.en}</div>
                 <div class="item-actions">
                     <button class="btn btn-secondary" onclick="editThanks(${index})">✏️ 編輯</button>
                     <button class="btn btn-danger" onclick="deleteThanks(${index})">🗑️ 刪除</button>
@@ -1680,8 +1681,7 @@
         document.getElementById('thanks-name-zh').value = thank.name.zh || '';
         document.getElementById('thanks-name-en').value = thank.name.en || '';
         document.getElementById('thanks-name-ja').value = thank.name.ja || '';
-        document.getElementById('thanks-type').value = thank.type || 'company';
-        document.getElementById('thanks-tier').value = thank.tier || 'bronze';
+        document.getElementById('thanks-type').value = thank.type || 'partner';
         document.getElementById('thanks-desc-zh').value = thank.description.zh || '';
         document.getElementById('thanks-desc-en').value = thank.description.en || '';
         document.getElementById('thanks-desc-ja').value = thank.description.ja || '';

@@ -3130,6 +3130,10 @@ html.page-switching {
   color: #f9ab00;
 }
 
+.thanks-type.anonymous {
+  color: #ea4335;
+}
+
 .thanks-title {
   font-size: 18px;
   font-weight: 700;
