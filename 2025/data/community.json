@@ -13,18 +13,9 @@
         "ja": "vLAB Online（台湾ルーティングネットワーク実験センター） は、技術を愛するエンジニアが自発的に設立した技術コミュニティです。初期は Cisco とルーティングネットワーク技術を核として、メンバーの学習と実践を支援するためのオンライン交流および実験環境を提供していました。技術の進化とコミュニティのニーズの変化に伴い、vLAB は討議テーマを徐々に拡大し、サイバーセキュリティ、クラウド、オープンソースツール、AI、デジタルガバナンスなど多様な分野を網羅するようになり、現在は Line グループを中心としたリアルタイム交流プラットフォームへと変貌しました。メンバーは、セキュリティ研究者、ネットワークエンジニア、システムアーキテクト、ITマネージャーなど、様々な業界から集まっており、日々の情報共有と相互扶助の議論を通じて、高い信頼性を持つ知識ネットワークを形成しています。2024年からは「月例ミートアップ計画」を開始し、テーマ講演、読書会、およびソーシャルタイムを組み合わせて、技術的な深みを強化するだけでなく、人脈形成とキャリアの成長を促進しています。vLAB は「共に学び、共に創る」という理念を貫き、急速に変化する技術時代において重要な支点であるとともに、地域社会の技術的自律性とコミュニティのレジリエンスを推進する実験プラットフォームでもあります。"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群",
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 1 Community Participation",
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加",
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第一天 擺攤社群", "第二天 籌備社群"],
+        "en": ["Day 1 Community Participation", "Day 2 Organizing Partners"],
+        "ja": ["1日目 コミュニティへの参加", "2日目 運営パートナー"]
       },
       "logo": "images/community-logo-v_lab_online.png",
       "website": "https://linktr.ee/vLabOnline",
@@ -45,15 +36,9 @@
         "ja": "SITCONは「Students’ Information Technology Conference」の略で、2012年に様々なFLOSSコミュニティの学生たちによって発足しました。すべては「学生による、学生のための、学生のカンファレンスを開く」という、一つのシンプルなアイデアから始まりました。2013年以降、SITCONは毎年開催されるカンファレンスとなり、アジア全域から1,000人以上が参加。プログラミング、サイバーセキュリティ、ゲーム開発、オープンソースコミュニティなど、そのセッションは多岐にわたります。SITCONは、オープンソースの世界への登竜門であり、自作プロジェクトや研究成果を発表する晴れの舞台、そして初心者と熟練開発者が出会い、互いに刺激し合う交差点となることを目指しています。<br><br>SITCON 2026は、2026年3月28日に中央研究院人文社会科学館にて盛大に開催されます。"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群"
-        ],
-        "en": [
-          "Day 1 Community Participation"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加"
-        ]
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-sitcon.png",
       "website": "https://sitcon.org/",
@@ -77,15 +62,9 @@
         "ja": "KaLUG (高雄 Linux ユーザーグループ) のイベントは、主に **Second Space（中央公園駅 3番出口）**で開催されます。開催時間は、毎月第3土曜日の午後です（実際は登壇者の都合により微調整があり、時々オンライン開催もあります）。イベントは時々バイリンガルで行われ、主に Linux とオープンソースに関連するテーマについて、講演と議論を両立させる形式で進行されます。"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群"
-        ],
-        "en": [
-          "Day 1 Community Participation"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加"
-        ]
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-kalug.png",
       "website": "https://kalug.tw/",
@@ -106,15 +85,9 @@
         "ja": "皆様、こんにちは！私たちは高雄を中心として活動しており、南台湾のゲーム開発者を集めて交流することを目的とするコミュニティです。"
       },
       "category": {
-        "zh": [
-          "第二天 參加社群"
-        ],
-        "en": [
-          "Day 2 Community Participation"
-        ],
-        "ja": [
-          "2日目 コミュニティへの参加"
-        ]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-kimu.png",
       "website": "",
@@ -135,15 +108,9 @@
         "ja": "私たちは、高雄を拠点とするWordPress 愛好家のグループです。開発者、デザイナー、コンテンツ制作者、その他様々な WordPress 関連のメンバーが参加しています。このコミュニティを通じて、同じく WordPress に興味を持つ皆様と、私たちのアイデアや経験を共有したいと考えています。この WordPress ミートアップグループは、WordPress を愛するすべての人々の参加を心より歓迎します。"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群"
-        ],
-        "en": [
-          "Day 1 Community Participation"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加"
-        ]
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-kaohsiung_wordpress.png",
       "website": "https://www.meetup.com/kaohsiung-wordpress-meetup/",
@@ -164,15 +131,9 @@
         "ja": "私たちは、ソフトウェア開発を愛する開発者のグループです。主にドメイン駆動設計（Domain-Driven Design, DDD）の普及を推進しており、そのほかにも、アジャイル開発やソフトウェアアーキテクチャ設計、ビジネス組織の変革といった分野も手掛けています。<br>私たちは、様々なコミュニティと協力してソフトウェア開発を推進することを重視しており、台湾のソフトウェア実力が世界で認められることを願っています。"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群"
-        ],
-        "en": [
-          "Day 1 Community Participation"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加"
-        ]
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-ddd_tw.png",
       "website": "https://www.facebook.com/groups/dddesigntw",
@@ -193,15 +154,9 @@
         "ja": "Google のテクノロジーに興味がありますか？大学で一緒にコーディングを楽しみ、クリエイティブなアイデアを刺激し合える仲間を見つけたいですか？<br><br>GDG on Campus (Google Developer Groups on Campus) は、まさに学生のために作られた技術コミュニティです！私たちは技術ワークショップや勉強会を開催し、業界の専門家を招いてAI、クラウド、モバイル、ウェブ開発などの最新トレンドを共有する機会も設けています。<br><br>ここでは、最新技術を学び、プロジェクト経験を積むだけでなく、様々な大学の開発者と交流し、ハッカソンに参加したり、Google Solution Challenge に挑戦したりする、志を同じくする仲間を見つけることができます！"
       },
       "category": {
-        "zh": [
-          "第一天 擺攤社群"
-        ],
-        "en": [
-          "Day 1 Community Participation"
-        ],
-        "ja": [
-          "1日目 コミュニティへの参加"
-        ]
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-gdg_on_camps.png",
       "website": "",
@@ -225,15 +180,9 @@
         "ja": "PyCon Taiwan（パイコン・台湾）は、台湾で毎年開催される Python プログラミング言語の議論と普及を目的としたカンファレンスです。Python を愛する有志によって運営され、Python 技術やその多様な応用に焦点を当てています。Python に興味のある皆さんの参加を歓迎します。知識を共有し、アイデアを交換し、交流を深め、一緒にネットワークを広げていきましょう。"
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "images/community-logo-pycon-tw.jpg",
       "website": "https://tw.pycon.org/",
@@ -257,15 +206,9 @@
         "ja": "ロケットチーム 高雄エンジニア育成キャンプ\n\n台湾・高雄（Kaohsiung）に拠点を置くロケットチームのエンジニア育成キャンプは、深刻化するソフトウェアエンジニア／バックエンドエンジニア／UIデザイナーの人材需要に応えるために設計されています。\n全7カ月の集中プログラムで、受講料は無料。参加者は会場費のみご負担いただきます。\n\nロケットチームは、企業の期待に直結する実務レベルの課題解決力を備えたプロフェッショナルを育成します。\nコーチによる観察と伴走支援のもと、受講生は段階的な目標を設定し、スキルの着実な定着と成長を図ります。\n\nロケットチームに参加することで、実務さながらのプロジェクト経験を積み、職場への早期適応を実現。市場が求める高品質なエンジニアとして、即戦力としての価値を高められます。"
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "images/community-logo-rocket_camp.png",
       "website": "https://www.facebook.com/profile.php?id=100039975056467",
@@ -286,15 +229,9 @@
         "ja": "マプコン最高う！"
       },
       "category": {
-        "zh": [
-          "第二天 參加社群"
-        ],
-        "en": [
-          "Day 2 Community Participation"
-        ],
-        "ja": [
-          "2日目 コミュニティへの参加"
-        ]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-mopcon.jpg",
       "website": "https://mopcon.org/2025/",
@@ -317,15 +254,9 @@
         "ja": "私たちは「匿名ネットワーク」や「インターネットの自由」に関心を持っているグループです。Tor、Tails、OONI といったツールを使用して、一般の人々にインターネットの自由の重要性を呼びかけています！現在、コミュニティメンバーを募集しており、最初の仲間を作ることを目指しています。将来的には、インターネット上で「匿名ネットワーク」の状況を定期的に共有し、更新していきたいと考えています。"
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "",
       "website": "https://anoni.net/",
@@ -346,21 +277,15 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "",
       "website": "",
       "social": {}
     },
-       {
+    {
       "id": "code_for_taiwan",
       "name": {
         "zh": "Code for Taiwan",
@@ -373,21 +298,15 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 參加社群"
-        ],
-        "en": [
-          "Day 2 Community Participation"
-        ],
-        "ja": [
-          "2日目 コミュニティへの参加"
-        ]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "",
       "website": "",
       "social": {}
     },
-      {
+    {
       "id": "uiux_kaohsiung",
       "name": {
         "zh": "UIUX Kaohsiung",
@@ -400,21 +319,15 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "",
       "website": "",
       "social": {}
     },
-       {
+    {
       "id": "iplayground",
       "name": {
         "zh": "iPlayground",
@@ -427,21 +340,15 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 參加社群"
-        ],
-        "en": [
-          "Day 2 Community Participation"
-        ],
-        "ja": [
-          "2日目 コミュニティへの参加"
-        ]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "",
       "website": "",
       "social": {}
     },
-     {
+    {
       "id": "k_net",
       "name": {
         "zh": "K. NET",
@@ -454,21 +361,15 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 籌備社群"
-        ],
-        "en": [
-          "Day 2 Organizing Partners"
-        ],
-        "ja": [
-          "2日目 運営パートナー"
-        ]
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
       },
       "logo": "",
       "website": "",
       "social": {}
     },
-      {
+    {
       "id": "good_idea_studio",
       "name": {
         "zh": "好想工作室",
@@ -481,15 +382,9 @@
         "ja": ""
       },
       "category": {
-        "zh": [
-          "第二天 參加社群"
-        ],
-        "en": [
-          "Day 2 Community Participation"
-        ],
-        "ja": [
-          "2日目 コミュニティへの参加"
-        ]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "",
       "website": "",

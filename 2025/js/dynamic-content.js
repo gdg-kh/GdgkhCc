@@ -521,16 +521,15 @@ class DynamicContentManager {
     const socialLinks = this.createSocialLinks(community.social, shareUrl);
 
     // 創建優化的圖片
-    const imageContainer = community.logo !== '' ? window.imageLoader?.createOptimizedImage(
-      community.logo,
-      `${this.getText(community.name)} Logo`,
-      {
-        className: 'community-image',
-        loading: 'lazy',
-        placeholder: true,
-        onClick: () => window.open(community.website, '_blank'),
-      }
-    ) : null;
+    const imageContainer =
+      community.logo !== ''
+        ? window.imageLoader?.createOptimizedImage(community.logo, `${this.getText(community.name)} Logo`, {
+            className: 'community-image',
+            loading: 'lazy',
+            placeholder: true,
+            onClick: () => window.open(community.website, '_blank'),
+          })
+        : null;
 
     card.innerHTML = `
             <div class="community-info">
