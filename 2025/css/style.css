@@ -3909,7 +3909,6 @@ html.page-switching {
   position: relative;
   overflow: hidden;
   background: var(--md-sys-color-surface-container-low);
-  border-radius: inherit;
 }
 
 /* Placeholder 載入動畫 */
