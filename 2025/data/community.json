@@ -168,6 +168,29 @@
       }
     },
     {
+      "id": "py_ladies_kaohsiung",
+      "name": {
+        "zh": "PyLadies Kaohsiung",
+        "en": "PyLadies Kaohsiung",
+        "ja": "PyLadies Kaohsiung"
+      },
+      "description": {
+        "zh": "PyLadies Kaohsiung 是一個專注於高雄的女性社群，致力於打造一個能安心自信討論的環境，讓女性透過 Python 得到不只技術上的精進還有各種交流的機會，更進一步成為科技領域中成為主動的參與者與領導者，與國際 PyLadies 組織接軌。",
+        "en": "PyLadies Kaohsiung is a women's community focused on Kaohsiung, dedicated to creating a safe and confident environment for discussion. We aim to enable women to achieve not only technical advancement through Python but also various networking opportunities, further empowering them to become active participants and leaders in the tech field, connecting with the international PyLadies organization.",
+        "ja": "PyLadies Kaohsiung は、高雄に焦点を当てた女性コミュニティであり、安心かつ自信を持って議論できる環境を構築することに尽力しています。私たちは、女性が Python を通じて技術的な進歩だけでなく、多様な交流の機会を得られるようにすることを目指しており、さらに一歩進んで、国際的な PyLadies 組織と連携しながら、彼女たちが技術分野において積極的な参加者およびリーダーとなるよう支援します。"
+      },
+      "category": {
+        "zh": ["第一天 擺攤社群"],
+        "en": ["Day 1 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-py_ladies_kaohsiung.png",
+      "website": "https://www.facebook.com/marsw.fb",
+      "social": {
+        "Facebook": "https://www.facebook.com/marsw.fb"
+      }
+    },
+    {
       "id": "pycon",
       "name": {
         "zh": "PyCon Taiwan",
