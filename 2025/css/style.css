@@ -1537,6 +1537,163 @@ main {
   color: var(--md-sys-color-primary);
 }
 
+/* Venue Map */
+.venue-map-container {
+  max-width: 900px;
+  margin: 24px auto 48px auto;
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.venue-map-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.venue-map-wrapper {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 12px;
+  min-height: 400px; /* Prevent layout shift */
+}
+
+.venue-map-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  display: block;
+}
+
+.venue-map-image.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+
+.venue-map-image.slide-out-left {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.venue-map-image.slide-out-right {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.venue-map-image.slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInFromLeft 0.5s ease;
+}
+
+.venue-map-image.slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+  animation: slideInFromRight 0.5s ease;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.venue-map-image:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px) translateX(0);
+}
+
+.venue-map-hint {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Lightbox Modal */
+.venue-map-lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+}
+
+.venue-map-lightbox.active {
+  display: flex;
+}
+
+.venue-map-lightbox img {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .venue-map-container {
+    margin-bottom: 32px;
+    padding: 16px;
+  }
+
+  .venue-map-title {
+    font-size: 20px;
+  }
+
+  .venue-map-hint {
+    font-size: 13px;
+  }
+}
+
 /* Schedule Content */
 .schedule-content {
   display: none;

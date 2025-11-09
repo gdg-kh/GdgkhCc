@@ -27,6 +27,8 @@ const translations = {
     day2_time: '🕚 11:00 ~ 17:00',
     cta_button: '報名參加',
     schedule_title: '議程時間表',
+    venue_map_title: '場地地圖',
+    venue_map_click_hint: '點擊查看大圖',
     schedule_intro:
       '今年 GDG Kaohsiung 和開發者 Buffet 一起在高雄舉辦軟體社群年會，英文名稱為「DevFest Kaohsiung X S. TW Communities Gathering 2025」，中文名稱為「DevFest 高雄場 X 南臺灣技術社群大聚 2025」。<br><br>讓我們帶你快速的捕捉這場活動的重點',
     schedule_day1: '11/22 (星期六)',
@@ -192,6 +194,8 @@ const translations = {
     day2_time: '🕚 11:00 ~ 17:00',
     cta_button: 'Register Now',
     schedule_title: 'Schedule',
+    venue_map_title: 'Venue Map',
+    venue_map_click_hint: 'Click to view larger image',
     schedule_intro:
       'This year, GDG Kaohsiung and Developer Buffet are co-hosting the software community annual conference in Kaohsiung, officially named "DevFest Kaohsiung X S. TW Communities Gathering 2025".<br><br>Let us help you quickly capture the highlights of this event',
     schedule_day1: 'Nov 22 (Saturday)',
@@ -361,6 +365,8 @@ const translations = {
     day2_time: '🕚 11:00 ~ 17:00',
     cta_button: '参加申込',
     schedule_title: 'スケジュール',
+    venue_map_title: '会場マップ',
+    venue_map_click_hint: 'クリックして拡大',
     schedule_intro:
       '今年、GDG KaohsiungとDeveloper Buffetが共同で高雄でソフトウェアコミュニティ年次大会を開催します。英語名称は「DevFest Kaohsiung X S. TW Communities Gathering 2025」、中国語名称は「DevFest 高雄場 X 南臺灣技術社群大聚 2025」です。<br><br>このイベントのハイライトを素早くお届けします',
     schedule_day1: '11月22日（土曜日）',
@@ -583,21 +589,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const tabButtons = document.querySelectorAll('.tab-button');
   const scheduleContents = document.querySelectorAll('.schedule-content');
+  const venueMapImages = document.querySelectorAll('.venue-map-image');
+
+  let currentDay = 'day1'; // Track current active day
 
   tabButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      const day = button.dataset.day;
+      const newDay = button.dataset.day;
 
+      // Skip if clicking the same tab
+      if (newDay === currentDay) return;
+
+      // Determine slide direction
+      const slideDirection =
+        newDay === 'day2' && currentDay === 'day1' ? 'left' : 'right';
+
+      // Update tabs
       tabButtons.forEach((btn) => btn.classList.remove('active'));
       button.classList.add('active');
 
+      // Update schedule content
       scheduleContents.forEach((content) => {
-        if (content.id === day) {
+        if (content.id === newDay) {
           content.classList.add('active');
         } else {
           content.classList.remove('active');
         }
       });
+
+      // Update venue map with slide animation
+      venueMapImages.forEach((img) => {
+        if (img.dataset.day === newDay) {
+          // New image slides in
+          img.classList.remove('slide-out-left', 'slide-out-right');
+          img.classList.add(
+            'active',
+            slideDirection === 'left' ? 'slide-in-right' : 'slide-in-left',
+          );
+
+          // Update wrapper height for new image
+          const wrapper = document.querySelector('.venue-map-wrapper');
+          if (wrapper && img.complete) {
+            setTimeout(() => {
+              wrapper.style.minHeight = `${img.offsetHeight}px`;
+            }, 50); // Small delay to ensure image is active
+          }
+
+          // Remove animation classes after animation completes
+          setTimeout(() => {
+            img.classList.remove('slide-in-left', 'slide-in-right');
+          }, 500);
+        } else if (img.dataset.day === currentDay) {
+          // Current image slides out
+          img.classList.remove('active');
+          img.classList.add(
+            slideDirection === 'left' ? 'slide-out-left' : 'slide-out-right',
+          );
+        }
+      });
+
+      currentDay = newDay;
     });
   });
 
@@ -1345,6 +1396,71 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       crackContainer.remove();
     }, 1000);
+  }
+
+  // --- Venue Map Height Management ---
+  const venueMapWrapper = document.querySelector('.venue-map-wrapper');
+  const venueMapImagesAll = document.querySelectorAll('.venue-map-image');
+
+  // Set wrapper height based on loaded images to prevent layout shift
+  if (venueMapWrapper && venueMapImagesAll.length > 0) {
+    const updateWrapperHeight = () => {
+      const activeImg = document.querySelector('.venue-map-image.active');
+      if (activeImg && activeImg.complete) {
+        venueMapWrapper.style.minHeight = `${activeImg.offsetHeight}px`;
+      }
+    };
+
+    // Update height when images load
+    venueMapImagesAll.forEach((img) => {
+      if (img.complete) {
+        updateWrapperHeight();
+      } else {
+        img.addEventListener('load', updateWrapperHeight);
+      }
+    });
+
+    // Update height on window resize
+    window.addEventListener('resize', updateWrapperHeight);
+  }
+
+  // --- Venue Map Lightbox Functionality ---
+  const venueMapImagesForLightbox = document.querySelectorAll('.venue-map-image');
+  if (venueMapImagesForLightbox.length > 0) {
+    // Create lightbox container
+    const lightbox = document.createElement('div');
+    lightbox.className = 'venue-map-lightbox';
+    const lightboxImg = document.createElement('img');
+    lightboxImg.alt = 'DevFest Kaohsiung 2025 Venue Map';
+    lightbox.appendChild(lightboxImg);
+    document.body.appendChild(lightbox);
+
+    // Open lightbox when clicking a map image
+    venueMapImagesForLightbox.forEach((img) => {
+      img.addEventListener('click', () => {
+        // Find the currently active map image
+        const activeMap = document.querySelector('.venue-map-image.active');
+        if (activeMap) {
+          lightboxImg.src = activeMap.src;
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+      });
+    });
+
+    // Close lightbox when clicking the background
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close lightbox when pressing ESC key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+    });
   }
 
   // 初始化玻璃裂開效果
