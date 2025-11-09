@@ -601,8 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (newDay === currentDay) return;
 
       // Determine slide direction
-      const slideDirection =
-        newDay === 'day2' && currentDay === 'day1' ? 'left' : 'right';
+      const slideDirection = newDay === 'day2' && currentDay === 'day1' ? 'left' : 'right';
 
       // Update tabs
       tabButtons.forEach((btn) => btn.classList.remove('active'));
@@ -622,10 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (img.dataset.day === newDay) {
           // New image slides in
           img.classList.remove('slide-out-left', 'slide-out-right');
-          img.classList.add(
-            'active',
-            slideDirection === 'left' ? 'slide-in-right' : 'slide-in-left',
-          );
+          img.classList.add('active', slideDirection === 'left' ? 'slide-in-right' : 'slide-in-left');
 
           // Update wrapper height for new image
           const wrapper = document.querySelector('.venue-map-wrapper');
@@ -642,9 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (img.dataset.day === currentDay) {
           // Current image slides out
           img.classList.remove('active');
-          img.classList.add(
-            slideDirection === 'left' ? 'slide-out-left' : 'slide-out-right',
-          );
+          img.classList.add(slideDirection === 'left' ? 'slide-out-left' : 'slide-out-right');
         }
       });
 
