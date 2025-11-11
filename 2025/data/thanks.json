@@ -195,6 +195,100 @@
         "Homepage": "https://cdckh.kktix.cc/",
         "Line": "https://reurl.cc/3MvZMR"
       }
+    },
+    {
+      "id": "cmj",
+      "name": {
+        "zh": "CMJ",
+        "en": "CMJ",
+        "ja": "CMJ"
+      },
+      "type": "personal",
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": "個人贊助",
+        "en": "Personal Sponsorship",
+        "ja": "個人スポンサー"
+      },
+      "logo": "images/sponsor-logo-cmj.png",
+      "website": "",
+      "social": {}
+    },
+    {
+      "id": "min_jiun",
+      "name": {
+        "zh": "脆瓜",
+        "en": "脆瓜",
+        "ja": "脆瓜"
+      },
+      "type": "personal",
+      "description": {
+        "zh": "我是第一次參加的麻瓜>< <br>希望有機會認識大家！",
+        "en": "I'm a first-time attendee and a Muggle! >< <br>Hope to have a chance to meet everyone!",
+        "ja": "初めて参加するマグルです！ >< <br>皆さんと知り合える機会があれば嬉しいです！"
+      },
+      "category": {
+        "zh": "個人贊助",
+        "en": "Personal Sponsorship",
+        "ja": "個人スポンサー"
+      },
+      "logo": "images/sponsor-logo-min_jiun.png",
+      "website": "",
+      "social": {
+        "Linkedin": "https://www.linkedin.com/in/min-jiun-tsai-8396aa13b"
+      }
+    },
+    {
+      "id": "gobby",
+      "name": {
+        "zh": "Gobby",
+        "en": "Gobby",
+        "ja": "Gobby"
+      },
+      "type": "personal",
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": "個人贊助",
+        "en": "Personal Sponsorship",
+        "ja": "個人スポンサー"
+      },
+      "logo": "images/sponsor-logo-gobby_chen.png",
+      "website": "",
+      "social": {
+        "Linkedin": "https://www.linkedin.com/in/gobby-chen-helloworld/"
+      }
+    },
+    {
+      "id": "lays",
+      "name": {
+        "zh": "Lays",
+        "en": "Lays",
+        "ja": "Lays"
+      },
+      "type": "personal",
+      "description": {
+        "zh": "熱愛動手玩各種有趣的技術，曾有多年全端開發經驗，現在專注在後端架構設計與 DevOps，也在學習 AI，期待將技術應用在更多可能性中。",
+        "en": "Passionate about hands-on experimentation with various interesting technologies. Has multiple years of experience in Full-Stack development, now focusing on Backend Architecture Design and DevOps. Also learning AI, with the expectation of applying technology to a wider range of possibilities.",
+        "ja": "様々な面白い技術に触れることが好きな、熱心な実践家です。過去に長年のフルスタック開発経験があり、現在はバックエンドのアーキテクチャ設計と DevOps に注力し、AI も学んでいます。技術をさらに多くの可能性に応用することを目指しています。"
+      },
+      "category": {
+        "zh": "個人贊助",
+        "en": "Personal Sponsorship",
+        "ja": "個人スポンサー"
+      },
+      "logo": "images/staff-lays.png",
+      "website": "",
+      "social": {
+        "Linkedin": "https://www.linkedin.com/in/laysdragon"
+      }
     }
   ]
 }
