@@ -306,8 +306,11 @@
         "ja": ["2日目 運営パートナー"]
       },
       "logo": "images/community-logo-default.png",
-      "website": "",
-      "social": {}
+      "website": "https://cdckh.kktix.cc",
+      "social": {
+        "CDC KKTIX": "https://cdckh.kktix.cc/",
+        "CDC 活動資訊賴群（加入密碼：0413）": "https://reurl.cc/3MvZMR"
+      }
     },
     {
       "id": "code_for_taiwan",

@@ -172,7 +172,7 @@
       }
     },
     {
-      "id": "cdc_kh",
+      "id": "cathayholdings",
       "name": {
         "zh": "國泰金控",
         "en": "國泰金控",
@@ -189,11 +189,12 @@
         "en": "Company Sponsorship",
         "ja": "企業スポンサー"
       },
-      "logo": "images/sponsor-logo-cdc.png",
-      "website": "https://cdckh.kktix.cc/",
+      "logo": "images/sponsor-logo-cathayholdings.png",
+      "website": "https://www.cathayholdings.com/holdings/",
       "social": {
-        "Homepage": "https://cdckh.kktix.cc/",
-        "Line": "https://reurl.cc/3MvZMR"
+        "Homepage": "https://www.cathayholdings.com/holdings/",
+        "CDC KKTIX": "https://cdckh.kktix.cc/",
+        "CDC 活動資訊賴群（加入密碼：0413）": "https://reurl.cc/3MvZMR"
       }
     },
     {
