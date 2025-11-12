@@ -75,14 +75,14 @@
     {
       "id": "kimu",
       "name": {
-        "zh": "KIMU - 高雄獨立遊戲開發者聚會",
-        "en": "KIMU - Kaohsiung Indies Meet Up",
-        "ja": "KIMU - 高雄インディーゲーム開発者ミートアップ"
+        "zh": "KIMU 高雄獨立遊戲開發者聚會",
+        "en": "KIMU Kaohsiung Indies Meet Up",
+        "ja": "KIMU 高雄インディーゲーム開発者ミートアップ"
       },
       "description": {
-        "zh": "大家好，我們是以高雄為中心，想要聚集南部的遊戲開發者們交流的社群。",
-        "en": "Hello everyone! We are a community centered in Kaohsiung, aiming to gather game developers from Southern Taiwan for networking and exchange.",
-        "ja": "皆様、こんにちは！私たちは高雄を中心として活動しており、南台湾のゲーム開発者を集めて交流することを目的とするコミュニティです。"
+        "zh": "KIMU 高雄獨立遊戲開發者聚會為 IGDA Taiwan 所屬 SIG（Special Interesting Group)，以高雄為據點在南台灣推動獨立遊戲開發交流活動的非營利組織，我們長期舉辦工作坊、Game Jam 以及分享會，不管您是業界、教育界、學生或遊戲愛好者，只要您對獨立遊戲開發感興趣，都歡迎您來參加。",
+        "en": "KIMU Kaohsiung Indie Game Developers Meetup is a SIG (Special Interest Group) affiliated with IGDA Taiwan. We are a non-profit organization based in Kaohsiung dedicated to promoting indie game development networking and activities in Southern Taiwan. We regularly organize workshops, Game Jams, and sharing sessions. Whether you are from the industry, education, a student, or a game enthusiast, if you are interested in indie game development, you are welcome to join us.",
+        "ja": "KIMU 高雄インディーゲーム開発者ミートアップは、IGDA Taiwan に所属する SIG（Special Interest Group）であり、高雄を拠点に南台湾でインディーゲーム開発の交流活動を推進する非営利団体です。私たちは、定期的にワークショップ、ゲームジャム、共有会を開催しています。業界、教育関係者、学生、ゲーム愛好家など、インディーゲーム開発に興味のある方ならどなたでもご参加を歓迎します。"
       },
       "category": {
         "zh": ["第一天 擺攤社群", "第二天 參加社群"],
