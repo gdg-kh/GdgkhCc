@@ -8,6 +8,22 @@ const mysteryCode = 'G8EWCMDCCH'.split('').reverse().join('');
    解開後可以獲得第一日免費票 3（官網解謎活動）的邀請碼
 */
 
+// 🕵️ 線索9：打開瀏覽器的開發者工具 Console，也許會有驚喜...
+// 第一日免費票 9（官網解謎活動）的線索就藏在這裡
+console.warn(
+  '%c🎁 DevFest 2025 解謎活動 - 線索 9',
+  'color: #4285f4; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);',
+);
+console.warn(
+  '%c恭喜你找到了第九個線索！',
+  'color: #34a853; font-size: 16px; font-weight: bold;',
+);
+console.warn('%c邀請碼: DPPJ7NFNRB', 'color: #ea4335; font-size: 18px; font-weight: bold;');
+console.warn(
+  '%c前往報名：https://gdg-kaohsiung.kktix.cc/events/devfest2025',
+  'color: #fbbc04; font-size: 14px;',
+);
+
 const translations = {
   'zh-Hant': {
     nav_home: '首頁',
@@ -1460,3 +1476,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化玻璃裂開效果
   initGlassCrackEffect();
 });
+
+// 🎁 線索6：仔細看這個函式的名稱，也許有玄機...
+// 提示：將函式名稱轉換一下，就能得到第一日免費票 6（官網解謎活動）的邀請碼
+// https://gdg-kaohsiung.kktix.cc/events/devfest2025
+function decodeTreasure_NYWYGXATK6() {
+  // 這個函式不會被呼叫，純粹是為了解謎活動
+  // 邀請碼就藏在函式名稱中：去掉 "decodeTreasure_" 前綴
+  return {
+    clue: 6,
+    code: 'NYWYGXATK6',
+    message: '恭喜你找到了第六個線索！函式名稱中的密碼就是答案！',
+    url: 'https://gdg-kaohsiung.kktix.cc/events/devfest2025',
+  };
+}
+
+// 如果你想驗證，可以在 Console 輸入：decodeTreasure_NYWYGXATK6()
+// 記得打開開發者工具試試看！

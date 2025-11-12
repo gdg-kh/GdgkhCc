@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <!-- 🎨 線索7：在 SVG 中尋找隱藏的文字！用開發者工具查看這個檔案 -->
+    <!-- 提示：第一日免費票 7（官網解謎活動）邀請碼：DNHD93W93A -->
+    <!-- 網址：https://gdg-kaohsiung.kktix.cc/events/devfest2025 -->
     <circle cx="50" cy="50" r="50" fill="#4285f4"/>
     <text x="50" y="68" font-size="50" fill="white" text-anchor="middle" font-family="Roboto, sans-serif">D</text>
+    <!-- 聰明的你一定找到了！這個邀請碼就藏在 SVG 註解中 -->
 </svg>

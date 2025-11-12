@@ -4041,6 +4041,23 @@ html.page-switching {
   /* 這個選擇器不會被任何HTML元素使用，純粹是為了解謎活動 */
 }
 
+/* 🎬 線索8：動畫名稱也能藏秘密！仔細看這個 keyframe 的名稱...https://gdg-kaohsiung.kktix.cc/events/devfest2025 */
+@keyframes treasure-G6JD49WWEY {
+  /* 第一日免費票 8（官網解謎活動）邀請碼就藏在這個動畫名稱中！ */
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 這個動畫沒有被使用，純粹是為了解謎活動 */
+.hidden-treasure-animation {
+  animation: treasure-G6JD49WWEY 1s ease-in-out;
+  /* 提示：邀請碼在 keyframe 名稱中，去掉 "treasure-" 前綴就是答案！ */
+}
+
 /* 彩蛋：如果有人真的想看到這個內容... */
 .reveal-secret:hover .treasure-hunt-clue-2::before {
   display: block;

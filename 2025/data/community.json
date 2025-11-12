@@ -85,9 +85,9 @@
         "ja": "皆様、こんにちは！私たちは高雄を中心として活動しており、南台湾のゲーム開発者を集めて交流することを目的とするコミュニティです。"
       },
       "category": {
-        "zh": ["第二天 參加社群"],
-        "en": ["Day 2 Community Participation"],
-        "ja": ["2日目 コミュニティへの参加"]
+        "zh": ["第一天 擺攤社群", "第二天 參加社群"],
+        "en": ["Day 1 Community Participation", "Day 2 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加", "2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-kimu.png",
       "website": "",
