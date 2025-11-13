@@ -175,9 +175,9 @@
         "ja": "PyLadies Kaohsiung"
       },
       "description": {
-        "zh": "PyLadies Kaohsiung 是一個專注於高雄的女性社群，致力於打造一個能安心自信討論的環境，讓女性透過 Python 得到不只技術上的精進還有各種交流的機會，更進一步成為科技領域中成為主動的參與者與領導者，與國際 PyLadies 組織接軌。",
-        "en": "PyLadies Kaohsiung is a women's community focused on Kaohsiung, dedicated to creating a safe and confident environment for discussion. We aim to enable women to achieve not only technical advancement through Python but also various networking opportunities, further empowering them to become active participants and leaders in the tech field, connecting with the international PyLadies organization.",
-        "ja": "PyLadies Kaohsiung は、高雄に焦点を当てた女性コミュニティであり、安心かつ自信を持って議論できる環境を構築することに尽力しています。私たちは、女性が Python を通じて技術的な進歩だけでなく、多様な交流の機会を得られるようにすることを目指しており、さらに一歩進んで、国際的な PyLadies 組織と連携しながら、彼女たちが技術分野において積極的な参加者およびリーダーとなるよう支援します。"
+        "zh": "PyLadies Kaohsiung 是 PyLadies 國際組織的一員，以高雄為基地推動女性技術社群的發展， 致力於打造讓女性能安心、自信地學習、交流與成長的環境。我們舉辦各種工作坊、經驗分享等交流活動，讓大家能透過 Python 提升技術、拓展人脈與視野， 進而在科技領域中成為主動的參與者與領導者。同時也積極與在地及全台社群建立連結、相互支持，讓整體技術社群更加茁壯。",
+        "en": "PyLadies Kaohsiung is a local chapter of the global PyLadies organization, based in Kaohsiung. We are dedicated to fostering the growth of the women-in-tech community by creating a safe and encouraging environment where women can learn, connect, and grow with confidence. Through Python workshops, experience sharing, and networking events, we empower participants to enhance their technical skills, expand their networks and perspectives, and become active contributors and leaders in the tech community.",
+        "ja": "PyLadies Kaohsiung（パイレディース高雄）は、国際的な PyLadies 組織の一員として、高雄を拠点に女性のための技術コミュニティの発展を推進しています。女性が安心して自信を持って学び、交流し、成長できる環境づくりに力を入れています。ワークショップや経験共有などの交流イベントを通じて、Python をきっかけに技術力を高め、人脈や視野を広げ、テクノロジー分野で主体的に活躍できる人材を育成しています。"
       },
       "category": {
         "zh": ["第一天 擺攤社群", "第二天 參加社群"],
@@ -185,9 +185,9 @@
         "ja": ["1日目 コミュニティへの参加", "2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-py_ladies_kaohsiung.png",
-      "website": "https://pyladies-kaohsiung.github.io",
+      "website": "https://kaohsiung.pyladies.com/",
       "social": {
-        "Homepage": "https://pyladies-kaohsiung.github.io/",
+        "Homepage": "https://kaohsiung.pyladies.com/",
         "Facebook": "https://www.facebook.com/pyladies.kaohsiung/"
       }
     },
