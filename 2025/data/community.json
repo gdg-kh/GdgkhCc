@@ -36,17 +36,17 @@
         "ja": "SITCONは「Students’ Information Technology Conference」の略で、2012年に様々なFLOSSコミュニティの学生たちによって発足しました。すべては「学生による、学生のための、学生のカンファレンスを開く」という、一つのシンプルなアイデアから始まりました。2013年以降、SITCONは毎年開催されるカンファレンスとなり、アジア全域から1,000人以上が参加。プログラミング、サイバーセキュリティ、ゲーム開発、オープンソースコミュニティなど、そのセッションは多岐にわたります。SITCONは、オープンソースの世界への登竜門であり、自作プロジェクトや研究成果を発表する晴れの舞台、そして初心者と熟練開発者が出会い、互いに刺激し合う交差点となることを目指しています。<br><br>SITCON 2026は、2026年3月28日に中央研究院人文社会科学館にて盛大に開催されます。"
       },
       "category": {
-        "zh": ["第一天 擺攤社群"],
-        "en": ["Day 1 Community Participation"],
-        "ja": ["1日目 コミュニティへの参加"]
+        "zh": ["第一天 擺攤社群", "第二天 參加社群"],
+        "en": ["Day 1 Community Participation", "Day 2 Community Participation"],
+        "ja": ["1日目 コミュニティへの参加", "2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-sitcon.png",
       "website": "https://sitcon.org/",
       "social": {
         "Homepage": "https://sitcon.org/",
-        "Telegram": "https://sitcon.org/tg",
+        "Facebook": "https://sitcon.org/fb",
         "Instagram": "https://sitcon.org/ig",
-        "Facebook": "https://sitcon.org/fb"
+        "Telegram": "https://sitcon.org/tg"
       }
     },
     {
@@ -192,6 +192,97 @@
       }
     },
     {
+      "id": "rocket_camp",
+      "name": {
+        "zh": "火箭隊",
+        "en": "Rocket Coding Camp",
+        "ja": "Rocket Coding Camp"
+      },
+      "description": {
+        "zh": "火箭隊位於高雄的工程師培訓營，針對市場急需的軟體工程師、後端工程師與 UI 設計師職缺而設。為期七個月的免費課程， 學員全程參與，僅需支付場地費。\n\n火箭隊培育具備問題解決能力的專業人才，滿足企業需求。透過教練的觀察與協助，學員將建立階段性目標，確保技能成長。加入火箭隊，您將獲得實戰經驗，迅速融入職場，並滿足市場對高品質工程師的渴求。",
+        "en": "Rocket Team Engineer Training Program — Kaohsiung\n\nThe Rocket Team Training Camp in Kaohsiung is designed to address the growing market demand for software engineers, backend developers, and UI designers.\nThis seven-month intensive program is tuition-free, with participants only responsible for venue costs.\n\nAt Rocket Team, we cultivate professionals who possess real-world problem-solving skills and the ability to deliver practical engineering solutions that align with industry needs.\nThrough coach-guided mentorship and goal-oriented learning, participants establish clear development milestones to ensure continuous skill growth.\n\nBy joining Rocket Team, you’ll gain hands-on project experience, adapt quickly to workplace environments, and meet the industry’s increasing demand for high-quality software engineers.\n\n⸻\n\nWould you like me to make it sound more marketing-oriented (for web/landing page) or more formal (for government or corporate proposal)? I can fine-tune the tone accordingly.",
+        "ja": "ロケットチーム 高雄エンジニア育成キャンプ\n\n台湾・高雄（Kaohsiung）に拠点を置くロケットチームのエンジニア育成キャンプは、深刻化するソフトウェアエンジニア／バックエンドエンジニア／UIデザイナーの人材需要に応えるために設計されています。\n全7カ月の集中プログラムで、受講料は無料。参加者は会場費のみご負担いただきます。\n\nロケットチームは、企業の期待に直結する実務レベルの課題解決力を備えたプロフェッショナルを育成します。\nコーチによる観察と伴走支援のもと、受講生は段階的な目標を設定し、スキルの着実な定着と成長を図ります。\n\nロケットチームに参加することで、実務さながらのプロジェクト経験を積み、職場への早期適応を実現。市場が求める高品質なエンジニアとして、即戦力としての価値を高められます。"
+      },
+      "category": {
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
+      },
+      "logo": "images/community-logo-rocket_camp.png",
+      "website": "https://www.facebook.com/profile.php?id=100039975056467",
+      "social": {
+        "Facebook": "FB：https://www.facebook.com/profile.php?id=100039975056467"
+      }
+    },
+    {
+      "id": "cathay_cdc",
+      "name": {
+        "zh": "國泰 CDC 小聚",
+        "en": "國泰 CDC 小聚",
+        "ja": "國泰 CDC 小聚"
+      },
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
+      },
+      "logo": "images/community-logo-default.png",
+      "website": "https://cdckh.kktix.cc",
+      "social": {
+        "CDC KKTIX": "https://cdckh.kktix.cc/",
+        "CDC 活動資訊賴群（加入密碼：0413）": "https://reurl.cc/3MvZMR"
+      }
+    },
+    {
+      "id": "anoni_net",
+      "name": {
+        "zh": "匿名網路社群 anoni.net",
+        "en": "Anonymity Networks Community anoni.net",
+        "ja": "あのにネット anoni.net"
+      },
+      "description": {
+        "zh": "我們是關注「匿名網路」、「網路自由」的一群人，透過 Tor、Tails、OONI 工具喚起一般大眾網路自由的重要性！目前正在招募社群成員，建立第一批的社群夥伴，希望未來可以固定在網路上分享、更新「匿名網路」狀況。專案的一開始我們僅關注在 OONI 專案，透過調查臺灣 ASNs 在 OONI 資料庫中觀測資料的完整性、是否可以反應臺灣目前網路狀況。後續在持續推廣 OONI 的時候發現臺灣的網路相對自由很多，很多國際上的議題在臺灣比較少發生，因此對於網路監控、網路干預...等議題，在臺灣比較不好找到實際案例協助推廣，因此我們決定改變推廣方式與我們所扮演的角色，專注在隱私權相關議題，定位在「匿名網路」的議題上推動、在匿名網路服務上建立！",
+        "en": "We are a group focused on \"Anonymous Networks\" and \"Internet Freedom,\" aiming to raise public awareness about the importance of internet freedom through tools like Tor, Tails, and OONI. We are currently recruiting community members to establish our initial group of partners, with hopes to regularly share and update on the status of \"Anonymous Networks\" online. At the start of our project, we concentrated solely on the OONI project, by examining the completeness of observational data for Taiwanese ASNs in the OONI database and whether it reflects Taiwan's current internet status. As we continued to promote OONI, we found that Taiwan enjoys relatively more internet freedom, with fewer occurrences of international issues. Consequently, it is challenging to find real-life cases related to internet monitoring or interference in Taiwan to support promotion efforts. Therefore, we decided to shift our focus and role, concentrating on privacy-related issues and promoting and establishing anonymous network services with a focus on \"Anonymous Networks.\"",
+        "ja": "私たちは「匿名ネットワーク」や「インターネットの自由」に関心を持っているグループです。Tor、Tails、OONI といったツールを使用して、一般の人々にインターネットの自由の重要性を呼びかけています！現在、コミュニティメンバーを募集しており、最初の仲間を作ることを目指しています。将来的には、インターネット上で「匿名ネットワーク」の状況を定期的に共有し、更新していきたいと考えています。"
+      },
+      "category": {
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
+      },
+      "logo": "images/community-logo-default.png",
+      "website": "https://anoni.net/",
+      "social": {
+        "Homepage": "https://anoni.net/"
+      }
+    },
+    {
+      "id": "uiux_kaohsiung",
+      "name": {
+        "zh": "UIUX Kaohsiung",
+        "en": "UIUX Kaohsiung",
+        "ja": "UIUX Kaohsiung"
+      },
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": ["第二天 籌備社群"],
+        "en": ["Day 2 Organizing Partners"],
+        "ja": ["2日目 運営パートナー"]
+      },
+      "logo": "images/community-logo-default.png",
+      "website": "",
+      "social": {}
+    },
+    {
       "id": "pycon",
       "name": {
         "zh": "PyCon Taiwan",
@@ -218,26 +309,50 @@
       }
     },
     {
-      "id": "rocket_camp",
+      "id": "k_net",
       "name": {
-        "zh": "火箭隊",
-        "en": "Rocket Coding Camp",
-        "ja": "Rocket Coding Camp"
+        "zh": "K. NET",
+        "en": "K. NET",
+        "ja": "K. NET"
       },
       "description": {
-        "zh": "火箭隊位於高雄的工程師培訓營，針對市場急需的軟體工程師、後端工程師與 UI 設計師職缺而設。為期七個月的免費課程， 學員全程參與，僅需支付場地費。\n\n火箭隊培育具備問題解決能力的專業人才，滿足企業需求。透過教練的觀察與協助，學員將建立階段性目標，確保技能成長。加入火箭隊，您將獲得實戰經驗，迅速融入職場，並滿足市場對高品質工程師的渴求。",
-        "en": "Rocket Team Engineer Training Program — Kaohsiung\n\nThe Rocket Team Training Camp in Kaohsiung is designed to address the growing market demand for software engineers, backend developers, and UI designers.\nThis seven-month intensive program is tuition-free, with participants only responsible for venue costs.\n\nAt Rocket Team, we cultivate professionals who possess real-world problem-solving skills and the ability to deliver practical engineering solutions that align with industry needs.\nThrough coach-guided mentorship and goal-oriented learning, participants establish clear development milestones to ensure continuous skill growth.\n\nBy joining Rocket Team, you’ll gain hands-on project experience, adapt quickly to workplace environments, and meet the industry’s increasing demand for high-quality software engineers.\n\n⸻\n\nWould you like me to make it sound more marketing-oriented (for web/landing page) or more formal (for government or corporate proposal)? I can fine-tune the tone accordingly.",
-        "ja": "ロケットチーム 高雄エンジニア育成キャンプ\n\n台湾・高雄（Kaohsiung）に拠点を置くロケットチームのエンジニア育成キャンプは、深刻化するソフトウェアエンジニア／バックエンドエンジニア／UIデザイナーの人材需要に応えるために設計されています。\n全7カ月の集中プログラムで、受講料は無料。参加者は会場費のみご負担いただきます。\n\nロケットチームは、企業の期待に直結する実務レベルの課題解決力を備えたプロフェッショナルを育成します。\nコーチによる観察と伴走支援のもと、受講生は段階的な目標を設定し、スキルの着実な定着と成長を図ります。\n\nロケットチームに参加することで、実務さながらのプロジェクト経験を積み、職場への早期適応を実現。市場が求める高品質なエンジニアとして、即戦力としての価値を高められます。"
+        "zh": "從高雄發芽dot NET技術社群，聚焦推廣Microsoft 相關技術，隨著潮流的變化，任何的議題交流我們都非常的歡迎，不論是 Microsofot 或非Microsoft ，每週一晚上7-9點於星巴克聚會(裕誠路-台銀隔壁)，有空可以來坐坐認識新朋友",
+        "en": "Originating in Kaohsiung, the dot.NET technology community focuses on promoting Microsoft-related technologies. We welcome discussions on any topic, whether related to Microsoft or non-Microsoft. We meet every Monday evening from 7-9 PM at Starbucks (Yucheng Road, next to the Bank of Taiwan). Feel free to come and meet new friends!",
+        "ja": "高雄発祥のdot.NETテクノロジーコミュニティは、Microsoft関連テクノロジーの普及に重点を置いています。Microsoft関連、非Microsoft関連を問わず、あらゆるトピックでの議論を歓迎します。毎週月曜日の午後7時から9時まで、スターバックス（豫城路、台湾銀行隣）で会合を開いています。ぜひお気軽にお越しいただき、新しい仲間を見つけてください！"
       },
       "category": {
         "zh": ["第二天 籌備社群"],
         "en": ["Day 2 Organizing Partners"],
         "ja": ["2日目 運営パートナー"]
       },
-      "logo": "images/community-logo-rocket_camp.png",
-      "website": "https://www.facebook.com/profile.php?id=100039975056467",
+      "logo": "images/community-logo-knet.jpg",
+      "website": "https://www.facebook.com/k.net.io",
       "social": {
-        "Facebook": "FB：https://www.facebook.com/profile.php?id=100039975056467"
+        "Facebook": "https://www.facebook.com/k.net.io"
+      }
+    },
+    {
+      "id": "code_for_taiwan",
+      "name": {
+        "zh": "Code for Taiwan",
+        "en": "Code for Taiwan",
+        "ja": "Code for Taiwan"
+      },
+      "description": {
+        "zh": "我們是 Code for Taiwan，致力於普及程式思維，讓台灣的每個人都能擁有用程式思考和解決問題的能力。\n\n在這個 AI 盛行、no-code 和 low-code 工具快速發展的時代。雖然更多人能快速做出一些東西，但卻不清楚自己真正在開發什麼。我們希望改變這個現象，讓大家在投入程式開發時，能夠具備相應的思維邏輯，而不只是像玩角子老虎機一樣碰運氣。\n\n不管你是剛開始的小白工程師、PM 還是設計師，或是來自非城市地區、渴望掌握科技力量的夥伴，都能在這裡找到同伴，一起學習成長，讓科技不再是城市的專利。\n\n如同我們的名字 Code for Taiwan，我們的願景是讓台灣的每個人都能寫出好的 Code！",
+        "en": "We are Code for Taiwan, dedicated to popularizing programming thinking so that everyone in Taiwan can possess the ability to think and solve problems through code.\nIn this era where AI is prevalent and no-code and low-code tools are rapidly developing, while more people can quickly create things, they often don't clearly understand what they're actually developing. We hope to change this phenomenon, enabling everyone to possess the corresponding logical thinking when engaging in programming development, rather than just relying on luck like playing a slot machine.\nWhether you're a novice engineer just starting out, a PM, a designer, or a partner from non-urban areas eager to master the power of technology, you can find companions here to learn and grow together, ensuring that technology is no longer exclusive to cities.\nAs our name suggests, Code for Taiwan, our vision is to enable everyone in Taiwan to write good code!",
+        "ja": "私たちはCode for Taiwanです。プログラミング思考の普及に取り組み、台湾のすべての人がプログラムで考え、問題を解決する能力を持てるようにすることを目指しています。\nAIが盛んで、no-codeやlow-codeツールが急速に発展しているこの時代において、より多くの人が素早く何かを作れるようになりましたが、自分が本当に何を開発しているのか分からないことがあります。私たちはこの現象を変え、プログラム開発に取り組む際に、スロットマシンのように運任せにするのではなく、相応の論理的思考を持てるようにしたいと考えています。\n駆け出しの新米エンジニア、PM、デザイナー、または都市部以外の地域から来た、テクノロジーの力を習得したい仲間であっても、ここで仲間を見つけ、共に学び成長し、テクノロジーが都市の専売特許ではなくなるようにできます。\n私たちの名前Code for Taiwanが示すように、私たちのビジョンは台湾のすべての人が良いコードを書けるようにすることです!"
+      },
+      "category": {
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-code-for-tw.png",
+      "website": "https://www.codefortaiwan.org/zh",
+      "social": {
+        "Homepage": "https://www.codefortaiwan.org/zh",
+        "Discord": "https://discord.com/invite/pRFjDXeFyv"
       }
     },
     {
@@ -266,95 +381,6 @@
       }
     },
     {
-      "id": "anoni_net",
-      "name": {
-        "zh": "匿名網路社群 anoni.net",
-        "en": "Anonymity Networks Community anoni.net",
-        "ja": "あのにネット anoni.net"
-      },
-      "description": {
-        "zh": "我們是關注「匿名網路」、「網路自由」的一群人，透過 Tor、Tails、OONI 工具喚起一般大眾網路自由的重要性！目前正在招募社群成員，建立第一批的社群夥伴，希望未來可以固定在網路上分享、更新「匿名網路」狀況。專案的一開始我們僅關注在 OONI 專案，透過調查臺灣 ASNs 在 OONI 資料庫中觀測資料的完整性、是否可以反應臺灣目前網路狀況。後續在持續推廣 OONI 的時候發現臺灣的網路相對自由很多，很多國際上的議題在臺灣比較少發生，因此對於網路監控、網路干預...等議題，在臺灣比較不好找到實際案例協助推廣，因此我們決定改變推廣方式與我們所扮演的角色，專注在隱私權相關議題，定位在「匿名網路」的議題上推動、在匿名網路服務上建立！",
-        "en": "We are a group focused on \"Anonymous Networks\" and \"Internet Freedom,\" aiming to raise public awareness about the importance of internet freedom through tools like Tor, Tails, and OONI. We are currently recruiting community members to establish our initial group of partners, with hopes to regularly share and update on the status of \"Anonymous Networks\" online. At the start of our project, we concentrated solely on the OONI project, by examining the completeness of observational data for Taiwanese ASNs in the OONI database and whether it reflects Taiwan's current internet status. As we continued to promote OONI, we found that Taiwan enjoys relatively more internet freedom, with fewer occurrences of international issues. Consequently, it is challenging to find real-life cases related to internet monitoring or interference in Taiwan to support promotion efforts. Therefore, we decided to shift our focus and role, concentrating on privacy-related issues and promoting and establishing anonymous network services with a focus on \"Anonymous Networks.\"",
-        "ja": "私たちは「匿名ネットワーク」や「インターネットの自由」に関心を持っているグループです。Tor、Tails、OONI といったツールを使用して、一般の人々にインターネットの自由の重要性を呼びかけています！現在、コミュニティメンバーを募集しており、最初の仲間を作ることを目指しています。将来的には、インターネット上で「匿名ネットワーク」の状況を定期的に共有し、更新していきたいと考えています。"
-      },
-      "category": {
-        "zh": ["第二天 籌備社群"],
-        "en": ["Day 2 Organizing Partners"],
-        "ja": ["2日目 運営パートナー"]
-      },
-      "logo": "images/community-logo-default.png",
-      "website": "https://anoni.net/",
-      "social": {
-        "Homepage": "https://anoni.net/"
-      }
-    },
-    {
-      "id": "cathay_cdc",
-      "name": {
-        "zh": "國泰 CDC 小聚",
-        "en": "國泰 CDC 小聚",
-        "ja": "國泰 CDC 小聚"
-      },
-      "description": {
-        "zh": "",
-        "en": "",
-        "ja": ""
-      },
-      "category": {
-        "zh": ["第二天 籌備社群"],
-        "en": ["Day 2 Organizing Partners"],
-        "ja": ["2日目 運営パートナー"]
-      },
-      "logo": "images/community-logo-default.png",
-      "website": "https://cdckh.kktix.cc",
-      "social": {
-        "CDC KKTIX": "https://cdckh.kktix.cc/",
-        "CDC 活動資訊賴群（加入密碼：0413）": "https://reurl.cc/3MvZMR"
-      }
-    },
-    {
-      "id": "code_for_taiwan",
-      "name": {
-        "zh": "Code for Taiwan",
-        "en": "Code for Taiwan",
-        "ja": "Code for Taiwan"
-      },
-      "description": {
-        "zh": "",
-        "en": "",
-        "ja": ""
-      },
-      "category": {
-        "zh": ["第二天 參加社群"],
-        "en": ["Day 2 Community Participation"],
-        "ja": ["2日目 コミュニティへの参加"]
-      },
-      "logo": "images/community-logo-default.png",
-      "website": "",
-      "social": {}
-    },
-    {
-      "id": "uiux_kaohsiung",
-      "name": {
-        "zh": "UIUX Kaohsiung",
-        "en": "UIUX Kaohsiung",
-        "ja": "UIUX Kaohsiung"
-      },
-      "description": {
-        "zh": "",
-        "en": "",
-        "ja": ""
-      },
-      "category": {
-        "zh": ["第二天 籌備社群"],
-        "en": ["Day 2 Organizing Partners"],
-        "ja": ["2日目 運営パートナー"]
-      },
-      "logo": "images/community-logo-default.png",
-      "website": "",
-      "social": {}
-    },
-    {
       "id": "iplayground",
       "name": {
         "zh": "iPlayground",
@@ -376,11 +402,11 @@
       "social": {}
     },
     {
-      "id": "k_net",
+      "id": "second_space",
       "name": {
-        "zh": "K. NET",
-        "en": "K. NET",
-        "ja": "K. NET"
+        "zh": "Second Space",
+        "en": "Second Space",
+        "ja": "Second Space"
       },
       "description": {
         "zh": "",
@@ -388,9 +414,9 @@
         "ja": ""
       },
       "category": {
-        "zh": ["第二天 籌備社群"],
-        "en": ["Day 2 Organizing Partners"],
-        "ja": ["2日目 運営パートナー"]
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
       },
       "logo": "images/community-logo-default.png",
       "website": "",
@@ -416,6 +442,102 @@
       "logo": "images/community-logo-default.png",
       "website": "",
       "social": {}
+    },
+    {
+      "id": "wordpress_taiwan",
+      "name": {
+        "zh": "WordPress 台灣社群",
+        "en": "WordPress 台灣社群",
+        "ja": "WordPress 台灣社群"
+      },
+      "description": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "category": {
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-kaohsiung_wordpress.png",
+      "website": "",
+      "social": {}
+    },
+    {
+      "id": "ycndc",
+      "name": {
+        "zh": "雲嘉南開發者俱樂部",
+        "en": "YCNDC",
+        "ja": "YCNDC"
+      },
+      "description": {
+        "zh": "雲林與嘉義一直缺少足夠的開發者資源，而這個社群便從這個單純的想法萌芽。\n\n我們想找出一個機會，把在地的開發者與周邊各種專業、資源、需求連接在一起，讓不同領域的人能在同一張地圖上相遇，並試著打造一條真正能流動的產業鏈。社群重視線下聚會，相信多一次見面就多一份信任與合作的可能。\n\n成員來自各地、各行各業，從地方創生到國際旅居開發者，從高中駭客到藝術設計人，大家在這裡跨界交流、激盪新火花。\n\n這裡是一個開放的實驗場，歡迎對科技、創新與合作有興趣的人加入，共同栽種未來的果實。",
+        "en": "Yunlin and Chiayi have long lacked sufficient resources for developers, and this community was born from that simple observation.\nWe aim to create opportunities to connect local developers with various professionals, resources, and needs, allowing people from different fields to meet on the same “map” and attempt to build a truly flowing industry network. The community values offline gatherings, believing that each meeting fosters trust and the possibility of collaboration.\nMembers come from diverse backgrounds—from local innovators and community builders to internationally based developers, and from high school hackers to artists and designers. Here, everyone engages in cross-disciplinary exchanges and sparks new ideas.\nThis is an open experimental space, welcoming anyone interested in technology, innovation, and collaboration to join and cultivate the fruits of the future together.",
+        "ja": "雲林と嘉義は長い間、十分な開発者リソースが不足しており、このコミュニティはその単純な課題意識から生まれました。\n私たちは、地域の開発者とさまざまな専門家、リソース、ニーズをつなぎ、異なる分野の人々が同じ“地図”上で出会い、本当に機能する産業ネットワークを築く機会を作りたいと考えています。コミュニティはオフラインでの交流を重視しており、会うことで信頼が生まれ、協力の可能性が広がると信じています。\nメンバーは多様なバックグラウンドを持ち、地域のイノベーターやコミュニティづくりに携わる人々から、海外在住の開発者、高校生ハッカー、アーティストやデザイナーまでさまざまです。ここでは、誰もが異分野交流を行い、新しいアイデアの火花を生み出します。\nここはオープンな実験の場であり、技術・イノベーション・協力に興味のある方なら誰でも参加し、未来の実りを共に育むことができます。"
+      },
+      "category": {
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-ycndc.webp",
+      "website": "https://discord.gg/ZZdnMauXZF",
+      "social": {
+        "Discord": "https://discord.gg/ZZdnMauXZF"
+      }
+    },
+    {
+      "id": "scist",
+      "name": {
+        "zh": "SCIST 南臺灣學生資訊社群",
+        "en": "SCIST",
+        "ja": "SCIST 南台湾学生ITコミュニティ"
+      },
+      "description": {
+        "zh": "SCIST 南臺灣資訊學生資訊社群創立於 2019 年，目前已邁入第六年，我們是由嘉義、台南、高雄、屏東等四地高中生組成的學生自治資訊教育社群。長期透過舉辦免費的資訊安全及演算法課程並致力於推廣資訊科技教育，期待減少南北資訊領域的資源落差，並提供一個良好的學習環境，提升南部學生整體的資訊能力。",
+        "en": "SCIST (Students' Community of Information in Southern Taiwan) is a student-led organization committed to promoting computer science education. We have been continuously offering free, in-person training programs on cybersecurity and algorithms, as well as computer science camps, for many years. providing high-quality learning opportunities to students in southern Taiwan. In addition, we create and share a wide range of online resources. Through SCIST, we aim to lower the barriers to entry, making it easier for students across Taiwan to access and begin learning computer science. Our goal is to spark interest, encourage continued engagement, and nurture the next generation of tech talent.",
+        "ja": "SCIST（Students' Community of Information in Southern Taiwan）は、コンピュータサイエンス教育の普及に取り組む学生主導の組織です。私たちは長年にわたり、サイバーセキュリティやアルゴリズムに関する無料の対面トレーニングプログラムや、コンピュータサイエンスキャンプを継続的に提供し、南台湾の学生に高品質な学習機会を届けています。さらに、幅広いオンライン教材を作成・共有しています。SCISTを通じて、コンピュータサイエンス学習の敷居を下げ、台湾全土の学生がより簡単に学習を始められるよう支援しています。私たちの目標は、興味を喚起し、継続的な学習を促し、次世代のテック人材を育成することです。"
+      },
+      "category": {
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-csist.png",
+      "website": "https://scist.org/",
+      "social": {
+        "Homepage": "https://scist.org/",
+        "Facebook": "https://www.facebook.com/scist.tw",
+        "Discord": "https://dc.scist.org/",
+        "Instagram": "https://www.instagram.com/scist.tw"
+      }
+    },
+    {
+      "id": "sciwork",
+      "name": {
+        "zh": "sciwork",
+        "en": "sciwork",
+        "ja": "sciwork"
+      },
+      "description": {
+        "zh": "sciwork is a community of researchers and engineers to share and discuss computer code for scientific, numerical, and engineering applications. We believe in the power of openness and use open source as a means to advance software development in computational sciences.",
+        "en": "sciwork is a community of researchers and engineers to share and discuss computer code for scientific, numerical, and engineering applications. We believe in the power of openness and use open source as a means to advance software development in computational sciences.",
+        "ja": "sciwork is a community of researchers and engineers to share and discuss computer code for scientific, numerical, and engineering applications. We believe in the power of openness and use open source as a means to advance software development in computational sciences."
+      },
+      "category": {
+        "zh": ["第二天 參加社群"],
+        "en": ["Day 2 Community Participation"],
+        "ja": ["2日目 コミュニティへの参加"]
+      },
+      "logo": "images/community-logo-default.png",
+      "website": "https://www.facebook.com/sciworkdev",
+      "social": {
+        "Twitter": "https://x.com/sciwork",
+        "Facebook": "https://www.facebook.com/sciworkdev",
+        "Threads": "https://www.threads.com/@sciworkdev",
+        "LinkedIn": "https://www.linkedin.com/company/sciwork/"
+      }
     }
   ]
 }
