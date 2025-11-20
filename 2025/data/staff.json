@@ -472,6 +472,39 @@
       "social": {
         "Facebook": "https://www.facebook.com/corey924"
       }
+    },
+    {
+      "id": "kao",
+      "name": {
+        "zh": "高高",
+        "en": "Kao",
+        "ja": "高高"
+      },
+      "org": {
+        "zh": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh": "EPM 專案工程師",
+        "en": "English Translation",
+        "ja": "EPM プロジェクトエンジニア"
+      },
+      "description": {
+        "zh": "軟硬通吃的自動化 PM/工程師<br><br>Developer/Polygot/Foodie/Tainaner",
+        "en": "A versatile Automation PM/Engineer proficient in both hardware and software. Developer / Polyglot / Foodie / Tainaner",
+        "ja": "ハードとソフトの両方に精通したオートメーション PM／エンジニア デベロッパー / ポリグロット（多言語・多技術者） / 食通 / 台南出身者"
+      },
+      "category": {
+        "zh": "第一天志工",
+        "en": "Day 1 Staff",
+        "ja": "1 日目ボランティア"
+      },
+      "photo": "images/staff-kao.png",
+      "social": {
+        "Facebook": "https://www.facebook.com/share/14NNXm8Uyqq/"
+      }
     }
+
   ]
 }
