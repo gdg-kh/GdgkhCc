@@ -45,12 +45,7 @@
         "track": "track2",
         "session_id": "d1_t5_s2_title"
       },
-      "tags": [
-        "中文議程",
-        "Android",
-        "Gemini",
-        "AI"
-      ],
+      "tags": ["中文議程", "Android", "Gemini", "AI"],
       "photo": "images/speak-ray_yuan_liu.png",
       "social": {
         "Homepage": "https://louis383.medium.com/",
@@ -102,12 +97,7 @@
         "track": "track1",
         "session_id": "d1_t6_s1_title"
       },
-      "tags": [
-        "中文議程",
-        "生成式AI",
-        "AI知識庫",
-        "數位轉型"
-      ],
+      "tags": ["中文議程", "生成式AI", "AI知識庫", "數位轉型"],
       "photo": "images/speak-leo_he.png",
       "social": {
         "Linkedin": "https://www.linkedin.com/in/leo-he-392338173/"
@@ -158,12 +148,7 @@
         "track": "track2",
         "session_id": "d1_t6_s2_title"
       },
-      "tags": [
-        "English Session",
-        "Android",
-        "AI",
-        "XP"
-      ],
+      "tags": ["English Session", "Android", "AI", "XP"],
       "photo": "images/speak-matthias_geisler.png",
       "social": {}
     },
@@ -212,12 +197,7 @@
         "track": "track1",
         "session_id": "d1_t7_s1_title"
       },
-      "tags": [
-        "中文議程",
-        "教育",
-        "Gemini",
-        "科技藝術"
-      ],
+      "tags": ["中文議程", "教育", "Gemini", "科技藝術"],
       "photo": "images/speak-yung_chun.png",
       "social": {
         "Linkedin": "https://www.linkedin.com/in/%E7%89%B9-%E7%93%A6-7a345224b/",
@@ -269,12 +249,7 @@
         "track": "track2",
         "session_id": "d1_t9_s2_title"
       },
-      "tags": [
-        "中文議程",
-        "AI",
-        "Gemini",
-        "Android"
-      ],
+      "tags": ["中文議程", "AI", "Gemini", "Android"],
       "photo": "images/speak-kevin_chiu.png",
       "social": {
         "Linkedin": "www.linkedin.com/in/kevin-chiu-612a61189"
@@ -325,12 +300,7 @@
         "track": "track1",
         "session_id": "d1_t10_s1_title"
       },
-      "tags": [
-        "中文議程",
-        "ADK",
-        "Gemini",
-        "Agent"
-      ],
+      "tags": ["中文議程", "ADK", "Gemini", "Agent"],
       "photo": "images/speak-simon_liu.png",
       "social": {
         "Homepage": "https://simonliuyuwei.my.canva.site/link-in-bio",
@@ -384,12 +354,7 @@
         "track": "track1",
         "session_id": "d1_t5_s1_title"
       },
-      "tags": [
-        "English Session",
-        "Robotics",
-        "Firebase",
-        "Google Cloud"
-      ],
+      "tags": ["English Session", "Robotics", "Firebase", "Google Cloud"],
       "photo": "images/speak-arturs_vancans.png",
       "social": {
         "Homepage": "https://www.secondspace.dev/kubi-robot",
@@ -441,12 +406,7 @@
         "track": "track1",
         "session_id": "d1_t7_s2_title"
       },
-      "tags": [
-        "中文議程",
-        "零知識證明",
-        "數位身分",
-        "Google Wallet"
-      ],
+      "tags": ["中文議程", "零知識證明", "數位身分", "Google Wallet"],
       "photo": "images/speak-denken_chen.png",
       "social": {
         "Homepage": "https://denkeni.org"
@@ -497,12 +457,7 @@
         "track": "track1",
         "session_id": "d1_t9_s1_title"
       },
-      "tags": [
-        "中文議程",
-        "UI",
-        "UX",
-        "設計工程"
-      ],
+      "tags": ["中文議程", "UI", "UX", "設計工程"],
       "photo": "images/speak-steve_yeh.png",
       "social": {
         "Facebook": "https://www.facebook.com/steven.yeh",
@@ -554,11 +509,7 @@
         "track": "track1",
         "session_id": "d1_t11_s1_title"
       },
-      "tags": [
-        "AI",
-        "Agent",
-        "A2A"
-      ],
+      "tags": ["AI", "Agent", "A2A"],
       "photo": "images/speak-aaron_ng.png",
       "social": {
         "Linkedin": "https://www.linkedin.com/in/liren0907",
@@ -610,12 +561,7 @@
         "track": "track2",
         "session_id": "d2_t5_s2_title"
       },
-      "tags": [
-        "中文議程",
-        "AI",
-        "Gemini",
-        "Android"
-      ],
+      "tags": ["中文議程", "AI", "Gemini", "Android"],
       "photo": "images/speak-kevin_chiu.png",
       "social": {
         "Linkedin": "www.linkedin.com/in/kevin-chiu-612a61189"
@@ -666,12 +612,7 @@
         "track": "track2",
         "session_id": "d2_t4_s2_title"
       },
-      "tags": [
-        "中文議程",
-        "Firebase",
-        "Stitch",
-        "AI"
-      ],
+      "tags": ["中文議程", "Firebase", "Stitch", "AI"],
       "photo": "images/speak-simon_liu.png",
       "social": {
         "Homepage": "https://simonliuyuwei.my.canva.site/link-in-bio",
