@@ -39,17 +39,23 @@ This project uses a **year-based directory structure**, with each year's event w
 │   ├── images/                  # Image resources
 │   ├── share/                   # Generated static pages (SEO optimized)
 │   └── favicon.svg              # Website icon
+├── SantaCode2025/                # 2025 SantaCode Programmer's Event
+│   ├── website/                  # Event landing page
+│   ├── submissions/              # Participant submissions
+│   └── core/                     # Verification and execution core
 ├── 2026/                         # (Future) 2026 event website
 └── package.json                  # Project configuration (shared across years)
 ```
 
-### Year-Based Architecture
+### Year and Project Architecture
 
 - **Root Directory (`index.html`)**: Auto-redirects to the current year's website
 - **Year Subdirectories (`/2025/`, `/2026/`, ...)**: Complete independent website for each year
+- **SantaCode (`/SantaCode2025/`)**: Christmas special event with independent verification logic
 - **URL Structure**:
   - Root domain: `https://gdgkh.cc` → Auto-redirects to latest year
   - Current year: `https://gdgkh.cc/2025/`
+  - SantaCode: `https://gdgkh.cc/SantaCode2025/website/`
   - Static pages: `https://gdgkh.cc/2025/share/speakers/{id}/`
 
 Benefits of this architecture:

@@ -38,17 +38,23 @@
 │   ├── images/                  # 圖片資源
 │   ├── share/                   # 生成的靜態頁面（SEO 優化）
 │   └── favicon.svg              # 網站圖示
+├── SantaCode2025/                # 2025 SantaCode 工程師交換禮物
+│   ├── website/                  # 活動說明頁面
+│   ├── submissions/              # 參賽者提交的程式碼
+│   └── core/                     # 驗證與執行核心
 ├── 2026/                         # （未來）2026 年活動網站
 └── package.json                  # 專案配置（所有年份共用）
 ```
 
-### 年份架構說明
+### 年份與專案架構說明
 
 - **根目錄 (`index.html`)**: 自動重定向到當前年份的網站
 - **年份子目錄 (`/2025/`, `/2026/`, ...)**: 每年的完整獨立網站
+- **SantaCode (`/SantaCode2025/`)**: 聖誕節特別活動，包含獨立的驗證機制與網頁
 - **URL 結構**:
   - 根網域: `https://gdgkh.cc` → 自動跳轉到最新年份
   - 當前年度: `https://gdgkh.cc/2025/`
+  - SantaCode: `https://gdgkh.cc/SantaCode2025/website/`
   - 靜態頁面: `https://gdgkh.cc/2025/share/speakers/{id}/`
 
 這個架構的優點：

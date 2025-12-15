@@ -38,17 +38,23 @@
 │   ├── images/                  # 画像リソース
 │   ├── share/                   # 生成された静的ページ（SEO最適化）
 │   └── favicon.svg              # ウェブサイトアイコン
+├── SantaCode2025/                # 2025年 SantaCode イベント
+│   ├── website/                  # イベント説明ページ
+│   ├── submissions/              # 参加者の提出コード
+│   └── core/                     # 検証と実行コア
 ├── 2026/                         # （将来）2026年イベントウェブサイト
 └── package.json                  # プロジェクト設定（全年度共通）
 ```
 
-### 年度別構成の説明
+### 年度別およびプロジェクト構成の説明
 
 - **ルートディレクトリ (`index.html`)**: 現在の年度のウェブサイトへ自動リダイレクト
 - **年度サブディレクトリ (`/2025/`, `/2026/`, ...)**: 各年の完全な独立ウェブサイト
+- **SantaCode (`/SantaCode2025/`)**: クリスマス特別イベント、独自の検証ロジックを含む
 - **URL構造**:
   - ルートドメイン: `https://gdgkh.cc` → 最新年度へ自動転送
   - 現在の年度: `https://gdgkh.cc/2025/`
+  - SantaCode: `https://gdgkh.cc/SantaCode2025/website/`
   - 静的ページ: `https://gdgkh.cc/2025/share/speakers/{id}/`
 
 この構成の利点：
