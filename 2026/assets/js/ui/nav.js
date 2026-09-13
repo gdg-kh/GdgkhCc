@@ -77,7 +77,7 @@ function isNavItem(item) {
 }
 
 function isFooterMenuItem(item) {
-  return item.placement === 'footer' || item.placement === 'home';
+  return (item.placement === 'footer' || item.placement === 'home') && item.type !== 'cta';
 }
 
 function makeNavButton(item) {
