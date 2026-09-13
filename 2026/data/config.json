@@ -6,7 +6,7 @@
     "year": 2026,
     "eventDate": "2026-11-14",
     "eventStart": "2026-11-14T08:30:00+08:00",
-    "baseUrl": "https://gdgkh.cc/2026/",
+    "baseUrl": "https://gdg.community.dev/e/mjbj5s/",
     "venue": {
       "zh-Hant": "KO-IN 智高點"
     },
@@ -45,7 +45,7 @@
     },
     "links": [
       {
-        "platform": "GDG Bevy",
+        "platform": "website",
         "url": "https://gdg.community.dev/gdg-kaohsiung/",
         "label": {}
       },
@@ -82,7 +82,7 @@
   },
   "freeTicket": {
     "enabled": true,
-    "formUrl": "https://forms.gle/W94jMEuhFRJmSQ2H9",
+    "formUrl": "https://forms.gle/B56e4iRz9BBe3R7W7",
     "closeAt": "2026-10-15T23:59:59+08:00",
     "reviewDays": 3
   },
@@ -135,7 +135,7 @@
     },
     {
       "id": "thanks_2026",
-      "enabled": true,
+      "enabled": false,
       "order": 6,
       "label": {
         "zh-Hant": "特別感謝"
@@ -150,7 +150,7 @@
       }
     },
     {
-      "id": "last_year_2026",
+      "id": "lastyear_2026",
       "enabled": true,
       "order": 8,
       "type": "external",
@@ -174,20 +174,9 @@
       "enabled": true,
       "order": 10,
       "type": "cta",
-      "url": "https://gdg.community.dev/events/details/google-gdg-kaohsiung-presents-devfest-kaohsiung-2026/",
+      "url": "https://example.com/ticket",
       "label": {
         "zh-Hant": "點我購票"
-      }
-    },
-    {
-      "id": "discount",
-      "enabled": true,
-      "order": 11,
-      "type": "cta",
-      "placement": "home",
-      "url": "https://forms.gle/W94jMEuhFRJmSQ2H9",
-      "label": {
-        "zh-Hant": "取得折扣"
       }
     }
   ],
