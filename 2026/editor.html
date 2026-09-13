@@ -68,22 +68,26 @@
       }
 
       .gk-header {
+        position: relative;
+        z-index: 20;
         background: var(--gk-ink);
         color: var(--gk-paper);
-        padding: var(--gk-sp-3) var(--gk-sp-5);
+        padding: var(--gk-sp-2) var(--gk-sp-4);
         display: flex;
         align-items: center;
-        gap: var(--gk-sp-5);
-        flex-wrap: wrap;
+        gap: var(--gk-sp-3);
+        flex-wrap: nowrap;
       }
 
       .gk-title {
         font-weight: 700;
-        font-size: 16px;
+        font-size: 15px;
         margin: 0;
         display: flex;
         align-items: center;
         gap: var(--gk-sp-2);
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .gk-title-dot {
@@ -92,13 +96,193 @@
         border-radius: var(--gk-radius-full);
         background: var(--gk-red);
         display: inline-block;
+        flex-shrink: 0;
       }
 
       .gk-toolbar {
         display: flex;
-        gap: var(--gk-sp-2);
-        flex-wrap: wrap;
+        gap: 6px;
+        flex-wrap: nowrap;
         margin-left: auto;
+        align-items: center;
+      }
+
+      .gk-toolbar-group {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+
+      .gk-toolbar-divider {
+        width: 1px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 0 2px;
+        flex-shrink: 0;
+      }
+
+      .gk-toolbar-status {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+
+      .gk-toolbar .gk-btn {
+        padding: 5px 9px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .gk-toolbar .gk-status-badge {
+        padding: 3px 8px;
+        white-space: nowrap;
+      }
+
+      .gk-dropdown {
+        position: relative;
+        display: inline-flex;
+      }
+
+      .gk-dropdown-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        user-select: none;
+      }
+
+      .gk-dropdown-toggle.is-active {
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .gk-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        min-width: 160px;
+        max-width: calc(100vw - 24px);
+        background: #242424;
+        color: var(--gk-paper);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--gk-radius-md);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.45),
+          0 2px 6px rgba(0, 0, 0, 0.25);
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        z-index: 90;
+      }
+
+      .gk-dropdown-menu[hidden] {
+        display: none !important;
+      }
+
+      .gk-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 8px 12px;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--gk-paper);
+        background: transparent;
+        border: none;
+        border-radius: var(--gk-radius-sm);
+        text-align: left;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .gk-dropdown-item:hover,
+      .gk-dropdown-item:focus,
+      .gk-dropdown-item:focus-visible {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        outline: none;
+      }
+
+      .gk-dropdown-item-danger {
+        color: #ff7b72;
+      }
+
+      .gk-dropdown-item-danger:hover,
+      .gk-dropdown-item-danger:focus,
+      .gk-dropdown-item-danger:focus-visible {
+        background: rgba(234, 67, 53, 0.18);
+        color: #ff9b95;
+      }
+
+      .gk-dropdown-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.12);
+        margin: 4px 0;
+      }
+
+      .gk-status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: var(--gk-radius-full);
+        background: rgba(240, 240, 240, 0.1);
+        color: var(--gk-paper);
+        border: 1px solid transparent;
+        line-height: 1.2;
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      button.gk-status-badge {
+        font-family: inherit;
+        border: 1px dashed rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+
+      button.gk-status-badge:hover,
+      button.gk-status-badge:focus-visible {
+        background: rgba(255, 255, 255, 0.18);
+        outline: none;
+      }
+
+      .gk-status-badge.is-linked {
+        background: rgba(52, 168, 83, 0.2);
+        color: #81c995;
+        border: 1px solid rgba(52, 168, 83, 0.4);
+      }
+
+      button.gk-status-badge.is-linked:hover {
+        background: rgba(52, 168, 83, 0.3);
+      }
+
+      .gk-status-badge.is-unlinked {
+        background: rgba(255, 255, 255, 0.08);
+        color: #ccc;
+      }
+
+      .gk-status-badge.is-dirty {
+        background: rgba(249, 171, 0, 0.2);
+        color: #fdd663;
+        border-color: rgba(249, 171, 0, 0.4);
+      }
+
+      .gk-status-badge.is-clean {
+        background: rgba(255, 255, 255, 0.08);
+        color: #aaa;
       }
 
       .gk-btn {
@@ -127,6 +311,27 @@
       .gk-btn-primary:hover,
       .gk-btn-primary:focus-visible {
         background: #3367d6;
+      }
+
+      .gk-btn-save {
+        background: var(--gk-blue);
+        color: var(--gk-paper);
+        font-weight: 600;
+      }
+
+      .gk-btn-save:hover,
+      .gk-btn-save:focus-visible {
+        background: #3367d6;
+      }
+
+      .gk-btn-save.is-dirty {
+        background: var(--gk-green);
+        box-shadow: 0 0 0 2px rgba(52, 168, 83, 0.4);
+      }
+
+      .gk-btn-save.is-dirty:hover,
+      .gk-btn-save.is-dirty:focus-visible {
+        background: #2d9249;
       }
 
       .gk-btn-danger {
@@ -764,6 +969,23 @@
         outline-offset: -2px;
       }
 
+      @media (max-width: 992px) {
+        .gk-header {
+          flex-wrap: wrap;
+        }
+
+        .gk-toolbar {
+          width: 100%;
+          margin-left: 0;
+          flex-wrap: wrap;
+        }
+
+        .gk-toolbar-group,
+        .gk-toolbar-status {
+          flex-wrap: wrap;
+        }
+      }
+
       @media (max-width: 768px) {
         .gk-main {
           grid-template-columns: 1fr;
@@ -775,9 +997,8 @@
           max-height: 200px;
         }
 
-        .gk-toolbar {
-          width: 100%;
-          margin-left: 0;
+        .gk-toolbar-divider {
+          display: none;
         }
 
         .gk-link-row {
@@ -845,6 +1066,13 @@
         activeCategory: 'site',
       };
 
+      const fileState = {
+        dirHandle: null,
+        dirName: '',
+        lastSavedAt: null,
+        isSaving: false,
+      };
+
       const originalSnapshot = {
         config: '',
         content: '',
@@ -853,10 +1081,129 @@
       const tabState = {};
       let toastTimer = 0;
       let pendingScrollItem = null;
+      let renderedCategoryId = null;
+
+      const IDB_NAME = 'gdgkh_editor_v1';
+      const IDB_STORE = 'handles';
+
+      function openIdb() {
+        return new Promise((resolve) => {
+          if (!window.indexedDB) {
+            resolve(null);
+            return;
+          }
+          try {
+            const req = indexedDB.open(IDB_NAME, 1);
+            req.onupgradeneeded = () => {
+              req.result.createObjectStore(IDB_STORE);
+            };
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => resolve(null);
+          } catch {
+            resolve(null);
+          }
+        });
+      }
+
+      async function storeDirHandle(handle, dirName) {
+        try {
+          const db = await openIdb();
+          if (!db) {
+            return;
+          }
+          const tx = db.transaction(IDB_STORE, 'readwrite');
+          const store = tx.objectStore(IDB_STORE);
+          store.put(handle, 'dataDir');
+          if (dirName) {
+            store.put(dirName, 'dirName');
+          }
+          await new Promise((resolve) => {
+            tx.oncomplete = resolve;
+            tx.onerror = resolve;
+          });
+        } catch (e) {
+          console.warn('無法存入 IndexedDB', e);
+        }
+      }
+
+      async function getStoredDirInfo() {
+        try {
+          const db = await openIdb();
+          if (!db) {
+            return null;
+          }
+          const tx = db.transaction(IDB_STORE, 'readonly');
+          const store = tx.objectStore(IDB_STORE);
+          const reqHandle = store.get('dataDir');
+          const reqName = store.get('dirName');
+          const handle = await new Promise((resolve) => {
+            reqHandle.onsuccess = () => resolve(reqHandle.result || null);
+            reqHandle.onerror = () => resolve(null);
+          });
+          const dirName = await new Promise((resolve) => {
+            reqName.onsuccess = () => resolve(reqName.result || '');
+            reqName.onerror = () => resolve('');
+          });
+          if (handle) {
+            return { handle, dirName: dirName || handle.name || 'data' };
+          }
+          return null;
+        } catch {
+          return null;
+        }
+      }
+
+      function isDirty() {
+        if (isEmptyState()) {
+          return false;
+        }
+        if (!originalSnapshot.config && !originalSnapshot.content) {
+          return false;
+        }
+        const curConfig = serialize('config');
+        const curContent = serialize('content');
+        return curConfig !== originalSnapshot.config || curContent !== originalSnapshot.content;
+      }
+
+      function updateToolbarDirtyState() {
+        const dirty = isDirty();
+        const dirtyBadge = document.getElementById('gkDirtyBadge');
+        if (dirtyBadge) {
+          dirtyBadge.className = `gk-status-badge ${dirty ? 'is-dirty' : 'is-clean'}`;
+          dirtyBadge.textContent = dirty ? '● 未儲存' : '✓ 已同步';
+          dirtyBadge.title = dirty ? '有尚未寫入本機檔案的變更' : '編輯器內容已與本機檔案同步';
+        }
+        const saveBtn = document.getElementById('gkSaveBtn');
+        if (saveBtn && !fileState.isSaving) {
+          if (dirty) {
+            saveBtn.classList.add('is-dirty');
+          } else {
+            saveBtn.classList.remove('is-dirty');
+          }
+        }
+      }
+
+      function updateSaveButtonLoading(isSaving) {
+        const saveBtn = document.getElementById('gkSaveBtn');
+        if (!saveBtn) {
+          return;
+        }
+        if (isSaving) {
+          saveBtn.disabled = true;
+          saveBtn.textContent = '💾 儲存中...';
+        } else {
+          saveBtn.disabled = false;
+          saveBtn.textContent = '💾 儲存';
+          updateToolbarDirtyState();
+        }
+      }
 
       function el(tag, opts, children) {
         const node = document.createElement(tag);
         if (opts) {
+          if (opts.id) {
+            node.id = opts.id;
+          }
           if (opts.class) {
             node.className = opts.class;
           }
@@ -926,8 +1273,11 @@
           const payload = JSON.stringify({
             config: state.config,
             content: state.content,
+            snapshots: originalSnapshot,
+            dirName: fileState.dirName,
           });
           localStorage.setItem(DRAFT_KEY, payload);
+          updateToolbarDirtyState();
         } catch (err) {
           console.error('儲存草稿失敗', err);
           showToast('儲存草稿失敗（可能已超出瀏覽器儲存空間）', 'error');
@@ -945,6 +1295,16 @@
             state.config = parsed.config && typeof parsed.config === 'object' ? parsed.config : {};
             state.content =
               parsed.content && typeof parsed.content === 'object' ? parsed.content : {};
+            if (parsed.snapshots && typeof parsed.snapshots === 'object') {
+              originalSnapshot.config = parsed.snapshots.config || '';
+              originalSnapshot.content = parsed.snapshots.content || '';
+            } else {
+              originalSnapshot.config = serialize('config');
+              originalSnapshot.content = serialize('content');
+            }
+            if (parsed.dirName && typeof parsed.dirName === 'string') {
+              fileState.dirName = parsed.dirName;
+            }
             return true;
           }
           return false;
@@ -958,6 +1318,385 @@
         localStorage.removeItem(DRAFT_KEY);
         state.config = {};
         state.content = {};
+        originalSnapshot.config = '';
+        originalSnapshot.content = '';
+        updateToolbarDirtyState();
+      }
+
+      async function resolveDataDirectory(dirHandle) {
+        try {
+          await dirHandle.getFileHandle('config.json');
+          return { dirHandle, dirName: dirHandle.name, found: true };
+        } catch {
+          // not in root
+        }
+        try {
+          await dirHandle.getFileHandle('content.json');
+          return { dirHandle, dirName: dirHandle.name, found: true };
+        } catch {
+          // not in root
+        }
+
+        try {
+          const dataSub = await dirHandle.getDirectoryHandle('data');
+          return { dirHandle: dataSub, dirName: `${dirHandle.name}/data`, found: true };
+        } catch {
+          // no data/
+        }
+
+        try {
+          const y2026 = await dirHandle.getDirectoryHandle('2026');
+          const dataSub = await y2026.getDirectoryHandle('data');
+          return { dirHandle: dataSub, dirName: `${dirHandle.name}/2026/data`, found: true };
+        } catch {
+          // no 2026/data
+        }
+
+        return { dirHandle, dirName: dirHandle.name, found: false };
+      }
+
+      async function readFilesFromDirHandle(dirHandle) {
+        let configObj = null;
+        let contentObj = null;
+
+        try {
+          const configHandle = await dirHandle.getFileHandle('config.json');
+          const configFile = await configHandle.getFile();
+          const text = await configFile.text();
+          configObj = parseJson(text);
+        } catch (e) {
+          console.warn('讀取 config.json 失敗或檔案不存在', e);
+        }
+
+        try {
+          const contentHandle = await dirHandle.getFileHandle('content.json');
+          const contentFile = await contentHandle.getFile();
+          const text = await contentFile.text();
+          contentObj = parseJson(text);
+        } catch (e) {
+          console.warn('讀取 content.json 失敗或檔案不存在', e);
+        }
+
+        return { configObj, contentObj };
+      }
+
+      async function writeHandle(fileHandle, text) {
+        if (typeof fileHandle.queryPermission === 'function') {
+          let perm = await fileHandle.queryPermission({ mode: 'readwrite' });
+          if (perm !== 'granted' && typeof fileHandle.requestPermission === 'function') {
+            perm = await fileHandle.requestPermission({ mode: 'readwrite' });
+          }
+          if (perm !== 'granted') {
+            throw new Error(`未獲得 ${fileHandle.name} 的寫入權限`);
+          }
+        }
+        const writable = await fileHandle.createWritable();
+        await writable.write(text);
+        await writable.close();
+      }
+
+      async function saveToFiles() {
+        if (fileState.isSaving) {
+          return false;
+        }
+
+        const configHasData = Object.keys(state.config || {}).length > 0;
+        const contentHasData = Object.keys(state.content || {}).length > 0;
+
+        if (!configHasData && !contentHasData) {
+          showToast('目前編輯器沒有任何資料可儲存', 'warn');
+          return false;
+        }
+
+        fileState.isSaving = true;
+        updateSaveButtonLoading(true);
+
+        try {
+          const configText = configHasData ? JSON.stringify(state.config, null, 2) + '\n' : null;
+          const contentText = contentHasData ? JSON.stringify(state.content, null, 2) + '\n' : null;
+
+          if (fileState.dirHandle) {
+            try {
+              if (typeof fileState.dirHandle.queryPermission === 'function') {
+                let perm = await fileState.dirHandle.queryPermission({ mode: 'readwrite' });
+                if (
+                  perm !== 'granted' &&
+                  typeof fileState.dirHandle.requestPermission === 'function'
+                ) {
+                  perm = await fileState.dirHandle.requestPermission({ mode: 'readwrite' });
+                }
+                if (perm !== 'granted') {
+                  showToast('需要資料夾寫入權限才能直接修改檔案', 'error');
+                  return false;
+                }
+              }
+
+              const savedFiles = [];
+              if (configText) {
+                const configHandle = await fileState.dirHandle.getFileHandle('config.json', {
+                  create: true,
+                });
+                await writeHandle(configHandle, configText);
+                originalSnapshot.config = serialize('config');
+                savedFiles.push('config.json');
+              }
+              if (contentText) {
+                const contentHandle = await fileState.dirHandle.getFileHandle('content.json', {
+                  create: true,
+                });
+                await writeHandle(contentHandle, contentText);
+                originalSnapshot.content = serialize('content');
+                savedFiles.push('content.json');
+              }
+
+              saveDraft();
+              fileState.lastSavedAt = new Date();
+              buildToolbar();
+              buildStatusLine();
+              showToast(`✓ 已直接修改 ${savedFiles.join(' 與 ')}！`, 'success');
+              return true;
+            } catch (err) {
+              console.error('寫入檔案失敗', err);
+              showToast(`寫入檔案失敗：${err.message}，請嘗試重新選取資料夾`, 'error');
+              return false;
+            }
+          }
+
+          if (window.showDirectoryPicker) {
+            showToast('請選取 2026/data 資料夾以直接寫入檔案...', '');
+            const selected = await openDataDirectory(true);
+            if (!selected || !fileState.dirHandle) {
+              return false;
+            }
+
+            const savedFiles = [];
+            if (configText) {
+              const configHandle = await fileState.dirHandle.getFileHandle('config.json', {
+                create: true,
+              });
+              await writeHandle(configHandle, configText);
+              originalSnapshot.config = serialize('config');
+              savedFiles.push('config.json');
+            }
+            if (contentText) {
+              const contentHandle = await fileState.dirHandle.getFileHandle('content.json', {
+                create: true,
+              });
+              await writeHandle(contentHandle, contentText);
+              originalSnapshot.content = serialize('content');
+              savedFiles.push('content.json');
+            }
+
+            saveDraft();
+            fileState.lastSavedAt = new Date();
+            buildToolbar();
+            buildStatusLine();
+            showToast(`✓ 已連結並直接修改 ${savedFiles.join(' 與 ')}！`, 'success');
+            return true;
+          }
+
+          if (configText) {
+            download('config.json', configText);
+            originalSnapshot.config = serialize('config');
+          }
+          if (contentText) {
+            setTimeout(() => {
+              download('content.json', contentText);
+            }, 300);
+            originalSnapshot.content = serialize('content');
+          }
+          saveDraft();
+          buildToolbar();
+          buildStatusLine();
+          showToast('已下載更新檔案（此瀏覽器不支援本機直接寫入 API）', 'success');
+          return true;
+        } finally {
+          fileState.isSaving = false;
+          updateSaveButtonLoading(false);
+        }
+      }
+
+      async function openDataDirectory(silentAfterSelect) {
+        if (!window.showDirectoryPicker) {
+          showToast(
+            '此瀏覽器不支援本機資料夾存取 API，請使用「匯入 JSON 檔」或改用 Chrome / Edge',
+            'error'
+          );
+          document.getElementById('fileInput').click();
+          return false;
+        }
+        if (!silentAfterSelect && isDirty()) {
+          const ok = window.confirm(
+            '目前編輯器有未儲存至檔案的變更。開啟新資料夾將以磁碟檔案覆寫目前內容，確定要繼續嗎？'
+          );
+          if (!ok) {
+            return false;
+          }
+        }
+        try {
+          const dirHandle = await window.showDirectoryPicker({
+            id: 'gdgkh2026-data',
+            mode: 'readwrite',
+          });
+          const resolved = await resolveDataDirectory(dirHandle);
+
+          if (!resolved.found) {
+            const createOk = window.confirm(
+              `在所選資料夾「${resolved.dirName}」中未找到 config.json 或 content.json。\n\n建議選取 2026/data 資料夾。\n確定仍要連結此資料夾嗎？`
+            );
+            if (!createOk) {
+              return false;
+            }
+          }
+
+          fileState.dirHandle = resolved.dirHandle;
+          fileState.dirName = resolved.dirName;
+          await storeDirHandle(fileState.dirHandle, fileState.dirName);
+
+          if (silentAfterSelect) {
+            return true;
+          }
+
+          const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
+          let configLoaded = false;
+          let contentLoaded = false;
+
+          if (configObj) {
+            state.config = configObj;
+            originalSnapshot.config = JSON.stringify(configObj, null, 2);
+            configLoaded = true;
+          }
+          if (contentObj) {
+            state.content = contentObj;
+            originalSnapshot.content = JSON.stringify(contentObj, null, 2);
+            contentLoaded = true;
+          }
+
+          saveDraft();
+          renderAll();
+          buildToolbar();
+          if (configLoaded || contentLoaded) {
+            showToast(`✓ 已成功連結「${resolved.dirName}」並載入 JSON 檔！`, 'success');
+          } else {
+            showToast(
+              `已連結「${resolved.dirName}」，尚未找到 config.json 或 content.json`,
+              'warn'
+            );
+          }
+          return true;
+        } catch (err) {
+          if (err.name === 'AbortError') {
+            return false;
+          }
+          showToast(`開啟資料夾失敗：${err.message}`, 'error');
+          return false;
+        }
+      }
+
+      async function reloadFromDisk() {
+        if (!fileState.dirHandle) {
+          showToast('尚未連結本機資料夾，請先選取 2026/data 資料夾', 'error');
+          return;
+        }
+        if (isDirty()) {
+          const ok = window.confirm(
+            '目前編輯器有未儲存至檔案的變更。重新載入將以磁碟檔案覆寫目前內容，確定要繼續嗎？'
+          );
+          if (!ok) {
+            return;
+          }
+        }
+        try {
+          if (typeof fileState.dirHandle.queryPermission === 'function') {
+            let perm = await fileState.dirHandle.queryPermission({ mode: 'read' });
+            if (perm !== 'granted' && typeof fileState.dirHandle.requestPermission === 'function') {
+              perm = await fileState.dirHandle.requestPermission({ mode: 'read' });
+            }
+            if (perm !== 'granted') {
+              showToast('未獲得資料夾讀取權限', 'error');
+              return;
+            }
+          }
+
+          const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
+          let configLoaded = false;
+          let contentLoaded = false;
+
+          if (configObj) {
+            state.config = configObj;
+            originalSnapshot.config = JSON.stringify(configObj, null, 2);
+            configLoaded = true;
+          }
+          if (contentObj) {
+            state.content = contentObj;
+            originalSnapshot.content = JSON.stringify(contentObj, null, 2);
+            contentLoaded = true;
+          }
+
+          if (!configLoaded && !contentLoaded) {
+            showToast(
+              `在「${fileState.dirName}」中未找到有效的 config.json 或 content.json`,
+              'warn'
+            );
+            return;
+          }
+
+          saveDraft();
+          renderAll();
+          buildToolbar();
+          showToast(`✓ 已從「${fileState.dirName}」重新載入最新檔案內容！`, 'success');
+        } catch (err) {
+          showToast(`重新載入失敗：${err.message}`, 'error');
+        }
+      }
+
+      async function fetchServerData() {
+        try {
+          const [resConfig, resContent] = await Promise.all([
+            fetch('data/config.json'),
+            fetch('data/content.json'),
+          ]);
+          if (!resConfig.ok || !resContent.ok) {
+            throw new Error('伺服器回應狀態異常');
+          }
+          const cfg = await resConfig.json();
+          const cnt = await resContent.json();
+          state.config = cfg;
+          state.content = cnt;
+          originalSnapshot.config = JSON.stringify(cfg, null, 2);
+          originalSnapshot.content = JSON.stringify(cnt, null, 2);
+          saveDraft();
+          renderAll();
+          buildToolbar();
+          showToast('✓ 已從伺服器載入 data/config.json 與 content.json', 'success');
+        } catch (err) {
+          showToast(`載入失敗：${err.message}`, 'error');
+        }
+      }
+
+      async function tryAutoLoadData() {
+        if (!isEmptyState()) {
+          return false;
+        }
+        try {
+          const [resConfig, resContent] = await Promise.all([
+            fetch('data/config.json'),
+            fetch('data/content.json'),
+          ]);
+          if (resConfig.ok && resContent.ok) {
+            const cfg = await resConfig.json();
+            const cnt = await resContent.json();
+            state.config = cfg;
+            state.content = cnt;
+            originalSnapshot.config = JSON.stringify(cfg, null, 2);
+            originalSnapshot.content = JSON.stringify(cnt, null, 2);
+            saveDraft();
+            return true;
+          }
+        } catch {
+          // ignore
+        }
+        return false;
       }
 
       function getSource(source) {
@@ -1175,6 +1914,7 @@
           }
         }
         renderAll();
+        buildToolbar();
         const summary = results.map((item) => `${item.file} → ${item.kind}`).join('，');
         showToast(`匯入成功：${summary}`, 'success');
       }
@@ -1247,6 +1987,7 @@
                     const kind = importParsed(parsed, forced);
                     closeModal();
                     renderAll();
+                    buildToolbar();
                     showToast(`匯入成功：${kind}`, 'success');
                   } catch (err) {
                     showToast(`JSON 解析失敗：${err.message}`, 'error');
@@ -1278,6 +2019,11 @@
             return 'config';
           })();
 
+        const buffers = {
+          config: serialize('config'),
+          content: serialize('content'),
+        };
+
         const backdrop = el('div', {
           class: 'gk-modal-backdrop',
           attrs: { role: 'dialog', 'aria-modal': 'true' },
@@ -1303,9 +2049,42 @@
               'min-height: 380px; height: 50vh; font-family: var(--gk-font-mono); font-size: 13px; line-height: 1.5; tab-size: 2;',
           },
         });
-        textarea.value = serialize(currentKind);
+        textarea.value = buffers[currentKind];
+
+        const applyBufferToState = () => {
+          buffers[currentKind] = textarea.value;
+          const parsedConfig = parseJson(buffers.config);
+          const parsedContent = parseJson(buffers.content);
+          if (!parsedConfig || typeof parsedConfig !== 'object' || Array.isArray(parsedConfig)) {
+            throw new Error('config.json 根節點必須是物件（Object）格式');
+          }
+          if (!parsedContent || typeof parsedContent !== 'object' || Array.isArray(parsedContent)) {
+            throw new Error('content.json 根節點必須是物件（Object）格式');
+          }
+          state.config = parsedConfig;
+          state.content = parsedContent;
+        };
+
+        const handleSaveToFile = async () => {
+          try {
+            applyBufferToState();
+            saveDraft();
+            closeModal();
+            renderAll();
+            await saveToFiles();
+          } catch (err) {
+            textarea.classList.add('is-error');
+            showToast(`JSON 解析失敗：${err.message}`, 'error');
+          }
+        };
 
         textarea.addEventListener('keydown', (event) => {
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
+            event.preventDefault();
+            event.stopPropagation();
+            handleSaveToFile();
+            return;
+          }
           if (event.key === 'Tab') {
             event.preventDefault();
             const start = textarea.selectionStart;
@@ -1313,16 +2092,19 @@
             const value = textarea.value;
             textarea.value = value.substring(0, start) + '  ' + value.substring(end);
             textarea.selectionStart = textarea.selectionEnd = start + 2;
+            buffers[currentKind] = textarea.value;
           }
         });
 
         textarea.addEventListener('input', () => {
           textarea.classList.remove('is-error');
+          buffers[currentKind] = textarea.value;
         });
 
         kindSelect.addEventListener('change', () => {
+          buffers[currentKind] = textarea.value;
           currentKind = kindSelect.value;
-          textarea.value = serialize(currentKind);
+          textarea.value = buffers[currentKind];
           textarea.classList.remove('is-error');
         });
 
@@ -1346,6 +2128,7 @@
               try {
                 const parsed = parseJson(textarea.value);
                 textarea.value = JSON.stringify(parsed, null, 2);
+                buffers[currentKind] = textarea.value;
                 textarea.classList.remove('is-error');
                 showToast('已完成格式化', 'success');
               } catch (err) {
@@ -1363,7 +2146,8 @@
           on: {
             click: () => {
               if (window.confirm(`確定要將 ${currentKind}.json 重設回目前編輯器中的狀態嗎？`)) {
-                textarea.value = serialize(currentKind);
+                buffers[currentKind] = serialize(currentKind);
+                textarea.value = buffers[currentKind];
                 textarea.classList.remove('is-error');
                 showToast(`已重設 ${currentKind}.json`, 'success');
               }
@@ -1398,7 +2182,7 @@
         });
 
         const modalHeader = el('div', { class: 'gk-modal-header' }, [
-          el('h2', { class: 'gk-modal-title', text: '修改 JSON' }),
+          el('h2', { class: 'gk-modal-title', text: '檢視 / 編輯原始 JSON' }),
           el('button', {
             class: 'gk-btn gk-btn-secondary',
             text: '關閉',
@@ -1438,11 +2222,40 @@
         const modalBody = el('div', { class: 'gk-modal-body' }, [
           el('p', {
             class: 'gk-modal-hint',
-            text: '可直接在下方編輯 JSON 內容，儲存後會即時更新編輯器資料與草稿。',
+            text: '可直接在下方編輯 JSON 內容。點選「直接儲存至檔案」會同時修改磁碟上的 JSON 檔並更新編輯器；點選「僅套用至編輯器」則暫存於記憶體與草稿。',
           }),
           controlsRow,
           textarea,
         ]);
+
+        const applyOnlyBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary',
+          text: '僅套用至編輯器',
+          attrs: { type: 'button', title: '更新編輯器畫面與草稿，暫不寫入磁碟檔案' },
+          on: {
+            click: () => {
+              try {
+                applyBufferToState();
+                saveDraft();
+                closeModal();
+                renderAll();
+                showToast(`已套用修改至編輯器（尚未寫入檔案）`, 'success');
+              } catch (err) {
+                textarea.classList.add('is-error');
+                showToast(`JSON 解析失敗：${err.message}`, 'error');
+              }
+            },
+          },
+        });
+
+        const saveToFileBtn = el('button', {
+          class: 'gk-btn gk-btn-primary',
+          text: '💾 直接儲存至檔案',
+          attrs: { type: 'button', title: '直接修改磁碟上的 JSON 檔案並更新編輯器' },
+          on: {
+            click: handleSaveToFile,
+          },
+        });
 
         const modalFooter = el('div', { class: 'gk-modal-footer' }, [
           el('button', {
@@ -1451,33 +2264,8 @@
             attrs: { type: 'button' },
             on: { click: closeModal },
           }),
-          el('button', {
-            class: 'gk-btn gk-btn-primary',
-            text: '儲存修改',
-            attrs: { type: 'button' },
-            on: {
-              click: () => {
-                try {
-                  const parsed = parseJson(textarea.value);
-                  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-                    throw new Error('根節點必須是物件（Object）格式');
-                  }
-                  if (currentKind === 'config') {
-                    state.config = parsed;
-                  } else {
-                    state.content = parsed;
-                  }
-                  saveDraft();
-                  closeModal();
-                  renderAll();
-                  showToast(`已成功修改 ${currentKind}.json`, 'success');
-                } catch (err) {
-                  textarea.classList.add('is-error');
-                  showToast(`JSON 解析失敗：${err.message}`, 'error');
-                }
-              },
-            },
-          }),
+          applyOnlyBtn,
+          saveToFileBtn,
         ]);
 
         const modal = el('div', { class: 'gk-modal gk-modal-wide' }, [
@@ -1543,9 +2331,8 @@
           return;
         }
         clearDraft();
-        originalSnapshot.config = '';
-        originalSnapshot.content = '';
         renderAll();
+        buildToolbar();
         showToast('草稿已清空', 'success');
       }
 
@@ -1954,7 +2741,7 @@
           on: {
             change: (event) => {
               host[key] = event.target.checked;
-              onChange();
+              onChange({ skipRender: true });
             },
           },
         });
@@ -1973,7 +2760,7 @@
           on: {
             change: (event) => {
               host[key] = event.target.value;
-              onChange();
+              onChange({ skipRender: true });
             },
           },
         });
@@ -2023,9 +2810,27 @@
         if (!tabState[stateKey]) {
           tabState[stateKey] = 'zh-Hant';
         }
-        const active = tabState[stateKey];
+        let active = tabState[stateKey];
 
         const tabsRow = el('div', { class: 'gk-i18n-tabs', attrs: { role: 'tablist' } });
+        let inputEl = null;
+
+        const updateTabUI = (code) => {
+          tabState[stateKey] = code;
+          active = code;
+          Array.from(tabsRow.querySelectorAll('.gk-tab')).forEach((btn, i) => {
+            const c = LANG_CODES[i];
+            const isActive = c === code;
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+          if (inputEl) {
+            inputEl.placeholder = `${LANG_LABELS[active] || active}${field.placeholder ? ` · ${field.placeholder}` : ''}`;
+            inputEl.value = value[active] === undefined ? '' : String(value[active]);
+            inputEl.focus();
+          }
+        };
+
         LANG_CODES.forEach((code) => {
           const filled = Boolean(value[code] && String(value[code]).trim());
           const tab = el(
@@ -2039,8 +2844,7 @@
               },
               on: {
                 click: () => {
-                  tabState[stateKey] = code;
-                  renderCurrentCategory();
+                  updateTabUI(code);
                 },
               },
             },
@@ -2054,17 +2858,31 @@
           tabsRow.appendChild(tab);
         });
 
-        const inputEl = multiline
+        const onInputHandler = (event) => {
+          value[active] = event.target.value;
+          const hasVal = Boolean(event.target.value && event.target.value.trim());
+          const currentTabBtn = tabsRow.querySelector('.gk-tab.is-active');
+          if (currentTabBtn) {
+            const existingDot = currentTabBtn.querySelector('.gk-tab-dot');
+            if (hasVal && existingDot) {
+              existingDot.remove();
+            } else if (!hasVal && !existingDot) {
+              currentTabBtn.appendChild(
+                el('span', { class: 'gk-tab-dot', attrs: { 'aria-label': '未填寫' } })
+              );
+            }
+          }
+          onChange({ skipRender: true });
+        };
+
+        inputEl = multiline
           ? el('textarea', {
               class: 'gk-textarea-field',
               attrs: {
                 placeholder: `${LANG_LABELS[active] || active}${field.placeholder ? ` · ${field.placeholder}` : ''}`,
               },
               on: {
-                input: (event) => {
-                  value[active] = event.target.value;
-                  onChange({ skipRender: true });
-                },
+                input: onInputHandler,
               },
             })
           : el('input', {
@@ -2074,10 +2892,7 @@
                 placeholder: `${LANG_LABELS[active] || active}${field.placeholder ? ` · ${field.placeholder}` : ''}`,
               },
               on: {
-                input: (event) => {
-                  value[active] = event.target.value;
-                  onChange({ skipRender: true });
-                },
+                input: onInputHandler,
               },
             });
         inputEl.value = value[active] === undefined ? '' : String(value[active]);
@@ -2141,7 +2956,7 @@
               host[key] = cleaned;
               input.value = cleaned;
               validate();
-              onChange();
+              onChange({ skipRender: true });
             },
           },
         });
@@ -2177,7 +2992,7 @@
               on: {
                 change: (event) => {
                   link.platform = event.target.value;
-                  onChange();
+                  onChange({ skipRender: true });
                 },
               },
             });
@@ -2226,7 +3041,8 @@
                     return;
                   }
                   links.splice(index, 1);
-                  onChange();
+                  rebuild();
+                  onChange({ skipRender: true });
                 },
               },
             });
@@ -2250,7 +3066,8 @@
           on: {
             click: () => {
               links.push({ platform: 'website', url: '', label: {} });
-              onChange();
+              rebuild();
+              onChange({ skipRender: true });
             },
           },
         });
@@ -2266,39 +3083,45 @@
         }
         const tags = host[key];
         const listEl = el('div', { class: 'gk-tag-list' });
-        tags.forEach((tag, index) => {
-          if (!tag || typeof tag !== 'object') {
-            tags[index] = { 'zh-Hant': String(tag || '') };
-          }
-          const tagHost = { value: tags[index] };
-          const removeBtn = el('button', {
-            class: 'gk-btn gk-btn-danger gk-btn-small',
-            text: '刪除',
-            attrs: { type: 'button' },
-            on: {
-              click: () => {
-                if (!window.confirm('刪除這個標籤？')) {
-                  return;
-                }
-                tags.splice(index, 1);
-                onChange();
+
+        const rebuild = () => {
+          clear(listEl);
+          tags.forEach((tag, index) => {
+            if (!tag || typeof tag !== 'object') {
+              tags[index] = { 'zh-Hant': String(tag || '') };
+            }
+            const tagHost = { value: tags[index] };
+            const removeBtn = el('button', {
+              class: 'gk-btn gk-btn-danger gk-btn-small',
+              text: '刪除',
+              attrs: { type: 'button' },
+              on: {
+                click: () => {
+                  if (!window.confirm('刪除這個標籤？')) {
+                    return;
+                  }
+                  tags.splice(index, 1);
+                  rebuild();
+                  onChange({ skipRender: true });
+                },
               },
-            },
+            });
+            const inputField = renderI18nField(
+              { label: `標籤 ${index + 1}` },
+              tagHost,
+              'value',
+              onChange,
+              false
+            );
+            tags[index] = tagHost.value;
+            const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
+            listEl.appendChild(row);
           });
-          const inputField = renderI18nField(
-            { label: `標籤 ${index + 1}` },
-            tagHost,
-            'value',
-            onChange,
-            false
-          );
-          tags[index] = tagHost.value;
-          const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
-          listEl.appendChild(row);
-        });
-        if (tags.length === 0) {
-          listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增標籤' }));
-        }
+          if (tags.length === 0) {
+            listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增標籤' }));
+          }
+        };
+
         const addBtn = el('button', {
           class: 'gk-btn gk-btn-ghost gk-btn-small',
           text: '新增標籤',
@@ -2306,10 +3129,13 @@
           on: {
             click: () => {
               tags.push({ 'zh-Hant': '' });
-              onChange();
+              rebuild();
+              onChange({ skipRender: true });
             },
           },
         });
+
+        rebuild();
         const control = el('div', {}, [listEl, addBtn]);
         return fieldWrap(field.label || '標籤', control, { hint: field.hint });
       }
@@ -2320,39 +3146,45 @@
         }
         const list = host[key];
         const listEl = el('div', { class: 'gk-tag-list' });
-        list.forEach((item, index) => {
-          if (!item || typeof item !== 'object' || Array.isArray(item)) {
-            list[index] = { 'zh-Hant': String(item || '') };
-          }
-          const itemHost = { value: list[index] };
-          const removeBtn = el('button', {
-            class: 'gk-btn gk-btn-danger gk-btn-small',
-            text: '刪除',
-            attrs: { type: 'button' },
-            on: {
-              click: () => {
-                if (!window.confirm('刪除這個項目？')) {
-                  return;
-                }
-                list.splice(index, 1);
-                onChange();
+
+        const rebuild = () => {
+          clear(listEl);
+          list.forEach((item, index) => {
+            if (!item || typeof item !== 'object' || Array.isArray(item)) {
+              list[index] = { 'zh-Hant': String(item || '') };
+            }
+            const itemHost = { value: list[index] };
+            const removeBtn = el('button', {
+              class: 'gk-btn gk-btn-danger gk-btn-small',
+              text: '刪除',
+              attrs: { type: 'button' },
+              on: {
+                click: () => {
+                  if (!window.confirm('刪除這個項目？')) {
+                    return;
+                  }
+                  list.splice(index, 1);
+                  rebuild();
+                  onChange({ skipRender: true });
+                },
               },
-            },
+            });
+            const inputField = renderI18nField(
+              { label: `第 ${index + 1} 項` },
+              itemHost,
+              'value',
+              onChange,
+              Boolean(field.multiline)
+            );
+            list[index] = itemHost.value;
+            const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
+            listEl.appendChild(row);
           });
-          const inputField = renderI18nField(
-            { label: `第 ${index + 1} 項` },
-            itemHost,
-            'value',
-            onChange,
-            Boolean(field.multiline)
-          );
-          list[index] = itemHost.value;
-          const row = el('div', { class: 'gk-tag-row' }, [inputField, removeBtn]);
-          listEl.appendChild(row);
-        });
-        if (list.length === 0) {
-          listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增項目' }));
-        }
+          if (list.length === 0) {
+            listEl.appendChild(el('p', { class: 'gk-field-hint', text: '尚未新增項目' }));
+          }
+        };
+
         const addBtn = el('button', {
           class: 'gk-btn gk-btn-ghost gk-btn-small',
           text: field.addLabel || '新增一項',
@@ -2360,10 +3192,13 @@
           on: {
             click: () => {
               list.push({ 'zh-Hant': '' });
-              onChange();
+              rebuild();
+              onChange({ skipRender: true });
             },
           },
         });
+
+        rebuild();
         const control = el('div', {}, [listEl, addBtn]);
         return fieldWrap(field.label || '項目列表', control, { hint: field.hint });
       }
@@ -2459,7 +3294,7 @@
                     host[key] = host[key].filter((id) => id !== option.value);
                   }
                   syncBidirectional(null, host, key, field.target, oldIds, host[key]);
-                  onChange();
+                  onChange({ skipRender: true });
                 },
               },
             });
@@ -2712,6 +3547,11 @@
         if (!container) {
           return;
         }
+        const isSameCategory = renderedCategoryId === state.activeCategory;
+        const prevScrollTop = isSameCategory ? container.scrollTop : 0;
+        const prevWindowY = isSameCategory ? window.scrollY : 0;
+        renderedCategoryId = state.activeCategory;
+
         clear(container);
         if (isEmptyState()) {
           container.appendChild(buildEmpty());
@@ -2733,6 +3573,7 @@
           saveDraft();
           buildNav();
           buildStatusLine();
+          updateToolbarDirtyState();
           if (!options || !options.skipRender) {
             renderCurrentCategory();
           }
@@ -2754,6 +3595,23 @@
             window.setTimeout(() => target.classList.remove('is-highlighted'), 1600);
           }
           pendingScrollItem = null;
+        } else {
+          if (prevScrollTop > 0) {
+            container.scrollTop = prevScrollTop;
+            window.requestAnimationFrame(() => {
+              if (container && prevScrollTop > 0 && container.scrollTop !== prevScrollTop) {
+                container.scrollTop = prevScrollTop;
+              }
+            });
+          }
+          if (prevWindowY > 0) {
+            window.scrollTo({ top: prevWindowY });
+            window.requestAnimationFrame(() => {
+              if (prevWindowY > 0 && window.scrollY !== prevWindowY) {
+                window.scrollTo({ top: prevWindowY });
+              }
+            });
+          }
         }
       }
 
@@ -2769,14 +3627,46 @@
       }
 
       function buildEmpty() {
+        const isLinked = Boolean(fileState.dirHandle);
         return el('div', { class: 'gk-panel' }, [
           el('div', { class: 'gk-empty' }, [
             el('h2', { class: 'gk-empty-title', text: '目前沒有資料' }),
-            el('p', { text: '請匯入現有的 JSON 檔，或載入一份最小可用的空白範本。' }),
+            el('p', {
+              text: isLinked
+                ? `已連結「${fileState.dirName || 'data'}」資料夾，點選下方按鈕即可從磁碟載入，或開啟其他資料夾。`
+                : '請開啟 2026/data 資料夾直接載入本機 JSON 檔，或匯入現有資料。',
+            }),
             el('div', { class: 'gk-empty-actions' }, [
+              isLinked
+                ? el('button', {
+                    class: 'gk-btn gk-btn-primary',
+                    text: `🔄 從「${fileState.dirName || 'data'}」載入檔案`,
+                    attrs: { type: 'button' },
+                    on: { click: reloadFromDisk },
+                  })
+                : el('button', {
+                    class: 'gk-btn gk-btn-primary',
+                    text: '📁 開啟 data 資料夾（推薦，可直接修改）',
+                    attrs: { type: 'button' },
+                    on: { click: () => openDataDirectory() },
+                  }),
+              isLinked
+                ? el('button', {
+                    class: 'gk-btn gk-btn-secondary',
+                    text: '📁 切換其他資料夾',
+                    attrs: { type: 'button' },
+                    on: { click: () => openDataDirectory() },
+                  })
+                : null,
               el('button', {
-                class: 'gk-btn gk-btn-primary',
-                text: '匯入 JSON',
+                class: 'gk-btn gk-btn-secondary',
+                text: '🌐 從伺服器載入 (Fetch)',
+                attrs: { type: 'button' },
+                on: { click: fetchServerData },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '匯入 JSON 檔',
                 attrs: { type: 'button' },
                 on: { click: () => document.getElementById('fileInput').click() },
               }),
@@ -2788,7 +3678,7 @@
               }),
               el('button', {
                 class: 'gk-btn gk-btn-secondary',
-                text: '修改 JSON',
+                text: '原始 JSON',
                 attrs: { type: 'button' },
                 on: { click: () => openEditJsonModal() },
               }),
@@ -2825,6 +3715,10 @@
 
       function buildNav() {
         const nav = document.getElementById('nav');
+        if (!nav) {
+          return;
+        }
+        const prevSidebarScroll = nav.parentElement ? nav.parentElement.scrollTop : 0;
         clear(nav);
         CATEGORIES.forEach((category) => {
           const count = countCategoryItems(category);
@@ -2838,6 +3732,14 @@
               },
               on: {
                 click: () => {
+                  if (state.activeCategory === category.id) {
+                    const container = document.getElementById('content');
+                    if (container) {
+                      container.scrollTop = 0;
+                    }
+                    window.scrollTo({ top: 0 });
+                    return;
+                  }
                   state.activeCategory = category.id;
                   buildNav();
                   renderCurrentCategory();
@@ -2851,6 +3753,9 @@
           );
           nav.appendChild(el('li', { class: 'gk-nav-item' }, [button]));
         });
+        if (nav.parentElement && prevSidebarScroll > 0) {
+          nav.parentElement.scrollTop = prevSidebarScroll;
+        }
       }
 
       function openModal(title, bodyNode, footerNodes) {
@@ -3054,7 +3959,10 @@
       function openDiffModal() {
         const body = el('div', { class: 'gk-diff-body' });
         body.appendChild(
-          el('p', { class: 'gk-modal-hint', text: '比較目前草稿與最後一次匯入或空白範本的差異。' })
+          el('p', {
+            class: 'gk-modal-hint',
+            text: '比較目前編輯器內容與最後一次儲存或載入的檔案差異。',
+          })
         );
         body.appendChild(
           renderDiffBlock('config.json', originalSnapshot.config, serialize('config'))
@@ -3085,32 +3993,345 @@
         openModal('預覽 2026 首頁', body);
       }
 
+      function getMoreDropdownElements() {
+        const dropdown = document.getElementById('gkMoreDropdown');
+        const menu =
+          document.getElementById('gkMoreMenu') ||
+          (dropdown ? dropdown.querySelector('.gk-dropdown-menu') : null);
+        const btn =
+          document.getElementById('gkMoreBtn') ||
+          (dropdown ? dropdown.querySelector('.gk-dropdown-toggle') : null);
+        return { dropdown, menu, btn };
+      }
+
+      function closeMoreDropdown() {
+        const { menu, btn } = getMoreDropdownElements();
+        if (menu) {
+          menu.setAttribute('hidden', '');
+          menu.hidden = true;
+        }
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.classList.remove('is-active');
+        }
+      }
+
+      function openMoreDropdown(focusTarget = false) {
+        const { menu, btn } = getMoreDropdownElements();
+        if (!menu) {
+          return;
+        }
+        menu.removeAttribute('hidden');
+        menu.hidden = false;
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.classList.add('is-active');
+        }
+        if (focusTarget === 'first' || focusTarget === true) {
+          const firstItem = menu.querySelector('.gk-dropdown-item');
+          if (firstItem) {
+            firstItem.focus();
+          }
+        } else if (focusTarget === 'last') {
+          const items = menu.querySelectorAll('.gk-dropdown-item');
+          if (items.length > 0) {
+            items[items.length - 1].focus();
+          }
+        }
+      }
+
+      function toggleMoreDropdown(event) {
+        if (event) {
+          event.stopPropagation();
+        }
+        const { menu } = getMoreDropdownElements();
+        if (!menu) {
+          return;
+        }
+        const isHidden = menu.hasAttribute('hidden') || menu.hidden;
+        if (isHidden) {
+          openMoreDropdown();
+        } else {
+          closeMoreDropdown();
+        }
+      }
+
       function buildToolbar() {
         const toolbar = document.getElementById('toolbar');
         clear(toolbar);
-        const buttons = [
-          {
-            label: '匯入 JSON',
-            class: 'gk-btn gk-btn-primary',
-            on: () => document.getElementById('fileInput').click(),
+
+        const isLinked = Boolean(fileState.dirHandle);
+        const dirty = isDirty();
+
+        const statusGroup = el('div', { class: 'gk-toolbar-status' });
+
+        const linkBadge = el('button', {
+          class: `gk-status-badge ${isLinked ? 'is-linked' : 'is-unlinked'}`,
+          attrs: {
+            type: 'button',
+            id: 'gkLinkBadge',
+            title: isLinked
+              ? `已連結本機「${fileState.dirName || 'data'}」資料夾（點選可切換）`
+              : '尚未連結本機資料夾（點選以選取 2026/data 資料夾，啟用一鍵直接修改）',
           },
-          { label: '貼上 JSON', class: 'gk-btn', on: openPasteModal },
-          { label: '修改 JSON', class: 'gk-btn', on: () => openEditJsonModal() },
-          { label: '檢查', class: 'gk-btn', on: openValidateModal },
-          { label: '查看變更', class: 'gk-btn', on: openDiffModal },
-          { label: '預覽', class: 'gk-btn', on: openPreviewModal },
-          { label: '清空草稿', class: 'gk-btn gk-btn-danger', on: confirmClearDraft },
-        ];
-        buttons.forEach((btn) => {
-          toolbar.appendChild(
-            el('button', {
-              class: btn.class,
-              text: btn.label,
-              attrs: { type: 'button' },
-              on: { click: btn.on },
-            })
-          );
+          text: isLinked ? `📁 ${fileState.dirName || 'data'}` : '📁 未連結',
+          on: {
+            click: () => {
+              if (isLinked) {
+                if (
+                  window.confirm(
+                    `目前已連結「${fileState.dirName || 'data'}」。要重新選取其他資料夾嗎？`
+                  )
+                ) {
+                  openDataDirectory();
+                }
+              } else {
+                openDataDirectory();
+              }
+            },
+          },
         });
+        statusGroup.appendChild(linkBadge);
+
+        const dirtyBadge = el('span', {
+          class: `gk-status-badge ${dirty ? 'is-dirty' : 'is-clean'}`,
+          attrs: {
+            id: 'gkDirtyBadge',
+            title: dirty ? '有尚未寫入本機檔案的變更' : '編輯器內容已與本機檔案同步',
+          },
+          text: dirty ? '● 未儲存' : '✓ 已同步',
+        });
+        statusGroup.appendChild(dirtyBadge);
+        toolbar.appendChild(statusGroup);
+
+        toolbar.appendChild(
+          el('div', { class: 'gk-toolbar-divider', attrs: { 'aria-hidden': 'true' } })
+        );
+
+        const fileGroup = el('div', { class: 'gk-toolbar-group' });
+
+        const saveBtn = el('button', {
+          id: 'gkSaveBtn',
+          class: `gk-btn gk-btn-save${dirty ? ' is-dirty' : ''}`,
+          text: fileState.isSaving ? '💾 儲存中...' : '💾 儲存',
+          attrs: {
+            id: 'gkSaveBtn',
+            type: 'button',
+            title: '直接修改本機 config.json 與 content.json 檔案 (Cmd+S / Ctrl+S)',
+            ...(fileState.isSaving ? { disabled: '' } : {}),
+          },
+          on: { click: saveToFiles },
+        });
+        fileGroup.appendChild(saveBtn);
+
+        const openDirBtn = el('button', {
+          class: 'gk-btn gk-btn-secondary',
+          text: isLinked ? '切換資料夾' : '開啟資料夾',
+          attrs: {
+            type: 'button',
+            title: '選取 2026/data 資料夾，啟用直接修改檔案功能',
+          },
+          on: { click: () => openDataDirectory() },
+        });
+        fileGroup.appendChild(openDirBtn);
+
+        if (isLinked) {
+          const reloadBtn = el('button', {
+            class: 'gk-btn gk-btn-secondary',
+            text: '🔄 重新載入',
+            attrs: {
+              type: 'button',
+              title: '從磁碟重新載入 config.json 與 content.json 的最新內容',
+            },
+            on: { click: reloadFromDisk },
+          });
+          fileGroup.appendChild(reloadBtn);
+        }
+        toolbar.appendChild(fileGroup);
+
+        toolbar.appendChild(
+          el('div', { class: 'gk-toolbar-divider', attrs: { 'aria-hidden': 'true' } })
+        );
+
+        const reviewGroup = el('div', { class: 'gk-toolbar-group' });
+        reviewGroup.appendChild(
+          el('button', {
+            class: 'gk-btn',
+            text: '檢查',
+            attrs: { type: 'button', title: '檢查必填欄位與多國語系翻譯完整度' },
+            on: { click: openValidateModal },
+          })
+        );
+        reviewGroup.appendChild(
+          el('button', {
+            class: 'gk-btn',
+            text: '查看變更',
+            attrs: { type: 'button', title: '比較目前編輯內容與原始檔案之差異' },
+            on: { click: openDiffModal },
+          })
+        );
+        reviewGroup.appendChild(
+          el('button', {
+            class: 'gk-btn',
+            text: '預覽',
+            attrs: { type: 'button', title: '預覽 2026 首頁' },
+            on: { click: openPreviewModal },
+          })
+        );
+        toolbar.appendChild(reviewGroup);
+
+        toolbar.appendChild(
+          el('div', { class: 'gk-toolbar-divider', attrs: { 'aria-hidden': 'true' } })
+        );
+
+        const advGroup = el('div', { class: 'gk-toolbar-group' });
+        advGroup.appendChild(
+          el('button', {
+            class: 'gk-btn',
+            text: '原始 JSON',
+            attrs: { type: 'button', title: '檢視或手動編輯原始 JSON 程式碼' },
+            on: { click: () => openEditJsonModal() },
+          })
+        );
+
+        const moreBtn = el('button', {
+          id: 'gkMoreBtn',
+          class: 'gk-btn gk-dropdown-toggle',
+          text: '更多 ▾',
+          attrs: {
+            id: 'gkMoreBtn',
+            type: 'button',
+            title: '更多進階操作',
+            'aria-haspopup': 'menu',
+            'aria-expanded': 'false',
+            'aria-controls': 'gkMoreMenu',
+          },
+          on: {
+            click: toggleMoreDropdown,
+            keydown: (event) => {
+              if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                openMoreDropdown('first');
+              } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                openMoreDropdown('last');
+              } else if (event.key === 'Tab') {
+                closeMoreDropdown();
+              }
+            },
+          },
+        });
+
+        const importItem = el('button', {
+          id: 'gkImportJsonBtn',
+          class: 'gk-dropdown-item',
+          attrs: {
+            id: 'gkImportJsonBtn',
+            type: 'button',
+            role: 'menuitem',
+            tabindex: '-1',
+            title: '從本機選擇 JSON 檔案匯入',
+          },
+          text: '📥 匯入 JSON 檔',
+          on: {
+            click: () => {
+              closeMoreDropdown();
+              document.getElementById('fileInput').click();
+            },
+          },
+        });
+
+        const clearDraftItem = el('button', {
+          id: 'gkClearDraftBtn',
+          class: 'gk-dropdown-item gk-dropdown-item-danger',
+          attrs: {
+            id: 'gkClearDraftBtn',
+            type: 'button',
+            role: 'menuitem',
+            tabindex: '-1',
+            title: '清空瀏覽器本機暫存草稿',
+          },
+          text: '🗑️ 清空本機草稿',
+          on: {
+            click: () => {
+              closeMoreDropdown();
+              confirmClearDraft();
+            },
+          },
+        });
+
+        const moreMenu = el(
+          'div',
+          {
+            id: 'gkMoreMenu',
+            class: 'gk-dropdown-menu',
+            attrs: {
+              id: 'gkMoreMenu',
+              role: 'menu',
+              'aria-labelledby': 'gkMoreBtn',
+              hidden: '',
+            },
+            on: {
+              keydown: (event) => {
+                const items = Array.from(moreMenu.querySelectorAll('.gk-dropdown-item'));
+                const currentIndex = items.indexOf(document.activeElement);
+
+                if (event.key === 'ArrowDown') {
+                  event.preventDefault();
+                  const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+                  items[nextIndex]?.focus();
+                } else if (event.key === 'ArrowUp') {
+                  event.preventDefault();
+                  const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+                  items[prevIndex]?.focus();
+                } else if (event.key === 'Home') {
+                  event.preventDefault();
+                  items[0]?.focus();
+                } else if (event.key === 'End') {
+                  event.preventDefault();
+                  items[items.length - 1]?.focus();
+                } else if (event.key === 'Escape') {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  closeMoreDropdown();
+                  moreBtn.focus();
+                } else if (event.key === 'Tab') {
+                  closeMoreDropdown();
+                }
+              },
+            },
+          },
+          [
+            importItem,
+            el('div', { class: 'gk-dropdown-divider', attrs: { 'aria-hidden': 'true' } }),
+            clearDraftItem,
+          ]
+        );
+
+        const moreDropdown = el(
+          'div',
+          {
+            id: 'gkMoreDropdown',
+            class: 'gk-dropdown',
+            attrs: { id: 'gkMoreDropdown' },
+            on: {
+              focusout: (event) => {
+                if (
+                  moreDropdown &&
+                  event.relatedTarget &&
+                  event.relatedTarget !== document.body &&
+                  !moreDropdown.contains(event.relatedTarget)
+                ) {
+                  closeMoreDropdown();
+                }
+              },
+            },
+          },
+          [moreBtn, moreMenu]
+        );
+
+        advGroup.appendChild(moreDropdown);
+        toolbar.appendChild(advGroup);
       }
 
       function buildStatusLine() {
@@ -3130,6 +4351,31 @@
             el('strong', { text: String(contentKeys) }),
           ])
         );
+        const isLinked = Boolean(fileState.dirHandle);
+        line.appendChild(
+          el('span', { class: 'gk-status-item' }, [
+            el('span', { text: '本機檔案：' }),
+            el('strong', { text: isLinked ? `已連結 (${fileState.dirName || 'data'})` : '未連結' }),
+          ])
+        );
+        const dirty = isDirty();
+        line.appendChild(
+          el('span', { class: 'gk-status-item' }, [
+            el('span', { text: '檔案同步：' }),
+            el('strong', { text: dirty ? '有未儲存變更' : '已同步' }),
+          ])
+        );
+        if (fileState.lastSavedAt) {
+          const pad = (n) => String(n).padStart(2, '0');
+          const d = fileState.lastSavedAt;
+          const timeStr = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+          line.appendChild(
+            el('span', { class: 'gk-status-item' }, [
+              el('span', { text: '上次寫入：' }),
+              el('strong', { text: timeStr }),
+            ])
+          );
+        }
         const draftAvailable = Boolean(localStorage.getItem(DRAFT_KEY));
         line.appendChild(
           el('span', { class: 'gk-status-item' }, [
@@ -3140,6 +4386,7 @@
       }
 
       function renderAll() {
+        renderedCategoryId = null;
         buildNav();
         renderCurrentCategory();
         buildStatusLine();
@@ -3740,14 +4987,99 @@
         return keys.map((entry) => ({ key: entry[0], type: 'i18n-text', label: entry[1] }));
       }
 
-      function init() {
-        buildToolbar();
+      async function init() {
         bindFileInput();
+
+        try {
+          const stored = await getStoredDirInfo();
+          if (stored) {
+            fileState.dirHandle = stored.handle;
+            fileState.dirName = stored.dirName;
+          }
+        } catch (e) {
+          console.warn('讀取暫存資料夾 handle 失敗', e);
+        }
+
         const restored = loadDraft();
+
+        if (!restored && isEmptyState()) {
+          let loadedFromLocal = false;
+          if (fileState.dirHandle && typeof fileState.dirHandle.queryPermission === 'function') {
+            try {
+              const perm = await fileState.dirHandle.queryPermission({ mode: 'read' });
+              if (perm === 'granted') {
+                const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
+                if (configObj || contentObj) {
+                  if (configObj) {
+                    state.config = configObj;
+                    originalSnapshot.config = JSON.stringify(configObj, null, 2);
+                  }
+                  if (contentObj) {
+                    state.content = contentObj;
+                    originalSnapshot.content = JSON.stringify(contentObj, null, 2);
+                  }
+                  saveDraft();
+                  loadedFromLocal = true;
+                }
+              }
+            } catch (e) {
+              console.warn('嘗試從本機讀取失敗', e);
+            }
+          }
+
+          if (!loadedFromLocal) {
+            await tryAutoLoadData();
+          }
+        }
+
+        buildToolbar();
         renderAll();
+
         if (restored) {
           showToast('已還原上一次的草稿', 'success');
+        } else if (!isEmptyState()) {
+          showToast('已載入現有資料', 'success');
         }
+
+        window.addEventListener('click', (event) => {
+          const { dropdown } = getMoreDropdownElements();
+          if (dropdown && !dropdown.contains(event.target)) {
+            closeMoreDropdown();
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          closeMoreDropdown();
+        });
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            const { menu, btn } = getMoreDropdownElements();
+            if (menu && (!menu.hasAttribute('hidden') || !menu.hidden)) {
+              event.preventDefault();
+              event.stopPropagation();
+              closeMoreDropdown();
+              if (btn) {
+                btn.focus();
+              }
+            }
+          }
+        });
+
+        window.addEventListener('keydown', (event) => {
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 's') {
+            event.preventDefault();
+            saveToFiles();
+          }
+        });
+
+        window.addEventListener('beforeunload', (event) => {
+          if (isDirty()) {
+            event.preventDefault();
+            event.returnValue = '尚有未儲存至 JSON 檔的變更，確定要離開嗎？';
+            return event.returnValue;
+          }
+        });
       }
 
       init();
