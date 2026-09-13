@@ -45,7 +45,7 @@
     },
     "links": [
       {
-        "platform": "website",
+        "platform": "GDG Bevy",
         "url": "https://gdg.community.dev/gdg-kaohsiung/",
         "label": {}
       },
@@ -174,9 +174,20 @@
       "enabled": true,
       "order": 10,
       "type": "cta",
-      "url": "https://example.com/ticket",
+      "url": "https://gdg.community.dev/events/details/google-gdg-kaohsiung-presents-devfest-kaohsiung-2026/",
       "label": {
         "zh-Hant": "點我購票"
+      }
+    },
+    {
+      "id": "discount",
+      "enabled": true,
+      "order": 11,
+      "type": "cta",
+      "placement": "home",
+      "url": "https://forms.gle/W94jMEuhFRJmSQ2H9",
+      "label": {
+        "zh-Hant": "取得折扣"
       }
     }
   ],
@@ -213,6 +224,9 @@
     },
     "ticketCta": {
       "zh-Hant": "點我購票"
+    },
+    "discountCta": {
+      "zh-Hant": "取得折扣"
     },
     "speakerNumberPrefix": {
       "zh-Hant": "號"
