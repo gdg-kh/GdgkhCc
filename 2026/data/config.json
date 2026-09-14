@@ -122,7 +122,7 @@
       "label": {
         "zh-Hant": "活動介紹",
         "en": "About",
-        "ja": "イベント紹介"
+        "ja": "概要"
       }
     },
     {
@@ -132,7 +132,7 @@
       "label": {
         "zh-Hant": "講者介紹",
         "en": "Speakers",
-        "ja": "スピーカー"
+        "ja": "登壇者"
       }
     },
     {
@@ -142,7 +142,7 @@
       "label": {
         "zh-Hant": "議程時間表",
         "en": "Agenda",
-        "ja": "アジェンダ"
+        "ja": "日程"
       }
     },
     {
@@ -152,7 +152,7 @@
       "label": {
         "zh-Hant": "虛擬會場",
         "en": "Virtual Venue",
-        "ja": "バーチャル会場"
+        "ja": "会場"
       }
     },
     {
@@ -172,7 +172,7 @@
       "label": {
         "zh-Hant": "特別感謝",
         "en": "Special Thanks",
-        "ja": "スペシャルサンクス"
+        "ja": "協賛"
       }
     },
     {
@@ -424,7 +424,7 @@
     "sponsorMarqueeTitle": {
       "zh-Hant": "特別感謝",
       "en": "Special Thanks",
-      "ja": "スペシャルサンクス"
+      "ja": "協賛"
     },
     "ballotHeaderText": {
       "zh-Hant": "GDG Kaohsiung 感謝票",
