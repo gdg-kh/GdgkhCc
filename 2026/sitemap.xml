@@ -1,164 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gdgkh.cc/2026/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/andy_wang/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/googel_for_developers/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/sarah_chen/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/edbkcg/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/ming_hao_lin/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/legend_innovation/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/yuki_tanaka/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/ko_in/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/david_wu/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/developer_buffet/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/jessica_huang/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/thanks/jetbrains/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/kevin_liu/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/speakers/patricia_chang/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/mei_ling/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/chris_lee/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/amanda_lin/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/roger_pan/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/ivy_kuo/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/staff/sam_hsu/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/example_co/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/future_tech/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/cloud_labs/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/dev_studio/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/ai_valley/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/kh_incubator/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/thanks/community_hub/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/booths/kotlin_tw/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/booths/flutter_kh/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/booths/gdsc_nsysu/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/booths/sample_corp/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gdgkh.cc/2026/share/booths/demo_startup/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <loc>https://gdg.community.dev/e/mjbj5s/share/booths/kaohsiung_pyladies/</loc>
+    <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

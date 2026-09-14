@@ -1,17 +1,23 @@
 {
   "site": {
     "eventName": {
-      "zh-Hant": "DevFest 2026 高雄場"
+      "zh-Hant": "DevFest 2026 高雄場",
+      "en": "DevFest Kaohsiung 2026",
+      "ja": "DevFest Kaohsiung 2026"
     },
     "year": 2026,
     "eventDate": "2026-11-14",
     "eventStart": "2026-11-14T08:30:00+08:00",
     "baseUrl": "https://gdg.community.dev/e/mjbj5s/",
     "venue": {
-      "zh-Hant": "KO-IN 智高點"
+      "zh-Hant": "KO-IN 智高點",
+      "en": "KO-IN Smart Innovation Hub",
+      "ja": "KO-IN 智高点"
     },
     "venueAddress": {
-      "zh-Hant": "高雄市新興區中正三路 25 號 14 樓"
+      "zh-Hant": "高雄市新興區中正三路 25 號 14 樓",
+      "en": "14F, No. 25, Zhongzheng 3rd Rd., Xinxing Dist., Kaohsiung City, Taiwan",
+      "ja": "台湾 高雄市新興区中正三路25号14階"
     },
     "venueMapUrl": "https://maps.app.goo.gl/tsrtSkCcmjxoYs4cA"
   },
@@ -27,12 +33,12 @@
       {
         "code": "en",
         "label": "English",
-        "enabled": false
+        "enabled": true
       },
       {
         "code": "ja",
         "label": "日本語",
-        "enabled": false
+        "enabled": true
       }
     ]
   },
@@ -53,14 +59,18 @@
         "platform": "facebook",
         "url": "https://www.facebook.com/groups/GDGKaohsiung",
         "label": {
-          "zh-Hant": "臉書社團"
+          "zh-Hant": "臉書社團",
+          "en": "Facebook Group",
+          "ja": "Facebook グループ"
         }
       },
       {
         "platform": "facebook",
         "url": "https://www.facebook.com/GDGKaohsiung",
         "label": {
-          "zh-Hant": "臉書粉專"
+          "zh-Hant": "臉書粉專",
+          "en": "Facebook Page",
+          "ja": "Facebook ページ"
         }
       },
       {
@@ -70,7 +80,9 @@
       }
     ],
     "copyright": {
-      "zh-Hant": "© 2026 GDG Kaohsiung"
+      "zh-Hant": "© 2026 GDG Kaohsiung",
+      "en": "© 2026 GDG Kaohsiung",
+      "ja": "© 2026 GDG Kaohsiung"
     }
   },
   "sponsorMarquee": {
@@ -94,27 +106,43 @@
   },
   "menu": [
     {
+      "id": "home",
+      "enabled": true,
+      "order": 0,
+      "label": {
+        "zh-Hant": "回首頁",
+        "en": "Home",
+        "ja": "ホーム"
+      }
+    },
+    {
       "id": "about_2026",
       "enabled": true,
       "order": 1,
       "label": {
-        "zh-Hant": "活動介紹"
+        "zh-Hant": "活動介紹",
+        "en": "About",
+        "ja": "イベント紹介"
       }
     },
     {
       "id": "speakers_2026",
-      "enabled": false,
+      "enabled": true,
       "order": 2,
       "label": {
-        "zh-Hant": "講者介紹"
+        "zh-Hant": "講者介紹",
+        "en": "Speakers",
+        "ja": "スピーカー"
       }
     },
     {
       "id": "agenda_2026",
-      "enabled": false,
+      "enabled": true,
       "order": 3,
       "label": {
-        "zh-Hant": "議程時間表"
+        "zh-Hant": "議程時間表",
+        "en": "Agenda",
+        "ja": "アジェンダ"
       }
     },
     {
@@ -122,31 +150,39 @@
       "enabled": true,
       "order": 4,
       "label": {
-        "zh-Hant": "虛擬會場"
+        "zh-Hant": "虛擬會場",
+        "en": "Virtual Venue",
+        "ja": "バーチャル会場"
       }
     },
     {
       "id": "staff_2026",
-      "enabled": false,
+      "enabled": true,
       "order": 5,
       "label": {
-        "zh-Hant": "工作人員"
+        "zh-Hant": "工作人員",
+        "en": "Staff",
+        "ja": "スタッフ"
       }
     },
     {
       "id": "thanks_2026",
-      "enabled": false,
+      "enabled": true,
       "order": 6,
       "label": {
-        "zh-Hant": "特別感謝"
+        "zh-Hant": "特別感謝",
+        "en": "Special Thanks",
+        "ja": "スペシャルサンクス"
       }
     },
     {
       "id": "booths_2026",
-      "enabled": false,
+      "enabled": true,
       "order": 7,
       "label": {
-        "zh-Hant": "活動擺攤"
+        "zh-Hant": "活動擺攤",
+        "en": "Booths",
+        "ja": "ブース"
       }
     },
     {
@@ -157,7 +193,9 @@
       "placement": "home",
       "url": "https://gdgkh.cc/2025/",
       "label": {
-        "zh-Hant": "去年頁面"
+        "zh-Hant": "去年頁面",
+        "en": "Last Year's Event",
+        "ja": "昨年のイベント"
       }
     },
     {
@@ -166,7 +204,9 @@
       "order": 9,
       "placement": "home",
       "label": {
-        "zh-Hant": "主辦單位"
+        "zh-Hant": "主辦單位",
+        "en": "Organizer",
+        "ja": "主催"
       }
     },
     {
@@ -176,7 +216,9 @@
       "type": "cta",
       "url": "https://gdg.community.dev/events/details/google-gdg-kaohsiung-presents-devfest-kaohsiung-2026/",
       "label": {
-        "zh-Hant": "點我購票"
+        "zh-Hant": "點我購票",
+        "en": "Get Tickets",
+        "ja": "チケット購入"
       }
     },
     {
@@ -187,154 +229,255 @@
       "placement": "home",
       "url": "https://forms.gle/W94jMEuhFRJmSQ2H9",
       "label": {
-        "zh-Hant": "取得折扣"
+        "zh-Hant": "取得折扣",
+        "en": "Get Discount",
+        "ja": "割引を取得"
       }
     }
   ],
   "ui": {
     "detailButton": {
-      "zh-Hant": "看詳細"
+      "zh-Hant": "看詳細",
+      "en": "View Details",
+      "ja": "詳細を見る"
     },
     "closeButton": {
-      "zh-Hant": "關閉"
+      "zh-Hant": "關閉",
+      "en": "Close",
+      "ja": "閉じる"
     },
     "sessionLabel": {
-      "zh-Hant": "議程"
+      "zh-Hant": "議程",
+      "en": "Session",
+      "ja": "セッション"
     },
     "sessionAbstractLabel": {
-      "zh-Hant": "議程介紹"
+      "zh-Hant": "議程介紹",
+      "en": "Abstract",
+      "ja": "セッション概要"
     },
     "groupLabel": {
-      "zh-Hant": "分類"
+      "zh-Hant": "分類",
+      "en": "Category",
+      "ja": "カテゴリ"
     },
     "tagsLabel": {
-      "zh-Hant": "標籤"
+      "zh-Hant": "標籤",
+      "en": "Tags",
+      "ja": "タグ"
     },
     "linksLabel": {
-      "zh-Hant": "連結"
+      "zh-Hant": "連結",
+      "en": "Links",
+      "ja": "リンク"
     },
     "roleLabel": {
-      "zh-Hant": "志工職務"
+      "zh-Hant": "志工職務",
+      "en": "Role",
+      "ja": "担当"
     },
     "backToTop": {
-      "zh-Hant": "回到頂端"
+      "zh-Hant": "回到頂端",
+      "en": "Back to Top",
+      "ja": "トップへ戻る"
     },
     "langLabel": {
-      "zh-Hant": "語言"
+      "zh-Hant": "語言",
+      "en": "Language",
+      "ja": "言語"
     },
     "ticketCta": {
-      "zh-Hant": "點我購票"
+      "zh-Hant": "點我購票",
+      "en": "Get Tickets",
+      "ja": "チケット購入"
     },
     "discountCta": {
-      "zh-Hant": "取得折扣"
+      "zh-Hant": "取得折扣",
+      "en": "Get Discount",
+      "ja": "割引を取得"
     },
     "speakerNumberPrefix": {
-      "zh-Hant": "號"
+      "zh-Hant": "號",
+      "en": "#",
+      "ja": "番"
     },
     "allTracksLabel": {
-      "zh-Hant": "全部軌道"
+      "zh-Hant": "全部軌道",
+      "en": "All Tracks",
+      "ja": "すべてのトラック"
     },
     "emptyStateText": {
-      "zh-Hant": "資料準備中，請稍後再來看看"
+      "zh-Hant": "資料準備中，請稍後再來看看",
+      "en": "Content is being prepared. Please check back later.",
+      "ja": "準備中です。後ほどご確認ください。"
     },
     "eventStartedText": {
-      "zh-Hant": "活動已開始"
+      "zh-Hant": "活動已開始",
+      "en": "Event Started",
+      "ja": "イベント開催中"
     },
     "countdownDays": {
-      "zh-Hant": "天"
+      "zh-Hant": "天",
+      "en": "Days",
+      "ja": "日"
     },
     "countdownHours": {
-      "zh-Hant": "時"
+      "zh-Hant": "時",
+      "en": "Hours",
+      "ja": "時間"
     },
     "countdownMinutes": {
-      "zh-Hant": "分"
+      "zh-Hant": "分",
+      "en": "Minutes",
+      "ja": "分"
     },
     "countdownSeconds": {
-      "zh-Hant": "秒"
+      "zh-Hant": "秒",
+      "en": "Seconds",
+      "ja": "秒"
     },
     "mapZoomHint": {
-      "zh-Hant": "點擊地圖放大檢視"
+      "zh-Hant": "點擊地圖放大檢視",
+      "en": "Tap the map to zoom in",
+      "ja": "地図をタップして拡大"
     },
     "viewerResetLabel": {
-      "zh-Hant": "重設縮放"
+      "zh-Hant": "重設縮放",
+      "en": "Reset Zoom",
+      "ja": "ズームをリセット"
     },
     "viewerCloseLabel": {
-      "zh-Hant": "關閉檢視器"
+      "zh-Hant": "關閉檢視器",
+      "en": "Close Viewer",
+      "ja": "ビューアを閉じる"
     },
     "viewerZoomHint": {
-      "zh-Hant": "滾輪縮放，拖曳平移，雙擊還原"
+      "zh-Hant": "滾輪縮放，拖曳平移，雙擊還原",
+      "en": "Scroll to zoom, drag to pan, double-click to reset",
+      "ja": "スクロールでズーム、ドラッグで移動、ダブルクリックでリセット"
     },
     "virtualEnterButton": {
-      "zh-Hant": "進入虛擬會場"
+      "zh-Hant": "進入虛擬會場",
+      "en": "Enter Virtual Venue",
+      "ja": "バーチャル会場に入る"
     },
     "virtualQrHint": {
-      "zh-Hant": "手機掃描 QR code 快速進入"
+      "zh-Hant": "手機掃描 QR code 快速進入",
+      "en": "Scan the QR code with your phone for instant access",
+      "ja": "スマートフォンで QR コードをスキャンして素早くアクセス"
     },
     "virtualMapCrossLink": {
-      "zh-Hant": "看實體場地地圖"
+      "zh-Hant": "看實體場地地圖",
+      "en": "View Physical Venue Map",
+      "ja": "会場マップを見る"
     },
     "navMoreLabel": {
-      "zh-Hant": "更多"
+      "zh-Hant": "更多",
+      "en": "More",
+      "ja": "その他"
     },
     "lastYearCardText": {
-      "zh-Hant": "看看去年的活動紀錄"
+      "zh-Hant": "看看去年的活動紀錄",
+      "en": "See last year's event recap",
+      "ja": "昨年的イベントを見る"
     },
     "organizerCardTitle": {
-      "zh-Hant": "主辦單位"
+      "zh-Hant": "主辦單位",
+      "en": "Organizer",
+      "ja": "主催"
     },
     "freeTicketLink": {
-      "zh-Hant": "查看資格並申請"
+      "zh-Hant": "查看資格並申請",
+      "en": "Check Eligibility & Apply",
+      "ja": "資格を確認して申請"
     },
     "freeTicketFormButton": {
-      "zh-Hant": "前往申請表單"
+      "zh-Hant": "前往申請表單",
+      "en": "Go to Application Form",
+      "ja": "申請フォームへ"
     },
     "freeTicketEligibilityLabel": {
-      "zh-Hant": "申請資格"
+      "zh-Hant": "申請資格",
+      "en": "Eligibility",
+      "ja": "申請資格"
     },
     "freeTicketProcessLabel": {
-      "zh-Hant": "審核流程"
+      "zh-Hant": "審核流程",
+      "en": "Review Process",
+      "ja": "審査プロセス"
     },
     "freeTicketCardButton": {
-      "zh-Hant": "我可能符合資格"
+      "zh-Hant": "我可能符合資格",
+      "en": "I may be eligible",
+      "ja": "資格があるかもしれません"
     },
     "directTicketCardButton": {
-      "zh-Hant": "直接報名"
+      "zh-Hant": "直接報名",
+      "en": "Register Directly",
+      "ja": "直接申し込む"
     },
     "freeTicketReviewNote": {
-      "zh-Hant": "送出申請後，主辦單位會於三個工作天內回覆審核結果"
+      "zh-Hant": "送出申請後，主辦單位會於三個工作天內回覆審核結果",
+      "en": "After submitting, the organizers will respond with review results within 3 working days.",
+      "ja": "申請提出後、主催者より 3 営業日以内に審査結果をご連絡いたします。"
     },
     "sponsorMarqueeTitle": {
-      "zh-Hant": "特別感謝"
+      "zh-Hant": "特別感謝",
+      "en": "Special Thanks",
+      "ja": "スペシャルサンクス"
     },
     "ballotHeaderText": {
-      "zh-Hant": "GDG Kaohsiung 感謝票"
+      "zh-Hant": "GDG Kaohsiung 感謝票",
+      "en": "GDG Kaohsiung Thank-You Ballot",
+      "ja": "GDG Kaohsiung 感謝チケット"
     },
     "cocLinkText": {
-      "zh-Hant": "行為準則"
+      "zh-Hant": "行為準則",
+      "en": "Code of Conduct",
+      "ja": "行動規範"
     },
     "addToCalendarLabel": {
-      "zh-Hant": "加入行事曆"
+      "zh-Hant": "加入行事曆",
+      "en": "Add to Calendar",
+      "ja": "カレンダーに追加"
     },
     "downloadIcsLabel": {
-      "zh-Hant": "下載 ICS 檔案"
+      "zh-Hant": "下載 ICS 檔案",
+      "en": "Download ICS File",
+      "ja": "ICS ファイルをダウンロード"
     },
     "googleCalendarLabel": {
-      "zh-Hant": "加入 Google 日曆"
+      "zh-Hant": "加入 Google 日曆",
+      "en": "Add to Google Calendar",
+      "ja": "Google カレンダーに追加"
     },
     "addAllSessionsLabel": {
-      "zh-Hant": "加入整天議程"
+      "zh-Hant": "加入整天議程",
+      "en": "Add All Sessions",
+      "ja": "全セッションを追加"
     },
     "loadErrorText": {
-      "zh-Hant": "資料載入失敗，請重新整理頁面"
+      "zh-Hant": "資料載入失敗，請重新整理頁面",
+      "en": "Failed to load data. Please refresh the page.",
+      "ja": "データの読み込みに失敗しました。ページを更新してください。"
     },
     "retryButtonLabel": {
-      "zh-Hant": "重試"
+      "zh-Hant": "重試",
+      "en": "Retry",
+      "ja": "再試行"
     },
     "notFoundText": {
-      "zh-Hant": "找不到這個頁面"
+      "zh-Hant": "找不到這個頁面",
+      "en": "Page not found",
+      "ja": "ページが見つかりません"
     },
     "backHomeLabel": {
-      "zh-Hant": "回到首頁"
+      "zh-Hant": "回到首頁",
+      "en": "Back to Home",
+      "ja": "ホームに戻る"
     }
+  },
+  "thanks": {
+    "showCardShadow": true
   }
 }
