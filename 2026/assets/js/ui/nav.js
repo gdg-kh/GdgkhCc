@@ -695,8 +695,7 @@ function findSection(sectionId) {
   }
   const normalized = sectionId.replace(/_2026$/, '');
   try {
-    const escaped =
-      typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(sectionId) : sectionId;
+    const escaped = typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(sectionId) : sectionId;
     const escapedNorm =
       typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(normalized) : normalized;
     return (
