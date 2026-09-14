@@ -60,7 +60,7 @@ export function renderHomeCards(container) {
   const items = getHomeMenuItems();
   const cards = [];
   for (const item of items) {
-    if (item.id !== 'lastyear') {
+    if (item.id !== 'lastyear' && item.id !== 'lastyear_2026' && item.id !== 'last_year_2026') {
       continue;
     }
     const card = makeLastYearCard(item);

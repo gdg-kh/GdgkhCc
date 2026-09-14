@@ -592,6 +592,10 @@
   align-items: center;
   gap: var(--gk-sp-2);
   min-height: 82px;
+  height: 82px;
+  max-height: 82px;
+  box-sizing: border-box;
+  overflow: hidden;
   border-bottom: 2px solid var(--gk-ink);
   font-family: var(--gk-font-display);
   font-weight: var(--gk-fw-bold);
@@ -612,12 +616,23 @@
 
 .gk-ballot-header-group {
   flex: 0 0 auto;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  writing-mode: horizontal-tb;
   font-size: var(--gk-fs-tiny);
-  line-height: 1;
+  line-height: 1.15;
   letter-spacing: 0.05em;
   opacity: 0.9;
+  text-align: right;
+  max-width: 48%;
+  word-break: break-word;
+}
+
+:lang(zh-Hant) .gk-ballot-header-group {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  line-height: 1;
+  text-align: initial;
+  max-width: none;
+  max-height: 100%;
 }
 
 .gk-ballot-body {
@@ -647,6 +662,8 @@
 
   .gk-ballot-header {
     min-height: 92px;
+    height: 92px;
+    max-height: 92px;
   }
 
   .gk-ballot-header-title {
