@@ -24,7 +24,15 @@ function byId(id) {
 function findMenuItem(id) {
   const config = getConfig();
   const menu = config && Array.isArray(config.menu) ? config.menu : [];
-  return menu.find((item) => item && item.id === id) || null;
+  return (
+    menu.find(
+      (item) =>
+        item &&
+        (item.id === id ||
+          item.id === `${id}_2026` ||
+          (typeof item.id === 'string' && item.id.replace(/_2026$/, '') === id))
+    ) || null
+  );
 }
 
 function uiLabel(key) {
@@ -395,9 +403,9 @@ async function bootstrap() {
   initAnalytics(data.config && data.config.analytics && data.config.analytics.ga4Id);
 
   renderAll();
+  clearSkeletons();
   initNav();
   initNavOverflow();
-  clearSkeletons();
   handleAutoOpen();
 
   window.addEventListener('gk:langchange', () => {

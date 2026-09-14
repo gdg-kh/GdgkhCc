@@ -236,7 +236,7 @@ function getMobileOverflowItems() {
   const primaryIds = new Set(getMobilePrimaryItems().map((item) => item.id));
   return sortedMenuItems()
     .filter(isNavItem)
-    .filter((item) => item.type !== 'cta' && item.id !== 'home' && !primaryIds.has(item.id));
+    .filter((item) => item.type !== 'cta' && item.id !== 'home' && item.id !== 'home_2026' && !primaryIds.has(item.id));
 }
 
 function svgEl(tag, attrs) {
@@ -271,7 +271,9 @@ function iconSvg(id) {
 function makeMobileHomeButton() {
   const config = getConfig();
   const menu = config && Array.isArray(config.menu) ? config.menu : [];
-  const homeItem = menu.find((item) => item && item.id === 'home' && item.enabled !== false);
+  const homeItem = menu.find(
+    (item) => item && (item.id === 'home' || item.id === 'home_2026') && item.enabled !== false
+  );
   if (!homeItem) {
     return null;
   }
@@ -688,17 +690,48 @@ export function initNavOverflow() {
 }
 
 function findSection(sectionId) {
-  return document.querySelector(`[data-section-id="${sectionId}"]`);
+  if (typeof sectionId !== 'string' || sectionId.length === 0) {
+    return null;
+  }
+  const normalized = sectionId.replace(/_2026$/, '');
+  try {
+    const escaped =
+      typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(sectionId) : sectionId;
+    const escapedNorm =
+      typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(normalized) : normalized;
+    return (
+      document.querySelector(`[data-section-id="${escaped}"]`) ||
+      document.querySelector(`[data-section-id="${escapedNorm}"]`)
+    );
+  } catch {
+    return null;
+  }
+}
+
+function getScrollBehavior() {
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return 'auto';
+    }
+  }
+  return 'smooth';
 }
 
 function scrollToSection(sectionId) {
+  if (!sectionId) {
+    return;
+  }
+  if (sectionId === 'home' || sectionId === 'home_2026') {
+    window.scrollTo({ top: 0, behavior: getScrollBehavior() });
+    return;
+  }
   const sections = document.querySelectorAll('[data-section-id]');
   for (const node of sections) {
     node.classList.remove('gk-section-hidden');
   }
   const target = findSection(sectionId);
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
+    target.scrollIntoView({ behavior: getScrollBehavior() });
   }
 }
 
@@ -707,8 +740,8 @@ export function navigateTo(sectionId) {
     return;
   }
   toggleMobileDrawer(false);
-  if (sectionId === 'home') {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (sectionId === 'home' || sectionId === 'home_2026') {
+    window.scrollTo({ top: 0, behavior: getScrollBehavior() });
     toggleMoreOpen(false);
     currentSectionId = 'home';
     if (window.location.hash) {
@@ -729,9 +762,12 @@ export function navigateTo(sectionId) {
 }
 
 function highlightActive(sectionId) {
+  const normalized = typeof sectionId === 'string' ? sectionId.replace(/_2026$/, '') : sectionId;
   const nodes = document.querySelectorAll('[data-menu-id]');
   for (const node of nodes) {
-    const isActive = node.getAttribute('data-menu-id') === sectionId;
+    const menuId = node.getAttribute('data-menu-id');
+    const menuNorm = typeof menuId === 'string' ? menuId.replace(/_2026$/, '') : menuId;
+    const isActive = menuId === sectionId || menuNorm === sectionId || menuId === normalized || menuNorm === normalized;
     node.classList.toggle('gk-nav-item-active', isActive);
     if (node.classList.contains('gk-nav-mobile-tab')) {
       node.classList.toggle('gk-nav-mobile-tab-active', isActive);
@@ -739,7 +775,11 @@ function highlightActive(sectionId) {
   }
   if (mobileMoreTabEl) {
     const overflowActive =
-      sectionId && sectionId !== 'home' && mobilePrimaryIds.length > 0 && !mobilePrimaryIds.includes(sectionId);
+      sectionId &&
+      sectionId !== 'home' &&
+      sectionId !== 'home_2026' &&
+      mobilePrimaryIds.length > 0 &&
+      !mobilePrimaryIds.some((mid) => mid === sectionId || mid.replace(/_2026$/, '') === normalized);
     mobileMoreTabEl.classList.toggle('gk-nav-mobile-tab-active', !!overflowActive);
   }
 }
@@ -749,10 +789,10 @@ function getHashSectionId() {
   const match = hash.match(/^#\/(.+)$/);
   if (match && match[1]) {
     const candidate = match[1];
-    if (candidate === 'home') {
+    if (candidate === 'home' || candidate === 'home_2026') {
       return 'home';
     }
-    if (document.querySelector(`[data-section-id="${candidate}"]`)) {
+    if (findSection(candidate)) {
       return candidate;
     }
   }
@@ -775,7 +815,11 @@ function setupIntersectionHighlight() {
           const id = entry.target.getAttribute('data-section-id');
           if (id) {
             highlightActive(id);
-            if (id === 'home' && window.location.hash && window.location.hash.startsWith('#/')) {
+            if (
+              (id === 'home' || id === 'home_2026') &&
+              window.location.hash &&
+              window.location.hash.startsWith('#/')
+            ) {
               window.history.replaceState(null, '', window.location.pathname + window.location.search);
             }
           }
