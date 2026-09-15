@@ -96,12 +96,20 @@
           "ja": "登壇者募集（CFP）"
         },
         "body": {
-          "zh-Hant": "今年除了邀稿外，我們也進行公開徵稿，歡迎上台分享\n\n截止日期：09/28（星期一）\n公告日期：10/04（星期日）後通知\n\n加分項目\n1. 座標高雄：我們 GDG 高雄目標讓更多在地講者發光發熱，如果您「每日工作地點」或「每日居住地點」在高雄市，也就是一天至少有八小時會在高雄，歡迎您填表\n2. TOOCON 講著：如果您曾經是 TOOCON 講著，想要挑戰比 TOOCON 更大的場，歡迎來 DevFest 2026 高雄場分享\n\n公開徵稿連結：\nhttps://forms.gle/DUsQDHkQUXkfiyzr7",
+          "zh-Hant": "今年除了邀稿外，我們也進行公開徵稿，歡迎上台分享\n\n截止日期：09/28（星期一）\n公告日期：10/04（星期日）後通知\n\n加分項目\n1. 座標高雄：我們 GDG 高雄目標讓更多在地講者發光發熱，如果您「每日工作地點」或「每日居住地點」在高雄市，也就是一天至少有八小時會在高雄，歡迎您填表\n2. TOOCON 講著：如果您曾經是 TOOCON 講著，想要挑戰比 TOOCON 更大的場，歡迎來 DevFest 2026 高雄場分享",
           "en": "In addition to invited sessions, we are holding an open Call for Speakers this year. Everyone is welcome to take the stage and share!\n\nDeadline: September 28 (Mon)\nAnnouncement: Notifications sent after October 4 (Sun)\n\nBonus Criteria:\n1. Based in Kaohsiung: GDG Kaohsiung aims to help more local speakers shine. If your daily workplace or residence is in Kaohsiung City (spending at least 8 hours a day in Kaohsiung), we welcome your submission!\n2. TOOCON Speaker: If you have spoken at TOOCON and want to challenge yourself on an even bigger stage, welcome to share at DevFest 2026 Kaohsiung!\n\nCall for Speakers Link:\nhttps://forms.gle/DUsQDHkQUXkfiyzr7",
           "ja": "今年は招待講演に加えて公募セッションの募集（CFP）も実施しています。ぜひステージで登壇・共有してください！\n\n締切日：09/28（月）\n結果発表：10/04（日）以降に通知\n\n優遇項目：\n1. 高雄在住・在勤：GDG Kaohsiung は地元スピーカーの活躍を支援しています。毎日の勤務地または居住地が高雄市にある方（1日のうち少なくとも8時間以上を高雄で過ごす方）のご応募を心よりお待ちしております！\n2. TOOCON 登壇経験者：過去に TOOCON で登壇された方で、さらに大きなステージに挑戦したい方は、ぜひ DevFest 2026 高雄で発表してください！\n\n公募セッション応募リンク：\nhttps://forms.gle/DUsQDHkQUXkfiyzr7"
         },
         "order": 6,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://forms.gle/DUsQDHkQUXkfiyzr7",
+            "label": {
+              "zh-Hant": "公開徵稿連結"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -113,12 +121,20 @@
           "ja": "協賛パートナー募集"
         },
         "body": {
-          "zh-Hant": "為了讓活動辦的更好，我們徵求贊助夥伴，有以下四種贊助方案\n\n1. 一心路贊助方案：$5,000 金額贊助（可以打統編）\n2. 二聖路贊助方案：$5,000 等值贈品贊助\n3. 三多路贊助方案：帆布輸出一面（約三千台幣，可以打統編）\n4. 四維路贊助方案：贈品贊助（我們再討論）\n\n徵求贊助夥伴連結：\nhttps://forms.gle/VG2BVe9nW8PntyvF6",
+          "zh-Hant": "為了讓活動辦的更好，我們徵求贊助夥伴，有以下四種贊助方案\n\n1. 一心路贊助方案：$5,000 金額贊助（可以打統編）\n2. 二聖路贊助方案：$5,000 等值贈品贊助\n3. 三多路贊助方案：帆布輸出一面（約三千台幣，可以打統編）\n4. 四維路贊助方案：贈品贊助（我們再討論）",
           "en": "To make the event even better, we are seeking sponsorship partners with the following four sponsorship tiers:\n\n1. Yixin Tier: NT$5,000 monetary sponsorship (official tax invoice provided)\n2. Ercheng Tier: NT$5,000 equivalent in swag/giveaway sponsorship\n3. Sanduo Tier: One canvas banner print (approx. NT$3,000, official tax invoice provided)\n4. Siwei Tier: Custom swag/gift sponsorship (details open for discussion)\n\nSponsor Application Link:\nhttps://forms.gle/VG2BVe9nW8PntyvF6",
           "ja": "イベントをより素晴らしいものにするため、協賛パートナーを募集しております。以下の4つの協賛プランをご用意しています：\n\n1. 一心（イーシン）プラン：5,000 台湾元の資金協賛（統一編號・公式領収書対応可）\n2. 二聖（アーシェン）プラン：5,000 台湾元相当のノベルティ協賛\n3. 三多（サンドゥオ）プラン：横断幕出力1面（約 3,000 台湾元、統一編號・公式領収書対応可）\n4. 四維（スーウェイ）プラン：ノベルティ協賛（個別相談）\n\n協賛パートナー募集リンク：\nhttps://forms.gle/VG2BVe9nW8PntyvF6"
         },
         "order": 7,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://forms.gle/VG2BVe9nW8PntyvF6",
+            "label": {
+              "zh-Hant": "徵求贊助夥伴連結"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -130,12 +146,20 @@
           "ja": "出展ブース募集"
         },
         "body": {
-          "zh-Hant": "今年我們一樣邀請社群共襄盛舉，如果您有意願參與「第二屆技術創作市集」販售您的技術書典，歡迎填表\n\n邀請擺攤連結：\nhttps://forms.gle/nSMiMj7dP32PjCrM8",
+          "zh-Hant": "今年我們一樣邀請社群共襄盛舉，如果您有意願參與「第二屆技術創作市集」販售您的技術書典，歡迎填表",
           "en": "This year, we once again invite tech communities to join us! If you are interested in participating in the \"2nd Tech Creation Market\" to sell your technical publications or zines, please fill out the form.\n\nBooth Application Link:\nhttps://forms.gle/nSMiMj7dP32PjCrM8",
           "ja": "今年もコミュニティの皆様のご参加をお待ちしております。「第 2 回技術創作マーケット」に出展し、技術書典・同人誌を販売したい方は、ぜひフォームよりお申し込みください。\n\n出展応募リンク：\nhttps://forms.gle/nSMiMj7dP32PjCrM8"
         },
         "order": 8,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://forms.gle/nSMiMj7dP32PjCrM8",
+            "label": {
+              "zh-Hant": "邀請擺攤連結"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -147,12 +171,20 @@
           "ja": "ボランティアスタッフ募集"
         },
         "body": {
-          "zh-Hant": "歡迎您參與 DevFest 2026 高雄場志工\n\n志工權益：\n1. DevFest 2025 高雄場志工門票 1 張\n2. After Buffet 晚宴門票 1 張\n3. 全台 DevFest 活動紀念衣服 1 件\n\n加分項目：\n1. 參與過 GDG Kaohsiung 的社群活動\n2. 曾經是 GDG Kaohsiung 的活動志工\n3. 有填寫 DevFest 2026 高雄場志工意願問卷\n4. 座標高雄\n\n志工參與連結：\nhttps://forms.gle/7YVq4mX9FASXYSWf8",
+          "zh-Hant": "歡迎您參與 DevFest 2026 高雄場志工\n\n志工權益：\n1. DevFest 2025 高雄場志工門票 1 張\n2. After Buffet 晚宴門票 1 張\n3. 全台 DevFest 活動紀念衣服 1 件\n\n加分項目：\n1. 參與過 GDG Kaohsiung 的社群活動\n2. 曾經是 GDG Kaohsiung 的活動志工\n3. 有填寫 DevFest 2026 高雄場志工意願問卷\n4. 座標高雄",
           "en": "Welcome to join as a volunteer for DevFest 2026 Kaohsiung!\n\nVolunteer Perks:\n1. 1x DevFest Kaohsiung Volunteer Ticket\n2. 1x After Buffet Dinner Ticket\n3. 1x DevFest Taiwan Commemorative T-Shirt\n\nBonus Criteria:\n1. Participated in GDG Kaohsiung community events\n2. Previously served as a GDG Kaohsiung event volunteer\n3. Filled out the DevFest 2026 Kaohsiung volunteer interest survey\n4. Based in Kaohsiung\n\nVolunteer Application Link:\nhttps://forms.gle/7YVq4mX9FASXYSWf8",
           "ja": "DevFest 2026 高雄のボランティアスタッフへのご参加を歓迎します！\n\nボランティア特典：\n1. DevFest 高雄ボランティアチケット 1 枚\n2. アフタービュッフェディナーチケット 1 枚\n3. 台湾全土 DevFest イベント記念 T シャツ 1 枚\n\n優遇項目：\n1. GDG Kaohsiung のコミュニティイベントに参加したことがある方\n2. GDG Kaohsiung のイベントボランティア経験がある方\n3. DevFest 2026 高雄ボランティア希望アンケートに回答した方\n4. 高雄在住の方\n\nボランティア応募リンク：\nhttps://forms.gle/7YVq4mX9FASXYSWf8"
         },
         "order": 9,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://forms.gle/7YVq4mX9FASXYSWf8",
+            "label": {
+              "zh-Hant": "志工參與連結"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -220,7 +252,15 @@
           "ja": "指定のブースと交流し、多色重ね捺しスタンプをすべて集めると、受付にて台湾最大級の抽選プラットフォーム「GACHAGO」を使ったお楽しみ抽選会に参加できます！"
         },
         "order": 13,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://www.gachago.net/zh-tw",
+            "label": {
+              "zh-Hant": "搶先體驗 GACHAGO"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -249,12 +289,20 @@
           "ja": "地下鉄駅から徒歩すぐの会場"
         },
         "body": {
-          "zh-Hant": "今年我們一樣在交通更便利的「KO-IN 智高點」，距離捷運橘線信義國小站 3 號出口僅需 1 分鐘步程，出站即達！\n\nGoogle Map：https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
+          "zh-Hant": "今年我們一樣在交通更便利的「KO-IN 智高點」，距離捷運橘線信義國小站 3 號出口僅需 1 分鐘步程，出站即達！\n\n",
           "en": "This year, we are once again hosting at the highly accessible \"KO-IN Smart Innovation Hub\", just a 1-minute walk from Exit 3 of the MRT Orange Line Sinyi Elementary School Station — right outside the exit!\n\nGoogle Maps: https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
           "ja": "今年も交通アクセスの良い「KO-IN 智高点」で開催します。高雄メトロ（MRT）オレンジ線「信義國小駅」3 番出口から徒歩わずか 1 分、駅を出てすぐの好立地です！\n\nGoogle マップ：https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7"
         },
         "order": 15,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
+            "label": {
+              "zh-Hant": "Google Map"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -266,12 +314,20 @@
           "ja": "GDG 行動規範（Code of Conduct）"
         },
         "body": {
-          "zh-Hant": "所有參與者皆需遵守 GDG 活動行為準則，以確保所有人都能在一個安全友善的環境中學習與交流。\n\n詳細內容請參閱：https://gdg.tw/code_of_conduct/",
+          "zh-Hant": "所有參與者皆需遵守 GDG 活動行為準則，以確保所有人都能在一個安全友善的環境中學習與交流。",
           "en": "All participants are required to adhere to the GDG Code of Conduct to ensure a safe, welcoming, and inclusive environment for everyone to learn and connect.\n\nFor details, please visit: https://gdg.tw/code_of_conduct/",
           "ja": "すべての参加者は、誰もが安心・安全で心地よい環境で学び交流できるよう、GDG 行動規範（Code of Conduct）を遵守する必要があります。\n\n詳細はこちらをご参照ください：https://gdg.tw/code_of_conduct/"
         },
         "order": 16,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://gdg.tw/code_of_conduct/",
+            "label": {
+              "zh-Hant": "行為準則"
+            }
+          }
+        ],
         "valign": "top"
       },
       {
@@ -283,12 +339,20 @@
           "ja": "個人情報の収集に関する告知および同意書"
         },
         "body": {
-          "zh-Hant": "我們尊重並保護您的個人隱私\n\n詳細內容請參閱：https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
+          "zh-Hant": "我們尊重並保護您的個人隱私，詳細內容請參閱",
           "en": "We respect and protect your personal privacy.\n\nFor details, please refer to: https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
           "ja": "私たちは皆様のプライバシーを尊重し、適切に保護いたします。\n\n詳細はこちらをご参照ください：https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4"
         },
         "order": 17,
-        "links": [],
+        "links": [
+          {
+            "platform": "website",
+            "url": "https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
+            "label": {
+              "zh-Hant": "蒐集個人資料告知事項暨個人資料提供同意聲明"
+            }
+          }
+        ],
         "valign": "top"
       }
     ]
