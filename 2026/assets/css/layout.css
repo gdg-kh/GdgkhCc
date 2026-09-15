@@ -737,6 +737,36 @@ button {
   }
 }
 
+.gk-about-section.gk-about-valign-top {
+  align-content: start;
+  align-items: start;
+}
+
+.gk-about-section.gk-about-valign-center {
+  align-content: center;
+  align-items: center;
+}
+
+.gk-about-section.gk-about-valign-bottom {
+  align-content: end;
+  align-items: end;
+}
+
+.gk-about-section.gk-about-valign-top .gk-about-text {
+  align-self: start;
+  justify-content: flex-start;
+}
+
+.gk-about-section.gk-about-valign-center .gk-about-text {
+  align-self: center;
+  justify-content: center;
+}
+
+.gk-about-section.gk-about-valign-bottom .gk-about-text {
+  align-self: end;
+  justify-content: flex-end;
+}
+
 .gk-about-media {
   border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-md);
@@ -778,6 +808,7 @@ button {
 .gk-about-link {
   display: inline-flex;
   align-items: center;
+  gap: var(--gk-sp-1);
   padding: var(--gk-sp-2) var(--gk-sp-4);
   border: 2px solid var(--gk-ink);
   border-radius: var(--gk-radius-md);
@@ -791,6 +822,12 @@ button {
   transition:
     transform var(--gk-transition),
     box-shadow var(--gk-transition);
+}
+
+.gk-about-link::after {
+  content: ' ↗';
+  font-size: 0.85em;
+  opacity: 0.75;
 }
 
 .gk-about-link:hover {

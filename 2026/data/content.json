@@ -15,7 +15,9 @@
           "ja": "DevFest は世界最大のコミュニティ主導のテクノロジーカンファレンスで、デベロッパーとビルダーが集い、学び、構築し、つながる場です。毎年、GDG オーガナイザーは世界中で 750 以上のイベントを開催し、10 月から 12 月にかけて大きなうねりを生み出しています。各イベントには地域ごとの特色がありますが、いずれも同じ DevFest というアンブレラの下にまとまっています。"
         },
         "order": 1,
-        "span": 2
+        "span": 2,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "what_is_devfest_kaohsiung",
@@ -30,7 +32,9 @@
           "en": "DevFest Kaohsiung is the annual software conference hosted by the GDG Kaohsiung community. We're committed to bringing top-tier tech speakers to Kaohsiung so local developers can connect with world-class experts without having to travel. We also want to build a tech conference that truly belongs to Kaohsiung — inviting local Kaohsiung speakers to the stage and giving them greater visibility!",
           "ja": "DevFest 高雄は GDG Kaohsiung コミュニティが主催するソフトウェア年次カンファレンスです。各地のトップエンジニアを高雄にお招きし、高雄のデベロッパーが遠出することなく一流のスピーカーと交流できる機会を提供することを目指しています。さらに、「高雄」ならではのテックカンファレンスを作り、高雄在住のスピーカーに登壇の場を提供し、より多くの露出機会を届けたいと願っています！"
         },
-        "order": 2
+        "order": 2,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "global_theme",
@@ -45,7 +49,9 @@
           "ja": "構築、保護、拡張：AI エージェント時代のデベロッパーとビルダー\n\n今年の DevFest では、デベロッパー領域における大きな転換を一緒に振り返ります。プロフェッショナルデベロッパーの役割は、コードを書くことから、コードをレビューし自律型エージェントをオーケストレーションすることへと進化しています。モデルやツールがますます強力になることで、より少ない労力で多くの成果を上げられるようになります。同時に、AI はすべての人々に向けてソリューション構築の扉を開きます。これは、より多くの人々がより多くの課題を解決し、これまでにない多彩なアイデアを実現できることを意味します。"
         },
         "order": 3,
-        "span": 4
+        "span": 4,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "kaohsiung_theme_developer",
@@ -60,7 +66,9 @@
           "ja": "今年の DevFest 2026 高雄は以下の 2 つのトラックに分かれています：\n1. デベロッパートラック（Developer Track）\n2. ビルダートラック（Builder Track）\n\nデベロッパートラック（Developer Track）：エンジニアが Gemini、ADK、エージェント間（A2A）アーキテクチャを活用して、自律的な思考と協調が可能なインテリジェントエージェントを構築し、Android および GCP クラウドエコシステムと密接に統合しながら、プロトタイプをセキュア・バイ・デフォルト、高並行性、コスト最適化を兼ね備えた本番運用レベルのアプリケーションへと迅速にスケールさせる方法を探求します。"
         },
         "order": 4,
-        "span": 2
+        "span": 2,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "kaohsiung_theme_builder",
@@ -75,7 +83,9 @@
           "en": "DevFest 2026 Kaohsiung features two distinct tracks this year:\n1. Developer Track\n2. Builder Track\n\nBuilder Track: How non-technical creators can solve real-world industry challenges (in education, e-commerce, healthcare, content creation, etc.) using natural language and Gemini without writing complex code, eliminate tedious repetitive tasks, and even personally turn an idea directly into a clickable, launchable prototype for real-world validation.",
           "ja": "今年の DevFest 2026 高雄は以下の 2 つのトラックに分かれています：\n1. デベロッパートラック（Developer Track）\n2. ビルダートラック（Builder Track）\n\nビルダートラック（Builder Track）：非エンジニアが複雑なコードを書くことなく、自然言語と Gemini を活用して特定業界（教育、EC、医療、コンテンツ制作など）の現実的な課題を解決し、日々の反復的なルーチンワークを削減しながら、自らのアイデアをクリック可能で本番検証できるプロトタイプ製品として形にする方法を紹介します。"
         },
-        "order": 5
+        "order": 5,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "invite_speaker",
@@ -90,7 +100,9 @@
           "en": "In addition to invited sessions, we are holding an open Call for Speakers this year. Everyone is welcome to take the stage and share!\n\nDeadline: September 28 (Mon)\nAnnouncement: Notifications sent after October 4 (Sun)\n\nBonus Criteria:\n1. Based in Kaohsiung: GDG Kaohsiung aims to help more local speakers shine. If your daily workplace or residence is in Kaohsiung City (spending at least 8 hours a day in Kaohsiung), we welcome your submission!\n2. TOOCON Speaker: If you have spoken at TOOCON and want to challenge yourself on an even bigger stage, welcome to share at DevFest 2026 Kaohsiung!\n\nCall for Speakers Link:\nhttps://forms.gle/DUsQDHkQUXkfiyzr7",
           "ja": "今年は招待講演に加えて公募セッションの募集（CFP）も実施しています。ぜひステージで登壇・共有してください！\n\n締切日：09/28（月）\n結果発表：10/04（日）以降に通知\n\n優遇項目：\n1. 高雄在住・在勤：GDG Kaohsiung は地元スピーカーの活躍を支援しています。毎日の勤務地または居住地が高雄市にある方（1日のうち少なくとも8時間以上を高雄で過ごす方）のご応募を心よりお待ちしております！\n2. TOOCON 登壇経験者：過去に TOOCON で登壇された方で、さらに大きなステージに挑戦したい方は、ぜひ DevFest 2026 高雄で発表してください！\n\n公募セッション応募リンク：\nhttps://forms.gle/DUsQDHkQUXkfiyzr7"
         },
-        "order": 6
+        "order": 6,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "invite_partner",
@@ -105,7 +117,9 @@
           "en": "To make the event even better, we are seeking sponsorship partners with the following four sponsorship tiers:\n\n1. Yixin Tier: NT$5,000 monetary sponsorship (official tax invoice provided)\n2. Ercheng Tier: NT$5,000 equivalent in swag/giveaway sponsorship\n3. Sanduo Tier: One canvas banner print (approx. NT$3,000, official tax invoice provided)\n4. Siwei Tier: Custom swag/gift sponsorship (details open for discussion)\n\nSponsor Application Link:\nhttps://forms.gle/VG2BVe9nW8PntyvF6",
           "ja": "イベントをより素晴らしいものにするため、協賛パートナーを募集しております。以下の4つの協賛プランをご用意しています：\n\n1. 一心（イーシン）プラン：5,000 台湾元の資金協賛（統一編號・公式領収書対応可）\n2. 二聖（アーシェン）プラン：5,000 台湾元相当のノベルティ協賛\n3. 三多（サンドゥオ）プラン：横断幕出力1面（約 3,000 台湾元、統一編號・公式領収書対応可）\n4. 四維（スーウェイ）プラン：ノベルティ協賛（個別相談）\n\n協賛パートナー募集リンク：\nhttps://forms.gle/VG2BVe9nW8PntyvF6"
         },
-        "order": 7
+        "order": 7,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "invite_community",
@@ -120,7 +134,9 @@
           "en": "This year, we once again invite tech communities to join us! If you are interested in participating in the \"2nd Tech Creation Market\" to sell your technical publications or zines, please fill out the form.\n\nBooth Application Link:\nhttps://forms.gle/nSMiMj7dP32PjCrM8",
           "ja": "今年もコミュニティの皆様のご参加をお待ちしております。「第 2 回技術創作マーケット」に出展し、技術書典・同人誌を販売したい方は、ぜひフォームよりお申し込みください。\n\n出展応募リンク：\nhttps://forms.gle/nSMiMj7dP32PjCrM8"
         },
-        "order": 8
+        "order": 8,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "invite_staff",
@@ -135,7 +151,9 @@
           "en": "Welcome to join as a volunteer for DevFest 2026 Kaohsiung!\n\nVolunteer Perks:\n1. 1x DevFest Kaohsiung Volunteer Ticket\n2. 1x After Buffet Dinner Ticket\n3. 1x DevFest Taiwan Commemorative T-Shirt\n\nBonus Criteria:\n1. Participated in GDG Kaohsiung community events\n2. Previously served as a GDG Kaohsiung event volunteer\n3. Filled out the DevFest 2026 Kaohsiung volunteer interest survey\n4. Based in Kaohsiung\n\nVolunteer Application Link:\nhttps://forms.gle/7YVq4mX9FASXYSWf8",
           "ja": "DevFest 2026 高雄のボランティアスタッフへのご参加を歓迎します！\n\nボランティア特典：\n1. DevFest 高雄ボランティアチケット 1 枚\n2. アフタービュッフェディナーチケット 1 枚\n3. 台湾全土 DevFest イベント記念 T シャツ 1 枚\n\n優遇項目：\n1. GDG Kaohsiung のコミュニティイベントに参加したことがある方\n2. GDG Kaohsiung のイベントボランティア経験がある方\n3. DevFest 2026 高雄ボランティア希望アンケートに回答した方\n4. 高雄在住の方\n\nボランティア応募リンク：\nhttps://forms.gle/7YVq4mX9FASXYSWf8"
         },
-        "order": 9
+        "order": 9,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "what_is_twm",
@@ -150,7 +168,9 @@
           "en": "Inspired by Japan's \"TechBookFest\", this is a creative showcase platform designed specifically for the tech community. Through physical booths, creators can directly interact with attendees to display and sell their technical publications and creations, letting knowledge and creativity flow across the community.\n\nFollowing our successful inaugural edition at \"DevFest Kaohsiung X S. TW Communities Gathering 2025\", we are proud to host it once again this year!",
           "ja": "日本の「技術書典」に着想を得た、技術コミュニティのための創作展示・頒布プラットフォームです。実際のブースを通じて、クリエイターは参加者と直接交流しながら自身の技術創作物を展示・販売し、知識と創造性をコミュニティ内で循環させます。\n\n昨年の「DevFest 高雄 X 南台湾技術コミュニティ大集合 2025」における第 1 回の成功を受け、今年も再び開催いたします！"
         },
-        "order": 10
+        "order": 10,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "free_drink",
@@ -165,7 +185,9 @@
           "en": "Thirsty? We will regularly refill UNOCHA tea — \"Sugar-Free Mingjian Dongpian Oolong\" and \"Slightly Sweet (10% sugar) Yuxia Black Tea Latte\" — so you can recharge at any time!\n\nDon't forget to bring your reusable cup. Single-use containers will not be provided on-site. Let's do our part for the planet together!",
           "ja": "喉が渇きましたか？ 人気ドリンク店「烏弄（UNOCHA）」の「無糖 名間郷冬片烏龍茶」と「微糖（1分糖）玉霞紅茶ラテ」を定期的に補充し、いつでもエネルギーをチャージしていただけます！\n\nマイボトルのご持参をお忘れなく。会場では使い捨て容器を提供いたしませんので、地球環境保護にご協力をお願いいたします。"
         },
-        "order": 11
+        "order": 11,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "pizza_time",
@@ -180,7 +202,9 @@
           "en": "Enjoy delicious pizza during the afternoon networking break to recharge your brain for the exciting sessions ahead!",
           "ja": "午後の交流時間に美味しいピザを楽しんでエネルギーを補給し、引き続き魅力的なセッションを楽しみましょう！"
         },
-        "order": 12
+        "order": 12,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "camp_games",
@@ -195,7 +219,9 @@
           "en": "Interact with designated booths and collect all the multi-color stamps to enter the lucky draw at the registration desk, powered by Taiwan's leading raffle platform \"GACHAGO\"!",
           "ja": "指定のブースと交流し、多色重ね捺しスタンプをすべて集めると、受付にて台湾最大級の抽選プラットフォーム「GACHAGO」を使ったお楽しみ抽選会に参加できます！"
         },
-        "order": 13
+        "order": 13,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "after_buffet",
@@ -210,7 +236,9 @@
           "en": "Sessions wrap up, buffet begins! Let's head to \"Urban Café at Kaohsiung Business Hotel\" to enjoy a delicious After Buffet dinner — eating, chatting, and connecting together!\n\nNote: For attendees who registered for \"DevFest Kaohsiung + After Buffet (NT$1,200 collected on-site)\", please pay at the check-in desk upon arrival.",
           "ja": "セッション終了後はビュッフェの始まりです！「高雄商旅 Urban Café 都会美饌」に集まり、美味しいアフタービュッフェを堪能しながら、食事と会話と交流を楽しみましょう！\n\n注：「DevFest 高雄およびアフタービュッフェに参加（現地支払い 1,200 台湾元）」をお申し込みの方は、当日の受付時に現地にてお支払いください。"
         },
-        "order": 14
+        "order": 14,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "devfest_kaohsiung_location",
@@ -225,7 +253,9 @@
           "en": "This year, we are once again hosting at the highly accessible \"KO-IN Smart Innovation Hub\", just a 1-minute walk from Exit 3 of the MRT Orange Line Sinyi Elementary School Station — right outside the exit!\n\nGoogle Maps: https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
           "ja": "今年も交通アクセスの良い「KO-IN 智高点」で開催します。高雄メトロ（MRT）オレンジ線「信義國小駅」3 番出口から徒歩わずか 1 分、駅を出てすぐの好立地です！\n\nGoogle マップ：https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7"
         },
-        "order": 15
+        "order": 15,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "devfest_kaohsiung_coc",
@@ -240,7 +270,9 @@
           "en": "All participants are required to adhere to the GDG Code of Conduct to ensure a safe, welcoming, and inclusive environment for everyone to learn and connect.\n\nFor details, please visit: https://gdg.tw/code_of_conduct/",
           "ja": "すべての参加者は、誰もが安心・安全で心地よい環境で学び交流できるよう、GDG 行動規範（Code of Conduct）を遵守する必要があります。\n\n詳細はこちらをご参照ください：https://gdg.tw/code_of_conduct/"
         },
-        "order": 16
+        "order": 16,
+        "links": [],
+        "valign": "top"
       },
       {
         "id": "user_privacy",
@@ -255,7 +287,9 @@
           "en": "We respect and protect your personal privacy.\n\nFor details, please refer to: https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
           "ja": "私たちは皆様のプライバシーを尊重し、適切に保護いたします。\n\n詳細はこちらをご参照ください：https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4"
         },
-        "order": 17
+        "order": 17,
+        "links": [],
+        "valign": "top"
       }
     ]
   },

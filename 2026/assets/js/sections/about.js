@@ -68,7 +68,7 @@ function makeLinksBlock(links) {
     if (url.length === 0) {
       continue;
     }
-    const label = t(link && link.label) || url;
+    const label = t(link && link.label) || (link && link.platform) || url;
     const anchor = el('a', {
       class: 'gk-about-link',
       text: label,
@@ -117,6 +117,11 @@ function makeSection(section, index, columns) {
   }
   if (hasImage) {
     classes.push('gk-about-has-image');
+  }
+  const rawValign = section && (section.valign || section.align);
+  const valign = typeof rawValign === 'string' ? rawValign.trim().toLowerCase() : '';
+  if (valign === 'top' || valign === 'center' || valign === 'bottom') {
+    classes.push(`gk-about-valign-${valign}`);
   }
   const article = el('article', { class: classes.join(' ') });
   article.style.setProperty('--gk-about-span', String(span));
