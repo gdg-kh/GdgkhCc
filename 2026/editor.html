@@ -1270,11 +1270,14 @@
 
       function saveDraft() {
         try {
+          const dirty = isDirty();
           const payload = JSON.stringify({
             config: state.config,
             content: state.content,
             snapshots: originalSnapshot,
             dirName: fileState.dirName,
+            isDirty: dirty,
+            savedAt: Date.now(),
           });
           localStorage.setItem(DRAFT_KEY, payload);
           updateToolbarDirtyState();
@@ -1284,42 +1287,88 @@
         }
       }
 
-      function loadDraft() {
+      function getStoredDraftInfo() {
         try {
           const raw = localStorage.getItem(DRAFT_KEY);
           if (!raw) {
-            return false;
+            return null;
           }
           const parsed = JSON.parse(raw);
           if (parsed && typeof parsed === 'object') {
-            state.config = parsed.config && typeof parsed.config === 'object' ? parsed.config : {};
-            state.content =
+            const draftConfig =
+              parsed.config && typeof parsed.config === 'object' ? parsed.config : {};
+            const draftContent =
               parsed.content && typeof parsed.content === 'object' ? parsed.content : {};
-            if (parsed.snapshots && typeof parsed.snapshots === 'object') {
-              originalSnapshot.config = parsed.snapshots.config || '';
-              originalSnapshot.content = parsed.snapshots.content || '';
-            } else {
-              originalSnapshot.config = serialize('config');
-              originalSnapshot.content = serialize('content');
-            }
-            if (parsed.dirName && typeof parsed.dirName === 'string') {
-              fileState.dirName = parsed.dirName;
-            }
-            return true;
+            const snapConfig = parsed.snapshots?.config || '';
+            const snapContent = parsed.snapshots?.content || '';
+            const strConfig = JSON.stringify(draftConfig, null, 2);
+            const strContent = JSON.stringify(draftContent, null, 2);
+
+            const hasUnsavedChanges = Boolean(
+              parsed.isDirty ||
+                (snapConfig && strConfig !== snapConfig) ||
+                (snapContent && strContent !== snapContent)
+            );
+
+            return {
+              config: draftConfig,
+              content: draftContent,
+              snapshots: parsed.snapshots || { config: '', content: '' },
+              dirName: parsed.dirName || '',
+              hasUnsavedChanges,
+              savedAt: parsed.savedAt || null,
+            };
           }
-          return false;
+          return null;
         } catch (err) {
-          console.error('還原草稿失敗', err);
-          return false;
+          console.error('讀取草稿失敗', err);
+          return null;
         }
+      }
+
+      function loadDraft() {
+        const draft = getStoredDraftInfo();
+        if (draft) {
+          applyDraft(draft);
+          return true;
+        }
+        return false;
+      }
+
+      function applyLoadedFiles(configObj, contentObj, dirName) {
+        if (configObj && typeof configObj === 'object') {
+          state.config = configObj;
+          originalSnapshot.config = JSON.stringify(configObj, null, 2);
+        }
+        if (contentObj && typeof contentObj === 'object') {
+          state.content = contentObj;
+          originalSnapshot.content = JSON.stringify(contentObj, null, 2);
+        }
+        if (dirName) {
+          fileState.dirName = dirName;
+        }
+        saveDraft();
+        updateToolbarDirtyState();
+      }
+
+      function applyDraft(draft) {
+        state.config = draft.config || {};
+        state.content = draft.content || {};
+        if (draft.snapshots && typeof draft.snapshots === 'object') {
+          originalSnapshot.config = draft.snapshots.config || '';
+          originalSnapshot.content = draft.snapshots.content || '';
+        } else {
+          originalSnapshot.config = serialize('config');
+          originalSnapshot.content = serialize('content');
+        }
+        if (draft.dirName && typeof draft.dirName === 'string') {
+          fileState.dirName = draft.dirName;
+        }
+        updateToolbarDirtyState();
       }
 
       function clearDraft() {
         localStorage.removeItem(DRAFT_KEY);
-        state.config = {};
-        state.content = {};
-        originalSnapshot.config = '';
-        originalSnapshot.content = '';
         updateToolbarDirtyState();
       }
 
@@ -1429,6 +1478,38 @@
                   showToast('需要資料夾寫入權限才能直接修改檔案', 'error');
                   return false;
                 }
+              }
+
+              try {
+                const { configObj: diskConfig, contentObj: diskContent } =
+                  await readFilesFromDirHandle(fileState.dirHandle);
+                const diskConfigStr = diskConfig ? JSON.stringify(diskConfig, null, 2) : '';
+                const diskContentStr = diskContent ? JSON.stringify(diskContent, null, 2) : '';
+
+                const configChangedExternally = Boolean(
+                  originalSnapshot.config &&
+                    diskConfigStr &&
+                    diskConfigStr !== originalSnapshot.config
+                );
+                const contentChangedExternally = Boolean(
+                  originalSnapshot.content &&
+                    diskContentStr &&
+                    diskContentStr !== originalSnapshot.content
+                );
+
+                if (configChangedExternally || contentChangedExternally) {
+                  const changedNames = [];
+                  if (configChangedExternally) changedNames.push('config.json');
+                  if (contentChangedExternally) changedNames.push('content.json');
+                  const proceed = window.confirm(
+                    `⚠️ 警告：磁碟上的 ${changedNames.join(' 與 ')} 已在外部被修改（與編輯器載入時的基準不同）！\n\n若繼續儲存，外部的修改內容將會被覆蓋。\n確定仍要覆寫磁碟檔案嗎？`
+                  );
+                  if (!proceed) {
+                    return false;
+                  }
+                }
+              } catch (checkErr) {
+                console.warn('檢查磁碟外部修改失敗，繼續執行儲存', checkErr);
               }
 
               const savedFiles = [];
@@ -1650,25 +1731,44 @@
         }
       }
 
-      async function fetchServerData() {
+      async function fetchFreshServerFiles() {
         try {
+          const t = Date.now();
           const [resConfig, resContent] = await Promise.all([
-            fetch('data/config.json'),
-            fetch('data/content.json'),
+            fetch(`data/config.json?_t=${t}`, { cache: 'no-store' }),
+            fetch(`data/content.json?_t=${t}`, { cache: 'no-store' }),
           ]);
           if (!resConfig.ok || !resContent.ok) {
-            throw new Error('伺服器回應狀態異常');
+            return null;
           }
           const cfg = await resConfig.json();
           const cnt = await resContent.json();
-          state.config = cfg;
-          state.content = cnt;
-          originalSnapshot.config = JSON.stringify(cfg, null, 2);
-          originalSnapshot.content = JSON.stringify(cnt, null, 2);
-          saveDraft();
+          return { configObj: cfg, contentObj: cnt };
+        } catch {
+          return null;
+        }
+      }
+
+      async function fetchServerData() {
+        if (isDirty()) {
+          const ok = window.confirm(
+            '目前編輯器有未儲存的變更。從伺服器重新載入將會覆寫目前編輯內容，確定要繼續嗎？'
+          );
+          if (!ok) {
+            return;
+          }
+        }
+        try {
+          const fresh = await fetchFreshServerFiles();
+          if (!fresh) {
+            throw new Error(
+              '無法從伺服器讀取 data/config.json 或 content.json（若透過 file:// 開啟請改用「開啟 data 資料夾」）'
+            );
+          }
+          applyLoadedFiles(fresh.configObj, fresh.contentObj);
           renderAll();
           buildToolbar();
-          showToast('✓ 已從伺服器載入 data/config.json 與 content.json', 'success');
+          showToast('✓ 已從伺服器載入最新的 data/config.json 與 content.json', 'success');
         } catch (err) {
           showToast(`載入失敗：${err.message}`, 'error');
         }
@@ -1678,23 +1778,10 @@
         if (!isEmptyState()) {
           return false;
         }
-        try {
-          const [resConfig, resContent] = await Promise.all([
-            fetch('data/config.json'),
-            fetch('data/content.json'),
-          ]);
-          if (resConfig.ok && resContent.ok) {
-            const cfg = await resConfig.json();
-            const cnt = await resContent.json();
-            state.config = cfg;
-            state.content = cnt;
-            originalSnapshot.config = JSON.stringify(cfg, null, 2);
-            originalSnapshot.content = JSON.stringify(cnt, null, 2);
-            saveDraft();
-            return true;
-          }
-        } catch {
-          // ignore
+        const fresh = await fetchFreshServerFiles();
+        if (fresh) {
+          applyLoadedFiles(fresh.configObj, fresh.contentObj);
+          return true;
         }
         return false;
       }
@@ -2326,14 +2413,140 @@
         return success;
       }
 
-      function confirmClearDraft() {
-        if (!window.confirm('確定要清空草稿嗎？此動作無法復原。')) {
+      async function confirmClearDraft() {
+        if (!window.confirm('確定要捨棄瀏覽器草稿並重新讀取磁碟／伺服器最新檔案嗎？')) {
           return;
         }
         clearDraft();
+        let loaded = false;
+        if (fileState.dirHandle && typeof fileState.dirHandle.queryPermission === 'function') {
+          try {
+            const perm = await fileState.dirHandle.queryPermission({ mode: 'read' });
+            if (perm === 'granted') {
+              const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
+              if (configObj || contentObj) {
+                applyLoadedFiles(configObj, contentObj, fileState.dirName);
+                loaded = true;
+              }
+            }
+          } catch (e) {
+            console.warn('從本機讀取失敗', e);
+          }
+        }
+        if (!loaded) {
+          const fresh = await fetchFreshServerFiles();
+          if (fresh) {
+            applyLoadedFiles(fresh.configObj, fresh.contentObj);
+            loaded = true;
+          }
+        }
+        if (!loaded) {
+          state.config = {};
+          state.content = {};
+          originalSnapshot.config = '';
+          originalSnapshot.content = '';
+        }
         renderAll();
         buildToolbar();
-        showToast('草稿已清空', 'success');
+        showToast(loaded ? '✓ 已捨棄草稿並重新載入最新實體檔案！' : '草稿已清空', 'success');
+      }
+
+      function openConflictModal({
+        physicalFiles,
+        draft,
+        physicalSource,
+        onChoosePhysical,
+        onChooseDraft,
+      }) {
+        const backdrop = el('div', {
+          class: 'gk-modal-backdrop',
+          attrs: { role: 'dialog', 'aria-modal': 'true' },
+        });
+
+        const closeModal = () => {
+          backdrop.remove();
+          document.removeEventListener('keydown', onKey);
+        };
+
+        const onKey = (event) => {
+          if (event.key === 'Escape') {
+            closeModal();
+          }
+        };
+
+        const srcName =
+          physicalSource === 'disk'
+            ? `本機資料夾「${fileState.dirName || 'data'}」`
+            : '伺服器實體檔案';
+
+        const modal = el('div', { class: 'gk-modal', attrs: { style: 'max-width: 580px;' } }, [
+          el('div', { class: 'gk-modal-header' }, [
+            el('h2', {
+              class: 'gk-modal-title',
+              text: '⚠️ 內容同步提示：實體檔案與瀏覽器草稿不一致',
+            }),
+          ]),
+          el('div', { class: 'gk-modal-body' }, [
+            el('p', {
+              text: `系統偵測到 ${srcName} 中的 content.json / config.json 與瀏覽器暫存的草稿內容不同。`,
+              attrs: { style: 'font-weight: 600; margin-bottom: 8px;' },
+            }),
+            el('p', {
+              class: 'gk-modal-hint',
+              text: '若直接載入瀏覽器舊草稿並執行儲存，實體檔案中的最新內容將會被覆蓋！請選擇您希望使用的資料來源：',
+            }),
+            el(
+              'div',
+              {
+                attrs: {
+                  style:
+                    'background: #e8f0fe; border: 1px solid #d2e3fc; color: #174ea6; padding: 12px; border-radius: 6px; margin: 12px 0; font-size: 13px; line-height: 1.5;',
+                },
+              },
+              [
+                el('strong', { text: '💡 建議選擇：' }),
+                el('span', {
+                  text: '「載入最新實體檔案」，以確保與 Git 儲存庫或外部檔案之修改保持同步。',
+                }),
+              ]
+            ),
+          ]),
+          el(
+            'div',
+            {
+              class: 'gk-modal-footer',
+              attrs: { style: 'display: flex; justify-content: flex-end; gap: 8px;' },
+            },
+            [
+              el('button', {
+                class: 'gk-btn gk-btn-secondary',
+                text: '📝 保留瀏覽器草稿',
+                attrs: { type: 'button', title: '保留草稿中尚未儲存的編輯內容' },
+                on: {
+                  click: () => {
+                    closeModal();
+                    onChooseDraft();
+                  },
+                },
+              }),
+              el('button', {
+                class: 'gk-btn gk-btn-primary',
+                text: '📁 載入最新實體檔案（推薦）',
+                attrs: { type: 'button', title: '放棄舊草稿，以最新檔案為準' },
+                on: {
+                  click: () => {
+                    closeModal();
+                    onChoosePhysical();
+                  },
+                },
+              }),
+            ]
+          ),
+        ]);
+
+        backdrop.appendChild(modal);
+        document.body.appendChild(backdrop);
+        document.addEventListener('keydown', onKey);
       }
 
       const TIME_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
@@ -4146,6 +4359,17 @@
             on: { click: reloadFromDisk },
           });
           fileGroup.appendChild(reloadBtn);
+        } else {
+          const reloadBtn = el('button', {
+            class: 'gk-btn gk-btn-secondary',
+            text: '🔄 重新載入',
+            attrs: {
+              type: 'button',
+              title: '從伺服器重新載入 config.json 與 content.json 的最新內容',
+            },
+            on: { click: fetchServerData },
+          });
+          fileGroup.appendChild(reloadBtn);
         }
         toolbar.appendChild(fileGroup);
 
@@ -4376,11 +4600,16 @@
             ])
           );
         }
-        const draftAvailable = Boolean(localStorage.getItem(DRAFT_KEY));
+        const draftInfo = getStoredDraftInfo();
+        const draftLabel = !draftInfo
+          ? '無草稿'
+          : draftInfo.hasUnsavedChanges
+            ? '有未儲存草稿'
+            : '已與檔案同步';
         line.appendChild(
           el('span', { class: 'gk-status-item' }, [
             el('span', { text: '本機草稿：' }),
-            el('strong', { text: draftAvailable ? '已儲存' : '尚未儲存' }),
+            el('strong', { text: draftLabel }),
           ])
         );
       }
@@ -4434,6 +4663,12 @@
       const SPONSOR_POSITION_OPTIONS = [
         { value: 'afterHero', label: 'afterHero（Hero 後）' },
         { value: 'afterAbout', label: 'afterAbout（About 後）' },
+      ];
+
+      const ABOUT_VALIGN_OPTIONS = [
+        { value: 'top', label: 'top（靠上）' },
+        { value: 'center', label: 'center（靠中）' },
+        { value: 'bottom', label: 'bottom（靠下）' },
       ];
 
       const LINK_FIELD = { key: 'links', type: 'links', label: '連結' };
@@ -4569,7 +4804,14 @@
               entity: {
                 itemLabel: '段落',
                 summary: 'title',
-                createItem: () => ({ id: '', span: 2, title: {}, body: {} }),
+                createItem: () => ({
+                  id: '',
+                  span: 2,
+                  title: {},
+                  body: {},
+                  valign: 'top',
+                  links: [],
+                }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
                   {
@@ -4578,9 +4820,18 @@
                     label: '橫跨欄數',
                     hint: '這張卡佔幾欄（1 = 一格；等於基礎欄數 = 佔滿一整列）。留空視為整列。',
                   },
+                  {
+                    key: 'valign',
+                    type: 'select',
+                    label: '文字垂直對齊',
+                    options: ABOUT_VALIGN_OPTIONS,
+                    emptyLabel: '預設（靠中）',
+                    hint: '設定卡片內文字靠上、靠中或靠下對齊。',
+                  },
                   { key: 'title', type: 'i18n-text', label: '標題' },
                   { key: 'body', type: 'i18n-textarea', label: '內文（用 \\n 換行）' },
                   { key: 'image', type: 'text', label: '圖片路徑（可留空）' },
+                  LINK_FIELD,
                 ],
               },
             },
@@ -5000,43 +5251,95 @@
           console.warn('讀取暫存資料夾 handle 失敗', e);
         }
 
-        const restored = loadDraft();
+        // 優先嘗試讀取實體檔案（先本機磁碟，若未授權則嘗試伺服器零快取 fetch）
+        let physicalFiles = null;
+        let physicalSource = '';
 
-        if (!restored && isEmptyState()) {
-          let loadedFromLocal = false;
-          if (fileState.dirHandle && typeof fileState.dirHandle.queryPermission === 'function') {
-            try {
-              const perm = await fileState.dirHandle.queryPermission({ mode: 'read' });
-              if (perm === 'granted') {
-                const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
-                if (configObj || contentObj) {
-                  if (configObj) {
-                    state.config = configObj;
-                    originalSnapshot.config = JSON.stringify(configObj, null, 2);
-                  }
-                  if (contentObj) {
-                    state.content = contentObj;
-                    originalSnapshot.content = JSON.stringify(contentObj, null, 2);
-                  }
-                  saveDraft();
-                  loadedFromLocal = true;
-                }
+        if (fileState.dirHandle && typeof fileState.dirHandle.queryPermission === 'function') {
+          try {
+            const perm = await fileState.dirHandle.queryPermission({ mode: 'read' });
+            if (perm === 'granted') {
+              const { configObj, contentObj } = await readFilesFromDirHandle(fileState.dirHandle);
+              if (configObj || contentObj) {
+                physicalFiles = { configObj, contentObj };
+                physicalSource = 'disk';
               }
-            } catch (e) {
-              console.warn('嘗試從本機讀取失敗', e);
             }
+          } catch (e) {
+            console.warn('嘗試從已連結本機磁碟讀取失敗', e);
           }
+        }
 
-          if (!loadedFromLocal) {
-            await tryAutoLoadData();
+        if (!physicalFiles) {
+          const serverData = await fetchFreshServerFiles();
+          if (serverData) {
+            physicalFiles = serverData;
+            physicalSource = 'server';
+          }
+        }
+
+        const draft = getStoredDraftInfo();
+
+        if (physicalFiles) {
+          if (draft && draft.hasUnsavedChanges) {
+            const draftConfigStr = JSON.stringify(draft.config, null, 2);
+            const draftContentStr = JSON.stringify(draft.content, null, 2);
+            const physConfigStr = JSON.stringify(physicalFiles.configObj || {}, null, 2);
+            const physContentStr = JSON.stringify(physicalFiles.contentObj || {}, null, 2);
+
+            if (draftConfigStr === physConfigStr && draftContentStr === physContentStr) {
+              applyLoadedFiles(
+                physicalFiles.configObj,
+                physicalFiles.contentObj,
+                fileState.dirName
+              );
+            } else {
+              applyLoadedFiles(
+                physicalFiles.configObj,
+                physicalFiles.contentObj,
+                fileState.dirName
+              );
+              openConflictModal({
+                physicalFiles,
+                draft,
+                physicalSource,
+                onChoosePhysical: () => {
+                  applyLoadedFiles(
+                    physicalFiles.configObj,
+                    physicalFiles.contentObj,
+                    fileState.dirName
+                  );
+                  clearDraft();
+                  renderAll();
+                  buildToolbar();
+                  showToast('✓ 已載入最新實體檔案，並捨棄瀏覽器舊草稿', 'success');
+                },
+                onChooseDraft: () => {
+                  applyDraft(draft);
+                  renderAll();
+                  buildToolbar();
+                  showToast('⚠️ 已還原瀏覽器草稿（注意：內容與磁碟檔案不同）', 'warn');
+                },
+              });
+            }
+          } else {
+            applyLoadedFiles(physicalFiles.configObj, physicalFiles.contentObj, fileState.dirName);
+          }
+        } else {
+          if (draft) {
+            applyDraft(draft);
           }
         }
 
         buildToolbar();
         renderAll();
 
-        if (restored) {
-          showToast('已還原上一次的草稿', 'success');
+        if (physicalFiles) {
+          const srcLabel =
+            physicalSource === 'disk' ? `本機資料夾「${fileState.dirName || 'data'}」` : '伺服器';
+          showToast(`✓ 已從 ${srcLabel} 載入最新的 content.json 與 config.json`, 'success');
+        } else if (draft) {
+          showToast('⚠️ 已載入瀏覽器草稿。請點選「開啟資料夾」確認與本機檔案同步', 'warn');
         } else if (!isEmptyState()) {
           showToast('已載入現有資料', 'success');
         }
