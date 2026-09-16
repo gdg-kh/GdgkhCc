@@ -129,6 +129,7 @@
       "id": "speakers_2026",
       "enabled": true,
       "order": 2,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "講者介紹",
         "en": "Speakers",
@@ -139,6 +140,7 @@
       "id": "agenda_2026",
       "enabled": true,
       "order": 3,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "議程時間表",
         "en": "Agenda",
@@ -169,6 +171,7 @@
       "id": "thanks_2026",
       "enabled": true,
       "order": 6,
+      "mobilePrimary": true,
       "label": {
         "zh-Hant": "特別感謝",
         "en": "Special Thanks",

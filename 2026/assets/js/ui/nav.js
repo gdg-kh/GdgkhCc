@@ -226,10 +226,23 @@ function handleGlobalKeydownForMore(event) {
   }
 }
 
+const DEFAULT_MOBILE_PRIMARY_IDS = ['speakers', 'agenda', 'thanks'];
+
 function getMobilePrimaryItems() {
-  return sortedMenuItems()
+  const items = sortedMenuItems()
     .filter(isNavItem)
-    .filter((item) => item.type !== 'cta' && item.mobilePrimary === true);
+    .filter((item) => item.type !== 'cta' && item.id !== 'home' && item.id !== 'home_2026');
+  const explicit = items.filter((item) => item.mobilePrimary === true);
+  if (explicit.length > 0) {
+    return explicit;
+  }
+  return items.filter((item) => {
+    if (item.mobilePrimary === false) {
+      return false;
+    }
+    const baseId = typeof item.id === 'string' ? item.id.replace(/_\d{4}$|_2026$/, '') : '';
+    return DEFAULT_MOBILE_PRIMARY_IDS.includes(baseId);
+  });
 }
 
 function getMobileOverflowItems() {
@@ -261,7 +274,8 @@ function iconSvg(id) {
     'aria-hidden': 'true',
     focusable: 'false',
   });
-  const shapes = MOBILE_ICON_SHAPES[id] || MOBILE_ICON_SHAPES.more;
+  const baseId = typeof id === 'string' ? id.replace(/_\d{4}$|_2026$/, '') : id;
+  const shapes = MOBILE_ICON_SHAPES[id] || MOBILE_ICON_SHAPES[baseId] || MOBILE_ICON_SHAPES.more;
   for (const [tag, attrs] of shapes) {
     svg.appendChild(svgEl(tag, attrs));
   }
@@ -490,6 +504,10 @@ export function renderNav(container) {
     document.body.appendChild(mobileBackdropEl);
     document.body.appendChild(mobileDrawerEl);
     bindMobileGlobalHandlers();
+  }
+
+  if (currentSectionId) {
+    highlightActive(currentSectionId);
   }
 }
 
