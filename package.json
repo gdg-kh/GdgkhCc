@@ -18,6 +18,8 @@
     "generate:about": "node generate-about-pages.js",
     "generate:all": "npm run generate:speakers && npm run generate:thanks && npm run generate:community && npm run generate:staff && npm run generate:twm && npm run generate:about",
     "generate:2026": "node 2026/scripts/generate.mjs",
+    "optimize:images": "node 2026/scripts/optimize-images.mjs",
+    "build:2026": "npm run optimize:images && npm run generate:2026",
     "check:2026": "node 2026/scripts/check.mjs",
     "serve:2026": "npx serve 2026"
   },
@@ -28,7 +30,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-html": "^8.1.2",
     "globals": "^15.13.0",
-    "prettier": "^3.4.2"
+    "prettier": "^3.4.2",
+    "sharp": "^0.35.4"
   },
   "keywords": [
     "devfest",

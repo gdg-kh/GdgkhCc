@@ -1,4 +1,4 @@
-import { el, mount, attachImageFallback, PERSON_PLACEHOLDER } from '../core/dom.js';
+import { el, mount, attachImageFallback, PERSON_PLACEHOLDER, LOGO_PLACEHOLDER } from '../core/dom.js';
 import { t } from '../core/i18n.js';
 
 function attachActivation(node, onClick) {
@@ -32,21 +32,35 @@ function makeCard(className, onClick, ariaLabel) {
   return card;
 }
 
-function makePersonImage(image, name) {
+function makePersonImage(image, name, fallback = PERSON_PLACEHOLDER) {
   const wrapper = el('div', { class: 'gk-card-media gk-card-media-person' });
   if (typeof image === 'string' && image.length > 0) {
+    let src = image;
+    let srcset = '';
+    const match = image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    if (match) {
+      const [, type, id] = match;
+      src = `images/${type}/${id}-320.webp`;
+      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+    }
+    const attrs = {
+      src,
+      alt: name || '',
+      loading: 'lazy',
+      decoding: 'async',
+      width: '320',
+      height: '320',
+    };
+    if (srcset) {
+      attrs.srcset = srcset;
+      attrs.sizes = '(max-width: 768px) 160px, 320px';
+    }
     const img = el('img', {
       class: 'gk-card-image gk-card-image-person',
-      attrs: {
-        src: image,
-        alt: name || '',
-        loading: 'lazy',
-        decoding: 'async',
-        width: '320',
-        height: '320',
-      },
+      attrs,
     });
-    attachImageFallback(img, PERSON_PLACEHOLDER);
+    img.dataset.gkOriginalSrc = image;
+    attachImageFallback(img, fallback);
     mount(wrapper, img);
   }
   return wrapper;
@@ -83,7 +97,11 @@ export function personCard(opts) {
   const options = opts && typeof opts === 'object' ? opts : {};
   const nameText = t(options.name);
   const card = makeCard('gk-card gk-person-card', options.onClick, nameText);
-  const media = makePersonImage(options.image, nameText);
+  const isLogo =
+    typeof options.image === 'string' &&
+    (options.image.includes('images/booths') || options.image.includes('images/thanks'));
+  const fallback = isLogo ? LOGO_PLACEHOLDER : PERSON_PLACEHOLDER;
+  const media = makePersonImage(options.image, nameText, fallback);
   mount(card, media);
   const affiliationText = joinAffiliation(t(options.title), t(options.org));
   appendTextBlock(card, options.name, options.subtitle, options.description, affiliationText);
@@ -125,10 +143,16 @@ export function sessionCard(opts) {
       const speakerName = t(speaker.name);
       const item = el('div', { class: 'gk-session-speaker' });
       if (typeof speaker.image === 'string' && speaker.image.length > 0) {
+        let avatarSrc = speaker.image;
+        const match = speaker.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+        if (match) {
+          const [, type, id] = match;
+          avatarSrc = `images/${type}/${id}-64.webp`;
+        }
         const avatarImg = el('img', {
           class: 'gk-session-speaker-avatar',
           attrs: {
-            src: speaker.image,
+            src: avatarSrc,
             alt: speakerName || '',
             loading: 'lazy',
             decoding: 'async',
@@ -136,6 +160,7 @@ export function sessionCard(opts) {
             height: '32',
           },
         });
+        avatarImg.dataset.gkOriginalSrc = speaker.image;
         attachImageFallback(avatarImg, PERSON_PLACEHOLDER);
         mount(item, avatarImg);
       }

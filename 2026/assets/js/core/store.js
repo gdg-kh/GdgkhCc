@@ -165,6 +165,10 @@ export function assetPath(type, id) {
   return `images/${type}/${id}${ext}`;
 }
 
+export function responsiveAssetPath(type, id, size = 320, format = 'webp') {
+  return `images/${type}/${id}-${size}.${format}`;
+}
+
 export function ogPath(type, id) {
   return `images/og/${type}/${id}.png`;
 }

@@ -152,16 +152,22 @@ export function attachImageFallback(imgNode, fallbackSrc = PERSON_PLACEHOLDER) {
   if (!imgNode) {
     return;
   }
-  imgNode.addEventListener(
-    'error',
-    () => {
-      if (imgNode.dataset.gkFallbackApplied === 'true') {
-        return;
-      }
-      imgNode.dataset.gkFallbackApplied = 'true';
-      imgNode.classList.add('gk-image-fallback');
-      imgNode.src = fallbackSrc;
-    },
-    { once: true }
-  );
+  imgNode.addEventListener('error', () => {
+    // 若有母圖且尚未嘗試退回母圖，先嘗試母圖
+    if (imgNode.dataset.gkOriginalSrc && !imgNode.dataset.gkTriedOriginal) {
+      imgNode.dataset.gkTriedOriginal = 'true';
+      imgNode.removeAttribute('srcset');
+      imgNode.removeAttribute('sizes');
+      imgNode.src = imgNode.dataset.gkOriginalSrc;
+      return;
+    }
+    if (imgNode.dataset.gkFallbackApplied === 'true') {
+      return;
+    }
+    imgNode.dataset.gkFallbackApplied = 'true';
+    imgNode.removeAttribute('srcset');
+    imgNode.removeAttribute('sizes');
+    imgNode.classList.add('gk-image-fallback');
+    imgNode.src = fallbackSrc;
+  });
 }

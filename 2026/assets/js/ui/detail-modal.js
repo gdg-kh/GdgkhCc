@@ -91,17 +91,32 @@ function renderMedia(payload) {
     return null;
   }
   const fallback = payload.type === 'thanks' || payload.type === 'booths' ? LOGO_PLACEHOLDER : PERSON_PLACEHOLDER;
+  let src = payload.image;
+  let srcset = '';
+  const match =
+    typeof payload.image === 'string' && payload.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+  if (match) {
+    const [, type, id] = match;
+    src = `images/${type}/${id}-640.webp`;
+    srcset = `images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+  }
+  const attrs = {
+    src,
+    alt: t(payload.name),
+    loading: 'lazy',
+    decoding: 'async',
+    width: '512',
+    height: '512',
+  };
+  if (srcset) {
+    attrs.srcset = srcset;
+    attrs.sizes = '(max-width: 640px) 320px, 512px';
+  }
   const img = el('img', {
     class: 'gk-modal-image',
-    attrs: {
-      src: payload.image,
-      alt: t(payload.name),
-      loading: 'lazy',
-      decoding: 'async',
-      width: '512',
-      height: '512',
-    },
+    attrs,
   });
+  img.dataset.gkOriginalSrc = payload.image;
   attachImageFallback(img, fallback);
   return el('div', { class: 'gk-modal-media' }, img);
 }
