@@ -191,12 +191,12 @@
         "id": "what_is_twm",
         "span": 4,
         "title": {
-          "zh-Hant": "什麼是「第二屆技術創作市集」",
+          "zh-Hant": "什麼是「第二屆技術創作市集 TWM #2」",
           "en": "What is the \"2nd Tech Creation Market\"?",
           "ja": "「第 2 回技術創作マーケット」とは？"
         },
         "body": {
-          "zh-Hant": "發想自日本的「技術書典」，這是一個專為技術社群打造的創作展示平台。透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動。\n\n去年我們在「DevFest 高雄場 X 南臺灣技術社群大聚 2025」成功舉辦第一屆，今年我們將再次舉辦",
+          "zh-Hant": "去年我們在「DevFest 高雄場 X 南臺灣技術社群大聚 2025」成功舉辦「第一屆技術創作市集 TWM #1」，今年我們將再次舉辦「第二屆技術創作市集 TWM #2」\n\n「技術創作市集」發想自日本的「技術書典」，這是一個專為技術社群打造的創作展示平台。透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動。\n\n這是一個專為技術社群打造的創作展示平台，透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動交流。\n\n媒介主要是透過製作書本為主，一本書的頁數大約在 15-30 頁左右 (僅為參考，實際並無限制)。我們歡迎所有與資訊技術相關的創作內容",
           "en": "Inspired by Japan's \"TechBookFest\", this is a creative showcase platform designed specifically for the tech community. Through physical booths, creators can directly interact with attendees to display and sell their technical publications and creations, letting knowledge and creativity flow across the community.\n\nFollowing our successful inaugural edition at \"DevFest Kaohsiung X S. TW Communities Gathering 2025\", we are proud to host it once again this year!",
           "ja": "日本の「技術書典」に着想を得た、技術コミュニティのための創作展示・頒布プラットフォームです。実際のブースを通じて、クリエイターは参加者と直接交流しながら自身の技術創作物を展示・販売し、知識と創造性をコミュニティ内で循環させます。\n\n昨年の「DevFest 高雄 X 南台湾技術コミュニティ大集合 2025」における第 1 回の成功を受け、今年も再び開催いたします！"
         },
@@ -206,7 +206,7 @@
       },
       {
         "id": "free_drink",
-        "span": 1,
+        "span": 2,
         "title": {
           "zh-Hant": "自備容器暢飲",
           "en": "Free Drinks with BYOC",
@@ -223,7 +223,7 @@
       },
       {
         "id": "pizza_time",
-        "span": 1,
+        "span": 2,
         "title": {
           "zh-Hant": "Pizza Time",
           "en": "Pizza Time",
@@ -240,7 +240,7 @@
       },
       {
         "id": "camp_games",
-        "span": 1,
+        "span": 2,
         "title": {
           "zh-Hant": "大地遊戲",
           "en": "Stamp Rally & Games",
@@ -265,7 +265,7 @@
       },
       {
         "id": "after_buffet",
-        "span": 1,
+        "span": 2,
         "title": {
           "zh-Hant": "After Buffet（自費參與）",
           "en": "After Buffet (Self-Pay)",
