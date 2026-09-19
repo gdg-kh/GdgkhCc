@@ -8,7 +8,8 @@ import {
   LOGO_PLACEHOLDER,
 } from '../core/dom.js';
 import { t } from '../core/i18n.js';
-import { getConfig } from '../core/store.js';
+import { getConfig, getShareUrl } from '../core/store.js';
+import { track } from '../core/analytics.js';
 
 const FOCUSABLE_SELECTOR = [
   'a[href]',
@@ -21,10 +22,13 @@ const FOCUSABLE_SELECTOR = [
 
 let overlayEl = null;
 let modalEl = null;
+let headerEl = null;
+let headerToolbarEl = null;
 let bodyEl = null;
 let closeBtn = null;
 let previousFocus = null;
 let isOpen = false;
+let copyResetTimer = null;
 
 function ensureRoot() {
   if (overlayEl) {
@@ -51,7 +55,8 @@ function ensureRoot() {
     },
   });
 
-  const header = el('div', { class: 'gk-modal-header' });
+  headerEl = el('div', { class: 'gk-modal-header' });
+  headerToolbarEl = el('div', { class: 'gk-modal-toolbar' });
   closeBtn = el(
     'button',
     {
@@ -61,11 +66,11 @@ function ensureRoot() {
     },
     '\u00d7'
   );
-  mount(header, closeBtn);
+  mount(headerEl, headerToolbarEl, closeBtn);
 
   bodyEl = el('div', { class: 'gk-modal-body' });
 
-  mount(modalEl, header, bodyEl);
+  mount(modalEl, headerEl, bodyEl);
   mount(overlayEl, modalEl);
   document.body.appendChild(overlayEl);
 }
@@ -145,14 +150,17 @@ function renderGroupChip(payload) {
   if (!hasI18nText(payload.groupName)) {
     return null;
   }
+  const text = t(payload.groupName);
   const chip = el('span', {
     class: 'gk-modal-group-chip',
-    text: t(payload.groupName),
+    attrs: {
+      title: text,
+    },
+    text,
   });
   if (typeof payload.groupColor === 'string' && payload.groupColor.length > 0) {
     chip.style.backgroundColor = payload.groupColor;
     chip.style.color = pickContrastColor(payload.groupColor);
-    chip.style.borderColor = payload.groupColor;
   }
   return chip;
 }
@@ -229,16 +237,151 @@ function renderTags(payload) {
   return el('div', { class: 'gk-modal-section' }, [el('div', { class: 'gk-modal-tags' }, chips)]);
 }
 
-function renderLinks(payload) {
-  if (!Array.isArray(payload.links) || payload.links.length === 0) {
+function fallbackCopyText(text) {
+  try {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    textArea.style.top = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    textArea.setSelectionRange(0, text.length);
+    const successful = document.execCommand('copy');
+    document.body.removeChild(textArea);
+    return successful;
+  } catch {
+    return false;
+  }
+}
+
+function makeShareButton(payload) {
+  const shareUrl = payload.shareUrl || (payload.type && payload.id ? getShareUrl(payload.type, payload.id) : '');
+  if (!shareUrl) {
     return null;
+  }
+
+  const shareLabelText = labelFromUi('shareLabel') || '分享';
+  const copiedLabelText = labelFromUi('copiedLabel') || '已複製連結！';
+
+  const textSpan = el('span', { class: 'gk-modal-share-label', text: shareLabelText });
+
+  const button = el(
+    'button',
+    {
+      class: 'gk-modal-share-btn',
+      attrs: {
+        type: 'button',
+        'aria-label': shareLabelText,
+        title: shareLabelText,
+      },
+      on: {
+        click: async (event) => {
+          event.stopPropagation();
+
+          const config = getConfig();
+          const eventName = t(config && config.site && config.site.eventName) || '';
+          const name = t(payload.name) || '';
+          const shareTitle = name && eventName ? `${name} - ${eventName}` : name || eventName;
+          const shareText = name || '';
+
+          if (typeof navigator !== 'undefined' && navigator.share) {
+            try {
+              await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: shareUrl,
+              });
+              track('share', {
+                type: payload.type || 'unknown',
+                id: payload.id || 'unknown',
+                method: 'native',
+              });
+              return;
+            } catch (err) {
+              if (err && err.name === 'AbortError') {
+                return;
+              }
+            }
+          }
+
+          let copied = false;
+          if (
+            typeof navigator !== 'undefined' &&
+            navigator.clipboard &&
+            typeof navigator.clipboard.writeText === 'function'
+          ) {
+            try {
+              await navigator.clipboard.writeText(shareUrl);
+              copied = true;
+            } catch {
+              copied = fallbackCopyText(shareUrl);
+            }
+          } else {
+            copied = fallbackCopyText(shareUrl);
+          }
+
+          if (copied) {
+            track('share', {
+              type: payload.type || 'unknown',
+              id: payload.id || 'unknown',
+              method: 'clipboard',
+            });
+
+            button.classList.add('gk-modal-share-copied');
+            button.setAttribute('aria-label', copiedLabelText);
+            button.setAttribute('title', copiedLabelText);
+            clear(button);
+            mount(button, el('span', { class: 'gk-modal-share-label', text: copiedLabelText }));
+
+            if (copyResetTimer) {
+              clearTimeout(copyResetTimer);
+            }
+            copyResetTimer = setTimeout(() => {
+              button.classList.remove('gk-modal-share-copied');
+              button.setAttribute('aria-label', shareLabelText);
+              button.setAttribute('title', shareLabelText);
+              clear(button);
+              mount(button, el('span', { class: 'gk-modal-share-label', text: shareLabelText }));
+              copyResetTimer = null;
+            }, 2000);
+          }
+        },
+      },
+    },
+    [textSpan]
+  );
+
+  return button;
+}
+
+const DEFAULT_PLATFORM_LABELS = {
+  website: { 'zh-Hant': '官網', en: 'Official Website', ja: '公式サイト' },
+  facebook: { 'zh-Hant': 'Facebook', en: 'Facebook', ja: 'Facebook' },
+  x: { 'zh-Hant': 'X (Twitter)', en: 'X (Twitter)', ja: 'X (Twitter)' },
+  instagram: { 'zh-Hant': 'Instagram', en: 'Instagram', ja: 'Instagram' },
+  linkedin: { 'zh-Hant': 'LinkedIn', en: 'LinkedIn', ja: 'LinkedIn' },
+  github: { 'zh-Hant': 'GitHub', en: 'GitHub', ja: 'GitHub' },
+};
+
+function makeLinkElements(payload) {
+  if (!Array.isArray(payload.links) || payload.links.length === 0) {
+    return [];
   }
   const anchors = [];
   for (const link of payload.links) {
     if (!link || typeof link.url !== 'string' || link.url.length === 0) {
       continue;
     }
-    const text = t(link.label) || link.url;
+    const fallbackLabel = link.platform ? DEFAULT_PLATFORM_LABELS[link.platform] : null;
+    const text =
+      (link && t(link.label)) ||
+      (fallbackLabel ? t(fallbackLabel) : '') ||
+      (link && link.platform) ||
+      (link && link.url) ||
+      '';
     anchors.push(
       el('a', {
         class: 'gk-modal-link',
@@ -251,10 +394,25 @@ function renderLinks(payload) {
       })
     );
   }
-  if (anchors.length === 0) {
+  return anchors;
+}
+
+function renderShareAndLinks(payload) {
+  const shareButton = makeShareButton(payload);
+  const linkElements = makeLinkElements(payload);
+  if (!shareButton && linkElements.length === 0) {
     return null;
   }
-  return el('div', { class: 'gk-modal-section' }, [el('div', { class: 'gk-modal-links' }, anchors)]);
+  const items = [];
+  if (shareButton) {
+    items.push(shareButton);
+  }
+  if (linkElements.length > 0) {
+    items.push(...linkElements);
+  }
+  return el('div', { class: 'gk-modal-section gk-modal-links-section' }, [
+    el('div', { class: 'gk-modal-links' }, items),
+  ]);
 }
 
 function renderFooter(payload) {
@@ -298,6 +456,14 @@ function renderFooter(payload) {
 
 function renderContent(payload) {
   clear(bodyEl);
+  if (headerToolbarEl) {
+    clear(headerToolbarEl);
+  }
+
+  const chip = renderGroupChip(payload);
+  if (chip && headerToolbarEl) {
+    mount(headerToolbarEl, chip);
+  }
 
   const aside = el('aside', { class: 'gk-modal-aside' });
   const main = el('div', { class: 'gk-modal-main' });
@@ -306,17 +472,13 @@ function renderContent(payload) {
   if (media) {
     mount(aside, media);
   }
-  const chip = renderGroupChip(payload);
-  if (chip) {
-    mount(aside, chip);
-  }
   const tags = renderTags(payload);
   if (tags) {
     mount(aside, tags);
   }
-  const links = renderLinks(payload);
-  if (links) {
-    mount(aside, links);
+  const shareAndLinks = renderShareAndLinks(payload);
+  if (shareAndLinks) {
+    mount(aside, shareAndLinks);
   }
 
   mount(main, renderHeading(payload));
@@ -399,6 +561,10 @@ function handleKeydown(event) {
 
 export function openModal(payload) {
   const data = payload && typeof payload === 'object' ? payload : {};
+  if (copyResetTimer) {
+    clearTimeout(copyResetTimer);
+    copyResetTimer = null;
+  }
   ensureRoot();
   renderContent(data);
 
@@ -426,6 +592,13 @@ export function closeModal() {
   isOpen = false;
   if (bodyEl) {
     clear(bodyEl);
+  }
+  if (headerToolbarEl) {
+    clear(headerToolbarEl);
+  }
+  if (copyResetTimer) {
+    clearTimeout(copyResetTimer);
+    copyResetTimer = null;
   }
   if (previousFocus && typeof previousFocus.focus === 'function') {
     previousFocus.focus();

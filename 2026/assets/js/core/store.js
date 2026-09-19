@@ -173,6 +173,30 @@ export function ogPath(type, id) {
   return `images/og/${type}/${id}.png`;
 }
 
+export function getShareUrl(type, id) {
+  if (!type || !id) {
+    return '';
+  }
+  if (typeof window !== 'undefined' && window.location) {
+    const { origin, pathname, protocol } = window.location;
+    if (protocol !== 'file:' && origin && origin !== 'null') {
+      const match = pathname.match(/^(.*\/2026\/)/);
+      if (match) {
+        return `${origin}${match[1]}share/${type}/${id}/`;
+      }
+      const basePath = pathname.endsWith('/') ? pathname : pathname.substring(0, pathname.lastIndexOf('/') + 1);
+      return `${origin}${basePath}share/${type}/${id}/`;
+    }
+  }
+  const config = getConfig();
+  const configBase = config && config.site && config.site.baseUrl;
+  if (typeof configBase === 'string' && configBase.length > 0) {
+    const normalizedBase = configBase.endsWith('/') ? configBase : `${configBase}/`;
+    return `${normalizedBase}share/${type}/${id}/`;
+  }
+  return '';
+}
+
 export function getGroupedList(arrayName, groupArrayName) {
   const items = getSortedList(arrayName);
   const groups = getSortedList(groupArrayName);

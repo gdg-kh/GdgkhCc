@@ -461,9 +461,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage",
-            "en": "Homepage",
-            "ja": "ホームページ"
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
           },
           "url": "https://developers.google.com"
         }
@@ -488,9 +488,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage",
-            "en": "Homepage",
-            "ja": "ホームページ"
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
           },
           "url": "https://edbkcg.kcg.gov.tw/"
         }
@@ -515,9 +515,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage",
-            "en": "Homepage",
-            "ja": "ホームページ"
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
           },
           "url": "https://www.legendinno.com.tw/"
         }
@@ -542,9 +542,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage",
-            "en": "Homepage",
-            "ja": "ホームページ"
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
           },
           "url": "https://koin.koda.net.tw/en/index.html"
         }
@@ -605,9 +605,9 @@
         {
           "platform": "website",
           "label": {
-            "zh-Hant": "Homepage",
-            "en": "Homepage",
-            "ja": "ホームページ"
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
           },
           "url": "https://www.jetbrains.com/"
         },

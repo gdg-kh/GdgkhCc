@@ -1,4 +1,4 @@
-import { assetPath, getSessionById, getGroupById } from '../core/store.js';
+import { assetPath, getShareUrl, getSessionById, getGroupById } from '../core/store.js';
 
 export function firstSessionOf(speaker) {
   if (!speaker || !Array.isArray(speaker.sessionIds) || speaker.sessionIds.length === 0) {
@@ -31,6 +31,9 @@ export function buildSpeakerPayload(speaker) {
   const session = firstSessionOf(speaker);
   const group = session ? getGroupById(session.groupId) : null;
   return {
+    type: 'speakers',
+    id: speaker.id,
+    shareUrl: getShareUrl('speakers', speaker.id),
     image: assetPath('speakers', speaker.id),
     name: speaker.name,
     title: speaker.title,
@@ -50,6 +53,9 @@ export function buildStaffPayload(staff) {
     return null;
   }
   return {
+    type: 'staff',
+    id: staff.id,
+    shareUrl: getShareUrl('staff', staff.id),
     image: assetPath('staff', staff.id),
     name: staff.name,
     subtitle: staff.role,
@@ -64,6 +70,9 @@ function buildLogoPayload(type, item) {
   }
   const group = item.groupId ? getGroupById(item.groupId) : null;
   return {
+    type,
+    id: item.id,
+    shareUrl: getShareUrl(type, item.id),
     image: assetPath(type, item.id),
     name: item.name,
     bio: item.description,

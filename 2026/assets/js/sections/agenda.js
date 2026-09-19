@@ -8,6 +8,7 @@ import {
   getGroupById,
   getSpeakersBySessionId,
   assetPath,
+  getShareUrl,
 } from '../core/store.js';
 import { sessionCard } from '../ui/card.js';
 import { openModal } from '../ui/detail-modal.js';
@@ -185,6 +186,9 @@ function openSessionModal(session) {
 
   track('select_session', { session_id: session.id });
   openModal({
+    type: firstSpeaker ? 'speakers' : undefined,
+    id: firstSpeaker ? firstSpeaker.id : undefined,
+    shareUrl: firstSpeaker ? getShareUrl('speakers', firstSpeaker.id) : undefined,
     image: firstSpeaker ? assetPath('speakers', firstSpeaker.id) : undefined,
     name: session.title,
     subtitle,
