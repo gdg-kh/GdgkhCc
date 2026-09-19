@@ -99,8 +99,16 @@ function speakerSessions(item, store, ui) {
   return chunks.join('');
 }
 
+function getNormalizedBaseUrl(config) {
+  let url = (config && config.site && config.site.baseUrl) || 'https://gdgkh.cc/2026/';
+  if (!url.endsWith('/')) {
+    url += '/';
+  }
+  return url;
+}
+
 function buildJsonLd({ type, item, typeConfig, config }) {
-  const baseUrl = (config && config.site && config.site.baseUrl) || '';
+  const baseUrl = getNormalizedBaseUrl(config);
   const canonical = `${baseUrl}share/${type}/${item.id}/`;
   const image = `${baseUrl}${ogPath(type, item.id)}`;
   const name = pickLang(item.name);
@@ -168,8 +176,8 @@ function fillTemplate(template, replacements) {
 
 export function renderSharePage({ type, item, typeConfig, config, store }) {
   const template = loadTemplate();
-  const baseUrl = (config && config.site && config.site.baseUrl) || '';
-  const eventName = pickLang(config && config.site && config.site.eventName) || 'GDG Kaohsiung';
+  const baseUrl = getNormalizedBaseUrl(config);
+  const eventName = pickLang(config && config.site && config.site.eventName) || 'DevFest 2026 高雄場';
   const ui = (config && config.ui) || {};
   const backLabel = pickLang(ui.backHomeLabel) || '回到首頁';
 
@@ -198,6 +206,7 @@ export function renderSharePage({ type, item, typeConfig, config, store }) {
     '{{CANONICAL}}': escapeHtml(canonical),
     '{{OG_TYPE}}': escapeHtml(typeConfig.ogType),
     '{{OG_IMAGE}}': escapeHtml(ogImage),
+    '{{SITE_NAME}}': escapeHtml(eventName),
     '{{JSON_LD}}': jsonLd,
     '{{BODY_CONTENT}}': bodyContent,
     '{{TYPE}}': escapeHtml(type),
