@@ -205,7 +205,9 @@
       "id": "organizer",
       "enabled": true,
       "order": 9,
+      "type": "external",
       "placement": "home",
+      "url": "https://gdg.community.dev/gdg-kaohsiung/",
       "label": {
         "zh-Hant": "主辦單位",
         "en": "Organizer",
@@ -478,6 +480,16 @@
       "zh-Hant": "回到首頁",
       "en": "Back to Home",
       "ja": "ホームに戻る"
+    },
+    "shareLabel": {
+      "zh-Hant": "分享",
+      "en": "Share",
+      "ja": "共有"
+    },
+    "copiedLabel": {
+      "zh-Hant": "已複製連結！",
+      "en": "Link Copied!",
+      "ja": "リンクをコピーしました！"
     }
   },
   "thanks": {
