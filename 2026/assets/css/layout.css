@@ -763,11 +763,13 @@ button {
   border-radius: var(--gk-radius-md);
   background-color: var(--gk-paper);
   overflow: hidden;
+  aspect-ratio: 3 / 2;
 }
 
 .gk-about-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
