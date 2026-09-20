@@ -101,7 +101,7 @@ function makeLinksBlock(links) {
   return wrapper;
 }
 
-function makeTextBlock(titleText, bodyText, imageBlock, links) {
+function makeTextBlock(titleText, bodyText, links, imageBlock) {
   const wrapper = el('div', { class: 'gk-about-text' });
   if (titleText) {
     mount(wrapper, el('h3', { class: 'gk-about-title', text: titleText }));
@@ -109,12 +109,12 @@ function makeTextBlock(titleText, bodyText, imageBlock, links) {
   if (bodyText) {
     mount(wrapper, el('p', { class: 'gk-about-body gk-multiline', text: bodyText }));
   }
-  if (imageBlock) {
-    mount(wrapper, imageBlock);
-  }
   const linksBlock = makeLinksBlock(links);
   if (linksBlock) {
     mount(wrapper, linksBlock);
+  }
+  if (imageBlock) {
+    mount(wrapper, imageBlock);
   }
   return wrapper;
 }
@@ -143,7 +143,7 @@ function makeSection(section, index, columns) {
   article.style.setProperty('--gk-about-span', String(span));
 
   const imageBlock = hasImage ? makeImageBlock(image, titleText) : null;
-  const textBlock = makeTextBlock(titleText, bodyText, imageBlock, section && section.links);
+  const textBlock = makeTextBlock(titleText, bodyText, section && section.links, imageBlock);
   mount(article, textBlock);
   return article;
 }
