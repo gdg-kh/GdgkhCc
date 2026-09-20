@@ -9,13 +9,14 @@ const ROOT_2026 = path.resolve(__dirname, '..');
 const IMAGES_DIR = path.join(ROOT_2026, 'images');
 
 export const IMAGE_TARGET_CONFIG = [
-  { dir: 'speakers', sizes: [64, 160, 320, 640] },
-  { dir: 'staff', sizes: [160, 320, 640] },
-  { dir: 'booths', sizes: [160, 320, 640] },
-  { dir: 'thanks', sizes: [160, 320, 640] },
+  { dir: 'speakers', sizes: [64, 160, 320, 640], square: true },
+  { dir: 'staff', sizes: [160, 320, 640], square: true },
+  { dir: 'booths', sizes: [160, 320, 640], square: true },
+  { dir: 'thanks', sizes: [160, 320, 640], square: true },
+  { dir: 'about', sizes: [320, 640, 1024], square: false },
 ];
 
-export async function optimizeDirectory(subDir, sizes, { force = false } = {}) {
+export async function optimizeDirectory(subDir, sizes, { force = false, square = true } = {}) {
   const dirPath = path.join(IMAGES_DIR, subDir);
   let files;
   try {
@@ -70,12 +71,19 @@ export async function optimizeDirectory(subDir, sizes, { force = false } = {}) {
         }
       }
 
-      await sharp(inputPath)
-        .rotate()
-        .resize(size, size, {
+      const pipeline = sharp(inputPath).rotate();
+      if (square) {
+        pipeline.resize(size, size, {
           fit: 'cover',
           position: 'center',
-        })
+        });
+      } else {
+        pipeline.resize(size, null, {
+          withoutEnlargement: true,
+        });
+      }
+
+      await pipeline
         .webp({
           quality: 80,
           effort: 4,
@@ -97,7 +105,10 @@ export async function optimizeAllImages(options = {}) {
   let totalSkipped = 0;
 
   for (const config of IMAGE_TARGET_CONFIG) {
-    const res = await optimizeDirectory(config.dir, config.sizes, options);
+    const res = await optimizeDirectory(config.dir, config.sizes, {
+      ...options,
+      square: config.square !== false,
+    });
     totalProcessed += res.processed;
     totalSkipped += res.skipped;
   }
