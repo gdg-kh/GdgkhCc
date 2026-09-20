@@ -41,17 +41,31 @@ function makeImageBlock(image, altText) {
     return null;
   }
   const wrapper = el('div', { class: 'gk-about-media' });
+  let src = image;
+  let srcset = '';
+  const match = image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+  if (match) {
+    const [, type, id] = match;
+    src = `images/${type}/${id}-640.webp`;
+    srcset = `images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w, images/${type}/${id}-1024.webp 1024w`;
+  }
+  const attrs = {
+    src,
+    alt: altText || '',
+    loading: 'lazy',
+    decoding: 'async',
+    width: '640',
+    height: '360',
+  };
+  if (srcset) {
+    attrs.srcset = srcset;
+    attrs.sizes = '(max-width: 768px) 100vw, 640px';
+  }
   const img = el('img', {
     class: 'gk-about-image',
-    attrs: {
-      src: image,
-      alt: altText || '',
-      loading: 'lazy',
-      decoding: 'async',
-      width: '640',
-      height: '360',
-    },
+    attrs,
   });
+  img.dataset.gkOriginalSrc = image;
   attachImageFallback(img, LOGO_PLACEHOLDER);
   mount(wrapper, img);
   return wrapper;
@@ -87,13 +101,16 @@ function makeLinksBlock(links) {
   return wrapper;
 }
 
-function makeTextBlock(titleText, bodyText, links) {
+function makeTextBlock(titleText, bodyText, imageBlock, links) {
   const wrapper = el('div', { class: 'gk-about-text' });
   if (titleText) {
     mount(wrapper, el('h3', { class: 'gk-about-title', text: titleText }));
   }
   if (bodyText) {
     mount(wrapper, el('p', { class: 'gk-about-body gk-multiline', text: bodyText }));
+  }
+  if (imageBlock) {
+    mount(wrapper, imageBlock);
   }
   const linksBlock = makeLinksBlock(links);
   if (linksBlock) {
@@ -109,9 +126,8 @@ function makeSection(section, index, columns) {
   const hasImage = image.length > 0;
   const span = clampSpan(section && section.span, columns);
   const isFull = span === columns;
-  const alignmentClass = index % 2 === 0 ? 'gk-about-image-right' : 'gk-about-image-left';
 
-  const classes = ['gk-about-section', alignmentClass];
+  const classes = ['gk-about-section'];
   if (isFull) {
     classes.push('gk-about-full');
   }
@@ -126,19 +142,9 @@ function makeSection(section, index, columns) {
   const article = el('article', { class: classes.join(' ') });
   article.style.setProperty('--gk-about-span', String(span));
 
-  const textBlock = makeTextBlock(titleText, bodyText, section && section.links);
   const imageBlock = hasImage ? makeImageBlock(image, titleText) : null;
-  if (index % 2 === 0) {
-    mount(article, textBlock);
-    if (imageBlock) {
-      mount(article, imageBlock);
-    }
-  } else {
-    if (imageBlock) {
-      mount(article, imageBlock);
-    }
-    mount(article, textBlock);
-  }
+  const textBlock = makeTextBlock(titleText, bodyText, imageBlock, section && section.links);
+  mount(article, textBlock);
   return article;
 }
 

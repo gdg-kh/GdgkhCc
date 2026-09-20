@@ -726,15 +726,6 @@ button {
   .gk-about-section {
     grid-column: span min(var(--gk-about-span), var(--gk-about-columns));
   }
-  .gk-about-section.gk-about-full.gk-about-has-image {
-    grid-template-columns: 1fr 1fr;
-  }
-  .gk-about-full.gk-about-image-left .gk-about-media {
-    order: -1;
-  }
-  .gk-about-full.gk-about-image-right .gk-about-media {
-    order: 1;
-  }
 }
 
 .gk-about-section.gk-about-valign-top {
@@ -784,6 +775,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--gk-sp-3);
+  width: 100%;
 }
 
 .gk-about-title {
