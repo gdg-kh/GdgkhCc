@@ -258,12 +258,173 @@ function renderCountdownTick(node, target) {
   }
 }
 
+const SECONDARY_SECTIONS = [
+  {
+    id: 'speakers',
+    sectionId: 'section-speakers',
+    containerId: 'gk-speakers',
+    render: renderSpeakers,
+  },
+  {
+    id: 'agenda',
+    sectionId: 'section-agenda',
+    containerId: 'gk-agenda',
+    render: renderAgenda,
+  },
+  {
+    id: 'virtual',
+    sectionId: 'section-virtual',
+    containerId: 'gk-virtual',
+    render: renderVirtualSpace,
+  },
+  {
+    id: 'staff',
+    sectionId: 'section-staff',
+    containerId: 'gk-staff',
+    render: renderStaff,
+  },
+  {
+    id: 'booths',
+    sectionId: 'section-booths',
+    containerId: 'gk-booths',
+    render: renderBooths,
+  },
+  {
+    id: 'thanks',
+    sectionId: 'section-thanks',
+    containerId: 'gk-thanks',
+    render: renderThanks,
+  },
+];
+
+const mountedSections = new Set();
+let hydrationObserver = null;
+
+function mountSection(target) {
+  if (!target) {
+    return;
+  }
+  const sec =
+    typeof target === 'string'
+      ? SECONDARY_SECTIONS.find(
+          (s) =>
+            s.id === target ||
+            s.sectionId === target ||
+            s.containerId === target ||
+            s.id === target.replace(/_2026$/, '')
+        )
+      : target;
+  if (!sec || mountedSections.has(sec.id)) {
+    return;
+  }
+  mountedSections.add(sec.id);
+  const container = byId(sec.containerId);
+  if (container) {
+    sec.render(container);
+  }
+  if (hydrationObserver) {
+    const elNode = byId(sec.sectionId);
+    if (elNode) {
+      hydrationObserver.unobserve(elNode);
+    }
+  }
+}
+
+function scheduleIdleHydration() {
+  const scheduleCallback =
+    typeof window.requestIdleCallback === 'function'
+      ? window.requestIdleCallback
+      : (cb) => setTimeout(() => cb({ didTimeout: false, timeRemaining: () => 50 }), 200);
+
+  function hydrateRemaining(deadline) {
+    let remaining = SECONDARY_SECTIONS.filter((s) => !mountedSections.has(s.id));
+    while (remaining.length > 0 && (deadline.timeRemaining() > 10 || deadline.didTimeout)) {
+      mountSection(remaining[0]);
+      remaining = SECONDARY_SECTIONS.filter((s) => !mountedSections.has(s.id));
+    }
+    if (remaining.length > 0) {
+      scheduleCallback(hydrateRemaining, { timeout: 2000 });
+    }
+  }
+
+  scheduleCallback(hydrateRemaining, { timeout: 2000 });
+}
+
+function setupProgressiveHydration() {
+  if (typeof IntersectionObserver !== 'undefined') {
+    hydrationObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const targetId = entry.target.id;
+            const sec = SECONDARY_SECTIONS.find((s) => s.sectionId === targetId);
+            if (sec) {
+              mountSection(sec);
+            }
+          }
+        }
+      },
+      { rootMargin: '400px 0px' }
+    );
+
+    for (const sec of SECONDARY_SECTIONS) {
+      if (!mountedSections.has(sec.id)) {
+        const elNode = byId(sec.sectionId);
+        if (elNode) {
+          hydrationObserver.observe(elNode);
+        }
+      }
+    }
+  } else {
+    for (const sec of SECONDARY_SECTIONS) {
+      mountSection(sec);
+    }
+  }
+
+  function checkHash() {
+    const hash = window.location.hash || '';
+    const match = hash.match(/^#\/?([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+      const clean = match[1].replace(/^section-/, '');
+      mountSection(clean);
+    }
+  }
+  checkHash();
+  window.addEventListener('hashchange', checkHash);
+  window.addEventListener('popstate', checkHash);
+  window.addEventListener('gk:navigate', (event) => {
+    const sectionId = event.detail && event.detail.sectionId;
+    if (sectionId) {
+      mountSection(sectionId);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target && event.target.closest ? event.target.closest('a[href^="#"], [data-menu-id]') : null;
+    if (!target) {
+      return;
+    }
+    const href = target.getAttribute('href') || '';
+    const menuId = target.getAttribute('data-menu-id') || '';
+    const candidate = href.replace(/^#\/?(section-)?/, '') || menuId.replace(/_2026$/, '');
+    if (candidate) {
+      mountSection(candidate);
+    }
+  });
+
+  scheduleIdleHydration();
+}
+
 function renderAll() {
   renderSectionTitles();
   renderHero();
   const nav = byId('gk-nav');
   if (nav) {
     renderNav(nav);
+  }
+  const thanksHero = byId('gk-hero-thanks');
+  if (thanksHero) {
+    renderSponsorMarquee(thanksHero);
   }
   const about = byId('gk-about');
   if (about) {
@@ -273,37 +434,18 @@ function renderAll() {
   if (homeCards) {
     renderHomeCards(homeCards);
   }
-  const speakers = byId('gk-speakers');
-  if (speakers) {
-    renderSpeakers(speakers);
-  }
-  const agenda = byId('gk-agenda');
-  if (agenda) {
-    renderAgenda(agenda);
-  }
-  const virtual = byId('gk-virtual');
-  if (virtual) {
-    renderVirtualSpace(virtual);
-  }
-  const staff = byId('gk-staff');
-  if (staff) {
-    renderStaff(staff);
-  }
-  const thanks = byId('gk-hero-thanks');
-  if (thanks) {
-    renderSponsorMarquee(thanks);
-  }
-  const booths = byId('gk-booths');
-  if (booths) {
-    renderBooths(booths);
-  }
-  const thanksSection = byId('gk-thanks');
-  if (thanksSection) {
-    renderThanks(thanksSection);
-  }
   const footer = byId('gk-footer');
   if (footer) {
     renderFooter(footer);
+  }
+
+  for (const sec of SECONDARY_SECTIONS) {
+    if (mountedSections.has(sec.id)) {
+      const container = byId(sec.containerId);
+      if (container) {
+        sec.render(container);
+      }
+    }
   }
 }
 
@@ -329,6 +471,7 @@ function handleAutoOpen() {
   if (typeof type !== 'string' || typeof id !== 'string') {
     return;
   }
+  mountSection(type);
   const item = findAutoOpenData(type, id);
   if (!item) {
     return;
@@ -343,10 +486,6 @@ function handleAutoOpen() {
 
 function clearSkeletons() {
   document.body.classList.remove('gk-loading');
-  const skeletons = document.querySelectorAll('.gk-skeleton-grid, .gk-skeleton-list');
-  for (const node of skeletons) {
-    node.remove();
-  }
 }
 
 function renderLoadError(err) {
@@ -390,6 +529,23 @@ function applyTokenColorMetas() {
   }
 }
 
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
+    const register = () => {
+      navigator.serviceWorker
+        .register('sw.js', { scope: './' })
+        .catch((err) => {
+          console.warn('ServiceWorker registration failed:', err);
+        });
+    };
+    if (document.readyState === 'complete') {
+      register();
+    } else {
+      window.addEventListener('load', register);
+    }
+  }
+}
+
 async function bootstrap() {
   applyTokenColorMetas();
   let data;
@@ -406,7 +562,9 @@ async function bootstrap() {
   clearSkeletons();
   initNav();
   initNavOverflow();
+  setupProgressiveHydration();
   handleAutoOpen();
+  registerServiceWorker();
 
   window.addEventListener('gk:langchange', () => {
     renderAll();

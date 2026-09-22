@@ -757,6 +757,9 @@ export function navigateTo(sectionId) {
     return;
   }
   toggleMobileDrawer(false);
+  if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+    window.dispatchEvent(new CustomEvent('gk:navigate', { detail: { sectionId } }));
+  }
   if (sectionId === 'home' || sectionId === 'home_2026') {
     window.scrollTo({ top: 0, behavior: getScrollBehavior() });
     toggleMoreOpen(false);
