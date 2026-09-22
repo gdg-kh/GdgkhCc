@@ -43,17 +43,31 @@ export function ballotCard(opts) {
   const body = el('div', { class: 'gk-ballot-body' });
   const logoWrapper = el('div', { class: 'gk-ballot-logo-wrapper' });
   if (typeof options.image === 'string' && options.image.length > 0) {
+    let src = options.image;
+    let srcset = '';
+    const match = options.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    if (match) {
+      const [, type, id] = match;
+      src = `images/${type}/${id}-160.webp`;
+      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+    }
+    const attrs = {
+      src,
+      alt: nameText || '',
+      loading: 'lazy',
+      decoding: 'async',
+      width: '200',
+      height: '200',
+    };
+    if (srcset) {
+      attrs.srcset = srcset;
+      attrs.sizes = '160px';
+    }
     const img = el('img', {
       class: 'gk-ballot-logo',
-      attrs: {
-        src: options.image,
-        alt: nameText || '',
-        loading: 'lazy',
-        decoding: 'async',
-        width: '200',
-        height: '200',
-      },
+      attrs,
     });
+    img.dataset.gkOriginalSrc = options.image;
     attachImageFallback(img, LOGO_PLACEHOLDER);
     mount(logoWrapper, img);
   }

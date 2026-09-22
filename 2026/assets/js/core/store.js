@@ -42,8 +42,19 @@ function buildIndexes(content) {
   }
 }
 
+function getAssetVersion() {
+  if (typeof document !== 'undefined') {
+    const meta = document.querySelector('meta[name="version"], meta[name="app-version"]');
+    if (meta && meta.content) {
+      return meta.content.trim();
+    }
+  }
+  return null;
+}
+
 async function fetchJson(path) {
-  const url = `${path}?v=${Date.now()}`;
+  const version = getAssetVersion();
+  const url = version ? `${path}?v=${encodeURIComponent(version)}` : path;
   let response;
   try {
     response = await fetch(url);
