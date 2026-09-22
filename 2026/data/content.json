@@ -717,6 +717,32 @@
         }
       ],
       "order": 1
+    },
+    {
+      "id": "vlab_online",
+      "groupId": "community",
+      "name": {
+        "zh-Hant": "vLAB Online",
+        "en": "vLAB Online",
+        "ja": "vLAB Online"
+      },
+      "description": {
+        "zh-Hant": "「台灣路由網路實驗中心 vLAB Online」是由一群充滿熱情的技術工程師共同建立的技術交流平台。早期，這個平台主要著眼於提供關於 Cisco 及其他主要網路設備的相關討論和實驗，致力於協助使用者學習路由網路相關的知識和技能，以加深對路由網路的理解。\n\n然而，隨著時間的推移，技術交流形式不斷演變，討論論壇的熱潮逐漸消退。因此，「台灣路由網路實驗中心 vLAB Online」也進行了調整和轉型。目前，這個平台已轉移到 Line 群，並持續穩定運營至今。從過去主要討論網路設備的話題，逐漸轉向資訊安全相關的討論，以滿足用戶對於不斷發展的技術領域的需求。\n\n在 Line 群中，會員可以分享最新的資訊、技術趨勢和實用的技巧，同時互相交流和解答疑問。這種形式更貼近當代技術工作者的溝通方式，也更能滿足廣大用戶的需求。該平台的成功在於持續不斷地適應和回應技術社群的變化，以確保提供高品質的技術交流和學習平台。",
+        "en": "\"Taiwan Routing Network Lab Center vLAB Online\" is a technical exchange platform co-founded by a group of passionate engineers. In its early days, the platform primarily focused on discussions and hands-on labs related to Cisco and other major network equipment, dedicated to helping users acquire routing and networking knowledge and skills to deepen their understanding of routing networks.\n\nHowever, over time, formats of technical exchange have continuously evolved, and interest in discussion forums gradually declined. As a result, \"Taiwan Routing Network Lab Center vLAB Online\" adapted and transformed. Currently, the platform has migrated to a LINE group and has operated steadily ever since. Discussion topics have shifted from network equipment toward cybersecurity-related discussions to meet user demands in an ever-evolving technological landscape.\n\nWithin the LINE group, members share the latest information, technology trends, and practical tips, while exchanging ideas and troubleshooting questions together. This format aligns more closely with how contemporary tech professionals communicate, effectively meeting the needs of a wide range of users. The platform's success lies in continuously adapting and responding to changes within the technical community, ensuring the delivery of a high-quality environment for technical exchange and learning.",
+        "ja": "「台湾ルーティングネットワーク実験センター vLAB Online」は、情熱あふれる技術エンジニアたちによって共同設立された技術交流プラットフォームです。初期の頃は Cisco をはじめとする主要なネットワーク機器に関する議論や実験環境の提供を中心に行い、利用者がルーティングネットワーク関連の知識やスキルを習得し、理解を深められるよう尽力してきました。\n\nしかし、時代の変遷とともに技術交流の形式も進化を続け、オンライン掲示板フォーラムの活況は次第に落ち着きを見せました。そこで「台湾ルーティングネットワーク実験センター vLAB Online」も方針を調整し、変革を遂げました。現在は LINE グループへと活動拠点を移し、安定した運営を継続しています。かつてのネットワーク機器を中心とした話題から、急速に進化する技術分野のニーズに応えるべく、情報セキュリティに関する議論へとシフトしています。\n\nLINE グループでは、メンバーが最新情報や技術トレンド、実践的なノウハウを共有し、互いに交流しながら疑問を解決しています。この形式は現代の技術者たちのコミュニケーションスタイルによりマッチしており、幅広いユーザーのニーズに応えています。技術コミュニティの変化に柔軟に適応し呼応し続けることが、質の高い技術交流と学習プラットフォームを提供し続ける同プラットフォームの成功の鍵となっています。"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://www.vlab.tw",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          }
+        }
+      ],
+      "order": 2
     }
   ],
   "virtualSpace": {
