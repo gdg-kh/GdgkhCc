@@ -220,12 +220,26 @@ if (content) {
   scanBanned(content.thanks, 'thanks');
   scanBanned(content.booths, 'booths');
 
-  // 圖片檔案是否存在
+  // 圖片檔案是否存在（母圖警告、衍生 WebP 報錯）
+  const REQUIRED_WEBP_SIZES = {
+    speakers: [64, 160, 320, 640],
+    staff: [160, 320, 640],
+    thanks: [160, 320, 640],
+    booths: [160, 320, 640],
+  };
+
   const checkImages = (list, dir, ext) => {
+    const sizes = REQUIRED_WEBP_SIZES[dir] || [];
     for (const item of list || []) {
       const p = path.join(SITE, 'images', dir, `${item.id}${ext}`);
       if (!fs.existsSync(p)) {
         warn(`缺少圖片：images/${dir}/${item.id}${ext}`);
+      }
+      for (const size of sizes) {
+        const webpPath = path.join(SITE, 'images', dir, `${item.id}-${size}.webp`);
+        if (!fs.existsSync(webpPath)) {
+          err(`缺少衍生 WebP 圖檔：images/${dir}/${item.id}-${size}.webp（請執行 npm run optimize:images）`);
+        }
       }
     }
   };
@@ -233,6 +247,25 @@ if (content) {
   checkImages(content.staff, 'staff', '.jpg');
   checkImages(content.thanks, 'thanks', '.png');
   checkImages(content.booths, 'booths', '.png');
+
+  for (const map of content.venueMaps || []) {
+    if (map && typeof map.file === 'string') {
+      const orig = path.join(SITE, 'images', map.file);
+      if (!fs.existsSync(orig)) {
+        warn(`缺少會場地圖母圖：images/${map.file}`);
+      }
+      const parsed = path.parse(map.file);
+      if (/\.(jpg|jpeg|png)$/i.test(parsed.ext)) {
+        for (const size of [720, 1200]) {
+          const webpPath = path.join(SITE, 'images', parsed.dir, `${parsed.name}-${size}.webp`);
+          if (!fs.existsSync(webpPath)) {
+            const relDisplay = path.join(parsed.dir, `${parsed.name}-${size}.webp`);
+            err(`缺少衍生 WebP 圖檔：images/${relDisplay}（請執行 npm run optimize:images）`);
+          }
+        }
+      }
+    }
+  }
 
   // about 版型設定：columns 與每筆 sections.span
   if (content.about && typeof content.about === 'object') {

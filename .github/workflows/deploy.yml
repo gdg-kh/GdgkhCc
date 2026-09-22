@@ -35,8 +35,12 @@ jobs:
         id: cache-images
         uses: actions/cache@v4
         with:
-          path: 2026/images/**/*-*.webp
-          key: images-webp-${{ hashFiles('2026/images/**/*.jpg', '2026/images/**/*.jpeg', '2026/images/**/*.png') }}
+          path: |
+            2026/images/**/*-*.webp
+            2026/images/*-*.webp
+            2026/images/*.webp
+            2026/.optimize-cache.json
+          key: images-webp-${{ hashFiles('2026/images/**/*.jpg', '2026/images/**/*.jpeg', '2026/images/**/*.png', '2026/images/*.png') }}
           restore-keys: |
             images-webp-
 

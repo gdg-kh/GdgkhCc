@@ -2,6 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createCanvas } from 'canvas';
+import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -745,6 +746,7 @@ ctx.restore();
 
 // --- 輸出 PNG ---
 await fs.mkdir(path.dirname(outPath), { recursive: true });
-const buffer = canvas.toBuffer('image/png');
+const rawBuffer = canvas.toBuffer('image/png');
+const buffer = await sharp(rawBuffer).png({ compressionLevel: 9, effort: 7 }).toBuffer();
 await fs.writeFile(outPath, buffer);
 console.log(`[generate-site-og] 成功生成：${outPath}`);

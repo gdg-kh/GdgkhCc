@@ -32,7 +32,10 @@ pnpm-lock.yaml
 
 # 2026 產生器快取（本地增量產生用，不入版）
 2026/.generate-cache.json
+2026/.optimize-cache.json
 
 # 2026 自動產生的多尺寸 WebP 衍生圖（由 CI / 腳本動態生成，不入版）
 2026/images/**/*-*.webp
+2026/images/*-*.webp
+2026/images/*.webp
 

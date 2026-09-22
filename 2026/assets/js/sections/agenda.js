@@ -89,9 +89,25 @@ function renderMapSection(container) {
       return;
     }
     current = index;
-    const src = `images/${map.file}`;
+    const rawFile = map.file || '';
+    let src = `images/${rawFile}`;
+    let srcset = '';
+    const match = rawFile.match(/^([^/.]+)\.(jpg|jpeg|png)$/i);
+    if (match) {
+      const [, base] = match;
+      src = `images/${base}-720.webp`;
+      srcset = `images/${base}-720.webp 720w, images/${base}-1200.webp 1200w`;
+    }
     const alt = t(map.caption);
+    image.dataset.gkOriginalSrc = `images/${rawFile}`;
     image.setAttribute('src', src);
+    if (srcset) {
+      image.setAttribute('srcset', srcset);
+      image.setAttribute('sizes', '(max-width: 768px) 100vw, 720px');
+    } else {
+      image.removeAttribute('srcset');
+      image.removeAttribute('sizes');
+    }
     image.setAttribute('alt', alt);
     setRichText(caption, alt);
     for (const btn of buttons) {
@@ -124,8 +140,15 @@ function renderMapSection(container) {
     if (!map) {
       return;
     }
-    openImageViewer({ src: `images/${map.file}`, alt: t(map.caption) });
-    track('view_venue_map', { map_file: map.file });
+    const rawFile = map.file || '';
+    let src = `images/${rawFile}`;
+    const match = rawFile.match(/^([^/.]+)\.(jpg|jpeg|png)$/i);
+    if (match) {
+      const [, base] = match;
+      src = `images/${base}-1200.webp`;
+    }
+    openImageViewer({ src, alt: t(map.caption) });
+    track('view_venue_map', { map_file: rawFile });
   };
   attachActivation(image, openViewer);
 
