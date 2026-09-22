@@ -532,11 +532,9 @@ function applyTokenColorMetas() {
 function registerServiceWorker() {
   if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
     const register = () => {
-      navigator.serviceWorker
-        .register('sw.js', { scope: './' })
-        .catch((err) => {
-          console.warn('ServiceWorker registration failed:', err);
-        });
+      navigator.serviceWorker.register('sw.js', { scope: './' }).catch((err) => {
+        console.warn('ServiceWorker registration failed:', err);
+      });
     };
     if (document.readyState === 'complete') {
       register();

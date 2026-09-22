@@ -33,10 +33,7 @@ const PRECACHE_STATIC = [
   'assets/js/sections/logo-grid.js',
 ];
 
-const PRECACHE_DATA = [
-  'data/config.json',
-  'data/content.json',
-];
+const PRECACHE_DATA = ['data/config.json', 'data/content.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -58,9 +55,7 @@ self.addEventListener('activate', (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys
-            .filter((key) => key.startsWith('gk-') && !currentCaches.has(key))
-            .map((key) => caches.delete(key))
+          keys.filter((key) => key.startsWith('gk-') && !currentCaches.has(key)).map((key) => caches.delete(key))
         )
       )
       .then(() => self.clients.claim())
@@ -76,9 +71,7 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
 
   // 1. 靜態圖片：Cache-First
-  const isImage =
-    request.destination === 'image' ||
-    /\.(png|jpe?g|webp|svg|ico)(\?.*)?$/i.test(url.pathname);
+  const isImage = request.destination === 'image' || /\.(png|jpe?g|webp|svg|ico)(\?.*)?$/i.test(url.pathname);
 
   if (isImage) {
     event.respondWith(
@@ -106,9 +99,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // 2. 資料檔案 (JSON)：Stale-While-Revalidate
-  const isData =
-    url.pathname.endsWith('.json') ||
-    url.pathname.includes('/data/');
+  const isData = url.pathname.endsWith('.json') || url.pathname.includes('/data/');
 
   if (isData) {
     event.respondWith(
