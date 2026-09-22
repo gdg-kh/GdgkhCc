@@ -417,7 +417,81 @@
   ],
   "speakers": [],
   "sessions": [],
-  "staff": [],
+  "staff": [
+    {
+      "id": "andyawd",
+      "name": {
+        "zh-Hant": "戴維廷",
+        "en": "Andy",
+        "ja": "Andy"
+      },
+      "role": {
+        "zh-Hant": "總召"
+      },
+      "bio": {
+        "zh-Hant": "GDG Kaohsiung 組織者\n目前應該還是個安卓工程師...吧"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "http://andyawd.com.tw/",
+          "label": {
+            "zh-Hant": "個人網站"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/anandydy529",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "threads",
+          "url": "https://www.threads.com/@anandydy529",
+          "label": {
+            "zh-Hant": "Threads"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/weiting-dai/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "github",
+          "url": "https://github.com/AndyAWD",
+          "label": {
+            "zh-Hant": "GitHub"
+          }
+        },
+        {
+          "platform": "blog",
+          "url": "https://anandydy529.blogspot.com/",
+          "label": {
+            "zh-Hant": "Blogger"
+          }
+        },
+        {
+          "platform": "website",
+          "url": "https://community-card.org/",
+          "label": {
+            "zh-Hant": "高雄社群月曆"
+          }
+        },
+        {
+          "platform": "email",
+          "url": "anandydy529@gmail.com",
+          "label": {
+            "zh-Hant": "E-mail"
+          }
+        }
+      ],
+      "order": 1
+    }
+  ],
   "thanksGroups": [
     {
       "id": "partner",
