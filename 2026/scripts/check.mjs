@@ -248,6 +248,30 @@ if (content) {
   checkImages(content.thanks, 'thanks', '.png');
   checkImages(content.booths, 'booths', '.png');
 
+  // 全站首頁 Open Graph 圖片檢查（固定靜態圖檔，需為 1200x630 PNG）
+  const siteOgPath = path.join(SITE, 'images', 'og', 'site.png');
+  if (!fs.existsSync(siteOgPath)) {
+    err('缺少全站首頁 OG 圖檔：images/og/site.png');
+  } else {
+    try {
+      const fd = fs.openSync(siteOgPath, 'r');
+      const buf = Buffer.alloc(24);
+      fs.readSync(fd, buf, 0, 24, 0);
+      fs.closeSync(fd);
+      if (buf.toString('hex', 0, 8) !== '89504e470d0a1a0a') {
+        err('images/og/site.png 不是合法的 PNG 圖檔');
+      } else {
+        const width = buf.readUInt32BE(16);
+        const height = buf.readUInt32BE(20);
+        if (width !== 1200 || height !== 630) {
+          err(`images/og/site.png 尺寸不符規範：應為 1200x630，目前為 ${width}x${height}`);
+        }
+      }
+    } catch (e) {
+      err(`讀取 images/og/site.png 失敗：${e.message}`);
+    }
+  }
+
   for (const map of content.venueMaps || []) {
     if (map && typeof map.file === 'string') {
       const orig = path.join(SITE, 'images', map.file);

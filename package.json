@@ -17,10 +17,9 @@
     "generate:twm": "node generate-twm-pages.js",
     "generate:about": "node generate-about-pages.js",
     "generate:all": "npm run generate:speakers && npm run generate:thanks && npm run generate:community && npm run generate:staff && npm run generate:twm && npm run generate:about",
-    "generate:site-og": "node 2026/scripts/generate-site-og.mjs",
     "generate:2026": "node 2026/scripts/generate.mjs",
     "optimize:images": "node 2026/scripts/optimize-images.mjs",
-    "build:2026": "npm run optimize:images && npm run generate:site-og && npm run generate:2026",
+    "build:2026": "npm run optimize:images && npm run generate:2026",
     "check:2026": "node 2026/scripts/check.mjs",
     "serve:2026": "npx serve 2026"
   },
