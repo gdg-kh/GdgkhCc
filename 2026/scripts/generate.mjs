@@ -227,41 +227,6 @@ function warnIfLead(config, content) {
   }
 }
 
-async function processSiteOg({ config, cache, stats }) {
-  const siteOgAbs = path.join(IMAGES_OG_DIR, 'site.png');
-  const cacheKey = 'site';
-  const sitePayload = JSON.stringify({
-    site: config.site || {},
-    theme: config.theme || {},
-    renderMtime: statMtime(RENDER_OG_PATH),
-  });
-  const currentHash = hashKey(sitePayload);
-  const cached = cache[cacheKey];
-  const outputsExist = existsSync(siteOgAbs);
-  const isForce = process.argv.includes('--force');
-
-  if (!isForce && cached && cached.hash === currentHash && outputsExist) {
-    stats.skipped += 1;
-    return;
-  }
-
-  try {
-    await ensureDir(path.dirname(siteOgAbs));
-    await renderOgImage({
-      type: 'site',
-      item: { name: 'DevFest 2026' },
-      layout: { kind: 'site' },
-      config,
-      outPath: siteOgAbs,
-    });
-    stats.images += 1;
-    cache[cacheKey] = { hash: currentHash, updatedAt: new Date().toISOString() };
-  } catch (err) {
-    stats.failed += 1;
-    console.warn(`[generate] 產生 site.png 失敗：${err.message}`);
-  }
-}
-
 async function main() {
   console.warn('[generate] 開始產生 2026 分享頁與 OG 圖…');
 
@@ -298,8 +263,6 @@ async function main() {
     }
     await detectOrphans({ type, itemIds, stats, orphans });
   }
-
-  await processSiteOg({ config, cache, stats });
 
   await saveCache(cache);
   await writeSitemap({ baseUrl, urls: sitemapUrls });

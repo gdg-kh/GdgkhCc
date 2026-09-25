@@ -636,7 +636,7 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
 
   await fs.mkdir(path.dirname(outPath), { recursive: true });
   const rawBuffer = canvas.toBuffer('image/png');
-  const buffer = await sharp(rawBuffer).png({ compressionLevel: 9, effort: 7 }).toBuffer();
+  const buffer = await sharp(rawBuffer).png({ compressionLevel: 9, effort: 7, palette: false }).toBuffer();
   await fs.writeFile(outPath, buffer);
   return outPath;
 }
