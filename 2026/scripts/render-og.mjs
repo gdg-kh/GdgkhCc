@@ -7,40 +7,45 @@ import sharp from 'sharp';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --- 官方色票定義 (tokens.css) ---
+// --- 官方色票定義 ---
 const COLORS = {
-  red: '#ea4335',
+  bg: '#dcdddd',
+  border: '#221714',
+  white: '#ffffff',
+  greenBox: '#009944',
+  ink: '#1A1B1B',
+  subText: '#555555',
+  descText: '#333333',
+  line: '#d0d0d0',
   blue: '#4285f4',
+  red: '#ea4335',
   yellow: '#f9ab00',
   green: '#34a853',
-  ink: '#1e1e1e',
-  paper: '#f0f0f0',
-  line: '#d0d0d0',
   bluePastel: '#c3ecf6',
   greenPastel: '#ccf6c5',
   yellowPastel: '#ffe7a5',
-  redPastel: '#f8d8d8',
-  blueHalftone: '#57caff',
   yellowHalftone: '#ffd427',
-  white: '#ffffff',
-  grayText: '#555555',
-  borderGray: '#e2e2e2',
 };
 
 const CANVAS_WIDTH = 1200;
 const CANVAS_HEIGHT = 630;
-const BORDER_WIDTH = 24;
 
-const FONT_FAMILY = '"GDG Sans", "Segoe UI", "Google Sans", "Microsoft JhengHei", "Noto Sans TC", sans-serif';
+const FONT_FAMILY = '"Noto Serif TC", "Google Sans", "Microsoft JhengHei", serif';
 const FONT_DIR = path.resolve(__dirname, '..', 'assets', 'fonts');
 
 let fontsRegistered = false;
 
-function pickLang(field, fallback) {
-  if (!field || typeof field !== 'object') {
-    return fallback || '';
+export function pickLang(field, fallback = '') {
+  if (!field) {
+    return fallback;
   }
-  return field['zh-Hant'] || field.en || field.ja || fallback || '';
+  if (typeof field === 'string') {
+    return field;
+  }
+  if (typeof field === 'object') {
+    return field['zh-Hant'] || field.zh || field.en || field.ja || fallback;
+  }
+  return fallback;
 }
 
 function registerFontsOnce() {
@@ -48,295 +53,131 @@ function registerFontsOnce() {
     return;
   }
   fontsRegistered = true;
-  if (!existsSync(FONT_DIR)) {
-    console.warn(`[render-og] 找不到字型資料夾：${FONT_DIR}，將使用系統預設字型`);
-    return;
-  }
-  const candidates = [
-    { file: 'NotoSansTC-Regular.ttf', weight: '400' },
-    { file: 'NotoSansTC-Medium.ttf', weight: '500' },
-    { file: 'NotoSansTC-Bold.ttf', weight: '700' },
-    { file: 'NotoSansTC-Black.ttf', weight: '900' },
+
+  const fontCandidates = [
+    { file: 'NotoSerifTC-Black.ttf', weight: '900' },
+    { file: 'NotoSerifTC-Bold.ttf', weight: '700' },
+    { file: 'NotoSerifTC-Regular.ttf', weight: '400' },
   ];
+
   let registered = 0;
-  candidates.forEach((entry) => {
-    const abs = path.join(FONT_DIR, entry.file);
-    if (!existsSync(abs)) {
-      return;
+  for (const entry of fontCandidates) {
+    // 1. 優先檢查專案 assets/fonts
+    let targetPath = path.join(FONT_DIR, entry.file);
+    if (!existsSync(targetPath)) {
+      // 2. 備用外部路徑
+      const extPath = path.join(
+        'D:/舊時代的黑洞/Download/程式/64bit/字體/Chocolate_Classical_Sans,Noto_Sans_TC,Noto_Serif_TC,Roboto_Mono/Noto_Serif_TC/static',
+        entry.file
+      );
+      if (existsSync(extPath)) {
+        targetPath = extPath;
+      }
     }
-    try {
-      registerFont(abs, { family: 'GDG Sans', weight: entry.weight });
-      registered += 1;
-    } catch (err) {
-      console.warn(`[render-og] 註冊字型失敗 ${entry.file}：${err.message}`);
+
+    if (existsSync(targetPath)) {
+      try {
+        registerFont(targetPath, { family: 'Noto Serif TC', weight: entry.weight });
+        registered += 1;
+      } catch (err) {
+        console.warn(`[render-og] 註冊字型失敗 ${entry.file}：${err.message}`);
+      }
     }
-  });
+  }
+
+  // 嘗試載入系統字型 NotoSerifTC-VF.ttf
   if (registered === 0) {
-    console.warn(`[render-og] 字型資料夾存在但沒有可用字型檔：${FONT_DIR}`);
-  }
-}
-
-// 安全圓角繪製函式，避免半徑超過尺寸導致 node-canvas (Cairo) 出現射線 bug
-function safeRoundRect(targetCtx, x, y, width, height, radius) {
-  targetCtx.beginPath();
-  if (Array.isArray(radius)) {
-    const maxR = Math.min(width / 2, height / 2);
-    const clamped = radius.map((r) => Math.max(0, Math.min(r, maxR)));
-    targetCtx.roundRect(x, y, width, height, clamped);
-  } else {
-    const maxR = Math.min(width / 2, height / 2);
-    const r = Math.max(0, Math.min(radius, maxR));
-    targetCtx.roundRect(x, y, width, height, r);
-  }
-}
-
-// 輔助繪圖：Neo-brutalism 標籤卡片 (Sticker Badge)
-function drawStickerBadge(targetCtx, opts) {
-  const {
-    x,
-    y,
-    width,
-    height,
-    bgColor = COLORS.white,
-    borderColor = COLORS.ink,
-    borderWidth = 2,
-    shadowSize = 3.5,
-    radius = 8,
-    textColor = COLORS.ink,
-    fontSize = 17,
-    fontWeight = 'bold',
-    text = '',
-    prefix = null,
-    rotation = 0,
-    alignCenter = false,
-  } = opts;
-
-  targetCtx.save();
-  targetCtx.translate(x + width / 2, y + height / 2);
-  if (rotation !== 0) {
-    targetCtx.rotate((rotation * Math.PI) / 180);
-  }
-  const halfW = width / 2;
-  const halfH = height / 2;
-
-  // 硬邊陰影
-  if (shadowSize > 0) {
-    safeRoundRect(targetCtx, -halfW + shadowSize, -halfH + shadowSize, width, height, radius);
-    targetCtx.fillStyle = COLORS.ink;
-    targetCtx.fill();
-  }
-
-  // 本體
-  safeRoundRect(targetCtx, -halfW, -halfH, width, height, radius);
-  targetCtx.fillStyle = bgColor;
-  targetCtx.fill();
-  targetCtx.lineWidth = borderWidth;
-  targetCtx.strokeStyle = borderColor;
-  targetCtx.stroke();
-
-  // 內容定位
-  let startX = -halfW + 16;
-  if (prefix) {
-    if (prefix.type === 'dots') {
-      const dotColors = [COLORS.blue, COLORS.red, COLORS.yellow, COLORS.green];
-      dotColors.forEach((c, idx) => {
-        targetCtx.beginPath();
-        targetCtx.arc(startX + idx * 13, 0, 4.2, 0, Math.PI * 2);
-        targetCtx.fillStyle = c;
-        targetCtx.fill();
-      });
-      startX += dotColors.length * 13 + 8;
-    } else if (prefix.type === 'circle') {
-      targetCtx.beginPath();
-      targetCtx.arc(startX + 6, 0, 6, 0, Math.PI * 2);
-      targetCtx.fillStyle = prefix.color;
-      targetCtx.fill();
-      targetCtx.lineWidth = 1.5;
-      targetCtx.strokeStyle = COLORS.ink;
-      targetCtx.stroke();
-      startX += 20;
-    } else if (prefix.type === 'sparkle') {
-      targetCtx.save();
-      targetCtx.translate(startX + 7, 0);
-      targetCtx.fillStyle = prefix.color;
-      targetCtx.beginPath();
-      targetCtx.moveTo(0, -9);
-      targetCtx.lineTo(2.5, -2.5);
-      targetCtx.lineTo(9, 0);
-      targetCtx.lineTo(2.5, 2.5);
-      targetCtx.lineTo(0, 9);
-      targetCtx.lineTo(-2.5, 2.5);
-      targetCtx.lineTo(-9, 0);
-      targetCtx.lineTo(-2.5, -2.5);
-      targetCtx.closePath();
-      targetCtx.fill();
-      targetCtx.restore();
-      startX += 22;
+    const sysVf = 'C:/Windows/Fonts/NotoSerifTC-VF.ttf';
+    if (existsSync(sysVf)) {
+      try {
+        registerFont(sysVf, { family: 'Noto Serif TC', weight: '900' });
+        registered += 1;
+      } catch (err) {
+        console.warn(`[render-og] 註冊系統字型失敗：${err.message}`);
+      }
     }
   }
 
-  // 文字
-  targetCtx.fillStyle = textColor;
-  targetCtx.font = `${fontWeight} ${fontSize}px ${FONT_FAMILY}`;
-  targetCtx.textBaseline = 'middle';
-  if (alignCenter) {
-    targetCtx.textAlign = 'center';
-    targetCtx.fillText(text, 0, 1);
-  } else {
-    targetCtx.textAlign = 'left';
-    targetCtx.fillText(text, startX, 1);
-  }
-  targetCtx.restore();
-}
-
-// 繪製 4 芒星 (Gemini 核心幾何星芒)
-function drawGeminiStar(targetCtx, cx, cy, outerR, innerR, fillStyle, strokeStyle, strokeW) {
-  targetCtx.save();
-  targetCtx.beginPath();
-  for (let i = 0; i < 8; i++) {
-    const r = i % 2 === 0 ? outerR : innerR;
-    const angle = (i * Math.PI) / 4;
-    const px = cx + r * Math.cos(angle);
-    const py = cy + r * Math.sin(angle);
-    if (i === 0) targetCtx.moveTo(px, py);
-    else targetCtx.lineTo(px, py);
-  }
-  targetCtx.closePath();
-  if (fillStyle) {
-    targetCtx.fillStyle = fillStyle;
-    targetCtx.fill();
-  }
-  if (strokeStyle && strokeW > 0) {
-    targetCtx.lineWidth = strokeW;
-    targetCtx.strokeStyle = strokeStyle;
-    targetCtx.stroke();
-  }
-  targetCtx.restore();
-}
-
-// 2026 Neo-brutalism 共同主卡片基底 (外框 3px、硬陰影、Hero 漸層、微點陣、水印)
-function drawNeoCardBase(ctx) {
-  // 1. 最外層底色 (GDG OFF White)
-  ctx.fillStyle = COLORS.paper;
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-  const CARD = {
-    x: 28,
-    y: 24,
-    w: 1144,
-    h: 582,
-    radius: 18,
-    shadowOffset: 8,
-  };
-
-  // 繪製卡片硬邊陰影
-  safeRoundRect(ctx, CARD.x + CARD.shadowOffset, CARD.y + CARD.shadowOffset, CARD.w, CARD.h, CARD.radius);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 繪製卡片主體漸層背景
-  ctx.save();
-  safeRoundRect(ctx, CARD.x, CARD.y, CARD.w, CARD.h, CARD.radius);
-  ctx.clip();
-
-  const bgGradient = ctx.createLinearGradient(0, CARD.y, 0, CARD.y + CARD.h);
-  bgGradient.addColorStop(0, '#c3ecf6');
-  bgGradient.addColorStop(0.32, '#e4f4f9');
-  bgGradient.addColorStop(0.78, '#f0f0f0');
-  bgGradient.addColorStop(1, '#ececec');
-  ctx.fillStyle = bgGradient;
-  ctx.fillRect(CARD.x, CARD.y, CARD.w, CARD.h);
-
-  // 繪製卡片內精緻微點陣
-  ctx.fillStyle = 'rgba(30, 30, 30, 0.05)';
-  const dotSpacing = 26;
-  for (let dx = CARD.x + 20; dx < CARD.x + CARD.w - 10; dx += dotSpacing) {
-    for (let dy = CARD.y + 20; dy < CARD.y + CARD.h - 10; dy += dotSpacing) {
-      ctx.beginPath();
-      ctx.arc(dx, dy, 1.4, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  // 卡片頂部半透明大文字裝飾水印
-  ctx.save();
-  ctx.font = `900 120px ${FONT_FAMILY}`;
-  ctx.fillStyle = 'rgba(66, 133, 244, 0.04)';
-  ctx.textAlign = 'right';
-  ctx.textBaseline = 'top';
-  ctx.fillText('DEVFEST 2026', CARD.x + CARD.w - 30, CARD.y + 18);
-  ctx.restore();
-
-  ctx.restore(); // 結束主卡片剪裁區
-
-  // 繪製卡片外框 (3px solid #1e1e1e)
-  safeRoundRect(ctx, CARD.x, CARD.y, CARD.w, CARD.h, CARD.radius);
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-}
-
-// 舊版人物卡片底色與框線 (保留向下相容)
-function drawBase(ctx, config) {
-  ctx.fillStyle = COLORS.paper;
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-  ctx.fillStyle = COLORS.red;
-  ctx.fillRect(0, 0, CANVAS_WIDTH, BORDER_WIDTH);
-  ctx.fillRect(0, CANVAS_HEIGHT - BORDER_WIDTH, CANVAS_WIDTH, BORDER_WIDTH);
-  ctx.fillRect(0, 0, BORDER_WIDTH, CANVAS_HEIGHT);
-  ctx.fillRect(CANVAS_WIDTH - BORDER_WIDTH, 0, BORDER_WIDTH, CANVAS_HEIGHT);
-
-  const eventName = pickLang((config && config.site && config.site.eventName) || {}, 'GDG Kaohsiung');
-  const eventDate = (config && config.site && config.site.eventDate) || '';
-  ctx.fillStyle = COLORS.ink;
-  ctx.textBaseline = 'alphabetic';
-  ctx.font = `700 32px ${FONT_FAMILY}`;
-  ctx.fillText(eventName, 48, CANVAS_HEIGHT - 56);
-  if (eventDate) {
-    ctx.font = `400 26px ${FONT_FAMILY}`;
-    ctx.fillStyle = '#555555';
-    ctx.fillText(eventDate, 48, CANVAS_HEIGHT - 22);
+  if (registered === 0) {
+    console.warn(`[render-og] 找不到可用 Noto Serif TC 字型檔，將使用系統預設字型`);
   }
 }
 
-export function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+// 智慧詞彙分詞：將西文單字/數字保留為完整語素，中文字元個別分詞，避免西文單詞被斷字腰斬
+function tokenizeText(text) {
+  const regex = /(\s+|[A-Za-z0-9_#+@./:-]+|[^\s])/gu;
+  const tokens = [];
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    tokens.push(match[0]);
+  }
+  return tokens;
+}
+
+// 支援中英混排、西文單詞保護、省略號截斷之文字換行函式
+export function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 2) {
   if (!text) {
     return 0;
   }
-  const chars = Array.from(String(text));
+
+  const paragraphs = String(text).split(/\r?\n/);
   const lines = [];
-  let current = '';
-  for (const ch of chars) {
-    const attempt = current + ch;
-    if (ctx.measureText(attempt).width > maxWidth) {
-      if (current === '') {
-        lines.push(attempt);
-        current = '';
+
+  for (const para of paragraphs) {
+    if (lines.length >= maxLines) {
+      break;
+    }
+    const tokens = tokenizeText(para);
+    let current = '';
+
+    for (let i = 0; i < tokens.length; i += 1) {
+      const tok = tokens[i];
+      if (!current && /^\s+$/.test(tok)) {
+        continue;
+      }
+
+      const attempt = current + tok;
+      if (ctx.measureText(attempt).width <= maxWidth) {
+        current = attempt;
       } else {
-        lines.push(current);
-        current = ch;
+        if (current) {
+          lines.push(current);
+          if (lines.length >= maxLines) {
+            let last = lines[lines.length - 1];
+            while (last.length > 0 && ctx.measureText(`${last}…`).width > maxWidth) {
+              last = last.slice(0, -1);
+            }
+            lines[lines.length - 1] = `${last}…`;
+            break;
+          }
+          current = /^\s+$/.test(tok) ? '' : tok;
+        } else {
+          // 當單一 token 本身寬度即大於 maxWidth（如超長網址），逐字拆分
+          for (const ch of Array.from(tok)) {
+            if (ctx.measureText(current + ch).width <= maxWidth) {
+              current += ch;
+            } else {
+              lines.push(current);
+              if (lines.length >= maxLines) {
+                let last = lines[lines.length - 1];
+                while (last.length > 0 && ctx.measureText(`${last}…`).width > maxWidth) {
+                  last = last.slice(0, -1);
+                }
+                lines[lines.length - 1] = `${last}…`;
+                break;
+              }
+              current = ch;
+            }
+          }
+        }
       }
-      if (lines.length >= maxLines) {
-        break;
-      }
-    } else {
-      current = attempt;
+    }
+
+    if (lines.length < maxLines && current) {
+      lines.push(current);
     }
   }
-  if (lines.length < maxLines && current) {
-    lines.push(current);
-  }
-  if (lines.length === maxLines) {
-    let last = lines[maxLines - 1];
-    const remainingIndex = chars.slice(lines.join('').length).length;
-    if (remainingIndex > 0) {
-      while (last.length > 0 && ctx.measureText(`${last}…`).width > maxWidth) {
-        last = last.slice(0, -1);
-      }
-      lines[maxLines - 1] = `${last}…`;
-    }
-  }
+
   ctx.textBaseline = 'top';
   lines.forEach((line, index) => {
     ctx.fillText(line, x, y + index * lineHeight);
@@ -347,7 +188,7 @@ export function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines)
 function initialCharacter(text) {
   const trimmed = String(text || '').trim();
   if (!trimmed) {
-    return '?';
+    return '✦';
   }
   return Array.from(trimmed)[0];
 }
@@ -367,599 +208,430 @@ async function tryLoadImage(imagePath) {
   }
 }
 
-function drawCircleAvatar(ctx, image, cx, cy, radius, fallbackText) {
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.clip();
-
-  if (image) {
-    const size = radius * 2;
-    const ratio = Math.max(size / image.width, size / image.height);
-    const drawWidth = image.width * ratio;
-    const drawHeight = image.height * ratio;
-    ctx.drawImage(image, cx - drawWidth / 2, cy - drawHeight / 2, drawWidth, drawHeight);
-  } else {
-    ctx.fillStyle = COLORS.line;
-    ctx.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
-    ctx.fillStyle = COLORS.ink;
-    ctx.font = `900 220px ${FONT_FAMILY}`;
-    ctx.textBaseline = 'middle';
-    ctx.textAlign = 'center';
-    ctx.fillText(fallbackText, cx, cy + 20);
-    ctx.textAlign = 'start';
+// 輔助函式：解析底圖元件路徑（優先使用使用者指定絕對路徑，找不到時使用專案內備用路徑）
+function resolveAssetPath(preferredPath, fallbackRelative) {
+  if (preferredPath && existsSync(preferredPath)) {
+    return preferredPath;
   }
-  ctx.restore();
+  const fallback = path.resolve(__dirname, '..', fallbackRelative);
+  if (existsSync(fallback)) {
+    return fallback;
+  }
+  return preferredPath;
 }
 
-function drawNumberBadge(ctx, cx, cy, radius, order) {
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-  ctx.fillStyle = COLORS.red;
-  ctx.fill();
-  ctx.fillStyle = COLORS.paper;
-  ctx.font = `900 56px ${FONT_FAMILY}`;
-  ctx.textAlign = 'center';
+// 快取預處理好的底圖向量圖層
+let baseAssetsPromise = null;
+
+async function loadBaseAssets() {
+  const goSvgPath = resolveAssetPath(
+    'D:/舊時代的黑洞/Download/程式/64bit/3D印表機/列印圖檔/雷射雕刻圖庫/DevFest/DevFest2026/og/share-og-go.svg',
+    'assets/og-template/share-og-go.svg'
+  );
+  const dfSvgPath = resolveAssetPath(
+    'D:/舊時代的黑洞/Download/程式/64bit/3D印表機/列印圖檔/雷射雕刻圖庫/DevFest/DevFest2026/og/share-og-df.svg',
+    'assets/og-template/share-og-df.svg'
+  );
+  const gdgSvgPath = resolveAssetPath(
+    'D:/舊時代的黑洞/Download/程式/64bit/3D印表機/列印圖檔/雷射雕刻圖庫/DevFest/DevFest2026/og/share-og-gdg.svg',
+    'assets/og-template/share-og-gdg.svg'
+  );
+  const koinPngPath = resolveAssetPath(
+    'D:/舊時代的黑洞/Download/程式/64bit/3D印表機/列印圖檔/雷射雕刻圖庫/DevFest/DevFest2024/宣傳/廠商/LOGO(K+D+誠)/190328KO-IN智高點_多媒體使用LOGO設計_OL-07.png',
+    'assets/og-template/190328KO-IN智高點_多媒體使用LOGO設計_OL-07.png'
+  );
+
+  // 1. 選舉章 (大小 516x516，2x 解析度輸出以達極致清晰度)
+  const goBuf = await sharp(goSvgPath, { density: 200 })
+    .resize(516 * 2, 516 * 2, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer();
+  const goImg = await loadImage(goBuf);
+
+  // 2. {DevFest} (SVG 原生 viewBox 為 0 0 580 190，內部幾何在 X+6.5, Y+10.4 處，以 2x 光柵化，完整保留官方組合標誌)
+  const dfBuf = await sharp(dfSvgPath, { density: 200 })
+    .resize(580 * 2, 190 * 2)
+    .png()
+    .toBuffer();
+  const dfImg = await loadImage(dfBuf);
+
+  // 3. GDG Kaohsiung (大小 339.168x44.999)
+  const gdgRaw = await fs.readFile(gdgSvgPath, 'utf-8');
+  const gdgFitted = gdgRaw
+    .replace(/<rect y="-0.06" class="st0"[^>]+>/, '')
+    .replace('viewBox="0 0 1960 860"', 'viewBox="226 343 1500 198"');
+  const gdgBuf = await sharp(Buffer.from(gdgFitted), { density: 200 })
+    .resize(Math.round(339.168 * 2), 45 * 2, { fit: 'fill' })
+    .png()
+    .toBuffer();
+  const gdgImg = await loadImage(gdgBuf);
+
+  // 4. KO-IN 智高點 (大小 95.7x60)
+  const koinBuf = await sharp(koinPngPath)
+    .resize(Math.round(95.7 * 2), 60 * 2, { fit: 'fill' })
+    .png()
+    .toBuffer();
+  const koinImg = await loadImage(koinBuf);
+
+  return { goImg, dfImg, gdgImg, koinImg };
+}
+
+async function getBaseAssets() {
+  if (!baseAssetsPromise) {
+    baseAssetsPromise = loadBaseAssets();
+  }
+  return baseAssetsPromise;
+}
+
+// 繪製官方指定底圖框架
+function drawBaseFrame(ctx, baseAssets) {
+  // 1. 背景 #dcdddd
+  ctx.fillStyle = COLORS.bg;
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+  // 2. 選舉章 (大小 516X516，右上位置 832.9, -143.7)
+  ctx.drawImage(baseAssets.goImg, 832.9, -143.7, 516, 516);
+
+  // 3. 下方白色區塊 1150X85 背景 #ffffff (Y=520 到 605，先填色以防蓋過 4px 外框線)
+  ctx.fillStyle = COLORS.white;
+  ctx.fillRect(25, 520, 1150, 85);
+
+  // 4. 外框線 1150X580 線粗 4px
+  ctx.lineWidth = 4;
+  ctx.strokeStyle = COLORS.border;
+  ctx.strokeRect(25, 25, 1150, 580);
+
+  // 下方白色區塊外側框線 1150X85 線粗 4px（確保底邊、左側、右側及頂部連接線皆具備完整的 4px 粗細）
+  ctx.strokeRect(25, 520, 1150, 85);
+
+  // 5. {DevFest} (SVG 580x190 放置於 (540, 68.5)，使 {DevFest} 內容精確座落於 (548, 82)，左右括號位置與官方設計稿零誤差)
+  ctx.drawImage(baseAssets.dfImg, 540, 68.5, 580, 190);
+
+  // 6. 活動主辦文字 (上下垂直置中於白框高度 85px，中心 Y = 562.5，視覺重心對齊 561.5)
+  ctx.fillStyle = COLORS.border;
+  ctx.font = `900 29.5px ${FONT_FAMILY}`;
   ctx.textBaseline = 'middle';
-  ctx.fillText(String(order || ''), cx, cy + 4);
-  ctx.textAlign = 'start';
-  ctx.restore();
+  ctx.textAlign = 'left';
+  ctx.fillText('活動主辦', 203, 561.5);
+
+  // 7. GDG Kaohsiung (左上位置 345, 540.5，寬高 339.168X44.999)
+  ctx.drawImage(baseAssets.gdgImg, 345, 540.5, 339.168, 45);
+
+  // 8. 活動主辦和場地中間的直線 (左上位置 721.7, 533，高 60px，粗 3px)
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = COLORS.border;
+  ctx.beginPath();
+  ctx.moveTo(721.7, 533);
+  ctx.lineTo(721.7, 593);
+  ctx.stroke();
+
+  // 9. 活動場地文字 (上下垂直置中於白框高度 85px，中心 Y = 562.5，視覺重心對齊 561.5)
+  ctx.fillText('活動場地', 759.2, 561.5);
+
+  // 10. 智高點圖片 (左上位置 900.452, 533，大小 95.7X60)
+  ctx.drawImage(baseAssets.koinImg, 900.452, 533, 95.7, 60);
 }
 
-async function renderPerson(ctx, { type, item, layout }) {
-  const avatarRadius = 190;
-  const avatarCx = 100 + avatarRadius;
-  const avatarCy = CANVAS_HEIGHT / 2;
-  const nameText = pickLang(item.name);
-  const initial = initialCharacter(nameText);
+// 智慧折行標題輔助函式
+function wrapHeadline(ctx, text, maxWidth) {
+  const tokens = tokenizeText(text);
+  const lines = [];
+  let current = '';
 
-  const image = await tryLoadImage(layout && layout.imagePath);
-  drawCircleAvatar(ctx, image, avatarCx, avatarCy, avatarRadius, initial);
-
-  if (type === 'speakers' && item.order) {
-    drawNumberBadge(ctx, avatarCx - avatarRadius + 40, avatarCy - avatarRadius + 40, 48, item.order);
+  for (const tok of tokens) {
+    if (!current && /^\s+$/.test(tok)) {
+      continue;
+    }
+    const attempt = current + tok;
+    if (ctx.measureText(attempt).width <= maxWidth) {
+      current = attempt;
+    } else {
+      if (current) {
+        lines.push(current);
+        current = /^\s+$/.test(tok) ? '' : tok;
+      } else {
+        for (const ch of Array.from(tok)) {
+          if (ctx.measureText(current + ch).width <= maxWidth) {
+            current += ch;
+          } else {
+            lines.push(current);
+            current = ch;
+          }
+        }
+      }
+    }
   }
+  if (current) {
+    lines.push(current);
+  }
+  return lines;
+}
 
-  const textX = 100 + avatarRadius * 2 + 60;
-  const textMaxWidth = CANVAS_WIDTH - textX - 60;
-  ctx.fillStyle = COLORS.ink;
-  ctx.font = `900 72px ${FONT_FAMILY}`;
-  drawWrappedText(ctx, nameText, textX, 130, textMaxWidth, 88, 2);
+// 繪製簡潔單行/多行標題（移除簡介與膠囊徽章，垂直置中於主要內容區）
+function drawSimpleHeadline(ctx, label, name, contentX, maxContentW, boxTop = 250, boxBottom = 520) {
+  const fullText = `${label}：${name}`;
 
-  let cursorY = 300;
-  if (type === 'speakers') {
-    const titleText = pickLang(item.title);
-    const orgText = pickLang(item.org);
-    const affiliation = titleText && orgText ? `${titleText} · ${orgText}` : titleText || orgText;
-    if (affiliation) {
-      ctx.font = `700 34px ${FONT_FAMILY}`;
-      ctx.fillStyle = COLORS.ink;
-      const lines = drawWrappedText(ctx, affiliation, textX, cursorY, textMaxWidth, 46, 1);
-      cursorY += lines * 46 + 16;
+  // 1. 優先嘗試單行自適應字級 (44px -> 34px)
+  let fontSize = 44;
+  let fitted = false;
+  ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+  if (ctx.measureText(fullText).width <= maxContentW) {
+    fitted = true;
+  } else {
+    for (let s = 42; s >= 34; s -= 2) {
+      ctx.font = `900 ${s}px ${FONT_FAMILY}`;
+      if (ctx.measureText(fullText).width <= maxContentW) {
+        fontSize = s;
+        fitted = true;
+        break;
+      }
     }
   }
 
-  ctx.font = `500 40px ${FONT_FAMILY}`;
-  ctx.fillStyle = '#333333';
-  const sub = type === 'speakers' ? pickLang((layout && layout.sessionTitle) || null) : pickLang(item.role);
-  drawWrappedText(ctx, sub || '', textX, cursorY, textMaxWidth, 56, 2);
-}
-
-function cleanDescription(text) {
-  if (!text) {
-    return '';
-  }
-  return String(text)
-    .replace(/<br\s*\/?>/gi, ' ')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-// 2026 Neo-brutalism 標誌版型繪製 (特別感謝 thanks / 活動擺攤 booths)
-async function renderLogo(ctx, { type, item, layout, config }) {
-  // 1. 繪製 2026 Neo-brutalism 主卡片基底
-  drawNeoCardBase(ctx);
-
-  const CARD = {
-    x: 28,
-    y: 24,
-    w: 1144,
-    h: 582,
-  };
-
-  const leftX = CARD.x + 36; // 64
-  const nameText = pickLang(item.name, 'Partner');
-  const descText = pickLang(item.description, '');
-  const groupId = item.groupId || 'partner';
-
-  // 取得群組標籤與代表色
-  let groupBadgeText = '⚡ 特別感謝 · Special Thanks';
-  let groupBadgeBg = COLORS.yellowPastel;
-  let themeTagBg = COLORS.blue;
-  let themeTagText = 'PARTNER';
-  let themeTagSub = '✦ 合作夥伴';
-  let stageBadgeText = '✦ SPECIAL THANKS ✦';
-  let headerTitle = '合作夥伴簡介';
-  let headerEn = 'Partner Story';
-  let supportBadgeText = '社群鼎力支持';
-  let supportBadgeBg = COLORS.greenPastel;
-  let supportBadgeColor = COLORS.green;
-
-  if (type === 'booths') {
-    groupBadgeText = '🎪 活動擺攤 · Booth';
-    groupBadgeBg = COLORS.greenPastel;
-    themeTagBg = COLORS.green;
-    themeTagText = 'BOOTH';
-    themeTagSub = '✦ 活動擺攤';
-    stageBadgeText = '✦ EVENT BOOTH ✦';
-    headerTitle = '攤位介紹';
-    headerEn = 'Booth Story';
-    supportBadgeText = '精選技術攤位';
-    supportBadgeBg = COLORS.greenPastel;
-    supportBadgeColor = COLORS.green;
-  } else if (groupId === 'partner') {
-    groupBadgeText = '✦ 合作夥伴 · Partner';
-    groupBadgeBg = COLORS.bluePastel;
-    themeTagBg = COLORS.blue;
-    themeTagText = 'PARTNER';
-    themeTagSub = '✦ 合作夥伴';
-    stageBadgeText = '✦ OFFICIAL PARTNER ✦';
-    headerTitle = '合作夥伴簡介';
-    headerEn = 'Partner Story';
-    supportBadgeText = '社群鼎力支持';
-    supportBadgeBg = COLORS.greenPastel;
-    supportBadgeColor = COLORS.green;
-  } else if (groupId === 'company') {
-    groupBadgeText = '✦ 公司贊助 · Sponsor';
-    groupBadgeBg = COLORS.yellowPastel;
-    themeTagBg = COLORS.yellowHalftone;
-    themeTagText = 'SPONSOR';
-    themeTagSub = '✦ 公司贊助';
-    stageBadgeText = '✦ OFFICIAL SPONSOR ✦';
-    headerTitle = '贊助商簡介';
-    headerEn = 'Sponsor Story';
-    supportBadgeText = '企業鼎力贊助';
-    supportBadgeBg = COLORS.yellowPastel;
-    supportBadgeColor = COLORS.yellow;
-  } else if (groupId === 'personal') {
-    groupBadgeText = '✦ 個人贊助 · Supporter';
-    groupBadgeBg = COLORS.greenPastel;
-    themeTagBg = COLORS.green;
-    themeTagText = 'SUPPORTER';
-    themeTagSub = '✦ 個人贊助';
-    stageBadgeText = '✦ SPECIAL SUPPORTER ✦';
-    headerTitle = '贊助者簡介';
-    headerEn = 'Supporter Story';
-    supportBadgeText = '個人熱情贊助';
-    supportBadgeBg = COLORS.greenPastel;
-    supportBadgeColor = COLORS.green;
+  // 2. 若縮到 34px 仍超過單行寬度，則以 34px 進行智慧折行
+  let lines = [];
+  if (fitted) {
+    lines = [fullText];
+  } else {
+    fontSize = 34;
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+    lines = wrapHeadline(ctx, fullText, maxContentW);
   }
 
-  // ==========================================
-  // 左側內容區 (Left Column)
-  // ==========================================
-
-  // 1. 頂部 Header: GDG Kaohsiung 品牌膠囊 + 贊助類別徽章
-  const headerY = CARD.y + 23;
-  drawStickerBadge(ctx, {
-    x: leftX,
-    y: headerY,
-    width: 390,
-    height: 38,
-    bgColor: COLORS.white,
-    radius: 19,
-    borderWidth: 2,
-    shadowSize: 2.5,
-    prefix: { type: 'dots' },
-    text: 'GDG Kaohsiung · Google Developer Groups',
-    fontSize: 15,
-    textColor: COLORS.ink,
-  });
-
-  drawStickerBadge(ctx, {
-    x: leftX + 402,
-    y: headerY,
-    width: 200,
-    height: 38,
-    bgColor: groupBadgeBg,
-    radius: 8,
-    borderWidth: 2,
-    shadowSize: 2.5,
-    text: groupBadgeText,
-    fontSize: 14,
-    textColor: COLORS.ink,
-    alignCenter: true,
-  });
-
-  // 2. 主標題橫幅 (Partner / Sponsor Banner)
-  const themeY = headerY + 38 + 14;
-  const themeW = 602;
-  const themeH = 68;
-
-  // 橫幅硬陰影
-  safeRoundRect(ctx, leftX + 3.5, themeY + 3.5, themeW, themeH, 10);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 橫幅本體
-  safeRoundRect(ctx, leftX, themeY, themeW, themeH, 10);
-  ctx.fillStyle = COLORS.white;
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // 橫幅左側色彩標籤塊
-  const themeTagW = 100;
-  safeRoundRect(ctx, leftX, themeY, themeTagW, themeH, [10, 0, 0, 10]);
-  ctx.fillStyle = themeTagBg;
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  ctx.save();
-  ctx.fillStyle = COLORS.white;
-  ctx.font = `900 15px ${FONT_FAMILY}`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(themeTagSub, leftX + themeTagW / 2, themeY + 23);
-  ctx.font = `bold 12px ${FONT_FAMILY}`;
-  ctx.fillText(themeTagText, leftX + themeTagW / 2, themeY + 45);
-
-  // 橫幅右側單位名稱 (動態自適應字體大小避免文字溢出)
-  ctx.fillStyle = COLORS.ink;
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
-  let titleFontSize = 30;
-  ctx.font = `900 ${titleFontSize}px ${FONT_FAMILY}`;
-  const maxTitleW = themeW - themeTagW - 36;
-  while (titleFontSize > 16 && ctx.measureText(nameText).width > maxTitleW) {
-    titleFontSize -= 1;
-    ctx.font = `900 ${titleFontSize}px ${FONT_FAMILY}`;
+  // 若折行超過 2 行，字級適度縮小為 30px
+  if (lines.length > 2) {
+    fontSize = 30;
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+    lines = wrapHeadline(ctx, fullText, maxContentW);
   }
-  ctx.fillText(nameText, leftX + themeTagW + 18, themeY + themeH / 2 + 1);
-  ctx.restore();
 
-  // 3. 單位介紹卡片 (Description Card)
-  const cardY = themeY + themeH + 14;
-  const cardW = themeW;
-  const cardH = 268;
+  // 超過 3 行時，第 3 行加上省略號
+  if (lines.length > 3) {
+    let last = lines[2];
+    while (last.length > 0 && ctx.measureText(`${last}…`).width > maxContentW) {
+      last = last.slice(0, -1);
+    }
+    lines[2] = `${last}…`;
+  }
 
-  // 硬陰影
-  safeRoundRect(ctx, leftX + 3.5, cardY + 3.5, cardW, cardH, 12);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 本體卡片
-  safeRoundRect(ctx, leftX, cardY, cardW, cardH, 12);
-  ctx.fillStyle = COLORS.white;
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // 頂部色彩標題列
-  const cardHeaderH = 40;
-  safeRoundRect(ctx, leftX, cardY, cardW, cardHeaderH, [12, 12, 0, 0]);
-  ctx.fillStyle = COLORS.bluePastel;
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // 標題列文字與藍點
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(leftX + 20, cardY + cardHeaderH / 2, 6, 0, Math.PI * 2);
-  ctx.fillStyle = COLORS.blue;
-  ctx.fill();
-  ctx.lineWidth = 1.5;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
+  const lineHeight = Math.round(fontSize * 1.35);
+  const totalH = (Math.min(lines.length, 3) - 1) * lineHeight + fontSize;
+  const startY = boxTop + Math.round((boxBottom - boxTop - totalH) / 2);
 
   ctx.fillStyle = COLORS.ink;
-  ctx.font = `900 16px ${FONT_FAMILY}`;
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(headerTitle, leftX + 34, cardY + cardHeaderH / 2 + 1);
-
-  ctx.font = `bold 13px ${FONT_FAMILY}`;
-  ctx.fillStyle = COLORS.blue;
-  ctx.textAlign = 'right';
-  ctx.fillText(headerEn, leftX + cardW - 16, cardY + cardHeaderH / 2 + 1);
-
-  // 內容描述區 (徹底清理 HTML 標籤與實體)
-  ctx.fillStyle = '#333333';
   ctx.textAlign = 'left';
   ctx.textBaseline = 'top';
-  ctx.font = `500 16.5px ${FONT_FAMILY}`;
-  const effectiveDesc =
-    cleanDescription(descText) ||
-    '感謝對 GDG Kaohsiung 與 DevFest 2026 南台灣技術盛會的鼎力支持！攜手共創在地技術生態系。';
-  drawWrappedText(ctx, effectiveDesc, leftX + 20, cardY + cardHeaderH + 18, cardW - 40, 27, 4);
 
-  // 底部官網/連結標籤區 (若有連結)
-  const links = Array.isArray(item.links) ? item.links : [];
-  const primaryLink = links.find((l) => l.url) || null;
-  const linkUrl = primaryLink ? primaryLink.url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'gdgkh.cc/2026/';
-
-  // 計算貼紙標籤寬度與安全截斷
-  const maxBadgeWidth = cardW - 40 - 152; // 保留第二個標籤 (140px) 與間距 (12px)
-  let displayLinkUrl = linkUrl;
-  ctx.font = `bold 13px ${FONT_FAMILY}`;
-  if (ctx.measureText(displayLinkUrl).width + 48 > maxBadgeWidth) {
-    while (displayLinkUrl.length > 0 && ctx.measureText(`${displayLinkUrl}…`).width + 48 > maxBadgeWidth) {
-      displayLinkUrl = displayLinkUrl.slice(0, -1);
-    }
-    displayLinkUrl = `${displayLinkUrl}…`;
-  }
-  const badgeWidth = Math.max(150, ctx.measureText(displayLinkUrl).width + 48);
-
-  drawStickerBadge(ctx, {
-    x: leftX + 20,
-    y: cardY + cardH - 46,
-    width: badgeWidth,
-    height: 32,
-    bgColor: COLORS.paper,
-    radius: 6,
-    borderWidth: 1.5,
-    shadowSize: 2,
-    prefix: { type: 'sparkle', color: COLORS.blue },
-    text: displayLinkUrl,
-    fontSize: 13,
-    fontWeight: 'bold',
-    textColor: '#444444',
+  lines.slice(0, 3).forEach((line, idx) => {
+    ctx.fillText(line, contentX, startY + idx * lineHeight);
   });
-
-  // 附加小標籤：依群組自適應
-  drawStickerBadge(ctx, {
-    x: leftX + 20 + badgeWidth + 12,
-    y: cardY + cardH - 46,
-    width: 140,
-    height: 32,
-    bgColor: supportBadgeBg,
-    radius: 6,
-    borderWidth: 1.5,
-    shadowSize: 2,
-    prefix: { type: 'circle', color: supportBadgeColor },
-    text: supportBadgeText,
-    fontSize: 13,
-    fontWeight: 'bold',
-    textColor: COLORS.ink,
-  });
-  ctx.restore();
-
-  // 4. 底部活動資訊卡 (Event Info Panel)
-  const infoY = cardY + cardH + 14;
-  const infoW = themeW;
-  const infoH = 120;
-
-  // 硬陰影
-  safeRoundRect(ctx, leftX + 3.5, infoY + 3.5, infoW, infoH, 12);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 本體
-  safeRoundRect(ctx, leftX, infoY, infoW, infoH, 12);
-  ctx.fillStyle = COLORS.white;
-  ctx.fill();
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // 左側 Google 四色直立色條 (每段精確 30px)
-  const barW = 7;
-  const barSegmentH = infoH / 4;
-  const googleColors = [COLORS.blue, COLORS.red, COLORS.yellow, COLORS.green];
-  googleColors.forEach((color, i) => {
-    const rad = i === 0 ? [12, 0, 0, 0] : i === 3 ? [0, 0, 0, 12] : 0;
-    safeRoundRect(ctx, leftX, infoY + i * barSegmentH, barW, barSegmentH, rad);
-    ctx.fillStyle = color;
-    ctx.fill();
-  });
-
-  // 動態讀取 config.site 設定
-  const site = (config && config.site) || {};
-  const eventDate = site.eventDate || '2026-11-14';
-  const venue = pickLang(site.venue, 'KO-IN 智高點');
-  const venueAddress = pickLang(site.venueAddress, '高雄市新興區中正三路 25 號 14 樓');
-  const baseUrl = site.baseUrl ? site.baseUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'gdgkh.cc/2026';
-
-  // 資訊內容
-  ctx.save();
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'middle';
-
-  // 第一行：時間
-  ctx.fillStyle = COLORS.ink;
-  ctx.font = `bold 16px ${FONT_FAMILY}`;
-  ctx.fillText(`📅 時間：${eventDate}（六）08:30 – 17:30`, leftX + 22, infoY + 26);
-
-  // 第二行：地點
-  ctx.fillText(`📍 地點：${venue}（${venueAddress}）`, leftX + 22, infoY + 56);
-
-  // 分隔線
-  ctx.strokeStyle = '#e6e6e6';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(leftX + 22, infoY + 80);
-  ctx.lineTo(leftX + infoW - 20, infoY + 80);
-  ctx.stroke();
-
-  // 第三行：官網與主辦
-  ctx.fillStyle = '#555555';
-  ctx.font = `bold 14px ${FONT_FAMILY}`;
-  ctx.fillText(`🌐 官網：${baseUrl}/`, leftX + 22, infoY + 100);
-  ctx.fillText('🏛 主辦：GDG Kaohsiung', leftX + 320, infoY + 100);
-  ctx.restore();
-
-  // ==========================================
-  // 右側視覺 Logo 舞台區 (Right Column - 精準居中於剩餘右側空間)
-  // ==========================================
-  const rightCenterX = 919; // (666 + 1172) / 2 = 919，左右間距各 88px 完全居中
-  const rightCenterY = 315; // (24 + 606) / 2 = 315，垂直完全居中
-
-  // 1. 傾斜背景裝飾方塊 (Yellow Pastel + Google 4 色圓角)
-  ctx.save();
-  ctx.translate(rightCenterX, rightCenterY);
-  ctx.rotate((6.5 * Math.PI) / 180);
-
-  const bgBoxSize = 350;
-  const halfBox = bgBoxSize / 2;
-
-  // 硬陰影
-  safeRoundRect(ctx, -halfBox + 6, -halfBox + 6, bgBoxSize, bgBoxSize, 24);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 本體
-  safeRoundRect(ctx, -halfBox, -halfBox, bgBoxSize, bgBoxSize, 24);
-  ctx.fillStyle = COLORS.yellowPastel;
-  ctx.fill();
-  ctx.lineWidth = 2.5;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // Google 4 色圓角邊角
-  const cornerSize = 42;
-  safeRoundRect(ctx, -halfBox, -halfBox, cornerSize, cornerSize, [24, 0, 0, 0]);
-  ctx.fillStyle = COLORS.blue;
-  ctx.fill();
-  safeRoundRect(ctx, halfBox - cornerSize, -halfBox, cornerSize, cornerSize, [0, 24, 0, 0]);
-  ctx.fillStyle = COLORS.red;
-  ctx.fill();
-  safeRoundRect(ctx, halfBox - cornerSize, halfBox - cornerSize, cornerSize, cornerSize, [0, 0, 24, 0]);
-  ctx.fillStyle = COLORS.green;
-  ctx.fill();
-  safeRoundRect(ctx, -halfBox, halfBox - cornerSize, cornerSize, cornerSize, [0, 0, 0, 24]);
-  ctx.fillStyle = COLORS.yellow;
-  ctx.fill();
-
-  ctx.restore();
-
-  // 2. 前景主 Logo 舞台卡片 (白色圓角立體卡片)
-  const stageW = 330;
-  const stageH = 330;
-  const halfStageW = stageW / 2;
-  const halfStageH = stageH / 2;
-
-  ctx.save();
-  ctx.translate(rightCenterX, rightCenterY);
-
-  // 硬陰影
-  safeRoundRect(ctx, -halfStageW + 6, -halfStageH + 6, stageW, stageH, 18);
-  ctx.fillStyle = COLORS.ink;
-  ctx.fill();
-
-  // 本體
-  safeRoundRect(ctx, -halfStageW, -halfStageH, stageW, stageH, 18);
-  ctx.fillStyle = COLORS.white;
-  ctx.fill();
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = COLORS.ink;
-  ctx.stroke();
-
-  // 繪製 Logo 圖片或初始字
-  const image = await tryLoadImage(layout && layout.imagePath);
-  if (image) {
-    // 內部安全繪圖範圍 274x274 (padding 28)
-    const pad = 28;
-    const maxImgW = stageW - pad * 2;
-    const maxImgH = stageH - pad * 2;
-    const ratio = Math.min(maxImgW / image.width, maxImgH / image.height);
-    const drawW = image.width * ratio;
-    const drawH = image.height * ratio;
-    ctx.drawImage(image, -drawW / 2, -drawH / 2, drawW, drawH);
-  } else {
-    // Fallback: 初始字母 + Gemini 星芒背景
-    ctx.fillStyle = COLORS.paper;
-    safeRoundRect(ctx, -halfStageW + 20, -halfStageH + 20, stageW - 40, stageH - 40, 12);
-    ctx.fill();
-
-    drawGeminiStar(ctx, 0, 0, 70, 20, 'rgba(66, 133, 244, 0.12)', null, 0);
-
-    const initial = initialCharacter(nameText);
-    ctx.fillStyle = COLORS.ink;
-    ctx.font = `900 120px ${FONT_FAMILY}`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(initial, 0, 4);
-  }
-  ctx.restore();
-
-  // 3. 舞台上下懸浮標籤
-  // 上方標籤：對稱置中排版
-  drawStickerBadge(ctx, {
-    x: rightCenterX - 110,
-    y: rightCenterY - halfStageH - 24,
-    width: 220,
-    height: 38,
-    bgColor: COLORS.white,
-    radius: 8,
-    borderWidth: 2,
-    shadowSize: 3,
-    text: stageBadgeText,
-    fontSize: 13.5,
-    textColor: COLORS.ink,
-    rotation: -3,
-    alignCenter: true,
-  });
-
-  // 下方標籤：⚡ DevFest 2026 高雄場
-  drawStickerBadge(ctx, {
-    x: rightCenterX - 115,
-    y: rightCenterY + halfStageH - 14,
-    width: 230,
-    height: 40,
-    bgColor: COLORS.yellowHalftone,
-    radius: 10,
-    borderWidth: 2,
-    shadowSize: 3,
-    text: '⚡ DevFest 2026 高雄場',
-    fontSize: 16,
-    fontWeight: '900',
-    textColor: COLORS.ink,
-    rotation: 2.5,
-    alignCenter: true,
-  });
-
-  // 4. 周圍 Gemini 星芒粒子 (Google 4 色，對稱分佈於舞台兩側)
-  drawGeminiStar(ctx, rightCenterX - 220, 185, 13, 5, COLORS.blue, COLORS.ink, 1.5);
-  drawGeminiStar(ctx, rightCenterX + 215, 175, 14, 5.5, COLORS.red, COLORS.ink, 1.5);
-  drawGeminiStar(ctx, rightCenterX - 225, 455, 12, 4.5, COLORS.green, COLORS.ink, 1.5);
-  drawGeminiStar(ctx, rightCenterX + 220, 450, 13, 5, COLORS.yellow, COLORS.ink, 1.5);
-
-  // 微星芒
-  drawGeminiStar(ctx, rightCenterX - 180, 315, 6, 2.5, COLORS.yellow, null, 0);
-  drawGeminiStar(ctx, rightCenterX + 180, 315, 6, 2.5, COLORS.blue, null, 0);
 }
 
-export async function renderOgImage({ type, item, layout, config, outPath }) {
-  registerFontsOnce();
-  if (!item || typeof item !== 'object') {
-    throw new Error('renderOgImage: item 為空');
+// 繪製左側視覺區塊 (綠色頭圖位置：左上位置 70, 75，寬高 400X400)
+async function drawLeftVisual(ctx, imagePath, fallbackInitial, isLogo = false, isPlaceholder = false) {
+  const boxX = 70;
+  const boxY = 75;
+  const boxSize = 400;
+
+  const img = await tryLoadImage(imagePath);
+
+  // 首頁官方底圖或純佔位時，呈現乾淨綠色色塊（同 share-og 官方標準稿，不加黑外框、不放巨大首字）
+  if (isPlaceholder || (!img && !fallbackInitial && !isLogo)) {
+    ctx.fillStyle = COLORS.greenBox;
+    ctx.fillRect(boxX, boxY, boxSize, boxSize);
+    return;
   }
+
+  if (isLogo) {
+    // 廠商與社群 Logo：白色襯底 + 4px 邊框 + 居中完整顯示 (contain)
+    ctx.fillStyle = COLORS.white;
+    ctx.fillRect(boxX, boxY, boxSize, boxSize);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = COLORS.border;
+    ctx.strokeRect(boxX, boxY, boxSize, boxSize);
+
+    if (img) {
+      const padding = 36;
+      const maxW = boxSize - padding * 2;
+      const maxH = boxSize - padding * 2;
+      const scale = Math.min(maxW / img.width, maxH / img.height);
+      const drawW = img.width * scale;
+      const drawH = img.height * scale;
+      const drawX = boxX + (boxSize - drawW) / 2;
+      const drawY = boxY + (boxSize - drawH) / 2;
+      ctx.drawImage(img, drawX, drawY, drawW, drawH);
+    } else {
+      ctx.fillStyle = COLORS.border;
+      ctx.font = `900 120px ${FONT_FAMILY}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(fallbackInitial || '✦', boxX + boxSize / 2, boxY + boxSize / 2);
+    }
+  } else {
+    // 講者與工作人員頭像：裁切覆蓋 (cover)
+    if (img) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(boxX, boxY, boxSize, boxSize);
+      ctx.clip();
+
+      const scale = Math.max(boxSize / img.width, boxSize / img.height);
+      const drawW = img.width * scale;
+      const drawH = img.height * scale;
+      const drawX = boxX + (boxSize - drawW) / 2;
+      const drawY = boxY + (boxSize - drawH) / 2;
+      ctx.drawImage(img, drawX, drawY, drawW, drawH);
+      ctx.restore();
+
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = COLORS.border;
+      ctx.strokeRect(boxX, boxY, boxSize, boxSize);
+    } else {
+      // 人物缺圖時：優雅柔和綠底 + 首字縮寫
+      ctx.fillStyle = '#d2e3d5';
+      ctx.fillRect(boxX, boxY, boxSize, boxSize);
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = COLORS.border;
+      ctx.strokeRect(boxX, boxY, boxSize, boxSize);
+
+      ctx.fillStyle = COLORS.border;
+      ctx.font = `900 120px ${FONT_FAMILY}`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(fallbackInitial || '👤', boxX + boxSize / 2, boxY + boxSize / 2);
+    }
+  }
+}
+
+// 主渲染函式
+export async function renderOgImage({ type, item, layout, _config, outPath }) {
+  registerFontsOnce();
+  const baseAssets = await getBaseAssets();
+
   const canvas = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
   const ctx = canvas.getContext('2d');
 
-  const layoutKind = (layout && layout.kind) || 'person';
-  if (layoutKind === 'person') {
-    drawBase(ctx, config || {});
-    await renderPerson(ctx, { type, item, layout });
-  } else if (layoutKind === 'logo') {
-    await renderLogo(ctx, { type, item, layout, config });
-  } else {
-    throw new Error(`renderOgImage: 未知 layout.kind：${layoutKind}`);
+  // 1. 繪製官方指定底圖框架
+  drawBaseFrame(ctx, baseAssets);
+
+  // 2. 判斷實體型別與左側頭圖/Logo
+  const isLogo = type === 'thanks' || type === 'booths';
+  const isPlaceholder = type === 'site' || type === 'raw_test';
+  const nameText = pickLang(item && item.name, 'DevFest 2026');
+  const initial = isPlaceholder ? '' : initialCharacter(nameText);
+  await drawLeftVisual(ctx, layout && layout.imagePath, initial, isLogo, isPlaceholder);
+
+  // 3. 右側文字內容區域 (X: 545, Y: 250 到 520，最大寬度 585px)
+  const contentX = 545;
+  const maxContentW = 585;
+
+  if (type === 'speakers') {
+    // 講者姓名 (Noto Serif TC Black) - 清楚大方的簡潔格式
+    const title = pickLang(item && item.title);
+    const org = pickLang(item && item.org);
+    const affiliation = [title, org].filter(Boolean).join(' · ');
+    const sessionTitle = pickLang(layout && layout.sessionTitle);
+
+    let nameSize = 48;
+    ctx.font = `900 ${nameSize}px ${FONT_FAMILY}`;
+    while (nameSize > 28 && ctx.measureText(nameText).width > maxContentW) {
+      nameSize -= 2;
+      ctx.font = `900 ${nameSize}px ${FONT_FAMILY}`;
+    }
+
+    let sessionLines = [];
+    if (sessionTitle) {
+      ctx.font = `900 24px ${FONT_FAMILY}`;
+      sessionLines = wrapHeadline(ctx, `議程主題：${sessionTitle}`, maxContentW).slice(0, 2);
+    }
+
+    let totalSpeakerH = nameSize;
+    if (affiliation) {
+      totalSpeakerH += 14 + 22;
+    }
+    if (sessionLines.length > 0) {
+      totalSpeakerH += (affiliation ? 18 : 14) + (sessionLines.length - 1) * 34 + 24;
+    }
+
+    const boxTop = 250;
+    const boxBottom = 520;
+    let cursorY = boxTop + Math.max(0, Math.round((boxBottom - boxTop - totalSpeakerH) / 2));
+
+    ctx.fillStyle = COLORS.ink;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = `900 ${nameSize}px ${FONT_FAMILY}`;
+    let displayName = nameText;
+    if (ctx.measureText(displayName).width > maxContentW) {
+      while (displayName.length > 0 && ctx.measureText(`${displayName}…`).width > maxContentW) {
+        displayName = displayName.slice(0, -1);
+      }
+      displayName = `${displayName}…`;
+    }
+    ctx.fillText(displayName, contentX, cursorY);
+    cursorY += nameSize + 14;
+
+    if (affiliation) {
+      ctx.fillStyle = COLORS.subText;
+      ctx.font = `900 22px ${FONT_FAMILY}`;
+      let dispAff = affiliation;
+      if (ctx.measureText(dispAff).width > maxContentW) {
+        while (dispAff.length > 0 && ctx.measureText(`${dispAff}…`).width > maxContentW) {
+          dispAff = dispAff.slice(0, -1);
+        }
+        dispAff = `${dispAff}…`;
+      }
+      ctx.fillText(dispAff, contentX, cursorY);
+      cursorY += 22 + (sessionLines.length > 0 ? 18 : 0);
+    }
+
+    if (sessionLines.length > 0) {
+      ctx.fillStyle = COLORS.ink;
+      ctx.font = `900 24px ${FONT_FAMILY}`;
+      sessionLines.forEach((line, idx) => {
+        ctx.fillText(line, contentX, cursorY + idx * 34);
+      });
+    }
+  } else if (type === 'booths') {
+    // 社群攤位：不顯示膠囊圖示與簡介，格式為「社群攤位：{名稱}」
+    drawSimpleHeadline(ctx, '社群攤位', nameText, contentX, maxContentW);
+  } else if (type === 'thanks') {
+    // 合作夥伴：不顯示膠囊圖示與簡介，格式為「合作夥伴：{名稱}」
+    drawSimpleHeadline(ctx, '合作夥伴', nameText, contentX, maxContentW);
+  } else if (type === 'staff') {
+    // 活動志工：不顯示膠囊圖示與簡介，格式為「活動志工：{名稱}」
+    drawSimpleHeadline(ctx, '活動志工', nameText, contentX, maxContentW);
+  } else if (type === 'site') {
+    // 全站 / 活動首頁 OG 圖（刪除膠囊圖示，清楚大方排版，垂直置中）
+    const line1 = '高雄場 · Kaohsiung';
+    const line2 = '大會主題：AI 代理時代的開發人員和建構者';
+    const line3 = '議程演講 · 工作坊 · 交流聚會 · 社群擺攤 · 第二屆技術創作市集';
+
+    ctx.font = `900 19px ${FONT_FAMILY}`;
+    const descLines = wrapHeadline(ctx, line3, maxContentW).slice(0, 2);
+
+    const totalSiteH = 48 + 14 + 22 + 16 + (descLines.length - 1) * 28 + 19;
+    const boxTop = 250;
+    const boxBottom = 520;
+    let cursorY = boxTop + Math.max(0, Math.round((boxBottom - boxTop - totalSiteH) / 2));
+
+    ctx.fillStyle = COLORS.ink;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.font = `900 48px ${FONT_FAMILY}`;
+    ctx.fillText(line1, contentX, cursorY);
+    cursorY += 48 + 14;
+
+    ctx.fillStyle = COLORS.subText;
+    ctx.font = `900 22px ${FONT_FAMILY}`;
+    ctx.fillText(line2, contentX, cursorY);
+    cursorY += 22 + 16;
+
+    ctx.fillStyle = COLORS.descText;
+    ctx.font = `900 19px ${FONT_FAMILY}`;
+    descLines.forEach((line, idx) => {
+      ctx.fillText(line, contentX, cursorY + idx * 28);
+    });
   }
 
   await fs.mkdir(path.dirname(outPath), { recursive: true });

@@ -18,6 +18,7 @@ const SHARE_DIR = path.join(ROOT_2026, 'share');
 const IMAGES_OG_DIR = path.join(ROOT_2026, 'images', 'og');
 const SITEMAP_PATH = path.join(ROOT_2026, 'sitemap.xml');
 const ROBOTS_PATH = path.join(REPO_ROOT, 'robots.txt');
+const RENDER_OG_PATH = path.join(__dirname, 'render-og.mjs');
 
 async function readJson(p) {
   const raw = await fs.readFile(p, 'utf8');
@@ -92,6 +93,7 @@ function hashForItem({ item, layout, imageAbs }) {
     item,
     layout: layoutSummary,
     imageMtime: statMtime(imageAbs),
+    renderMtime: statMtime(RENDER_OG_PATH),
   });
   return hashKey(payload);
 }
@@ -113,8 +115,9 @@ async function processEntity({ type, typeEntry, item, config, store, cache, stat
   const currentHash = hashForItem({ item, layout, imageAbs });
   const cached = cache[cacheKey];
   const outputsExist = existsSync(ogAbs) && existsSync(pageAbs);
+  const isForce = process.argv.includes('--force');
 
-  if (cached && cached.hash === currentHash && outputsExist) {
+  if (!isForce && cached && cached.hash === currentHash && outputsExist) {
     stats.skipped += 1;
     return;
   }
@@ -224,6 +227,41 @@ function warnIfLead(config, content) {
   }
 }
 
+async function processSiteOg({ config, cache, stats }) {
+  const siteOgAbs = path.join(IMAGES_OG_DIR, 'site.png');
+  const cacheKey = 'site';
+  const sitePayload = JSON.stringify({
+    site: config.site || {},
+    theme: config.theme || {},
+    renderMtime: statMtime(RENDER_OG_PATH),
+  });
+  const currentHash = hashKey(sitePayload);
+  const cached = cache[cacheKey];
+  const outputsExist = existsSync(siteOgAbs);
+  const isForce = process.argv.includes('--force');
+
+  if (!isForce && cached && cached.hash === currentHash && outputsExist) {
+    stats.skipped += 1;
+    return;
+  }
+
+  try {
+    await ensureDir(path.dirname(siteOgAbs));
+    await renderOgImage({
+      type: 'site',
+      item: { name: 'DevFest 2026' },
+      layout: { kind: 'site' },
+      config,
+      outPath: siteOgAbs,
+    });
+    stats.images += 1;
+    cache[cacheKey] = { hash: currentHash, updatedAt: new Date().toISOString() };
+  } catch (err) {
+    stats.failed += 1;
+    console.warn(`[generate] 產生 site.png 失敗：${err.message}`);
+  }
+}
+
 async function main() {
   console.warn('[generate] 開始產生 2026 分享頁與 OG 圖…');
 
@@ -260,6 +298,8 @@ async function main() {
     }
     await detectOrphans({ type, itemIds, stats, orphans });
   }
+
+  await processSiteOg({ config, cache, stats });
 
   await saveCache(cache);
   await writeSitemap({ baseUrl, urls: sitemapUrls });
