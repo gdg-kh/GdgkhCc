@@ -61,30 +61,5 @@ await renderOgImage({
   outPath: path.join(PREVIEW_DIR, 'speakers-sample.png'),
 });
 
-console.warn('產生活動講者範例預覽：無議程主題版...');
-await renderOgImage({
-  type: 'speakers',
-  item: {
-    name: { 'zh-Hant': '陳美玲' },
-    title: { 'zh-Hant': '雲端架構師' },
-    org: { 'zh-Hant': 'GDG Kaohsiung' },
-  },
-  layout: {
-    imagePath: path.join(ROOT_2026, 'images', 'staff', 'andyawd.jpg'),
-  },
-  outPath: path.join(PREVIEW_DIR, 'speakers-sample-nosession.png'),
-});
-
-console.warn('產生活動講者範例預覽：純姓名版...');
-await renderOgImage({
-  type: 'speakers',
-  item: {
-    name: { 'zh-Hant': '林建宏' },
-  },
-  layout: {
-    imagePath: path.join(ROOT_2026, 'images', 'staff', 'andyawd.jpg'),
-  },
-  outPath: path.join(PREVIEW_DIR, 'speakers-sample-nameonly.png'),
-});
-
 console.warn(`[preview] 完成！所有預覽圖片皆已儲存至：${PREVIEW_DIR}`);
+
