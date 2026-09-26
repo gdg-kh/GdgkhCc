@@ -237,24 +237,90 @@ function renderTags(payload) {
   return el('div', { class: 'gk-modal-section' }, [el('div', { class: 'gk-modal-tags' }, chips)]);
 }
 
+function isMobileDevice() {
+  if (typeof navigator === 'undefined') {
+    return false;
+  }
+  if (navigator.userAgentData && typeof navigator.userAgentData.mobile === 'boolean') {
+    if (navigator.userAgentData.mobile) {
+      return true;
+    }
+  }
+  const ua = navigator.userAgent || '';
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua)) {
+    return true;
+  }
+  // iPadOS（Safari / WebKit 在 iPad 預設回傳桌面版 UA）
+  if ((/Macintosh/i.test(ua) || navigator.platform === 'MacIntel') && navigator.maxTouchPoints > 1) {
+    return true;
+  }
+  return false;
+}
+
+function canUseNativeShare(shareData) {
+  if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') {
+    return false;
+  }
+  if (!isMobileDevice()) {
+    return false;
+  }
+  if (typeof navigator.canShare === 'function') {
+    try {
+      return navigator.canShare(shareData);
+    } catch {
+      return false;
+    }
+  }
+  return true;
+}
+
 function fallbackCopyText(text) {
+  if (typeof document === 'undefined' || !document.body) {
+    return false;
+  }
   try {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    textArea.setAttribute('readonly', '');
     textArea.style.position = 'fixed';
-    textArea.style.left = '-9999px';
     textArea.style.top = '0';
+    textArea.style.left = '-9999px';
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = '0';
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.style.fontSize = '16px';
+    textArea.setAttribute('readonly', '');
     document.body.appendChild(textArea);
     textArea.focus();
     textArea.select();
-    textArea.setSelectionRange(0, text.length);
-    const successful = document.execCommand('copy');
+    if (typeof textArea.setSelectionRange === 'function') {
+      textArea.setSelectionRange(0, text.length);
+    }
+    const successful = Boolean(document.execCommand && document.execCommand('copy'));
     document.body.removeChild(textArea);
     return successful;
   } catch {
     return false;
   }
+}
+
+async function copyTextToClipboard(text) {
+  if (
+    typeof navigator !== 'undefined' &&
+    navigator.clipboard &&
+    typeof navigator.clipboard.writeText === 'function'
+  ) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return fallbackCopyText(text);
+    }
+  }
+  return fallbackCopyText(text);
 }
 
 function makeShareButton(payload) {
@@ -267,6 +333,7 @@ function makeShareButton(payload) {
   const copiedLabelText = labelFromUi('copiedLabel') || '已複製連結！';
 
   const textSpan = el('span', { class: 'gk-modal-share-label', text: shareLabelText });
+  let isSharing = false;
 
   const button = el(
     'button',
@@ -280,73 +347,74 @@ function makeShareButton(payload) {
       on: {
         click: async (event) => {
           event.stopPropagation();
+          if (isSharing) {
+            return;
+          }
+          isSharing = true;
 
-          const config = getConfig();
-          const eventName = t(config && config.site && config.site.eventName) || '';
-          const name = t(payload.name) || '';
-          const shareTitle = name && eventName ? `${name} - ${eventName}` : name || eventName;
-          const shareText = name || '';
+          try {
+            const config = getConfig();
+            const eventName = t(config && config.site && config.site.eventName) || '';
+            const name = t(payload.name) || '';
+            const shareTitle = name && eventName ? `${name} - ${eventName}` : name || eventName;
+            const shareText = name || '';
+            const shareData = {
+              title: shareTitle,
+              text: shareText,
+              url: shareUrl,
+            };
 
-          if (typeof navigator !== 'undefined' && navigator.share) {
-            try {
-              await navigator.share({
-                title: shareTitle,
-                text: shareText,
-                url: shareUrl,
-              });
+            if (canUseNativeShare(shareData)) {
+              try {
+                await navigator.share(shareData);
+                track('share', {
+                  type: payload.type || 'unknown',
+                  id: payload.id || 'unknown',
+                  method: 'native',
+                });
+                return;
+              } catch (err) {
+                if (err && (err.name === 'AbortError' || err.name === 'InvalidStateError')) {
+                  return;
+                }
+              }
+            }
+
+            const copied = await copyTextToClipboard(shareUrl);
+
+            if (copied) {
               track('share', {
                 type: payload.type || 'unknown',
                 id: payload.id || 'unknown',
-                method: 'native',
+                method: 'clipboard',
               });
-              return;
-            } catch (err) {
-              if (err && err.name === 'AbortError') {
-                return;
+
+              button.classList.add('gk-modal-share-copied');
+              button.setAttribute('aria-label', copiedLabelText);
+              button.setAttribute('title', copiedLabelText);
+              clear(button);
+              mount(button, el('span', { class: 'gk-modal-share-label', text: copiedLabelText }));
+
+              if (copyResetTimer) {
+                clearTimeout(copyResetTimer);
+              }
+              copyResetTimer = setTimeout(() => {
+                button.classList.remove('gk-modal-share-copied');
+                button.setAttribute('aria-label', shareLabelText);
+                button.setAttribute('title', shareLabelText);
+                clear(button);
+                mount(button, el('span', { class: 'gk-modal-share-label', text: shareLabelText }));
+                copyResetTimer = null;
+              }, 2000);
+            } else {
+              try {
+                window.prompt(shareLabelText, shareUrl);
+              } catch {
+                // ignore
               }
             }
-          }
-
-          let copied = false;
-          if (
-            typeof navigator !== 'undefined' &&
-            navigator.clipboard &&
-            typeof navigator.clipboard.writeText === 'function'
-          ) {
-            try {
-              await navigator.clipboard.writeText(shareUrl);
-              copied = true;
-            } catch {
-              copied = fallbackCopyText(shareUrl);
-            }
-          } else {
-            copied = fallbackCopyText(shareUrl);
-          }
-
-          if (copied) {
-            track('share', {
-              type: payload.type || 'unknown',
-              id: payload.id || 'unknown',
-              method: 'clipboard',
-            });
-
-            button.classList.add('gk-modal-share-copied');
-            button.setAttribute('aria-label', copiedLabelText);
-            button.setAttribute('title', copiedLabelText);
-            clear(button);
-            mount(button, el('span', { class: 'gk-modal-share-label', text: copiedLabelText }));
-
-            if (copyResetTimer) {
-              clearTimeout(copyResetTimer);
-            }
-            copyResetTimer = setTimeout(() => {
-              button.classList.remove('gk-modal-share-copied');
-              button.setAttribute('aria-label', shareLabelText);
-              button.setAttribute('title', shareLabelText);
-              clear(button);
-              mount(button, el('span', { class: 'gk-modal-share-label', text: shareLabelText }));
-              copyResetTimer = null;
-            }, 2000);
+          } finally {
+            isSharing = false;
           }
         },
       },
@@ -605,3 +673,11 @@ export function closeModal() {
   }
   previousFocus = null;
 }
+
+export {
+  isMobileDevice,
+  canUseNativeShare,
+  fallbackCopyText,
+  copyTextToClipboard,
+  makeShareButton,
+};
