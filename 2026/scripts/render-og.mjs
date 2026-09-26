@@ -504,47 +504,42 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
     drawBadgeAndName(ctx, '社群攤位', nameText);
   } else if (type === 'speakers') {
     // 講者排版：靠左對齊 {DevFest} 的左邊 (X: 502)
+    // 規格：第 1 行 [活動講者] 姓名·職稱；換行第 2 行 [議程主題] 議程標題；文字大小皆為 28px
     const leftX = 502;
-    const maxW = 1140 - leftX; // 638px
+    const badgeW = 154;
+    const badgeH = 44;
+    const gap = 16;
+    const textX = leftX + badgeW + gap; // 672
+    const maxTextW = 1140 - textX; // 468px
+    const rowGap = 20;
+    const fontSize = 28;
 
-    // 1. 活動講者徽章（黑底白字）
-    const badge1W = 180;
-    const badge1H = 42;
-
-    // 2. 名字後面接職稱
+    // 1. 組合姓名與職稱 (28px)
     const title = pickLang(item && item.title);
     const org = pickLang(item && item.org);
     const affil = [title, org].filter(Boolean).join(' · ');
     const nameLine = affil ? `${nameText} · ${affil}` : nameText;
 
-    let nameFontSize = 32;
-    ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
-    while (nameFontSize > 22 && ctx.measureText(nameLine).width > maxW) {
-      nameFontSize -= 2;
-      ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
-    }
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
     let dispNameLine = nameLine;
-    if (ctx.measureText(dispNameLine).width > maxW) {
-      while (dispNameLine.length > 0 && ctx.measureText(`${dispNameLine}…`).width > maxW) {
+    if (ctx.measureText(dispNameLine).width > maxTextW) {
+      while (dispNameLine.length > 0 && ctx.measureText(`${dispNameLine}…`).width > maxTextW) {
         dispNameLine = dispNameLine.slice(0, -1);
       }
       dispNameLine = `${dispNameLine}…`;
     }
-    const nameLineH = nameFontSize + 4;
 
-    // 3. [ 議程主題 ] 徽章（黑底白字）與內容（黑字可換行）
+    // 2. 議程主題處理 (28px，可折行最多 2 行)
     const sessionTitle = pickLang(layout && layout.sessionTitle);
-    const badge2W = 150;
-    const badge2H = 38;
     let sessionLines = [];
-    const sessionLineH = 30;
+    const sessionLineH = 36;
 
     if (sessionTitle) {
-      ctx.font = `900 22px ${FONT_FAMILY}`;
-      const rawLines = wrapHeadline(ctx, sessionTitle, maxW);
+      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+      const rawLines = wrapHeadline(ctx, sessionTitle, maxTextW);
       if (rawLines.length > 2) {
         let last = rawLines[1];
-        while (last.length > 0 && ctx.measureText(`${last}…`).width > maxW) {
+        while (last.length > 0 && ctx.measureText(`${last}…`).width > maxTextW) {
           last = last.slice(0, -1);
         }
         sessionLines = [rawLines[0], `${last}…`];
@@ -553,61 +548,71 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
       }
     }
 
-    const sessionTextH = sessionLines.length * sessionLineH;
-
-    // 動態垂直置中計算總高度
-    const gap1 = 10; // 活動講者徽章與姓名職稱間距
-    const gap2 = sessionTitle ? 12 : 0; // 姓名職稱與議程徽章間距
-    const gap3 = sessionTitle ? 8 : 0; // 議程徽章與議程文字間距
-    const totalH = badge1H + gap1 + nameLineH + gap2 + (sessionTitle ? badge2H + gap3 + sessionTextH : 0);
+    // 3. 動態計算總高度以維持右側垂直置中
+    const hasSession = Boolean(sessionTitle && sessionLines.length > 0);
+    const sessionH = hasSession ? (sessionLines.length > 1 ? 72 : badgeH) : 0;
+    const totalH = badgeH + (hasSession ? rowGap + sessionH : 0);
     const zoneCenterY = 350;
-    const topY = Math.max(245, Math.round(zoneCenterY - totalH / 2));
+    const row1Y = Math.round(zoneCenterY - totalH / 2);
 
-    // 繪製活動講者徽章
+    // 4. 繪製第 1 行：[活動講者] 徽章 + 姓名職稱
     ctx.fillStyle = COLORS.badgeBg;
-    drawRoundedRect(ctx, leftX, topY, badge1W, badge1H, 4.5);
+    drawRoundedRect(ctx, leftX, row1Y, badgeW, badgeH, 4.5);
     ctx.fill();
 
     ctx.fillStyle = COLORS.badgeText;
-    ctx.font = `900 28px ${FONT_FAMILY}`;
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
     ctx.textBaseline = 'middle';
-    drawTrackedText(ctx, '活動講者', leftX + badge1W / 2, topY + badge1H / 2 + 1, 145);
+    drawTrackedText(ctx, '活動講者', leftX + badgeW / 2, row1Y + badgeH / 2 + 1, 130);
 
-    // 繪製姓名職稱（靠左 502）
-    const nameY = topY + badge1H + gap1;
     ctx.fillStyle = COLORS.ink;
-    ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
     ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-    ctx.fillText(dispNameLine, leftX, nameY);
+    ctx.textBaseline = 'middle';
+    ctx.fillText(dispNameLine, textX, row1Y + badgeH / 2 + 1);
 
-    // 繪製 [ 議程主題 ] 徽章與內容
-    if (sessionTitle && sessionLines.length > 0) {
-      const badge2Y = nameY + nameLineH + gap2;
+    // 5. 繪製第 2 行（若有）：[議程主題] 徽章 + 議程內容（懸掛縮排）
+    if (hasSession) {
+      const row2Y = row1Y + badgeH + rowGap;
+
       ctx.fillStyle = COLORS.badgeBg;
-      drawRoundedRect(ctx, leftX, badge2Y, badge2W, badge2H, 4);
+      drawRoundedRect(ctx, leftX, row2Y, badgeW, badgeH, 4.5);
       ctx.fill();
 
       ctx.fillStyle = COLORS.badgeText;
-      ctx.font = `900 24px ${FONT_FAMILY}`;
+      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
       ctx.textBaseline = 'middle';
-      drawTrackedText(ctx, '議程主題', leftX + badge2W / 2, badge2Y + badge2H / 2 + 1, 120);
+      drawTrackedText(ctx, '議程主題', leftX + badgeW / 2, row2Y + badgeH / 2 + 1, 130);
 
-      // 繪製議程主題內容（黑字可換行，靠左 502）
-      const textY = badge2Y + badge2H + gap3;
       ctx.fillStyle = COLORS.ink;
-      ctx.font = `900 22px ${FONT_FAMILY}`;
+      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
       ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
-      sessionLines.forEach((l, idx) => {
-        ctx.fillText(l, leftX, textY + idx * sessionLineH);
-      });
+
+      if (sessionLines.length === 1) {
+        ctx.textBaseline = 'middle';
+        ctx.fillText(sessionLines[0], textX, row2Y + badgeH / 2 + 1);
+      } else {
+        ctx.textBaseline = 'top';
+        const textTopY = row2Y + 4;
+        sessionLines.forEach((l, idx) => {
+          ctx.fillText(l, textX, textTopY + idx * sessionLineH);
+        });
+      }
     }
   }
 
   await fs.mkdir(path.dirname(outPath), { recursive: true });
   const rawBuffer = canvas.toBuffer('image/png');
   const buffer = await sharp(rawBuffer).png({ compressionLevel: 9, effort: 7, palette: false }).toBuffer();
-  await fs.writeFile(outPath, buffer);
+
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      await fs.writeFile(outPath, buffer);
+      break;
+    } catch (err) {
+      if (attempt === 2) throw err;
+      await new Promise((res) => setTimeout(res, 200));
+    }
+  }
   return outPath;
 }
