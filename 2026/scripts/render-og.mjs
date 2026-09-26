@@ -395,80 +395,79 @@ async function drawLeftVisual(ctx, imagePath, fallbackInitial, isLogo = false, i
   }
 }
 
-// 繪製黑底徽章標籤與名稱（上下兩行各自左右置中於右側內容區 centerX = 794）
+// 繪製黑底徽章標籤與名稱（同一行並排，整組於右側內容區左右水平置中）
 function drawBadgeAndName(ctx, badgeLabel, nameText) {
-  const centerX = 794;
   const badgeW = 230;
   const badgeH = 65;
-  const badgeY = 275;
-  const nameY = 385;
+  const centerY = 335.66;
+  const badgeY = centerY - badgeH / 2;
 
-  // 1. 繪製黑底圓角徽章（左右置中）
+  const isPureCjk = /^[\u4e00-\u9fa5]+$/.test(nameText);
+  const nameLen = Array.from(nameText).length;
+
+  let fontSize = 52;
+  let letterGap = 0;
+  let nameW = 0;
+  let gap = 32;
+
+  if (isPureCjk && nameLen === 3) {
+    fontSize = 55;
+    letterGap = 24;
+    nameW = 55 * 3 + 24 * 2; // 213
+    gap = 36;
+  } else if (isPureCjk && nameLen === 2) {
+    fontSize = 55;
+    letterGap = 36;
+    nameW = 55 * 2 + 36; // 146
+    gap = 40;
+  } else if (isPureCjk && nameLen === 4) {
+    fontSize = 52;
+    letterGap = 14;
+    nameW = 52 * 4 + 14 * 3; // 250
+    gap = 32;
+  } else {
+    fontSize = 44;
+    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+    nameW = ctx.measureText(nameText).width;
+    const maxNameW = 440;
+    while (fontSize > 26 && nameW > maxNameW) {
+      fontSize -= 2;
+      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
+      nameW = ctx.measureText(nameText).width;
+    }
+    gap = 24;
+  }
+
+  // 整組在 centerX = 794 左右水平置中
+  const totalW = badgeW + gap + nameW;
+  const startX = Math.round(794 - totalW / 2);
+
+  // 1. 繪製黑底圓角徽章
   ctx.fillStyle = COLORS.badgeBg;
-  drawRoundedRect(ctx, centerX - badgeW / 2, badgeY, badgeW, badgeH, 4.5);
+  drawRoundedRect(ctx, startX, badgeY, badgeW, badgeH, 4.5);
   ctx.fill();
 
   // 2. 徽章白色文字：均勻分佈字距（對齊原稿「活 動 志 工」195px 寬度分佈）
   ctx.fillStyle = COLORS.badgeText;
   ctx.font = `900 38px ${FONT_FAMILY}`;
   ctx.textBaseline = 'middle';
-  drawTrackedText(ctx, badgeLabel, centerX, badgeY + badgeH / 2 + 1, 195);
+  drawTrackedText(ctx, badgeLabel, startX + badgeW / 2, centerY + 1, 195);
 
-  // 3. 繪製名稱（左右置中）
-  const isPureCjk = /^[\u4e00-\u9fa5]+$/.test(nameText);
-  const nameLen = Array.from(nameText).length;
-
+  // 3. 繪製名稱
   ctx.fillStyle = COLORS.ink;
+  ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
   ctx.textBaseline = 'middle';
+  ctx.textAlign = 'left';
 
-  if (isPureCjk && nameLen === 3) {
-    // 3 個純中文字（如「戴 維 廷」）：展開大器字距置中
-    ctx.font = `900 55px ${FONT_FAMILY}`;
-    drawTrackedText(ctx, nameText, centerX, nameY, 210);
-  } else if (isPureCjk && nameLen === 2) {
-    // 2 個純中文字：展開字距置中
-    ctx.font = `900 55px ${FONT_FAMILY}`;
-    drawTrackedText(ctx, nameText, centerX, nameY, 170);
-  } else if (isPureCjk && nameLen === 4) {
-    // 4 個純中文字（如「誠 研 創 新」）：均勻字距置中
-    ctx.font = `900 52px ${FONT_FAMILY}`;
-    drawTrackedText(ctx, nameText, centerX, nameY, 240);
+  const nameStartX = startX + badgeW + gap;
+  if (letterGap > 0) {
+    let curX = nameStartX;
+    for (const ch of Array.from(nameText)) {
+      ctx.fillText(ch, curX, centerY + 1);
+      curX += ctx.measureText(ch).width + letterGap;
+    }
   } else {
-    // 長中文字、英文字或中英混和名稱
-    const maxW = 680;
-    let fontSize = 52;
-    ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
-    let textW = ctx.measureText(nameText).width;
-
-    while (fontSize > 28 && textW > maxW) {
-      fontSize -= 2;
-      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
-      textW = ctx.measureText(nameText).width;
-    }
-
-    if (textW <= maxW) {
-      ctx.textAlign = 'center';
-      ctx.fillText(nameText, centerX, nameY);
-    } else {
-      // 兩行折行置中保護
-      fontSize = 32;
-      ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
-      const rawLines = wrapHeadline(ctx, nameText, maxW);
-      const lines = rawLines.slice(0, 2);
-      if (rawLines.length > 2) {
-        let last = lines[1];
-        while (last.length > 0 && ctx.measureText(`${last}…`).width > maxW) {
-          last = last.slice(0, -1);
-        }
-        lines[1] = `${last}…`;
-      }
-      ctx.textAlign = 'center';
-      const lineH = 38;
-      ctx.fillText(lines[0], centerX, nameY - 18);
-      if (lines[1]) {
-        ctx.fillText(lines[1], centerX, nameY + lineH - 18);
-      }
-    }
+    ctx.fillText(nameText, nameStartX, centerY + 1);
   }
 }
 
@@ -509,8 +508,8 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
     const maxW = 1140 - leftX; // 638px
 
     // 1. 活動講者徽章（黑底白字）
-    const badgeW = 200;
-    const badgeH = 50;
+    const badge1W = 180;
+    const badge1H = 42;
 
     // 2. 名字後面接職稱
     const title = pickLang(item && item.title);
@@ -518,9 +517,9 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
     const affil = [title, org].filter(Boolean).join(' · ');
     const nameLine = affil ? `${nameText} · ${affil}` : nameText;
 
-    let nameFontSize = 34;
+    let nameFontSize = 32;
     ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
-    while (nameFontSize > 24 && ctx.measureText(nameLine).width > maxW) {
+    while (nameFontSize > 22 && ctx.measureText(nameLine).width > maxW) {
       nameFontSize -= 2;
       ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
     }
@@ -531,74 +530,77 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
       }
       dispNameLine = `${dispNameLine}…`;
     }
-    const nameLineH = nameFontSize + 6;
+    const nameLineH = nameFontSize + 4;
 
-    // 3. 議題主題黑底白字（可換行）
+    // 3. [ 議程主題 ] 徽章（黑底白字）與內容（黑字可換行）
     const sessionTitle = pickLang(layout && layout.sessionTitle);
-    let sessionBoxH = 0;
-    let sessionBoxW = 0;
+    const badge2W = 150;
+    const badge2H = 38;
     let sessionLines = [];
-    const padX = 18;
-    const padY = 12;
-    const lineHeight = 32;
+    const sessionLineH = 30;
 
     if (sessionTitle) {
-      const sessionFontSize = 22;
-      ctx.font = `900 ${sessionFontSize}px ${FONT_FAMILY}`;
-      const rawLines = wrapHeadline(ctx, sessionTitle, maxW - padX * 2);
-      if (rawLines.length > 3) {
-        let last = rawLines[2];
-        while (last.length > 0 && ctx.measureText(`${last}…`).width > maxW - padX * 2) {
+      ctx.font = `900 22px ${FONT_FAMILY}`;
+      const rawLines = wrapHeadline(ctx, sessionTitle, maxW);
+      if (rawLines.length > 2) {
+        let last = rawLines[1];
+        while (last.length > 0 && ctx.measureText(`${last}…`).width > maxW) {
           last = last.slice(0, -1);
         }
-        sessionLines = [rawLines[0], rawLines[1], `${last}…`];
+        sessionLines = [rawLines[0], `${last}…`];
       } else {
         sessionLines = rawLines;
       }
-
-      sessionBoxH = padY * 2 + sessionLines.length * lineHeight;
-      const maxTextW = Math.max(...sessionLines.map((l) => ctx.measureText(l).width));
-      sessionBoxW = Math.min(maxW, maxTextW + padX * 2);
     }
 
-    // 動態垂直置中計算總高度
-    const gap1 = 14;
-    const gap2 = sessionTitle ? 16 : 0;
-    const totalH = badgeH + gap1 + nameLineH + gap2 + sessionBoxH;
-    const zoneCenterY = 355;
-    const topY = Math.max(250, Math.round(zoneCenterY - totalH / 2));
+    const sessionTextH = sessionLines.length * sessionLineH;
 
-    // 繪製徽章
+    // 動態垂直置中計算總高度
+    const gap1 = 10; // 活動講者徽章與姓名職稱間距
+    const gap2 = sessionTitle ? 12 : 0; // 姓名職稱與議程徽章間距
+    const gap3 = sessionTitle ? 8 : 0; // 議程徽章與議程文字間距
+    const totalH = badge1H + gap1 + nameLineH + gap2 + (sessionTitle ? badge2H + gap3 + sessionTextH : 0);
+    const zoneCenterY = 350;
+    const topY = Math.max(245, Math.round(zoneCenterY - totalH / 2));
+
+    // 繪製活動講者徽章
     ctx.fillStyle = COLORS.badgeBg;
-    drawRoundedRect(ctx, leftX, topY, badgeW, badgeH, 4.5);
+    drawRoundedRect(ctx, leftX, topY, badge1W, badge1H, 4.5);
     ctx.fill();
 
     ctx.fillStyle = COLORS.badgeText;
-    ctx.font = `900 32px ${FONT_FAMILY}`;
+    ctx.font = `900 28px ${FONT_FAMILY}`;
     ctx.textBaseline = 'middle';
-    drawTrackedText(ctx, '活動講者', leftX + badgeW / 2, topY + badgeH / 2 + 1, 165);
+    drawTrackedText(ctx, '活動講者', leftX + badge1W / 2, topY + badge1H / 2 + 1, 145);
 
-    // 繪製姓名接職稱
-    const nameY = topY + badgeH + gap1;
+    // 繪製姓名職稱（靠左 502）
+    const nameY = topY + badge1H + gap1;
     ctx.fillStyle = COLORS.ink;
     ctx.font = `900 ${nameFontSize}px ${FONT_FAMILY}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText(dispNameLine, leftX, nameY);
 
-    // 繪製議題主題（黑底白字卡片）
+    // 繪製 [ 議程主題 ] 徽章與內容
     if (sessionTitle && sessionLines.length > 0) {
-      const sessionY = nameY + nameLineH + gap2;
+      const badge2Y = nameY + nameLineH + gap2;
       ctx.fillStyle = COLORS.badgeBg;
-      drawRoundedRect(ctx, leftX, sessionY, sessionBoxW, sessionBoxH, 6);
+      drawRoundedRect(ctx, leftX, badge2Y, badge2W, badge2H, 4);
       ctx.fill();
 
       ctx.fillStyle = COLORS.badgeText;
+      ctx.font = `900 24px ${FONT_FAMILY}`;
+      ctx.textBaseline = 'middle';
+      drawTrackedText(ctx, '議程主題', leftX + badge2W / 2, badge2Y + badge2H / 2 + 1, 120);
+
+      // 繪製議程主題內容（黑字可換行，靠左 502）
+      const textY = badge2Y + badge2H + gap3;
+      ctx.fillStyle = COLORS.ink;
       ctx.font = `900 22px ${FONT_FAMILY}`;
-      ctx.textBaseline = 'top';
       ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
       sessionLines.forEach((l, idx) => {
-        ctx.fillText(l, leftX + padX, sessionY + padY + idx * lineHeight + 2);
+        ctx.fillText(l, leftX, textY + idx * sessionLineH);
       });
     }
   }
