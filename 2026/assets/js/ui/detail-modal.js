@@ -308,11 +308,7 @@ function fallbackCopyText(text) {
 }
 
 async function copyTextToClipboard(text) {
-  if (
-    typeof navigator !== 'undefined' &&
-    navigator.clipboard &&
-    typeof navigator.clipboard.writeText === 'function'
-  ) {
+  if (typeof navigator !== 'undefined' && navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
     try {
       await navigator.clipboard.writeText(text);
       return true;
@@ -674,10 +670,4 @@ export function closeModal() {
   previousFocus = null;
 }
 
-export {
-  isMobileDevice,
-  canUseNativeShare,
-  fallbackCopyText,
-  copyTextToClipboard,
-  makeShareButton,
-};
+export { isMobileDevice, canUseNativeShare, fallbackCopyText, copyTextToClipboard, makeShareButton };
