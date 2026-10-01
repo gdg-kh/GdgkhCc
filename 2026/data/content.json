@@ -625,6 +625,13 @@
             "ja": "公式サイト"
           },
           "url": "https://koin.koda.net.tw/en/index.html"
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/KODATAIWAN/directory_basic_info",
+          "label": {
+            "zh-Hant": "KODA Accelerator 誠研創新產業化加速器"
+          }
         }
       ],
       "description": {
