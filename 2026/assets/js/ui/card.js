@@ -1,4 +1,11 @@
-import { el, mount, attachImageFallback, PERSON_PLACEHOLDER, LOGO_PLACEHOLDER } from '../core/dom.js';
+import {
+  el,
+  mount,
+  pickContrastColor,
+  attachImageFallback,
+  PERSON_PLACEHOLDER,
+  LOGO_PLACEHOLDER,
+} from '../core/dom.js';
 import { t } from '../core/i18n.js';
 
 function attachActivation(node, onClick) {
@@ -115,13 +122,32 @@ export function sessionCard(opts) {
 
   const header = el('div', { class: 'gk-session-header' });
   if (typeof options.time === 'string' && options.time.length > 0) {
-    mount(header, el('span', { class: 'gk-session-time', text: options.time }));
+    const timeBox = el('div', { class: 'gk-session-time-box' });
+    const timeText = el('span', { class: 'gk-session-time', text: options.time });
+    mount(timeBox, timeText);
+
+    if (typeof options.durationMinutes === 'number' && options.durationMinutes > 0) {
+      const durTag = el('span', {
+        class: 'gk-session-duration-tag',
+        text: `${options.durationMinutes}m`,
+      });
+      mount(timeBox, durTag);
+
+      const percent = Math.min(100, Math.round((options.durationMinutes / 90) * 100));
+      const meter = el('div', { class: 'gk-session-duration-meter' });
+      const bar = el('div', { class: 'gk-session-duration-bar' });
+      bar.style.width = `${percent}%`;
+      mount(meter, bar);
+      mount(timeBox, meter);
+    }
+    mount(header, timeBox);
   }
   const groupText = t(options.groupName);
   if (groupText) {
     const chip = el('span', { class: 'gk-session-group', text: groupText });
     if (typeof options.groupColor === 'string' && options.groupColor.length > 0) {
       chip.style.backgroundColor = options.groupColor;
+      chip.style.color = pickContrastColor(options.groupColor);
     }
     mount(header, chip);
   }
@@ -141,7 +167,28 @@ export function sessionCard(opts) {
         continue;
       }
       const speakerName = t(speaker.name);
-      const item = el('div', { class: 'gk-session-speaker' });
+      const isClickable = typeof options.onSpeakerClick === 'function' || typeof speaker.onClick === 'function';
+      const item = el('div', {
+        class: `gk-session-speaker${isClickable ? ' gk-session-speaker-clickable' : ''}`,
+        attrs: isClickable
+          ? {
+              role: 'button',
+              tabindex: '0',
+              'aria-label': speakerName || '',
+            }
+          : {},
+      });
+      if (isClickable) {
+        const handleSpeakerActivation = (event) => {
+          event.stopPropagation();
+          if (typeof speaker.onClick === 'function') {
+            speaker.onClick(speaker, event);
+          } else if (typeof options.onSpeakerClick === 'function') {
+            options.onSpeakerClick(speaker, event);
+          }
+        };
+        attachActivation(item, handleSpeakerActivation);
+      }
       if (typeof speaker.image === 'string' && speaker.image.length > 0) {
         let avatarSrc = speaker.image;
         const match = speaker.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);

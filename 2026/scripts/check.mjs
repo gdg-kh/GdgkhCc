@@ -86,7 +86,22 @@ const RESERVED = new Set([
   'booths',
 ]);
 
-const GDG_COLORS = new Set(['#ea4335', '#4285f4', '#f9ab00', '#34a853', '#1e1e1e', '#f0f0f0']);
+const GDG_COLORS = new Set([
+  '#ea4335',
+  '#4285f4',
+  '#f9ab00',
+  '#34a853',
+  '#1e1e1e',
+  '#f0f0f0',
+  '#57caff',
+  '#5cdb6d',
+  '#ffd427',
+  '#ff7daf',
+  '#c3ecf6',
+  '#ccf6c5',
+  '#ffe7a5',
+  '#f8d8d8',
+]);
 
 // ---------------------------------------------------------------- 資料檢查
 

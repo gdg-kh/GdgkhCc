@@ -319,13 +319,13 @@ async function copyTextToClipboard(text) {
   return fallbackCopyText(text);
 }
 
-function makeShareButton(payload) {
+function makeShareButton(payload, customLabel = null) {
   const shareUrl = payload.shareUrl || (payload.type && payload.id ? getShareUrl(payload.type, payload.id) : '');
   if (!shareUrl) {
     return null;
   }
 
-  const shareLabelText = labelFromUi('shareLabel') || '分享';
+  const shareLabelText = customLabel || labelFromUi('shareLabel') || '分享';
   const copiedLabelText = labelFromUi('copiedLabel') || '已複製連結！';
 
   const textSpan = el('span', { class: 'gk-modal-share-label', text: shareLabelText });
@@ -518,6 +518,241 @@ function renderFooter(payload) {
   return el('div', { class: 'gk-modal-footer' }, button);
 }
 
+function renderSpeakerCard(speaker) {
+  const card = el('div', { class: 'gk-modal-speaker-card' });
+  const aside = el('div', { class: 'gk-modal-speaker-card-aside' });
+
+  if (speaker.image) {
+    let src = speaker.image;
+    let srcset = '';
+    const match =
+      typeof speaker.image === 'string' && speaker.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    if (match) {
+      const [, type, id] = match;
+      src = `images/${type}/${id}-320.webp`;
+      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w`;
+    }
+    const attrs = {
+      src,
+      alt: t(speaker.name) || '',
+      loading: 'lazy',
+      decoding: 'async',
+      width: '120',
+      height: '120',
+    };
+    if (srcset) {
+      attrs.srcset = srcset;
+      attrs.sizes = '120px';
+    }
+    const img = el('img', {
+      class: 'gk-modal-speaker-card-avatar',
+      attrs,
+    });
+    img.dataset.gkOriginalSrc = speaker.image;
+    attachImageFallback(img, PERSON_PLACEHOLDER);
+    mount(aside, img);
+  }
+
+  const main = el('div', { class: 'gk-modal-speaker-card-main' });
+  mount(main, el('h4', { class: 'gk-modal-speaker-card-name', text: t(speaker.name) }));
+
+  const affiliation = joinAffiliation(t(speaker.title), t(speaker.org));
+  if (affiliation) {
+    mount(main, el('p', { class: 'gk-modal-speaker-card-affiliation', text: affiliation }));
+  }
+
+  if (hasI18nText(speaker.bio)) {
+    mount(main, el('p', { class: 'gk-multiline gk-modal-speaker-card-bio', text: t(speaker.bio) }));
+  }
+
+  const shareBtn = makeShareButton({
+    name: speaker.name,
+    shareUrl: speaker.shareUrl,
+    type: 'speakers',
+    id: speaker.id,
+  });
+
+  const links = makeLinkElements(speaker);
+  const actions = [];
+  if (shareBtn) {
+    actions.push(shareBtn);
+  }
+  if (links.length > 0) {
+    actions.push(...links);
+  }
+  if (actions.length > 0) {
+    mount(main, el('div', { class: 'gk-modal-links gk-modal-speaker-card-links' }, actions));
+  }
+
+  if (aside.childNodes.length > 0) {
+    mount(card, aside);
+  }
+  mount(card, main);
+  return card;
+}
+
+function renderMultiSpeakerContent(payload) {
+  const container = el('div', { class: 'gk-modal-session-detail' });
+
+  const titleText = t(payload.sessionTitle || payload.name);
+  if (titleText) {
+    mount(container, el('h2', { class: 'gk-modal-title', text: titleText }));
+  }
+
+  const meta = renderMeta(payload);
+  if (meta) {
+    mount(container, meta);
+  }
+
+  const tags = renderTags(payload);
+  if (tags) {
+    mount(container, tags);
+  }
+
+  if (payload.extraNode instanceof Node) {
+    mount(container, payload.extraNode);
+  }
+
+  if (hasI18nText(payload.sessionAbstract)) {
+    const abstractBox = el('div', { class: 'gk-modal-section' });
+    const absLabel = labelFromUi('sessionAbstractLabel') || labelFromUi('sessionLabel') || '議程介紹';
+    if (absLabel) {
+      mount(abstractBox, el('h3', { class: 'gk-modal-section-title', text: absLabel }));
+    }
+    mount(
+      abstractBox,
+      el('p', {
+        class: 'gk-multiline gk-modal-session-abstract',
+        text: t(payload.sessionAbstract),
+      })
+    );
+    mount(container, abstractBox);
+  }
+
+  const speakersSection = el('div', { class: 'gk-modal-section gk-modal-speakers-section' });
+  const speakersLabel = labelFromUi('speakersListLabel') || '與會講者';
+  mount(speakersSection, el('h3', { class: 'gk-modal-section-title', text: speakersLabel }));
+
+  const tabsList = el('div', {
+    class: 'gk-modal-speaker-tabs',
+    attrs: { role: 'tablist', 'aria-label': speakersLabel },
+  });
+
+  const cardContainer = el('div', { class: 'gk-modal-speaker-card-container' });
+
+  let currentIndex =
+    typeof payload.initialSpeakerIndex === 'number' &&
+    payload.initialSpeakerIndex >= 0 &&
+    payload.initialSpeakerIndex < payload.speakers.length
+      ? payload.initialSpeakerIndex
+      : 0;
+
+  const tabButtons = [];
+
+  function switchSpeaker(index) {
+    currentIndex = index;
+    const speaker = payload.speakers[index];
+    if (!speaker) {
+      return;
+    }
+    for (let i = 0; i < tabButtons.length; i += 1) {
+      const btn = tabButtons[i];
+      const isSelected = i === index;
+      btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+      if (isSelected) {
+        btn.classList.add('gk-modal-speaker-tab-active');
+      } else {
+        btn.classList.remove('gk-modal-speaker-tab-active');
+      }
+    }
+    clear(cardContainer);
+    mount(cardContainer, renderSpeakerCard(speaker));
+
+    track('select_speaker_tab', {
+      session_id: payload.id || 'unknown',
+      speaker_id: speaker.id || 'unknown',
+    });
+  }
+
+  for (let i = 0; i < payload.speakers.length; i += 1) {
+    const sp = payload.speakers[i];
+    const isSelected = i === currentIndex;
+    const tabBtn = el('button', {
+      class: `gk-modal-speaker-tab${isSelected ? ' gk-modal-speaker-tab-active' : ''}`,
+      attrs: {
+        type: 'button',
+        role: 'tab',
+        'aria-selected': isSelected ? 'true' : 'false',
+        tabindex: isSelected ? '0' : '-1',
+      },
+      on: {
+        click: () => switchSpeaker(i),
+      },
+    });
+
+    if (sp.image) {
+      let avatarSrc = sp.image;
+      const match = typeof sp.image === 'string' && sp.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+      if (match) {
+        const [, type, id] = match;
+        avatarSrc = `images/${type}/${id}-160.webp`;
+      }
+      const avatarImg = el('img', {
+        class: 'gk-modal-speaker-tab-avatar',
+        attrs: {
+          src: avatarSrc,
+          alt: t(sp.name) || '',
+          loading: 'lazy',
+          decoding: 'async',
+          width: '52',
+          height: '52',
+        },
+      });
+      avatarImg.dataset.gkOriginalSrc = sp.image;
+      attachImageFallback(avatarImg, PERSON_PLACEHOLDER);
+      mount(tabBtn, avatarImg);
+    }
+
+    mount(tabBtn, el('span', { class: 'gk-modal-speaker-tab-name', text: t(sp.name) }));
+
+    tabBtn.addEventListener('keydown', (event) => {
+      let targetIdx = -1;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        targetIdx = (i + 1) % payload.speakers.length;
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        targetIdx = (i - 1 + payload.speakers.length) % payload.speakers.length;
+      } else if (event.key === 'Home') {
+        targetIdx = 0;
+      } else if (event.key === 'End') {
+        targetIdx = payload.speakers.length - 1;
+      }
+      if (targetIdx >= 0) {
+        event.preventDefault();
+        switchSpeaker(targetIdx);
+        if (tabButtons[targetIdx]) {
+          tabButtons[targetIdx].focus();
+        }
+      }
+    });
+
+    tabButtons.push(tabBtn);
+    mount(tabsList, tabBtn);
+  }
+
+  mount(speakersSection, tabsList, cardContainer);
+  mount(container, speakersSection);
+
+  mount(bodyEl, container);
+
+  const footer = renderFooter(payload);
+  if (footer) {
+    mount(bodyEl, footer);
+  }
+
+  switchSpeaker(currentIndex);
+}
+
 function renderContent(payload) {
   clear(bodyEl);
   if (headerToolbarEl) {
@@ -527,6 +762,11 @@ function renderContent(payload) {
   const chip = renderGroupChip(payload);
   if (chip && headerToolbarEl) {
     mount(headerToolbarEl, chip);
+  }
+
+  if (Array.isArray(payload.speakers) && payload.speakers.length > 1) {
+    renderMultiSpeakerContent(payload);
+    return;
   }
 
   const aside = el('aside', { class: 'gk-modal-aside' });

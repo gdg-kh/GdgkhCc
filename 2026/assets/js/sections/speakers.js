@@ -61,7 +61,6 @@ function openSpeakerModal(speaker) {
 }
 
 function makeCardFor(speaker) {
-  const session = firstSessionOf(speaker);
   const opts = {
     image: assetPath('speakers', speaker.id),
     name: speaker.name,
@@ -70,9 +69,6 @@ function makeCardFor(speaker) {
     description: speaker.bio,
     onClick: () => openSpeakerModal(speaker),
   };
-  if (session) {
-    opts.subtitle = session.title;
-  }
   return personCard(opts);
 }
 

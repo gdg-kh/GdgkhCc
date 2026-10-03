@@ -490,6 +490,16 @@
       "zh-Hant": "已複製連結！",
       "en": "Link Copied!",
       "ja": "リンクをコピーしました！"
+    },
+    "speakersListLabel": {
+      "zh-Hant": "與會講者",
+      "en": "Speakers",
+      "ja": "登壇者"
+    },
+    "shareSpeakerLabel": {
+      "zh-Hant": "分享講者",
+      "en": "Share Speaker",
+      "ja": "登壇者を共有"
     }
   },
   "thanks": {

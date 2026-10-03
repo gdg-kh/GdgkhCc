@@ -16,12 +16,20 @@ import { openImageViewer } from '../ui/image-viewer.js';
 import { allSessionsButton, calendarButtons } from '../ui/calendar.js';
 import { track } from '../core/analytics.js';
 
-const SPAN_TYPES = new Set(['break', 'lunch', 'opening', 'closing']);
+const SPAN_TYPES = new Set(['break', 'lunch']);
 
 function uiLabel(key) {
   const config = getConfig();
   const ui = config && config.ui;
   return t(ui && ui[key]);
+}
+
+function parseTimeMinutes(iso) {
+  if (typeof iso !== 'string' || iso.length < 16) {
+    return 0;
+  }
+  const [h, m] = iso.slice(11, 16).split(':').map(Number);
+  return (h || 0) * 60 + (m || 0);
 }
 
 function formatTime(iso) {
@@ -169,26 +177,47 @@ function isSpan(session) {
   return SPAN_TYPES.has(session.type);
 }
 
+function getDurationMinutes(start, end) {
+  const s = parseTimeMinutes(start);
+  const e = parseTimeMinutes(end);
+  return Math.max(0, e - s);
+}
+
 function spanRow(session, tracks) {
   const row = el('div', {
     class: `gk-agenda-span gk-agenda-span-${session.type || 'all'}`,
   });
+  const timeBox = el('div', { class: 'gk-agenda-span-time-box' });
   const time = el('span', {
     class: 'gk-agenda-span-time',
     text: formatRange(session.start, session.end),
   });
+  mount(timeBox, time);
+
+  const dur = getDurationMinutes(session.start, session.end);
+  if (dur > 0) {
+    const durTag = el('span', { class: 'gk-session-duration-tag', text: `${dur}m` });
+    mount(timeBox, durTag);
+    const percent = Math.min(100, Math.round((dur / 90) * 100));
+    const meter = el('div', { class: 'gk-session-duration-meter' });
+    const bar = el('div', { class: 'gk-session-duration-bar' });
+    bar.style.width = `${percent}%`;
+    mount(meter, bar);
+    mount(timeBox, meter);
+  }
+
   const title = el('span', {
     class: 'gk-agenda-span-title',
     text: t(session.title),
   });
-  mount(row, time, title);
+  mount(row, timeBox, title);
   if (tracks.length >= 2) {
     row.style.gridColumn = '1 / -1';
   }
   return row;
 }
 
-function openSessionModal(session) {
+function openSessionModal(session, targetSpeakerId = null) {
   const speakers = getSpeakersBySessionId(session.id);
   const firstSpeaker = speakers[0] || null;
   const group = getGroupById(session.groupId);
@@ -207,39 +236,69 @@ function openSessionModal(session) {
   const subtitleParts = speakers.map((sp) => t(sp && sp.name)).filter((n) => n && n.length > 0);
   const subtitle = subtitleParts.length > 0 ? subtitleParts.join('、') : null;
 
-  track('select_session', { session_id: session.id });
+  let initialSpeakerIndex = 0;
+  if (targetSpeakerId && speakers.length > 0) {
+    const foundIdx = speakers.findIndex((sp) => sp.id === targetSpeakerId);
+    if (foundIdx >= 0) {
+      initialSpeakerIndex = foundIdx;
+    }
+  }
+
+  const speakerPayloads = speakers.map((sp) => ({
+    id: sp.id,
+    name: sp.name,
+    title: sp.title,
+    org: sp.org,
+    bio: sp.bio,
+    image: assetPath('speakers', sp.id),
+    shareUrl: getShareUrl('speakers', sp.id),
+    links: Array.isArray(sp.links) ? sp.links : [],
+  }));
+
+  track('select_session', { session_id: session.id, target_speaker_id: targetSpeakerId || undefined });
   openModal({
-    type: firstSpeaker ? 'speakers' : undefined,
-    id: firstSpeaker ? firstSpeaker.id : undefined,
+    type: 'session',
+    id: session.id,
     shareUrl: firstSpeaker ? getShareUrl('speakers', firstSpeaker.id) : undefined,
     image: firstSpeaker ? assetPath('speakers', firstSpeaker.id) : undefined,
     name: session.title,
     subtitle,
     sessionTitle: session.title,
     sessionAbstract: session.abstract,
+    speakers: speakerPayloads,
+    initialSpeakerIndex,
     bio: firstSpeaker ? firstSpeaker.bio : null,
     groupName: group ? group.name : null,
     groupColor: group && typeof group.color === 'string' ? group.color : undefined,
     tags: Array.isArray(session.tags) ? session.tags : [],
     meta,
-    links: Array.isArray(session.links) ? session.links : [],
+    links:
+      Array.isArray(firstSpeaker && firstSpeaker.links) && firstSpeaker.links.length > 0
+        ? firstSpeaker.links
+        : Array.isArray(session.links)
+          ? session.links
+          : [],
     extraNode: calendarButtons(session, 'modal'),
   });
 }
 
 function sessionCardFor(session) {
   const speakers = getSpeakersBySessionId(session.id).map((sp) => ({
+    id: sp.id,
     image: assetPath('speakers', sp.id),
     name: sp.name,
   }));
   const group = getGroupById(session.groupId);
+  const durationMinutes = getDurationMinutes(session.start, session.end);
   return sessionCard({
     title: session.title,
     time: formatRange(session.start, session.end),
+    durationMinutes,
     groupName: group ? group.name : null,
     groupColor: group && typeof group.color === 'string' ? group.color : undefined,
     speakers,
     onClick: () => openSessionModal(session),
+    onSpeakerClick: (speaker) => openSessionModal(session, speaker.id),
   });
 }
 
@@ -254,7 +313,7 @@ function trackIndex(tracks, trackId) {
 
 function renderTimelineGrid(container, tracks, sessions) {
   const grid = el('div', { class: 'gk-agenda-grid' });
-  if (tracks.length >= 4) {
+  if (tracks.length >= 3) {
     grid.classList.add('gk-agenda-grid-scroll');
   }
 
@@ -288,35 +347,32 @@ function renderTimelineGrid(container, tracks, sessions) {
     mount(grid, cell);
   }
 
-  const timeGroups = new Map();
-  const orderKeys = [];
-  for (const session of sessions) {
-    const key = typeof session.start === 'string' ? session.start : '';
-    if (!timeGroups.has(key)) {
-      timeGroups.set(key, []);
-      orderKeys.push(key);
-    }
-    timeGroups.get(key).push(session);
+  const timePoints = Array.from(new Set(sessions.map((s) => s.start))).sort();
+  const startToRow = new Map();
+  for (let i = 0; i < timePoints.length; i += 1) {
+    startToRow.set(timePoints[i], i + 2);
   }
 
-  let rowIdx = 2;
-  for (const key of orderKeys) {
-    const group = timeGroups.get(key);
-    for (const session of group.filter(isSpan)) {
+  for (const session of sessions) {
+    const rowStart = startToRow.get(session.start) || 2;
+    const startMin = parseTimeMinutes(session.start);
+    const endMin = parseTimeMinutes(session.end);
+
+    const intermediate = timePoints.filter((tp) => {
+      const m = parseTimeMinutes(tp);
+      return m > startMin && m < endMin;
+    });
+    const rowSpan = 1 + intermediate.length;
+
+    if (isSpan(session)) {
       const row = spanRow(session, tracks);
-      row.style.gridRow = String(rowIdx);
+      row.style.gridRow = `${rowStart} / span ${rowSpan}`;
       row.style.gridColumn = '1 / -1';
       mount(grid, row);
-      rowIdx += 1;
-    }
-    const trackSessions = group.filter((s) => !isSpan(s));
-    if (trackSessions.length === 0) {
-      continue;
-    }
-    for (const session of trackSessions) {
+    } else {
       const idx = trackIndex(tracks, session.trackId);
       const card = sessionCardFor(session);
-      card.style.gridRow = String(rowIdx);
+      card.style.gridRow = `${rowStart} / span ${rowSpan}`;
       if (idx >= 0) {
         card.style.gridColumn = `${idx + 1} / span 1`;
       } else {
@@ -324,7 +380,6 @@ function renderTimelineGrid(container, tracks, sessions) {
       }
       mount(grid, card);
     }
-    rowIdx += 1;
   }
 
   mount(container, grid);
