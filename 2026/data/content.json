@@ -365,21 +365,21 @@
     {
       "id": "developer_track",
       "name": {
-        "zh-Hant": "開發者軌（Developer Track）",
+        "zh-Hant": "開發者軌",
         "en": "Developer Track",
-        "ja": "デベロッパートラック（Developer Track）"
+        "ja": "デベロッパートラック"
       },
-      "color": "#4285f4",
+      "color": "#c3ecf6",
       "order": 1
     },
     {
       "id": "builder_track",
       "name": {
-        "zh-Hant": "建構者軌（Builder Track）",
+        "zh-Hant": "建構者軌",
         "en": "Builder Track",
-        "ja": "ビルダートラック（Builder Track）"
+        "ja": "ビルダートラック"
       },
-      "color": "#34a853",
+      "color": "#ccf6c5",
       "order": 2
     }
   ],
@@ -405,14 +405,14 @@
       "color": "#4285f4"
     },
     {
-      "id": "track3",
+      "id": "track_3",
+      "order": 3,
       "name": {
         "zh-Hant": "第三會場",
         "en": "Track 3",
         "ja": "第 3 会場"
       },
-      "color": "#34a853",
-      "order": 3
+      "color": "#34a853"
     }
   ],
   "speakers": [],
