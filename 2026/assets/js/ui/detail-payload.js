@@ -29,7 +29,8 @@ export function buildSpeakerPayload(speaker) {
     return null;
   }
   const session = firstSessionOf(speaker);
-  const group = session ? getGroupById(session.groupId) : null;
+  const groupId = (session && session.groupId) || (speaker && speaker.groupId) || null;
+  const group = groupId ? getGroupById(groupId) : null;
   return {
     type: 'speakers',
     id: speaker.id,

@@ -157,6 +157,9 @@ if (content) {
         err(`關聯不對稱：speakers/${sp.id} 指向 ${sid}，但該議程的 speakerIds 沒有回指`);
       }
     }
+    if (sp.groupId && !groupIds.has(sp.groupId)) {
+      err(`speakers/${sp.id}: groupId「${sp.groupId}」不存在`);
+    }
   }
 
   for (const ses of content.sessions || []) {
