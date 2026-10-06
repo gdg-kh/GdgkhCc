@@ -415,12 +415,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": [
-        "外地講者",
-        "AI",
-        "設計",
-        "FDE"
-      ]
+      "tag": ["外地講者", "AI", "設計", "FDE"]
     },
     {
       "id": "bruce_lee",
@@ -472,12 +467,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "外地講者",
-        "WebMCP",
-        "AI Agent",
-        "Web Development"
-      ]
+      "tag": ["外地講者", "WebMCP", "AI Agent", "Web Development"]
     },
     {
       "id": "fngi_shiu",
@@ -520,12 +510,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "外地講者",
-        "Gemma 4",
-        "Prompt Injection",
-        "Guardrails"
-      ]
+      "tag": ["外地講者", "Gemma 4", "Prompt Injection", "Guardrails"]
     },
     {
       "id": "fredric_huang",
@@ -575,12 +560,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": [
-        "在地講者",
-        "BuildWithAI",
-        "RealtimeAI",
-        "SurgeonDeveloper"
-      ]
+      "tag": ["在地講者", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"]
     },
     {
       "id": "zonble",
@@ -608,12 +588,7 @@
       "sessionIds": [],
       "links": [],
       "groupId": "builder_track",
-      "tag": [
-        "外地講者",
-        "AI",
-        "Gemini",
-        "Antigravity"
-      ]
+      "tag": ["外地講者", "AI", "Gemini", "Antigravity"]
     },
     {
       "id": "arturs_vancans",
@@ -649,12 +624,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "在地講者",
-        "Google Cloud",
-        "Playwright",
-        "Cluster"
-      ]
+      "tag": ["在地講者", "Google Cloud", "Playwright", "Cluster"]
     },
     {
       "id": "kai_wu",
@@ -697,12 +667,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "在地講者",
-        "Google ADK",
-        "AI application",
-        "AI workflow"
-      ]
+      "tag": ["在地講者", "Google ADK", "AI application", "AI workflow"]
     },
     {
       "id": "johnny_sung",
@@ -745,12 +710,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "外地講者",
-        "API Gateway",
-        "MCP",
-        "Cloud"
-      ]
+      "tag": ["外地講者", "API Gateway", "MCP", "Cloud"]
     },
     {
       "id": "john_lu",
@@ -793,12 +753,7 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": [
-        "外地講者",
-        "AI Safety",
-        "LLM Security",
-        "Jailbreak"
-      ]
+      "tag": ["外地講者", "AI Safety", "LLM Security", "Jailbreak"]
     },
     {
       "id": "maylogger",
@@ -855,9 +810,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": [
-        "外地講者"
-      ]
+      "tag": ["外地講者"]
     },
     {
       "id": "mantou",
@@ -885,10 +838,7 @@
       "sessionIds": [],
       "links": [],
       "groupId": "builder_track",
-      "tag": [
-        "在地講者",
-        "設計"
-      ]
+      "tag": ["在地講者", "設計"]
     },
     {
       "id": "ray_yuan_liu",
@@ -916,12 +866,7 @@
       "sessionIds": [],
       "links": [],
       "groupId": "builder_track",
-      "tag": [
-        "在地講者",
-        "AI",
-        "Agentic Workflow",
-        "Agent"
-      ]
+      "tag": ["在地講者", "AI", "Agentic Workflow", "Agent"]
     },
     {
       "id": "simon_liu",
@@ -949,14 +894,7 @@
       "sessionIds": [],
       "links": [],
       "groupId": "developer_track",
-      "tag": [
-        "外地講者",
-        "AI",
-        "Agent",
-        "Google ADK",
-        "Google Antigravity",
-        "MCP"
-      ]
+      "tag": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"]
     },
     {
       "id": "chih_ming",
@@ -992,12 +930,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": [
-        "在地講者",
-        "數位平權",
-        "AI機會",
-        "主動賦能"
-      ]
+      "tag": ["在地講者", "數位平權", "AI機會", "主動賦能"]
     },
     {
       "id": "kunfeng_li",
@@ -1033,12 +966,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": [
-        "外地講者",
-        "生成式AI",
-        "教育科技",
-        "產品設計"
-      ]
+      "tag": ["外地講者", "生成式AI", "教育科技", "產品設計"]
     }
   ],
   "sessions": [],
