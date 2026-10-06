@@ -7,6 +7,9 @@ import { firstSessionOf, buildSpeakerPayload } from '../ui/detail-payload.js';
 import { track } from '../core/analytics.js';
 
 function groupIdOf(speaker) {
+  if (speaker && typeof speaker.groupId === 'string' && speaker.groupId.length > 0) {
+    return speaker.groupId;
+  }
   const session = firstSessionOf(speaker);
   return session && typeof session.groupId === 'string' ? session.groupId : null;
 }

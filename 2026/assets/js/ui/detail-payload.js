@@ -29,7 +29,8 @@ export function buildSpeakerPayload(speaker) {
     return null;
   }
   const session = firstSessionOf(speaker);
-  const group = session ? getGroupById(session.groupId) : null;
+  const groupId = (session && session.groupId) || (speaker && speaker.groupId) || null;
+  const group = groupId ? getGroupById(groupId) : null;
   return {
     type: 'speakers',
     id: speaker.id,
@@ -43,7 +44,16 @@ export function buildSpeakerPayload(speaker) {
     sessionAbstract: session ? session.abstract : undefined,
     groupName: group ? group.name : undefined,
     groupColor: groupColorOf(group),
-    tags: session && Array.isArray(session.tags) ? session.tags : [],
+    tags:
+      session && Array.isArray(session.tags) && session.tags.length > 0
+        ? session.tags
+        : Array.isArray(speaker && speaker.tag)
+          ? speaker.tag
+          : Array.isArray(speaker && speaker.tags)
+            ? speaker.tags
+            : speaker && speaker.tag
+              ? [speaker.tag]
+              : [],
     links: linksOf(speaker),
   };
 }

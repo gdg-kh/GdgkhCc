@@ -1,0 +1,22 @@
+To: ajoejoseph99@gmail.com
+Subject: [DevFest Kaohsiung 2026] Call for Papers Submission Update
+
+Hi Ajoe Joseph,
+
+Thank you very much for submitting your proposal, "Connect to Remote Agents with ADK and the Agent2Agent (A2A) SDK," to DevFest Kaohsiung 2026!
+
+This year, DevFest Kaohsiung is primarily focused on local community engagement, and our organizing team operates with limited logistical and hospitality capacity for international speakers. Consequently, our review committee had to make difficult decisions, and we regret to inform you that we are unable to include your session in this year's program.
+
+Please know that this decision in no way reflects the quality or value of your work. We truly appreciate the time, effort, and passion you put into preparing your submission from abroad.
+
+GDG Kaohsiung regularly organizes technical conferences and community events, including TOOCON, Build with AI, and future DevFest gatherings. We would love to stay connected and hope there will be opportunities to collaborate with you—whether virtually or in future editions!
+
+You are welcome to follow our event updates and community initiatives on our Facebook: https://www.facebook.com/groups/GDGKaohsiung
+
+Thank you once again for your support of DevFest Kaohsiung. We wish you continued success with your projects and look forward to staying in touch!
+
+Warm regards,
+
+DevFest Kaohsiung 2026 Organizing Team
+Email: gdgkaohsiung@gmail.com
+Website: https://gdgkh.cc/

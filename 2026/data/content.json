@@ -373,7 +373,602 @@
       "color": "#34a853"
     }
   ],
-  "speakers": [],
+  "speakers": [
+    {
+      "id": "steve_yeh",
+      "order": 1,
+      "name": {
+        "zh-Hant": "史蒂夫•葉",
+        "en": "Steve Yeh",
+        "ja": "Steve Yeh"
+      },
+      "org": {
+        "zh-Hant": "精誠集團",
+        "en": "精誠集團",
+        "ja": "精誠集團"
+      },
+      "title": {
+        "zh-Hant": "技術處長",
+        "en": "技術處長",
+        "ja": "技術處長"
+      },
+      "bio": {
+        "zh-Hant": "現任精誠集團技術處長，創立 I.D.E.A. 團隊並率先導入 FDE（前線部署工程）與 AI 驅動工作流，致力於 UI/UX 策略與系統架構的深度整合。曾創立 Able Studio（獲 2020 德國國家設計獎），帶領團隊主持千萬級「勞保局 e 化服務系統」重構。具備豐富跨領域實戰經驗，涵蓋金融交易系統、半導體供應鏈 CPQ 平台、零售與娛樂 POS/ERP/SCO 系統、FMCG 食品巨頭經銷數據整合，以及製造業 ERP 升級 POC 等高難度專案。獲選為 Gamma 全球創始品牌大使，相信透過深刻洞察與高確定性架構執行力，能持續為企業創造成長。",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/steven.yeh",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/steven0128",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["外地講者", "AI", "設計", "FDE"]
+    },
+    {
+      "id": "bruce_lee",
+      "order": 2,
+      "name": {
+        "zh-Hant": "李冠緯",
+        "en": "Bruce Lee",
+        "ja": "Bruce Lee"
+      },
+      "org": {
+        "zh-Hant": "WordPress Taiwan Community",
+        "en": "WordPress Taiwan Community",
+        "ja": "WordPress Taiwan Community"
+      },
+      "title": {
+        "zh-Hant": "Full-stack Developer & Community Organizer",
+        "en": "Full-stack Developer & Community Organizer",
+        "ja": "Full-stack Developer & Community Organizer"
+      },
+      "bio": {
+        "zh-Hant": "李小胖 Bruce Lee，哈拉設計創辦人、全端開發者，擁有超過 10 年網站開發與自由接案經驗，長期投入 WordPress、Web 開發、AI 與自動化應用。目前為 WordPress 台北小聚主辦人及 GDG Taipei Organizer，持續參與技術社群與開源活動。近年專注於 AI Agent、WebMCP、生成式 AI 與開發工作流，探索如何讓 AI 從「回答問題」進一步理解網站、操作工具，並真正參與產品開發與日常工作流程。",
+        "en": "Bruce Lee is the founder of Hala Design and a full-stack developer with over 10 years of experience in web development and freelance projects. He currently organizes the WordPress Taipei Meetup and serves as a GDG Taipei Organizer. His recent work focuses on AI Agents, WebMCP, generative AI, and AI-powered development workflows, exploring how AI can move beyond answering questions to understanding websites, using tools, and actively participating in real-world product development and everyday workflows.",
+        "ja": "Bruce Lee is the founder of Hala Design and a full-stack developer with over 10 years of experience in web development and freelance projects. He currently organizes the WordPress Taipei Meetup and serves as a GDG Taipei Organizer. His recent work focuses on AI Agents, WebMCP, generative AI, and AI-powered development workflows, exploring how AI can move beyond answering questions to understanding websites, using tools, and actively participating in real-world product development and everyday workflows."
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://supergud.github.io/",
+          "label": {
+            "zh-Hant": "個人網站",
+            "en": "Personal Website",
+            "ja": "個人サイト"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/supergud.sf",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/bruce-lee-supergud/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "WebMCP", "AI Agent", "Web Development"]
+    },
+    {
+      "id": "fngi_shiu",
+      "order": 3,
+      "name": {
+        "zh-Hant": "徐方繹（Fngi）",
+        "en": "Fngi Shiu",
+        "ja": "Fngi Shiu"
+      },
+      "org": {
+        "zh-Hant": "GDG Taipei",
+        "en": "GDG Taipei",
+        "ja": "GDG Taipei"
+      },
+      "title": {
+        "zh-Hant": "AIDefendLabs Fngi",
+        "en": "AIDefendLabs Fngi",
+        "ja": "AIDefendLabs Fngi"
+      },
+      "bio": {
+        "zh-Hant": "GDG Taipei Organizer，DevFest Taipei 2024、2026 總召，開源 AI 資安組織 AIDEFEND Labs 兼任資深研究員。\n十五年以上全端工程與資安經驗，主要在受監理的金融體系，近年專注 LLM 紅隊、Agentic AI 安全架構與 AI 治理框架（NIST AI RMF、ISO 42001、OWASP LLM／Agentic Top 10、MITRE ATLAS）。\n曾於 RSAC 2026、InfoSec Taiwan 2026、COSCUP x UbuCon Asia 2026 分享 AI 安全實戰。平常用 DGX Spark 和 Mac 跑各種模型攻防，相信「先量出來，再談安全」。",
+        "en": "GDG Taipei Organizer and lead organizer of DevFest Taipei 2024 and 2026; Senior Researcher (part-time) at AIDEFEND Labs, an open-source AI security initiative./nOver 15 years in full-stack engineering and security, mostly in regulated financial institutions. Focuses on LLM red teaming, agentic AI security architecture, and AI governance frameworks (NIST AI RMF, ISO 42001, OWASP LLM/Agentic Top 10, MITRE ATLAS)./nSpeaker at RSAC 2026, InfoSec Taiwan 2026, and COSCUP x UbuCon Asia 2026. Runs model attack-and-defense experiments on a DGX Spark and a Mac, and believes in measuring before trusting.",
+        "ja": "GDG Taipei Organizer and lead organizer of DevFest Taipei 2024 and 2026; Senior Researcher (part-time) at AIDEFEND Labs, an open-source AI security initiative./nOver 15 years in full-stack engineering and security, mostly in regulated financial institutions. Focuses on LLM red teaming, agentic AI security architecture, and AI governance frameworks (NIST AI RMF, ISO 42001, OWASP LLM/Agentic Top 10, MITRE ATLAS)./nSpeaker at RSAC 2026, InfoSec Taiwan 2026, and COSCUP x UbuCon Asia 2026. Runs model attack-and-defense experiments on a DGX Spark and a Mac, and believes in measuring before trusting."
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/fngishiu/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/aid3fend/",
+          "label": {
+            "zh-Hant": "Instagram"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "Gemma 4", "Prompt Injection", "Guardrails"]
+    },
+    {
+      "id": "fredric_huang",
+      "order": 4,
+      "name": {
+        "zh-Hant": "黃士峯",
+        "en": "Fredric",
+        "ja": "Fredric"
+      },
+      "org": {
+        "zh-Hant": "高雄榮總",
+        "en": "高雄榮總",
+        "ja": "高雄榮總"
+      },
+      "title": {
+        "zh-Hant": "主治醫師",
+        "en": "主治醫師",
+        "ja": "主治醫師"
+      },
+      "bio": {
+        "zh-Hant": "我是黃士峯，目前在高雄榮總大腸直腸外科擔任主治醫師，同時也是成功大學資訊工程系醫學資訊組的博士生。臨床上主要做機器人微創手術，研究方向是把手術影像、術中資料跟臨床結果結合起來做預測模型。我把自己定位成 surgical data scientist，希望讓外科的經驗不只留在刀房裡，而是能變成可以被驗證、被複製的資料與模型。",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/odafeng8251",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/fredrichuang",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "website",
+          "url": "https://www.youtube.com/@colonandcode",
+          "label": {
+            "zh-Hant": "YouTube"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["在地講者", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"]
+    },
+    {
+      "id": "zonble",
+      "order": 5,
+      "name": {
+        "zh-Hant": "zonble",
+        "en": "zonble",
+        "ja": "zonble"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "軟體工程師. Flutter GDE",
+        "en": "Software Developer. Flutter GDE",
+        "ja": "Software Developer. Flutter GDE"
+      },
+      "sessionIds": [],
+      "links": [],
+      "groupId": "builder_track",
+      "tag": ["外地講者", "AI", "Gemini", "Antigravity"]
+    },
+    {
+      "id": "arturs_vancans",
+      "order": 6,
+      "name": {
+        "zh-Hant": "韋亞圖",
+        "en": "Arturs Vancans",
+        "ja": "Arturs Vancans"
+      },
+      "org": {
+        "zh-Hant": "Second Space",
+        "en": "Second Space",
+        "ja": "Second Space"
+      },
+      "title": {
+        "zh-Hant": "Founder / 創辦人",
+        "en": "Founder / 創辦人",
+        "ja": "Founder / 創辦人"
+      },
+      "bio": {
+        "zh-Hant": "Arturs Vancans 是科技創業者，也是高雄 Second Space 的創辦人。專注在 AI、軟體與自動化，只有一個執念：讓小團隊也能做到大團隊的戰鬥力。",
+        "en": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones.",
+        "ja": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones."
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://www.secondspace.dev/",
+          "label": {
+            "zh-Hant": "Second Space"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["在地講者", "Google Cloud", "Playwright", "Cluster"]
+    },
+    {
+      "id": "kai_wu",
+      "order": 7,
+      "name": {
+        "zh-Hant": "吳楷鈞",
+        "en": "Kai",
+        "ja": "Kai"
+      },
+      "org": {
+        "zh-Hant": "GDGoC NSYSU",
+        "en": "GDGoC NSYSU",
+        "ja": "GDGoC NSYSU"
+      },
+      "title": {
+        "zh-Hant": "GDGoC NSYSU ex Organizer",
+        "en": "GDGoC NSYSU ex Organizer",
+        "ja": "GDGoC NSYSU ex Organizer"
+      },
+      "bio": {
+        "zh-Hant": "大家好我是 Kai，中山資工大四，目前在實驗室做最佳化與 AI 研究。近期在鑽研如何讓 Agent 更穩定地執行多步驟任務，很期待在 DevFest Kaohsiung 與大家見面，分享 Google ADK 的實務開發心得與技巧！",
+        "en": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!",
+        "ja": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!"
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/kai-chun-wu-b871b3314/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/gdg.nsysu/",
+          "label": {
+            "zh-Hant": "GDGoC NSYSU Instagram"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["在地講者", "Google ADK", "AI application", "AI workflow"]
+    },
+    {
+      "id": "johnny_sung",
+      "order": 8,
+      "name": {
+        "zh-Hant": "Johnny Sung (宋岡諺)",
+        "en": "Johnny Sung",
+        "ja": "Johnny Sung"
+      },
+      "org": {
+        "zh-Hant": "GDG Taipei",
+        "en": "GDG Taipei",
+        "ja": "GDG Taipei"
+      },
+      "title": {
+        "zh-Hant": "DevOps/SRE",
+        "en": "DevOps/SRE",
+        "ja": "DevOps/SRE"
+      },
+      "bio": {
+        "zh-Hant": "現任企業 DevOps / SRE 工程師，熱衷鑽研前瞻技術與自動化實踐。\n\n開發背景深厚，具備從 App 原生開發到容器化架構的完整資歷。\n\n同時也是社群技術推廣者，不定時會在各社群出沒，喜歡玩一些有意思的東西。",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/j796160836",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/johnnysung-tw/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "API Gateway", "MCP", "Cloud"]
+    },
+    {
+      "id": "john_lu",
+      "order": 9,
+      "name": {
+        "zh-Hant": "John Lu",
+        "en": "John Lu",
+        "ja": "John Lu"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "Senior Machine Learning Engineer",
+        "en": "Senior Machine Learning Engineer",
+        "ja": "Senior Machine Learning Engineer"
+      },
+      "bio": {
+        "zh-Hant": "John 是一線大廠的 Senior Machine Learning Engineer，實務經驗涵蓋大型語言模型 (LLM) 與視覺語言模型 (VLM) 的訓練，以及 RAG 與 AI Agent 的建構。他喜歡拆解事物的底層邏輯，再重組成可執行的程式，應用到真實問題上。曾在 PyCon APAC 與 COSCUP 擔任講者，分享機器學習應用與 On-Device ML，講題包括「TasteGram：以 TensorFlow 與 Python 進行影像美學評分」與「Kimoji：以 On-Device LLM 打造心情日記的智慧撰稿系統」。",
+        "en": "John is a Senior Machine Learning Engineer from a Top Silicon Microchip Company, with hands-on production experience training Large Language Models and Vision Language Models, and building RAG and Agentic AI systems. He likes pulling apart the \"magic\" of modern AI and rebuilding it as clear, runnable code, then applying it to real problems. He has spoken at PyCon APAC and COSCUP on applied ML and on-device AI, including TasteGram (image aesthetic assessment with TensorFlow and Python) and Kimoji (an on-device LLM mood-journal assistant).",
+        "ja": "Johnは大手テック企業に勤めるSenior Machine Learning Engineerです。大規模言語モデル（LLM）や視覚言語モデル（VLM）の学習、RAGやAIエージェントの構築を実務で手がけています。物事の仕組みを分解し、実行可能なコードとして組み立て直し、実際の課題に応用することを得意としています。これまでPyCon APACやCOSCUPに登壇し、機械学習の応用やオンデバイスMLについて発表しました。主な講演に「TasteGram：TensorFlowとPythonによる画像の美的評価」と「Kimoji：オンデバイスLLMで作る気分日記の文章作成支援システム」があります。"
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/john.forge.93",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "website",
+          "url": "https://www.youtube.com/channel/UCgKlcTDUe0GyY2iwnHTPmNw",
+          "label": {
+            "zh-Hant": "YouTube"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "AI Safety", "LLM Security", "Jailbreak"]
+    },
+    {
+      "id": "maylogger",
+      "order": 10,
+      "name": {
+        "zh-Hant": "設計師勞哥",
+        "en": "maylogger",
+        "ja": "maylogger"
+      },
+      "org": {
+        "zh-Hant": "SOTA Design",
+        "en": "SOTA Design",
+        "ja": "SOTA Design"
+      },
+      "title": {
+        "zh-Hant": "Founder and Design Engineer",
+        "en": "Founder and Design Engineer",
+        "ja": "Founder and Design Engineer"
+      },
+      "bio": {
+        "zh-Hant": "Design Engineer，也是 SOTA 的創辦人。SOTA 是一間專注於大型網站與數位產品的介面設計工作室。",
+        "en": "Design Engineer based in Taipei and founder of SOTA, an interface design studio specializing in large-scale websites and digital products.",
+        "ja": "Design Engineer。大規模Webサイトやデジタルプロダクトのインターフェースデザインを専門とするSOTAを創業。"
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://sota.design",
+          "label": {
+            "zh-Hant": "SOTA Design"
+          }
+        },
+        {
+          "platform": "threads",
+          "url": "https://www.threads.net/@maylogger_designer",
+          "label": {
+            "zh-Hant": "Threads"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/maylogger/",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/evenwu/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["外地講者"]
+    },
+    {
+      "id": "mantou",
+      "order": 11,
+      "name": {
+        "zh-Hant": "王晟譯 / 饅頭",
+        "en": "Mantou",
+        "ja": "Mantou"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "目前於高雄的網頁設計師，參與「診所通」網頁與 APP 的開發，以及多款系統後台介面製作。個人專案的部分，目前持續製作 3D 互動的 GACHAGO 抽獎網站、LINE 群組機器人以及開源字體「饅頭黑體」等。",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [],
+      "groupId": "builder_track",
+      "tag": ["在地講者", "設計"]
+    },
+    {
+      "id": "ray_yuan_liu",
+      "order": 12,
+      "name": {
+        "zh-Hant": "劉瑞元",
+        "en": "Ray Yuan Liu",
+        "ja": "Ray Yuan Liu"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "喜歡電腦、也愛寫程式，去年還在手作，今年風雲變色。變化很大，但也有更多的東西等著去學習。\n前幾週參加了神秘活動代班 AI 警察，事後卻來介紹 AI。\n請不要告訴之前那個活動的相關人員。🫢",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [],
+      "groupId": "builder_track",
+      "tag": ["在地講者", "AI", "Agentic Workflow", "Agent"]
+    },
+    {
+      "id": "simon_liu",
+      "order": 13,
+      "name": {
+        "zh-Hant": "劉育維",
+        "en": "Simon Liu",
+        "ja": "Simon Liu"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "大家好，我是 Simon 劉育維，是一位 AI 領域解決方案專家，目前也擔任 Google Cloud AI 領域開發者專家 (GDE)，期待能夠幫助企業導入人工智慧相關技術解決問題。歡迎追蹤我的 Medium 和我的個人帳號，這樣您就可以隨時閱讀我所撰寫的文章，期待我的分享，能夠對大家有所幫助！",
+        "en": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!",
+        "ja": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!"
+      },
+      "sessionIds": [],
+      "links": [],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"]
+    },
+    {
+      "id": "chih_ming",
+      "order": 14,
+      "name": {
+        "zh-Hant": "賴志銘",
+        "en": "Jimmy Lai",
+        "ja": "Jimmy Lai"
+      },
+      "org": {
+        "zh-Hant": "社團法人無礙玩家生活關懷協會",
+        "en": "社團法人無礙玩家生活關懷協會",
+        "ja": "社團法人無礙玩家生活關懷協會"
+      },
+      "title": {
+        "zh-Hant": "理事長",
+        "en": "理事長",
+        "ja": "理事長"
+      },
+      "bio": {
+        "zh-Hant": "一位苦苦跟隨在AI進步的浪潮下為罕病身障家庭傳授AI工具能力的講師。 \n\n南台/大仁/輔英科大業界講師 \n\n生命分享教育課程>880場 \n\n勞動部職訓AI課程講師 \n\n屏果新報環宇時報記者 \n\n創業輔導顧問",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/jimmlai/",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["在地講者", "數位平權", "AI機會", "主動賦能"]
+    },
+    {
+      "id": "kunfeng_li",
+      "order": 15,
+      "name": {
+        "zh-Hant": "李坤峰",
+        "en": "Kunfeng Lee",
+        "ja": "Kunfeng Lee"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "一位愛亂玩 AI 各式工具的腎臟科醫師，透過 AI 的幫助實現腦中各式的胡思亂想",
+        "en": "",
+        "ja": ""
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/kunfeng.lee.18",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["外地講者", "生成式AI", "教育科技", "產品設計"]
+    }
+  ],
   "sessions": [],
   "staff": [
     {
