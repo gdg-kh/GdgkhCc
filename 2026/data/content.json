@@ -967,6 +967,42 @@
       ],
       "groupId": "builder_track",
       "tag": ["外地講者", "生成式AI", "教育科技", "產品設計"]
+    },
+    {
+      "id": "jianlin",
+      "order": 16,
+      "name": {
+        "zh-Hant": "曾建霖",
+        "en": "Tseng Chien Lin",
+        "ja": "Tseng Chien Lin"
+      },
+      "org": {
+        "zh-Hant": "高雄市立中醫醫院",
+        "en": "高雄市立中醫醫院",
+        "ja": "高雄市立中醫醫院"
+      },
+      "title": {
+        "zh-Hant": "主治醫師",
+        "en": "主治醫師",
+        "ja": "主治醫師"
+      },
+      "bio": {
+        "zh-Hant": "高雄市立中醫醫院 主治醫師\n\n喜歡研究 AI、程式設計與醫療資訊工具，並將這些技術實際應用在病歷生成、醫療資料整理與臨床工作流程改善上。關注的並不是「AI 能否取代醫師」，而是第一線醫療人員能否利用 AI 與軟體，重新設計真正符合臨床需求的醫療工具。",
+        "en": "Attending Physician at Kaohsiung Municipal Chinese Medicine Hospital.\n\nPassionate about exploring AI, programming, and healthcare informatics tools, and applying these technologies in clinical practice for medical record generation, healthcare data synthesis, and workflow improvement. The focus is not on whether AI can replace physicians, but on empowering frontline healthcare professionals to leverage AI and software to redesign tools that genuinely address clinical needs.",
+        "ja": "高雄市立中医医院 主治医。\n\nAI、プログラミング、医療情報ツールの探求に関心を持ち、これら技術を電子カルテ生成、医療データ整理、臨床ワークフローの改善に実践導入しています。「AIが医師に取って代わるか」ではなく、現場の医療従事者がAIやソフトウェアを活用して、真に臨床現場のニーズに応える医療ツールを再設計できるかに焦点を当てています。"
+      },
+      "sessionIds": [],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/ceng.jian.lin.544516",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["在地講者", "Chrome Extension", "Vibe Coding", "Healthcare"]
     }
   ],
   "sessions": [],
