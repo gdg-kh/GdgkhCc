@@ -24,8 +24,8 @@ const COLORS = {
 const CANVAS_WIDTH = 1200;
 const CANVAS_HEIGHT = 630;
 
-const FONT_FAMILY = '"Noto Serif TC", "Google Sans", "Microsoft JhengHei", serif';
-const FONT_DIR = path.resolve(__dirname, '..', 'assets', 'fonts');
+export const FONT_FAMILY = '"Noto Serif TC", "Google Sans", "Microsoft JhengHei", serif';
+export const FONT_DIR = path.resolve(__dirname, '..', 'assets', 'fonts');
 
 let fontsRegistered = false;
 
@@ -42,7 +42,7 @@ export function pickLang(field, fallback = '') {
   return fallback;
 }
 
-function registerFontsOnce() {
+export function registerFontsOnce() {
   if (fontsRegistered) {
     return;
   }
@@ -231,18 +231,30 @@ export function wrapSpeakerLines(ctx, nameText, title, org, maxTextW, maxLines =
     }
   }
 
-  // 2. 若純段落切分放不下（單一段落本身即超出 maxTextW），則以貪婪文字自動換行
+  // 2. 若語意切分放不下，但第 1 行（姓名）放得下時，維持第 1 行為姓名，第 2 行平滑截斷並加省略號「…」
+  if (maxLines >= 2 && parts.length > 1 && ctx.measureText(parts[0]).width <= maxTextW) {
+    const line1 = parts[0];
+    let line2 = parts.slice(1).join(' · ');
+    while (line2.length > 0 && ctx.measureText(`${line2}…`).width > maxTextW) {
+      line2 = line2.slice(0, -1);
+    }
+    line2 = line2.trim().replace(/\s*·\s*$/, '').trim();
+    return [line1, `${line2}…`];
+  }
+
+  // 3. 若純段落切分放不下（單一段落本身即超出 maxTextW），則以貪婪文字自動換行
   const rawLines = wrapHeadline(ctx, fullSingleLine, maxTextW);
   if (rawLines.length <= maxLines) {
     return rawLines;
   }
 
-  // 3. 超過 maxLines 時，第 2 行末端平滑加入省略號「…」
+  // 4. 超過 maxLines 時，第 2 行末端平滑加入省略號「…」
   const lines = rawLines.slice(0, maxLines);
   let last = lines[lines.length - 1];
   while (last.length > 0 && ctx.measureText(`${last}…`).width > maxTextW) {
     last = last.slice(0, -1);
   }
+  last = last.trim().replace(/\s*·\s*$/, '').trim();
   lines[lines.length - 1] = `${last}…`;
   return lines;
 }

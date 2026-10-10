@@ -3,7 +3,13 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createCanvas } from 'canvas';
-import { wrapSpeakerLines, renderOgImage } from './render-og.mjs';
+import {
+  wrapSpeakerLines,
+  renderOgImage,
+  registerFontsOnce,
+  FONT_FAMILY,
+  pickLang,
+} from './render-og.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,9 +37,11 @@ async function test(name, fn) {
 
 console.warn('\n=== 1. 講者語意換行演算法測試 (wrapSpeakerLines) ===');
 
+registerFontsOnce();
+
 const canvas = createCanvas(1200, 630);
 const ctx = canvas.getContext('2d');
-ctx.font = '900 28px sans-serif';
+ctx.font = `900 28px ${FONT_FAMILY}`;
 
 await test('短名稱職稱應維持單行無換行', async () => {
   const lines = wrapSpeakerLines(ctx, '史蒂夫•葉', '技術處長', '精誠集團', 490, 2);
@@ -48,7 +56,7 @@ await test('超過單行寬度時，應優先在「 · 」語意段落切分為 
   assert.equal(lines[1], 'AIDefendLabs Fngi · GDG Taipei');
 });
 
-await test('極長文字超過 2 行時，應於第 2 行末端加上省略號「…」', async () => {
+await test('極長文字超過 2 行時，應維持第 1 行為姓名且於第 2 行末端加上省略號「…」', async () => {
   const lines = wrapSpeakerLines(
     ctx,
     '李冠緯',
@@ -58,7 +66,16 @@ await test('極長文字超過 2 行時，應於第 2 行末端加上省略號�
     2
   );
   assert.equal(lines.length, 2);
+  assert.equal(lines[0], '李冠緯', '第 1 行應精準保留講者姓名');
   assert.ok(lines[1].endsWith('…'), '第 2 行末端應包含省略號');
+  assert.ok(ctx.measureText(lines[0]).width <= 490, '第 1 行寬度應在安全範圍內');
+  assert.ok(ctx.measureText(lines[1]).width <= 490, '第 2 行寬度應在安全範圍內');
+});
+
+await test('當職稱與單位為空時，應維持單行姓名且無多餘分隔符號', async () => {
+  const lines = wrapSpeakerLines(ctx, 'zonble', '', '', 490, 2);
+  assert.equal(lines.length, 1);
+  assert.equal(lines[0], 'zonble');
 });
 
 console.warn('\n=== 2. 全體 16 位講者 OG 水平置中與邊界安全測試 ===');
@@ -69,9 +86,9 @@ const centerX = 794;
 
 for (const s of content.speakers) {
   await test(`講者 [${s.id}] 水平中心線應精準對齊 X: 794 且在安全邊界內`, async () => {
-    const name = s.name['zh-Hant'] || s.name;
-    const title = s.title ? (s.title['zh-Hant'] || s.title) : '';
-    const org = s.org ? (s.org['zh-Hant'] || s.org) : '';
+    const name = pickLang(s.name, 'DevFest 2026');
+    const title = pickLang(s.title);
+    const org = pickLang(s.org);
 
     const lines = wrapSpeakerLines(ctx, name, title, org, 490, 2);
     assert.ok(lines.length >= 1 && lines.length <= 2, `行數應為 1 或 2（實際: ${lines.length}）`);
@@ -106,6 +123,24 @@ await test('為短姓名講者（史蒂夫•葉）產生 OG 圖，確認正常�
     content,
     layout: {
       imagePath: path.join(ROOT_2026, 'images', 'speakers', 'steve_yeh.jpg'),
+    },
+    outPath: tempOut,
+  });
+
+  const stat = await fs.stat(tempOut);
+  assert.ok(stat.size > 1000, '圖片檔案大小應大於 1KB');
+});
+
+await test('為無職稱講者（zonble）產生單行 OG 圖，確認正常繪製', async () => {
+  const item = content.speakers.find((s) => s.id === 'zonble');
+  const tempOut = path.join(ROOT_2026, 'images', 'og', 'speakers', 'zonble.png');
+
+  await renderOgImage({
+    type: 'speakers',
+    item,
+    content,
+    layout: {
+      imagePath: path.join(ROOT_2026, 'images', 'speakers', 'zonble.jpg'),
     },
     outPath: tempOut,
   });
