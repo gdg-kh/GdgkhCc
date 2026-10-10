@@ -916,6 +916,26 @@ button {
   gap: var(--gk-sp-4);
 }
 
+.gk-logo-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gk-sp-3);
+  margin-top: var(--gk-sp-2);
+}
+
+.gk-logo-subgroup-title {
+  font-family: var(--gk-font-display);
+  font-weight: var(--gk-fw-bold);
+  font-size: var(--gk-fs-h4);
+  line-height: 1.3;
+  color: var(--gk-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gk-sp-2);
+  padding-left: var(--gk-sp-3);
+  border-left: 4px solid var(--gk-blue-halftone);
+}
+
 .gk-ballot-grid {
   display: grid;
   gap: var(--gk-sp-4);

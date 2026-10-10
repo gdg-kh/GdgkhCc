@@ -1100,7 +1100,54 @@
         "en": "Sponsoring Partners",
         "ja": "協賛パートナー"
       },
-      "color": "#57caff"
+      "color": "#57caff",
+      "subgroups": [
+        {
+          "id": "yixin",
+          "order": 1,
+          "name": {
+            "zh-Hant": "一心路贊助方案",
+            "en": "Yixin Tier",
+            "ja": "一心プラン"
+          }
+        },
+        {
+          "id": "ercheng",
+          "order": 2,
+          "name": {
+            "zh-Hant": "二聖路贊助方案",
+            "en": "Ercheng Tier",
+            "ja": "二聖プラン"
+          }
+        },
+        {
+          "id": "sanduo",
+          "order": 3,
+          "name": {
+            "zh-Hant": "三多路贊助方案",
+            "en": "Sanduo Tier",
+            "ja": "三多プラン"
+          }
+        },
+        {
+          "id": "siwei",
+          "order": 4,
+          "name": {
+            "zh-Hant": "四維路贊助方案",
+            "en": "Siwei Tier",
+            "ja": "四維プラン"
+          }
+        },
+        {
+          "id": "wufu",
+          "order": 5,
+          "name": {
+            "zh-Hant": "五福路贊助方案",
+            "en": "Wufu Tier",
+            "ja": "五福プラン"
+          }
+        }
+      ]
     },
     {
       "id": "personal",
@@ -1268,7 +1315,15 @@
     {
       "id": "jetbrains",
       "groupId": "company",
+      "subgroupId": "ercheng",
       "order": 6,
+      "tags": [
+        {
+          "zh-Hant": "二聖路贊助方案",
+          "en": "Ercheng Tier",
+          "ja": "二聖プラン"
+        }
+      ],
       "name": {
         "zh-Hant": "JetBrains",
         "en": "JetBrains",
@@ -1331,7 +1386,15 @@
     {
       "id": "nyakei",
       "groupId": "company",
+      "subgroupId": "ercheng",
       "order": 7,
+      "tags": [
+        {
+          "zh-Hant": "二聖路贊助方案",
+          "en": "Ercheng Tier",
+          "ja": "二聖プラン"
+        }
+      ],
       "name": {
         "zh-Hant": "貓缶簿",
         "en": "NYAKEI",

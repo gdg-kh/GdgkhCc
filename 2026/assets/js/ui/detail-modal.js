@@ -395,6 +395,9 @@ function makeShareButton(payload, customLabel = null) {
                 clearTimeout(copyResetTimer);
               }
               copyResetTimer = setTimeout(() => {
+                if (typeof document === 'undefined') {
+                  return;
+                }
                 button.classList.remove('gk-modal-share-copied');
                 button.setAttribute('aria-label', shareLabelText);
                 button.setAttribute('title', shareLabelText);

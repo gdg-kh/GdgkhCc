@@ -88,6 +88,13 @@ function buildLogoPayload(type, item) {
     bio: item.description,
     groupName: group ? group.name : undefined,
     groupColor: groupColorOf(group),
+    tags: Array.isArray(item && item.tags)
+      ? item.tags
+      : Array.isArray(item && item.tag)
+        ? item.tag
+        : item && item.tag
+          ? [item.tag]
+          : [],
     links: linksOf(item),
   };
 }

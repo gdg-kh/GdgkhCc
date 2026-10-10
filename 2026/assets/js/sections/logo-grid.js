@@ -39,6 +39,15 @@ function openLogoModal(type, item) {
   openModal(payload);
 }
 
+function renderItemCard(type, item) {
+  return personCard({
+    image: assetPath(type, item.id),
+    name: item.name,
+    description: item.description,
+    onClick: () => openLogoModal(type, item),
+  });
+}
+
 function renderLogoSection(container, groups, type) {
   for (const entry of groups) {
     if (!entry || !Array.isArray(entry.items) || entry.items.length === 0) {
@@ -48,17 +57,56 @@ function renderLogoSection(container, groups, type) {
     if (entry.group) {
       mount(block, makeGroupHeader(entry.group, 'gk-logo-group-header'));
     }
-    const grid = el('div', { class: 'gk-logo-grid' });
-    for (const item of entry.items) {
-      const card = personCard({
-        image: assetPath(type, item.id),
-        name: item.name,
-        description: item.description,
-        onClick: () => openLogoModal(type, item),
+
+    const subgroups = entry.group && Array.isArray(entry.group.subgroups) ? entry.group.subgroups : null;
+    if (subgroups && subgroups.length > 0) {
+      const sortedSubgroups = subgroups.slice().sort((a, b) => {
+        const aOrder = typeof a.order === 'number' ? a.order : Number.MAX_SAFE_INTEGER;
+        const bOrder = typeof b.order === 'number' ? b.order : Number.MAX_SAFE_INTEGER;
+        return aOrder - bOrder;
       });
-      mount(grid, card);
+
+      const matchedIds = new Set();
+      for (const subgroup of sortedSubgroups) {
+        const subItems = entry.items.filter((item) => item && item.subgroupId === subgroup.id);
+        if (subItems.length === 0) {
+          // 自動隱藏無贊助夥伴的空子方案
+          continue;
+        }
+        for (const it of subItems) {
+          matchedIds.add(it.id);
+        }
+
+        const subgroupBlock = el('div', { class: 'gk-logo-subgroup' });
+        const subHeader = el('h4', {
+          class: 'gk-logo-subgroup-title',
+          text: t(subgroup.name),
+        });
+        const grid = el('div', { class: 'gk-logo-grid' });
+        for (const item of subItems) {
+          mount(grid, renderItemCard(type, item));
+        }
+        mount(subgroupBlock, subHeader, grid);
+        mount(block, subgroupBlock);
+      }
+
+      // 未指定或未匹配到任何已知子方案的項目
+      const remainingItems = entry.items.filter((item) => !matchedIds.has(item.id));
+      if (remainingItems.length > 0) {
+        const remainingGrid = el('div', { class: 'gk-logo-grid' });
+        for (const item of remainingItems) {
+          mount(remainingGrid, renderItemCard(type, item));
+        }
+        mount(block, remainingGrid);
+      }
+    } else {
+      const grid = el('div', { class: 'gk-logo-grid' });
+      for (const item of entry.items) {
+        mount(grid, renderItemCard(type, item));
+      }
+      mount(block, grid);
     }
-    mount(block, grid);
+
     mount(container, block);
   }
 }
