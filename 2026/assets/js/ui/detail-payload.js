@@ -1,11 +1,4 @@
-import {
-  assetPath,
-  getShareUrl,
-  getSessionById,
-  getGroupById,
-  getConfig,
-  getTrackById,
-} from '../core/store.js';
+import { assetPath, getShareUrl, getSessionById, getGroupById, getConfig, getTrackById } from '../core/store.js';
 import { t } from '../core/i18n.js';
 import { calendarButtons } from './calendar.js';
 
