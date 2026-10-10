@@ -397,7 +397,9 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "panel_7_1"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -415,7 +417,12 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["外地講者", "AI", "設計", "FDE"]
+      "tag": [
+        "外地講者",
+        "AI",
+        "設計",
+        "FDE"
+      ]
     },
     {
       "id": "bruce_lee",
@@ -440,7 +447,9 @@
         "en": "Bruce Lee is the founder of Hala Design and a full-stack developer with over 10 years of experience in web development and freelance projects. He currently organizes the WordPress Taipei Meetup and serves as a GDG Taipei Organizer. His recent work focuses on AI Agents, WebMCP, generative AI, and AI-powered development workflows, exploring how AI can move beyond answering questions to understanding websites, using tools, and actively participating in real-world product development and everyday workflows.",
         "ja": "Bruce Lee is the founder of Hala Design and a full-stack developer with over 10 years of experience in web development and freelance projects. He currently organizes the WordPress Taipei Meetup and serves as a GDG Taipei Organizer. His recent work focuses on AI Agents, WebMCP, generative AI, and AI-powered development workflows, exploring how AI can move beyond answering questions to understanding websites, using tools, and actively participating in real-world product development and everyday workflows."
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_3_2"
+      ],
       "links": [
         {
           "platform": "website",
@@ -467,7 +476,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "WebMCP", "AI Agent", "Web Development"]
+      "tag": [
+        "外地講者",
+        "WebMCP",
+        "AI Agent",
+        "Web Development"
+      ]
     },
     {
       "id": "fngi_shiu",
@@ -492,7 +506,9 @@
         "en": "GDG Taipei Organizer and lead organizer of DevFest Taipei 2024 and 2026; Senior Researcher (part-time) at AIDEFEND Labs, an open-source AI security initiative./nOver 15 years in full-stack engineering and security, mostly in regulated financial institutions. Focuses on LLM red teaming, agentic AI security architecture, and AI governance frameworks (NIST AI RMF, ISO 42001, OWASP LLM/Agentic Top 10, MITRE ATLAS)./nSpeaker at RSAC 2026, InfoSec Taiwan 2026, and COSCUP x UbuCon Asia 2026. Runs model attack-and-defense experiments on a DGX Spark and a Mac, and believes in measuring before trusting.",
         "ja": "GDG Taipei Organizer and lead organizer of DevFest Taipei 2024 and 2026; Senior Researcher (part-time) at AIDEFEND Labs, an open-source AI security initiative./nOver 15 years in full-stack engineering and security, mostly in regulated financial institutions. Focuses on LLM red teaming, agentic AI security architecture, and AI governance frameworks (NIST AI RMF, ISO 42001, OWASP LLM/Agentic Top 10, MITRE ATLAS)./nSpeaker at RSAC 2026, InfoSec Taiwan 2026, and COSCUP x UbuCon Asia 2026. Runs model attack-and-defense experiments on a DGX Spark and a Mac, and believes in measuring before trusting."
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_6_1"
+      ],
       "links": [
         {
           "platform": "linkedin",
@@ -510,7 +526,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "Gemma 4", "Prompt Injection", "Guardrails"]
+      "tag": [
+        "外地講者",
+        "Gemma 4",
+        "Prompt Injection",
+        "Guardrails"
+      ]
     },
     {
       "id": "fredric_huang",
@@ -535,7 +556,9 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_2_3"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -560,7 +583,12 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"]
+      "tag": [
+        "在地講者",
+        "BuildWithAI",
+        "RealtimeAI",
+        "SurgeonDeveloper"
+      ]
     },
     {
       "id": "zonble",
@@ -571,9 +599,9 @@
         "ja": "zonble"
       },
       "org": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
+        "zh-Hant": "Google 開發者專家（GDE）",
+        "en": "Google Developer Expert (GDE)",
+        "ja": "Google Developer Expert (GDE)"
       },
       "title": {
         "zh-Hant": "",
@@ -585,10 +613,17 @@
         "en": "Software Developer. Flutter GDE",
         "ja": "Software Developer. Flutter GDE"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_3_4"
+      ],
       "links": [],
       "groupId": "builder_track",
-      "tag": ["外地講者", "AI", "Gemini", "Antigravity"]
+      "tag": [
+        "外地講者",
+        "AI",
+        "Gemini",
+        "Antigravity"
+      ]
     },
     {
       "id": "arturs_vancans",
@@ -613,7 +648,9 @@
         "en": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones.",
         "ja": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones."
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_2_1"
+      ],
       "links": [
         {
           "platform": "website",
@@ -624,7 +661,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["在地講者", "Google Cloud", "Playwright", "Cluster"]
+      "tag": [
+        "在地講者",
+        "Google Cloud",
+        "Playwright",
+        "Cluster"
+      ]
     },
     {
       "id": "kai_wu",
@@ -649,7 +691,9 @@
         "en": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!",
         "ja": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_1_2"
+      ],
       "links": [
         {
           "platform": "linkedin",
@@ -667,7 +711,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["在地講者", "Google ADK", "AI application", "AI workflow"]
+      "tag": [
+        "在地講者",
+        "Google ADK",
+        "AI application",
+        "AI workflow"
+      ]
     },
     {
       "id": "johnny_sung",
@@ -692,7 +741,9 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_5_2"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -710,7 +761,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "API Gateway", "MCP", "Cloud"]
+      "tag": [
+        "外地講者",
+        "API Gateway",
+        "MCP",
+        "Cloud"
+      ]
     },
     {
       "id": "john_lu",
@@ -735,7 +791,9 @@
         "en": "John is a Senior Machine Learning Engineer from a Top Silicon Microchip Company, with hands-on production experience training Large Language Models and Vision Language Models, and building RAG and Agentic AI systems. He likes pulling apart the \"magic\" of modern AI and rebuilding it as clear, runnable code, then applying it to real problems. He has spoken at PyCon APAC and COSCUP on applied ML and on-device AI, including TasteGram (image aesthetic assessment with TensorFlow and Python) and Kimoji (an on-device LLM mood-journal assistant).",
         "ja": "Johnは大手テック企業に勤めるSenior Machine Learning Engineerです。大規模言語モデル（LLM）や視覚言語モデル（VLM）の学習、RAGやAIエージェントの構築を実務で手がけています。物事の仕組みを分解し、実行可能なコードとして組み立て直し、実際の課題に応用することを得意としています。これまでPyCon APACやCOSCUPに登壇し、機械学習の応用やオンデバイスMLについて発表しました。主な講演に「TasteGram：TensorFlowとPythonによる画像の美的評価」と「Kimoji：オンデバイスLLMで作る気分日記の文章作成支援システム」があります。"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_6_2"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -753,7 +811,12 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "AI Safety", "LLM Security", "Jailbreak"]
+      "tag": [
+        "外地講者",
+        "AI Safety",
+        "LLM Security",
+        "Jailbreak"
+      ]
     },
     {
       "id": "maylogger",
@@ -778,7 +841,9 @@
         "en": "Design Engineer based in Taipei and founder of SOTA, an interface design studio specializing in large-scale websites and digital products.",
         "ja": "Design Engineer。大規模Webサイトやデジタルプロダクトのインターフェースデザインを専門とするSOTAを創業。"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "panel_7_1"
+      ],
       "links": [
         {
           "platform": "website",
@@ -810,7 +875,9 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["外地講者"]
+      "tag": [
+        "外地講者"
+      ]
     },
     {
       "id": "mantou",
@@ -835,10 +902,15 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "panel_7_1"
+      ],
       "links": [],
       "groupId": "builder_track",
-      "tag": ["在地講者", "設計"]
+      "tag": [
+        "在地講者",
+        "設計"
+      ]
     },
     {
       "id": "ray_yuan_liu",
@@ -863,10 +935,17 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_3_1"
+      ],
       "links": [],
       "groupId": "developer_track",
-      "tag": ["在地講者", "AI", "Agentic Workflow", "Agent"]
+      "tag": [
+        "在地講者",
+        "AI",
+        "Agentic Workflow",
+        "Agent"
+      ]
     },
     {
       "id": "simon_liu",
@@ -877,9 +956,9 @@
         "ja": "Simon Liu"
       },
       "org": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
+        "zh-Hant": "Google 開發者專家（GDE）",
+        "en": "Google Developer Expert (GDE)",
+        "ja": "Google Developer Expert (GDE)"
       },
       "title": {
         "zh-Hant": "",
@@ -891,10 +970,19 @@
         "en": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!",
         "ja": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_5_1"
+      ],
       "links": [],
       "groupId": "developer_track",
-      "tag": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"]
+      "tag": [
+        "外地講者",
+        "AI",
+        "Agent",
+        "Google ADK",
+        "Google Antigravity",
+        "MCP"
+      ]
     },
     {
       "id": "chih_ming",
@@ -919,7 +1007,9 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_3_3"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -930,7 +1020,12 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "數位平權", "AI機會", "主動賦能"]
+      "tag": [
+        "在地講者",
+        "數位平權",
+        "AI機會",
+        "主動賦能"
+      ]
     },
     {
       "id": "kunfeng_li",
@@ -955,7 +1050,9 @@
         "en": "",
         "ja": ""
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_1_1"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -966,7 +1063,12 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["外地講者", "生成式AI", "教育科技", "產品設計"]
+      "tag": [
+        "外地講者",
+        "生成式AI",
+        "教育科技",
+        "產品設計"
+      ]
     },
     {
       "id": "jianlin",
@@ -991,7 +1093,9 @@
         "en": "Attending Physician at Kaohsiung Municipal Chinese Medicine Hospital.\n\nPassionate about exploring AI, programming, and healthcare informatics tools, and applying these technologies in clinical practice for medical record generation, healthcare data synthesis, and workflow improvement. The focus is not on whether AI can replace physicians, but on empowering frontline healthcare professionals to leverage AI and software to redesign tools that genuinely address clinical needs.",
         "ja": "高雄市立中医医院 主治医。\n\nAI、プログラミング、医療情報ツールの探求に関心を持ち、これら技術を電子カルテ生成、医療データ整理、臨床ワークフローの改善に実践導入しています。「AIが医師に取って代わるか」ではなく、現場の医療従事者がAIやソフトウェアを活用して、真に臨床現場のニーズに応える医療ツールを再設計できるかに焦点を当てています。"
       },
-      "sessionIds": [],
+      "sessionIds": [
+        "session_2_2"
+      ],
       "links": [
         {
           "platform": "facebook",
@@ -1002,10 +1106,498 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "Chrome Extension", "Vibe Coding", "Healthcare"]
+      "tag": [
+        "在地講者",
+        "Chrome Extension",
+        "Vibe Coding",
+        "Healthcare"
+      ]
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "id": "opening_intro",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "開幕",
+        "en": "Opening",
+        "ja": "オープニング"
+      },
+      "abstract": {
+        "zh-Hant": "本日活動說明。",
+        "en": "Overview of today's event and schedule.",
+        "ja": "本日のイベント概要とご案内。"
+      },
+      "tags": [
+        "GDG",
+        "Community"
+      ],
+      "speakerIds": [],
+      "start": "2026-11-14T09:00",
+      "end": "2026-11-14T09:20",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "keynote",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "主旨演講",
+        "en": "Keynote",
+        "ja": "基調講演"
+      },
+      "abstract": {
+        "zh-Hant": "議程資訊即將公布。",
+        "en": "Keynote session details coming soon.",
+        "ja": "基調講演の詳細は近日公開予定です。"
+      },
+      "tags": [
+        "Keynote"
+      ],
+      "speakerIds": [],
+      "start": "2026-11-14T09:20",
+      "end": "2026-11-14T09:50",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_1_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "當解析變免費，考古題平台還剩下什麼價值？",
+        "en": "When Answers Are Free, What’s Left for Exam Prep Platforms to Do?",
+        "ja": "當解析變免費，考古題平台還剩下什麼價值？"
+      },
+      "abstract": {
+        "zh-Hant": "免費 AI 就能解題，為什麼還要做考古題平台？\n當 AI 可以快速產生解析與圖解，考生為什麼還需要一個備考平台？本場將以 ExamWise 為例，從題目分類、作答紀錄、錯題回顧與跨職類相關題等功能，分享如何把一次解題延伸成持續的備考流程。\n當 AI 解析逐漸普及，考古題平台又該如何創造價值、找到值得考生持續使用的理由？",
+        "en": "If Free AI Can Explain Exam Questions, Why Build an Exam Prep Platform?\nIf AI can generate explanations and diagrams in seconds, why do exam candidates still need a dedicated study platform? Using ExamWise as an example, this talk explores how structured question categories, answer history, incorrect-question review, and related questions across healthcare professions can turn individual practice sessions into a continuous exam-preparation workflow.\nAs AI-generated explanations become widely available, how can question-bank platforms create lasting value and give learners a reason to keep coming back?",
+        "ja": "免費 AI 就能解題，為什麼還要做考古題平台？\n當 AI 可以快速產生解析與圖解，考生為什麼還需要一個備考平台？本場將以 ExamWise 為例，從題目分類、作答紀錄、錯題回顧與跨職類相關題等功能，分享如何把一次解題延伸成持續的備考流程。\n當 AI 解析逐漸普及，考古題平台又該如何創造價值、找到值得考生持續使用的理由？"
+      },
+      "tags": [
+        "生成式AI",
+        "教育科技",
+        "產品設計"
+      ],
+      "speakerIds": [
+        "kunfeng_li"
+      ],
+      "start": "2026-11-14T10:00",
+      "end": "2026-11-14T10:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_1_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "從臨場發揮到穩定交付:\n利用 Antigravity 構建穩定、可重用的Google ADK 個人助理",
+        "en": "From Improvisation to Reliable Delivery:\nBuilding Stable, Reusable Personal Assistants with Antigravity and Google ADK",
+        "ja": "從臨場發揮到穩定交付:\n利用 Antigravity 構建穩定、可重用的Google ADK 個人助理"
+      },
+      "abstract": {
+        "zh-Hant": "最近AI界再度出現「AGI 時代已經來臨」的社群貼文。但當我們把AI帶回到日常應用時，我們依舊可以看見 AI 在工具調用和多步驟任務中「迷路」：遺漏步驟、重複執行，或在任務交接後偏離原本的目標。如何讓 AI 持續、可靠地完成工作，成為應用開發中值得關注的課題。\\n 如果把主代理（Main Agent）想像為主管，子代理（Sub-agent）就像各有所長的團隊成員。主管可以依需求分派工作，組合出不同的任務流程。但隨著任務變得複雜，團隊也需要清楚的分工、交接規則與驗收標準。例如：當個人助理接到「蒐集資料、整理重點，再產出報告」的需求，每個階段都需要明確知道應接收什麼、交付什麼，以及遇到問題時如何處理。若這些規則不夠明確，即使成員各具能力，整體流程仍可能出現落差。\\n 這個的議程將會以 Google ADK 個人助理為例，運用 Antigravity 輔助開發，探討如何將常用的多步驟任務封裝成「穩定、可重用」的任務工具包。以明確的輸入輸出、可控的流程編排和錯誤處理與結果驗證，讓Main Agent 可以依照需求調用經過測試的任務模組，如同主管調度具備標準作業流程的團隊，在保有彈性的同時，提升複雜任務的執行可靠性，逐步打造能融入日常工作的 AI 個人助理。",
+        "en": "Recently, social media has seen a resurgence of posts proclaiming that \"the era of AGI has arrived.\" Yet back in real-world everyday applications, AI still frequently loses its way during tool-calling and multi-step workflows—skipping steps, looping redundantly, or drifting away from original goals during task handoffs. Ensuring that AI completes jobs consistently and reliably remains a critical challenge in application development.\nThink of a Main Agent as an engineering manager and Sub-agents as team members with specialized skill sets. The manager assigns tasks and orchestrates workflows based on project needs. However, as complexity grows, the team demands clear division of labor, explicit handoff protocols, and concrete acceptance criteria. For instance, when a personal assistant takes on a pipeline to \"gather research, synthesize key takeaways, and generate a final report,\" every phase requires well-defined inputs, expected deliverables, and fallback strategies for edge cases. Without these strict boundaries, even the most capable agents will cause the workflow to break down.\nUsing the Google ADK personal assistant as a case study alongside Antigravity-assisted development, this session explores how to package common multi-step tasks into stable, reusable task toolkits. Through well-defined I/O contracts, deterministic workflow orchestration, error handling, and output verification, the Main Agent can reliably dispatch pre-tested task modules on demand. Much like a manager leading a team armed with robust standard operating procedures, this architecture balances operational flexibility with execution reliability—taking practical steps toward an AI assistant built for daily productivity.",
+        "ja": "最近AI界再度出現「AGI 時代已經來臨」的社群貼文。但當我們把AI帶回到日常應用時，我們依舊可以看見 AI 在工具調用和多步驟任務中「迷路」：遺漏步驟、重複執行，或在任務交接後偏離原本的目標。如何讓 AI 持續、可靠地完成工作，成為應用開發中值得關注的課題。\\n 如果把主代理（Main Agent）想像為主管，子代理（Sub-agent）就像各有所長的團隊成員。主管可以依需求分派工作，組合出不同的任務流程。但隨著任務變得複雜，團隊也需要清楚的分工、交接規則與驗收標準。例如：當個人助理接到「蒐集資料、整理重點，再產出報告」的需求，每個階段都需要明確知道應接收什麼、交付什麼，以及遇到問題時如何處理。若這些規則不夠明確，即使成員各具能力，整體流程仍可能出現落差。\\n 這個的議程將會以 Google ADK 個人助理為例，運用 Antigravity 輔助開發，探討如何將常用的多步驟任務封裝成「穩定、可重用」的任務工具包。以明確的輸入輸出、可控的流程編排和錯誤處理與結果驗證，讓Main Agent 可以依照需求調用經過測試的任務模組，如同主管調度具備標準作業流程的團隊，在保有彈性的同時，提升複雜任務的執行可靠性，逐步打造能融入日常工作的 AI 個人助理。"
+      },
+      "tags": [
+        "Google ADK",
+        "AI application",
+        "AI workflow"
+      ],
+      "speakerIds": [
+        "kai_wu"
+      ],
+      "start": "2026-11-14T10:00",
+      "end": "2026-11-14T10:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_2_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "Vibe Code 不翻車：AI + 10,000 個測試",
+        "en": "How to ensure your spaghetti vibecode quality? Easy, more AI + 10,000 tests.",
+        "ja": "Vibe Code 不翻車：AI + 10,000 個測試"
+      },
+      "abstract": {
+        "zh-Hant": "我做了一個活動平台，而且從頭到尾沒有自己寫一行程式碼。\n但做完之後，真正麻煩的事情才開始：測試。\n我跑了 2,000 個 Playwright 端對端測試，全部打 UAT 環境。還有 5,000 個單元測試、Schema 測試、Integration 測試。\n整套測試在我自己的電腦上，要跑大概 6 小時。\n所以我乾脆把測試丟到 Google Cloud 上的一整群 VM 同時跑。\n同一套測試，現在大概 30 分鐘就能跑完，而且每次成本大約只要 US$0.50。\n這場分享，我會教你怎麼確保自己 vibe coding 出來的「義大利麵式惡夢程式碼」，至少是品質最好的那盤義大利麵。",
+        "en": "I built an events platform without writing a line of code myself. Then I had to test it.\n\n2000 Playwright end-to-end tests against UAT. 5,000 unit tests. Schema tests. Integration tests. The whole thing takes 6h on my machine. So I moved the tests to a cluster of VMs on Google Cloud. Same suite: about 30 minutes, roughly US$0.50 per run.\n\nDuring this talk I will teach how how to make sure your spaghetti vibe-coded nightmare is the best quality spaghetti there is.",
+        "ja": "自分ではコードを1行も書かずに、イベントプラットフォームを作りました。  でも、作った後に大変だったのがテストです。  UAT環境に対してPlaywrightのE2Eテストを2,000本。   さらにユニットテストが5,000本、Schemaテスト、Integrationテストもあります。  全部自分のPCで回すと、だいたい6時間かかります。  なので、Google Cloud上にVMのクラスターを作って、テストを並列で回すようにしました。  同じテスト一式が、今では約30分。   しかも1回あたりのコストは、だいたい0.5ドルです。  このトークでは、vibe codingで生まれたスパゲッティコードの悪夢を、どうやって「できるだけ品質の高いスパゲッティ」にするかを紹介します。"
+      },
+      "tags": [
+        "Google Cloud",
+        "Playwright",
+        "Cluster"
+      ],
+      "speakerIds": [
+        "arturs_vancans"
+      ],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_2_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事",
+        "en": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事",
+        "ja": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事"
+      },
+      "abstract": {
+        "zh-Hant": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。",
+        "en": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。",
+        "ja": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。"
+      },
+      "tags": [
+        "Chrome Extension",
+        "Vibe Coding",
+        "Healthcare"
+      ],
+      "speakerIds": [
+        "jianlin"
+      ],
+      "start": "2026-11-14T11:00",
+      "end": "2026-11-14T11:20",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_2_3",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "從手術室到教室：我如何打造自己的即時 AI 學習助手",
+        "en": "From Operating Room to Classroom: Building My Own Real-Time AI Learning Assistant",
+        "ja": "從手術室到教室：我如何打造自己的即時 AI 學習助手"
+      },
+      "abstract": {
+        "zh-Hant": "白天在手術室工作，回到教室後，我又成了一名學習電腦科學的學生。面對全英語、節奏快速又充滿專有名詞的課程，我開始思考：能不能打造一個真正符合自己需求的 AI 學習助手？\n\n這場分享將介紹我如何從零打造一套即時課堂筆記系統，串接瀏覽器麥克風、FastAPI、WebSocket、Gemini 即時語音辨識與 LLM 摘要，將數小時的課堂內容轉換成可複習的結構化筆記。除了 AI API 串接，我也會分享實際使用後遇到的串流中斷、session rotation、錯誤累積與失敗復原等工程問題，以及如何把一個 AI prototype 做成自己真正每天願意使用的工具。",
+        "en": "By day, I work in the operating room as a colorectal surgeon. Back in the classroom, I am also a computer science student trying to keep up with fast-paced, English-language lectures filled with technical terminology.\n\nIn this talk, I will share how I built my own real-time AI learning assistant using browser audio, FastAPI, WebSockets, Gemini live transcription, and LLM-based summarization. Beyond simply connecting AI APIs, I will cover the engineering problems that appeared during real-world use: long-running streaming sessions, connection failures, session rotation, cascading transcription errors, and recovery after failed AI calls.\n\nThis is a story about turning a personal problem into a tool I actually use—and what it takes to move from an AI demo to a reliable working system.",
+        "ja": "白天在手術室工作，回到教室後，我又成了一名學習電腦科學的學生。面對全英語、節奏快速又充滿專有名詞的課程，我開始思考：能不能打造一個真正符合自己需求的 AI 學習助手？\n\n這場分享將介紹我如何從零打造一套即時課堂筆記系統，串接瀏覽器麥克風、FastAPI、WebSocket、Gemini 即時語音辨識與 LLM 摘要，將數小時的課堂內容轉換成可複習的結構化筆記。除了 AI API 串接，我也會分享實際使用後遇到的串流中斷、session rotation、錯誤累積與失敗復原等工程問題，以及如何把一個 AI prototype 做成自己真正每天願意使用的工具。"
+      },
+      "tags": [
+        "BuildWithAI",
+        "RealtimeAI",
+        "SurgeonDeveloper"
+      ],
+      "speakerIds": [
+        "fredric_huang"
+      ],
+      "start": "2026-11-14T11:30",
+      "end": "2026-11-14T11:50",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_3_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "如何找到適合自己的 Agentic Workflow",
+        "en": "How to build an elegant agentic workflow.",
+        "ja": "如何找到適合自己的 Agentic Workflow"
+      },
+      "abstract": {
+        "zh-Hant": "Agent 總是不聽話？明明用了博士模型做出來的效果卻不如預期？本議程分享如何調整平時使用的 Agentic Workflow，讓 Agent 在做事情的時候更符合需求。無論是提升品質、更為主動進行某些作業、省錢以及監督品質，都能在調整的過程之中受惠。",
+        "en": "How can we build an agentic workflow to fit our needs? This talk will introduce tips and tricks for building workflows that make agents more proactive, improve the quality of final outputs, and save some pennies.",
+        "ja": "Agent 總是不聽話？明明用了博士模型做出來的效果卻不如預期？本議程分享如何調整平時使用的 Agentic Workflow，讓 Agent 在做事情的時候更符合需求。無論是提升品質、更為主動進行某些作業、省錢以及監督品質，都能在調整的過程之中受惠。"
+      },
+      "tags": [
+        "AI",
+        "Agentic Workflow",
+        "Agent"
+      ],
+      "speakerIds": [
+        "ray_yuan_liu"
+      ],
+      "start": "2026-11-14T12:30",
+      "end": "2026-11-14T12:50",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_3_2",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "WebMCP：讓 AI 知道你的網站可以怎麼操作",
+        "en": "WebMCP: Teaching AI How to Interact with Your Website",
+        "ja": "WebMCP：讓AI知道你的網站可以怎麼操作"
+      },
+      "abstract": {
+        "zh-Hant": "隨著 AI Agent 開始能理解網頁、呼叫工具並執行任務，網站也需要從「給人操作」進一步走向「讓 AI 知道可以怎麼操作」。\n\n\n\n這場分享將介紹 WebMCP 的核心概念，以及它如何讓網站把可執行的功能，以更結構化的方式提供給 AI Agent。從表單填寫、搜尋、資料查詢，到觸發網站內的實際操作，AI 不再只能猜測頁面上的按鈕，而是能理解網站提供了哪些能力，以及該如何正確使用。\n\n\n\n現場也會透過實際案例展示 WebMCP 的整合方式，並分享如何在既有網站與 Web 應用中導入，讓你的網站開始具備「AI 可操作」的能力。",
+        "en": "As AI agents become capable of understanding web pages, calling tools, and executing tasks, websites are evolving from being designed only for human interaction to becoming interfaces that AI can understand and operate.\n\n\n\nIn this session, we will introduce the core concepts of WebMCP and explore how it enables websites to expose their capabilities to AI agents in a more structured and reliable way. From form submissions and search to data retrieval and real actions within a website, AI no longer needs to guess which buttons to click. Instead, it can understand what capabilities a website provides and how to use them correctly.\n\n\n\nThrough practical examples, we will also demonstrate how WebMCP can be integrated into existing websites and web applications, helping developers make their products more accessible and actionable for the emerging AI agent ecosystem.",
+        "ja": "隨著 AI Agent 開始能理解網頁、呼叫工具並執行任務，網站也需要從「給人操作」進一步走向「讓 AI 知道可以怎麼操作」。\n\n\n\n這場分享將介紹 WebMCP 的核心概念，以及它如何讓網站把可執行的功能，以更結構化的方式提供給 AI Agent。從表單填寫、搜尋、資料查詢，到觸發網站內的實際操作，AI 不再只能猜測頁面上的按鈕，而是能理解網站提供了哪些能力，以及該如何正確使用。\n\n\n\n現場也會透過實際案例展示 WebMCP 的整合方式，並分享如何在既有網站與 Web 應用中導入，讓你的網站開始具備「AI 可操作」的能力。"
+      },
+      "tags": [
+        "WebMCP",
+        "AI Agent",
+        "Web Development"
+      ],
+      "speakerIds": [
+        "bruce_lee"
+      ],
+      "start": "2026-11-14T13:00",
+      "end": "2026-11-14T13:20",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_3_3",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」",
+        "en": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」",
+        "ja": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」"
+      },
+      "abstract": {
+        "zh-Hant": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。",
+        "en": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。",
+        "ja": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。"
+      },
+      "tags": [
+        "數位平權",
+        "AI機會",
+        "主動賦能"
+      ],
+      "speakerIds": [
+        "chih_ming"
+      ],
+      "start": "2026-11-14T12:30",
+      "end": "2026-11-14T12:50",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_3_4",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "我用 Antigravity 和 Gemini 寫了生平第一部交響曲",
+        "en": "I wrote my first symphony with Gemini using Antigravity",
+        "ja": "我用 Antigravity 和 Gemini 寫了生平第一部交響曲"
+      },
+      "abstract": {
+        "zh-Hant": "不同於 Flow Music 中使用 prompt 直接產生音檔與影片，Gemini 是多模態模型，也可以產生文字型態的樂譜；而且可以在自己決定基本旋律的前提下，要求 Gemini 協助撰寫和弦或是繼續發展旋律，然後在 DAW 中繼續完成製作。身為音樂門外漢的我，就在 Gemini 的協助下，寫出了人生的第一首長度 25 分鐘的交響曲。",
+        "en": "Unlike Flow Music, which uses prompts to directly generate audio and video files, Gemini is a multimodal model capable of generating text-based musical scores. Furthermore, with a basic melody of your own choosing, you can ask Gemini to help write chords or continue developing the melody, and then finish the production in a DAW. As a complete musical novice, I managed to write my very first 25-minute symphony with Gemini's assistance.",
+        "ja": "不同於 Flow Music 中使用 prompt 直接產生音檔與影片，Gemini 是多模態模型，也可以產生文字型態的樂譜；而且可以在自己決定基本旋律的前提下，要求 Gemini 協助撰寫和弦或是繼續發展旋律，然後在 DAW 中繼續完成製作。身為音樂門外漢的我，就在 Gemini 的協助下，寫出了人生的第一首長度 25 分鐘的交響曲。"
+      },
+      "tags": [
+        "AI",
+        "Gemini",
+        "Antigravity"
+      ],
+      "speakerIds": [
+        "zonble"
+      ],
+      "start": "2026-11-14T13:00",
+      "end": "2026-11-14T13:20",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "workshop_4_1",
+      "trackId": "track_3",
+      "title": {
+        "zh-Hant": "工作坊",
+        "en": "Workshop",
+        "ja": "ワークショップ"
+      },
+      "abstract": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "tags": [
+        "Workshop"
+      ],
+      "speakerIds": [],
+      "start": "2026-11-14T13:00",
+      "end": "2026-11-14T14:10",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_5_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "Everything as Code：用 Google Antigravity, ADK 與 Open-X 驅動文件自動化",
+        "en": "Everything as Code: Driving Document Automation with Google Antigravity, ADK, and Open-X",
+        "ja": "Everything as Code：用 Google Antigravity, ADK 與 Open-X 驅動文件自動化"
+      },
+      "abstract": {
+        "zh-Hant": "隨著 AI Agent 的發展，產業界正面臨一個巨大的痛點：Agent 擅長邏輯推理與撰寫程式碼，但在處理需要精確排版的日常生產力工具（如 Word、PowerPoint 或 Figma）時卻往往力不從心。與其教 AI 怎麼操作所見即所得（WYSIWYG）軟體，不如將輸出媒介轉換為它最熟悉的領域——程式碼。\n\n本議程將帶您深入專為 Agent 打造的開源生態系「Open-X 專案」（包含 Open-Doc, Open-Slide, Open-Design-frame）。我們將實戰展示如何透過 Google Antigravity 與 Google ADK (Agent Development Kit) 打造強大推理大腦，並藉由 MCP (Model Context Protocol) 介面無縫串接 Open-X。看 Agent 如何直接編寫 React/TSX，自動產出像素級完美的 A4 報表、16:9 簡報與互動設計稿，實現真正的「Everything as Code」極速交付。",
+        "en": "As AI Agents evolve, the industry faces a major bottleneck: while agents excel at logic and coding, they struggle with precise formatting in daily productivity tools like Word, PowerPoint, or Figma. Instead of teaching AI to use GUI-based software, we shift the output medium to its native language—code.\n\nThis session introduces the \"Open-X Project\" (including Open-Doc, Open-Slide, and Open-Design-frame), an open-source ecosystem built specifically for agents. We will demonstrate how to build a powerful reasoning brain using Google Antigravity and the Google Agent Development Kit (ADK), connecting seamlessly to Open-X via the Model Context Protocol (MCP). Discover how Agents can natively write React/TSX to autonomously generate pixel-perfect A4 reports, 16:9 slides, and UI design frames, achieving true \"Everything as Code\" and rapid automated delivery.",
+        "ja": "隨著 AI Agent 的發展，產業界正面臨一個巨大的痛點：Agent 擅長邏輯推理與撰寫程式碼，但在處理需要精確排版的日常生產力工具（如 Word、PowerPoint 或 Figma）時卻往往力不從心。與其教 AI 怎麼操作所見即所得（WYSIWYG）軟體，不如將輸出媒介轉換為它最熟悉的領域——程式碼。\n\n本議程將帶您深入專為 Agent 打造的開源生態系「Open-X 專案」（包含 Open-Doc, Open-Slide, Open-Design-frame）。我們將實戰展示如何透過 Google Antigravity 與 Google ADK (Agent Development Kit) 打造強大推理大腦，並藉由 MCP (Model Context Protocol) 介面無縫串接 Open-X。看 Agent 如何直接編寫 React/TSX，自動產出像素級完美的 A4 報表、16:9 簡報與互動設計稿，實現真正的「Everything as Code」極速交付。"
+      },
+      "tags": [
+        "AI",
+        "Agent",
+        "Google ADK",
+        "Google Antigravity",
+        "MCP"
+      ],
+      "speakerIds": [
+        "simon_liu"
+      ],
+      "start": "2026-11-14T13:30",
+      "end": "2026-11-14T14:10",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_5_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具",
+        "en": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具",
+        "ja": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具"
+      },
+      "abstract": {
+        "zh-Hant": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\\n\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。",
+        "en": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\\n\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。",
+        "ja": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\\n\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。"
+      },
+      "tags": [
+        "API Gateway",
+        "MCP",
+        "Cloud"
+      ],
+      "speakerIds": [
+        "johnny_sung"
+      ],
+      "start": "2026-11-14T13:30",
+      "end": "2026-11-14T14:10",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "pizza_time",
+      "trackId": "all",
+      "title": {
+        "zh-Hant": "Pizza Time",
+        "en": "Pizza Time",
+        "ja": "ピザタイム"
+      },
+      "abstract": {
+        "zh-Hant": "Pizza 交流時段。",
+        "en": "Pizza and networking break.",
+        "ja": "ピザタイム＆交流時間。"
+      },
+      "tags": [
+        "Break",
+        "Networking"
+      ],
+      "speakerIds": [],
+      "start": "2026-11-14T14:10",
+      "end": "2026-11-14T14:50",
+      "type": "break",
+      "links": []
+    },
+    {
+      "id": "session_6_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "它拒絕了，但思考鏈出賣了它：\nGemma 4 紅隊成績單與上線前的三道護欄",
+        "en": "It Refused, But Its Thinking Gave It Away:\nRed-Teaming Gemma 4 and Three Guardrails Before You Ship",
+        "ja": "它拒絕了，但思考鏈出賣了它：\nGemma 4 紅隊成績單與上線前的三道護欄"
+      },
+      "abstract": {
+        "zh-Hant": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集，先在 DGX Spark 上實測 Gemma 4 12B 與 26B，再把 12B 搬到 Mac mini 重跑，得到三組數字和一個意外：模型的正式回答守住了，機密卻從它的思考鏈整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。同一顆模型、同一套攻擊，換一台硬體就有 5/25 題翻盤，這是 model card 不會告訴你的。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。",
+        "en": "You wired Gemma 4 into a customer-service app and told it \"never reveal internal data.\" Are you safe?\n\nI ran a fixed set of 25 attacks mapped to the OWASP LLM Top 10 against Gemma 4 12B and 26B on a DGX Spark, then re-ran the 12B set on a Mac mini. The result: three sets of numbers and one surprise. The model's final answer held the line, but the secrets leaked, verbatim, from its thinking. No jailbreak needed; a harmless order lookup triggers it. Same model, same attacks, different hardware: 5 of 25 outcomes flipped. Model cards don't tell you that.\n\nThis session demos the attacks and fixes live on an ordinary laptop, and walks through three guardrails you should have on day one: an output rail (don't ship the thinking as the answer), a retrieval rail (RAG content is data, not instructions), and an execution rail (an agent's permissions are its blast radius), with a look at the managed options on Google Cloud. All attack scripts and deterministic checks are open source.\n\nFor engineers integrating Gemini or Gemma into products. No security background required.",
+        "ja": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集，先在 DGX Spark 上實測 Gemma 4 12B 與 26B，再把 12B 搬到 Mac mini 重跑，得到三組數字和一個意外：模型的正式回答守住了，機密卻從它的思考鏈整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。同一顆模型、同一套攻擊，換一台硬體就有 5/25 題翻盤，這是 model card 不會告訴你的。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。"
+      },
+      "tags": [
+        "Gemma 4",
+        "Prompt Injection",
+        "Guardrails"
+      ],
+      "speakerIds": [
+        "fngi_shiu"
+      ],
+      "start": "2026-11-14T15:00",
+      "end": "2026-11-14T15:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "session_6_2",
+      "trackId": "track_2",
+      "title": {
+        "zh-Hant": "AI 攻防技術擂台：從 Jailbreak 到 AutoDAN，LLM 如何被攻破、又該怎麼防守",
+        "en": "The Art of Breaking and Defending LLMs: From Jailbreaks to AutoDAN",
+        "ja": "AI攻防アリーナ：JailbreakからAutoDANまで、LLMはどう破られ、どう守るのか"
+      },
+      "abstract": {
+        "zh-Hant": "你的 AI Agent 上線後，使用者只要一句話，就可能讓它洩漏 system prompt、繞過安全限制，甚至說出不該說的內容。這場演講從資安視角切入 AI Safety，帶你看懂 LLM 是怎麼被攻破的，又該怎麼一層層防守。\n\n內容分為三個部分：\n\n1. 攻擊：從手動 Jailbreak 的角色扮演、情境包裝等，到自動化的 Greedy Coordinate Gradient (GCG) 和 AutoDAN，說明背後的最佳化原理，以及 Jailbreak 與 Prompt Injection 的差異。\n\n2. 防禦：Prompt 層級的自我提醒、Perplexity 過濾、Guard 模型與 Circuit Breakers，並用攻擊成功率（ASR）與過度拒答率評估每道防線的效果與代價。\n\n3. 實務：為什麼沒有單一防線萬無一失，以及如何用多層防禦設計你的 AI 應用。\n\n我們會以原理和實作來說明各種攻防手法，並示範如何在 Gemma 開源模型上重現。本次演講將有助於建立 LLM 攻防的完整脈絡，並讓你帶走一份檢視自家 Agent 的安全檢查清單。",
+        "en": "Ship an LLM-powered app, and someone will try to break it. This talk takes a security-minded look at AI safety: how attackers get language models to leak system prompts or ignore safety rules, and how developers can defend against them.\n\nWe start with manual jailbreaks (role-play, context framing, multi-turn manipulation), then move to automated attacks such as Greedy Coordinate Gradient (GCG) and AutoDAN, explaining the optimization ideas behind each. On the defense side, we cover prompt-level defenses, perplexity filters, guard models, and circuit breakers, and show how to evaluate them honestly with attack success rate and over-refusal rate.\n\nWe will demonstrate the attacks and defenses on open-weight Gemma models, and you will leave with a checklist for reviewing the safety of your own agents.",
+        "ja": "AIエージェントを公開すると、ユーザーのたった一言で、システムプロンプトが漏れたり、安全対策が回避されたり、不適切な内容が出力されたりすることがあります。本講演ではセキュリティの視点からAI Safetyを取り上げ、LLMがどのように破られるのか、そしてどのように何層にも守りを固めるのかを解説します。 \\n\\n 内容は次の3部構成です。 \\n\\n 1. 攻撃：ロールプレイやシチュエーション設定といった手動のJailbreakから、自動化されたGreedy Coordinate Gradient（GCG）やAutoDANまで、その背後にある最適化の原理と、JailbreakとPrompt Injectionの違いを説明します。\\n 2. 防御：プロンプトレベルのセルフリマインダー、Perplexityフィルタ、ガードモデル、Circuit Breakersを取り上げ、攻撃成功率（ASR）と過剰拒否率で各防御の効果とコストを評価します。\\n 3. 実践：なぜ単一の防御では不十分なのか、そして多層防御でAIアプリケーションをどう設計すべきかを紹介します。 \\n\\n 原理と実装の両面から各種の攻防手法を解説し、Gemmaオープンモデル上での再現も実演します。聴講後には、LLM攻防の全体像をつかみ、自社のエージェントを点検するためのセキュリティチェックリストを持ち帰っていただけます。"
+      },
+      "tags": [
+        "AI Safety",
+        "LLM Security",
+        "Jailbreak"
+      ],
+      "speakerIds": [
+        "john_lu"
+      ],
+      "start": "2026-11-14T15:00",
+      "end": "2026-11-14T15:40",
+      "type": "talk",
+      "links": []
+    },
+    {
+      "id": "panel_7_1",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "當設計遇到 AI — 末日崛起",
+        "en": "When Design Meets AI: Rise of Doomsday",
+        "ja": "デザインがAIに出会う時：終末の台頭"
+      },
+      "abstract": {
+        "zh-Hant": "座談由饅頭、設計師勞哥、史蒂夫•葉共同帶來「當設計遇到 AI — 末日崛起」探討。",
+        "en": "Panel discussion by Mantou, maylogger, and Steve Yeh on \"When Design Meets AI: Rise of Doomsday\".",
+        "ja": "饅頭、設計師勞哥、Steve Yehによる「デザインがAIに出会う時：終末の台頭」についてのパネルディスカッション。"
+      },
+      "tags": [
+        "AI",
+        "設計",
+        "FDE",
+        "座談"
+      ],
+      "speakerIds": [
+        "mantou",
+        "maylogger",
+        "steve_yeh"
+      ],
+      "start": "2026-11-14T16:00",
+      "end": "2026-11-14T17:30",
+      "type": "talk",
+      "links": [],
+      "hideMeta": true
+    },
+    {
+      "id": "closing_ceremony",
+      "trackId": "track_1",
+      "title": {
+        "zh-Hant": "閉幕",
+        "en": "Closing Ceremony",
+        "ja": "クロージング"
+      },
+      "abstract": {
+        "zh-Hant": "活動結束感謝。",
+        "en": "Closing remarks and acknowledgments.",
+        "ja": "終わりの挨拶と感謝。"
+      },
+      "tags": [
+        "Closing"
+      ],
+      "speakerIds": [],
+      "start": "2026-11-14T17:30",
+      "end": "2026-11-14T17:50",
+      "type": "closing",
+      "links": []
+    }
+  ],
   "staff": [
     {
       "id": "andyawd",
