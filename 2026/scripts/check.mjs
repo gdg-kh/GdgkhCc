@@ -348,6 +348,19 @@ if (config) {
     }
   }
 
+  // 檢查選單順序與手機分流防呆
+  const boothsItem = menu.find((m) => m.id === 'booths_2026' || m.id === 'booths');
+  const thanksItem = menu.find((m) => m.id === 'thanks_2026' || m.id === 'thanks');
+  if (boothsItem && thanksItem && boothsItem.order >= thanksItem.order) {
+    err('config.menu: 活動擺攤（booths）的 order 應在特別感謝（thanks）之前以符合頁面順序');
+  }
+  if (thanksItem && !thanksItem.mobilePrimary) {
+    err('config.menu: 特別感謝（thanks）必須設定 mobilePrimary 為 true');
+  }
+  if (boothsItem && boothsItem.mobilePrimary) {
+    err('config.menu: 活動擺攤（booths）不可設定 mobilePrimary（避免破壞手機版 Tab 列）');
+  }
+
   const langs = (config.i18n && config.i18n.languages) || [];
   const codes = langs.map((l) => l.code);
   for (const c of codes) {

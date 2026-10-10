@@ -168,24 +168,24 @@
       }
     },
     {
-      "id": "thanks_2026",
+      "id": "booths_2026",
       "enabled": true,
       "order": 6,
+      "label": {
+        "zh-Hant": "活動擺攤",
+        "en": "Booths",
+        "ja": "ブース"
+      }
+    },
+    {
+      "id": "thanks_2026",
+      "enabled": true,
+      "order": 7,
       "mobilePrimary": true,
       "label": {
         "zh-Hant": "特別感謝",
         "en": "Special Thanks",
         "ja": "協賛"
-      }
-    },
-    {
-      "id": "booths_2026",
-      "enabled": true,
-      "order": 7,
-      "label": {
-        "zh-Hant": "活動擺攤",
-        "en": "Booths",
-        "ja": "ブース"
       }
     },
     {
