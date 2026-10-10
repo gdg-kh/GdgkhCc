@@ -1,4 +1,4 @@
-import { promises as fs, existsSync } from 'node:fs';
+import { promises as fs, existsSync, statSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createCanvas, loadImage, registerFont } from 'canvas';
@@ -6,6 +6,8 @@ import sharp from 'sharp';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const ROOT_2026 = path.resolve(__dirname, '..');
+const CONTENT_PATH = path.join(ROOT_2026, 'data', 'content.json');
 
 // --- 官方色票定義 ---
 const COLORS = {
@@ -204,6 +206,44 @@ function wrapHeadline(ctx, text, maxWidth) {
   if (current) {
     lines.push(current);
   }
+  return lines;
+}
+
+// 講者語意優先換行演算法（優先於「 · 」處切分段落，放不下時字元折行，超過 maxLines 截斷）
+export function wrapSpeakerLines(ctx, nameText, title, org, maxTextW, maxLines = 2) {
+  const parts = [nameText, title, org].filter(Boolean);
+  if (parts.length === 0) {
+    return [nameText || ''];
+  }
+  const fullSingleLine = parts.join(' · ');
+  if (ctx.measureText(fullSingleLine).width <= maxTextW) {
+    return [fullSingleLine];
+  }
+
+  // 1. 優先嘗試於語意邊界（「 · 」）切分成 2 行
+  for (let i = 0; i < parts.length - 1; i += 1) {
+    const line1 = parts.slice(0, i + 1).join(' · ');
+    const line2 = parts.slice(i + 1).join(' · ');
+    const w1 = ctx.measureText(line1).width;
+    const w2 = ctx.measureText(line2).width;
+    if (w1 <= maxTextW && w2 <= maxTextW) {
+      return [line1, line2];
+    }
+  }
+
+  // 2. 若純段落切分放不下（單一段落本身即超出 maxTextW），則以貪婪文字自動換行
+  const rawLines = wrapHeadline(ctx, fullSingleLine, maxTextW);
+  if (rawLines.length <= maxLines) {
+    return rawLines;
+  }
+
+  // 3. 超過 maxLines 時，第 2 行末端平滑加入省略號「…」
+  const lines = rawLines.slice(0, maxLines);
+  let last = lines[lines.length - 1];
+  while (last.length > 0 && ctx.measureText(`${last}…`).width > maxTextW) {
+    last = last.slice(0, -1);
+  }
+  lines[lines.length - 1] = `${last}…`;
   return lines;
 }
 
@@ -471,8 +511,52 @@ function drawBadgeAndName(ctx, badgeLabel, nameText) {
   }
 }
 
+let cachedContent = null;
+let cachedContentMtime = 0;
+
+export function getContentData(passedContent) {
+  if (passedContent !== undefined && passedContent !== null) {
+    return passedContent;
+  }
+  try {
+    if (existsSync(CONTENT_PATH)) {
+      const stat = statSync(CONTENT_PATH);
+      if (!cachedContent || cachedContentMtime !== stat.mtimeMs) {
+        const raw = readFileSync(CONTENT_PATH, 'utf8');
+        cachedContent = JSON.parse(raw);
+        cachedContentMtime = stat.mtimeMs;
+      }
+      return cachedContent;
+    }
+  } catch (err) {
+    console.warn(`[render-og] 讀取 content.json 失敗：${err.message}`);
+  }
+  return null;
+}
+
+export function resolveThanksBadgeLabel(item, passedContent, layout) {
+  if (layout && typeof layout.badgeLabel === 'string' && layout.badgeLabel.trim()) {
+    return layout.badgeLabel.trim();
+  }
+  const content = getContentData(passedContent);
+  const thanksGroups = Array.isArray(content && content.thanksGroups) ? content.thanksGroups : [];
+  const targetGroupId = item && item.groupId;
+  if (targetGroupId) {
+    const group = thanksGroups.find((g) => g && g.id === targetGroupId);
+    if (group && group.name) {
+      if (typeof group.name === 'string') {
+        return group.name;
+      }
+      if (typeof group.name === 'object') {
+        return group.name['zh-Hant'] || group.name.zh || pickLang(group.name, '合作夥伴');
+      }
+    }
+  }
+  return '合作夥伴';
+}
+
 // 主渲染函式
-export async function renderOgImage({ type, item, layout, _config, outPath }) {
+export async function renderOgImage({ type, item, layout, _config, content, outPath }) {
   if (type === 'site' || (outPath && outPath.replace(/\\/g, '/').endsWith('images/og/site.png'))) {
     throw new Error(
       '[render-og] 首頁 Open Graph 圖檔為固定靜態資源（images/og/site.png），嚴禁自動產生或覆寫！'
@@ -499,40 +583,41 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
   if (type === 'staff') {
     drawBadgeAndName(ctx, '活動志工', nameText);
   } else if (type === 'thanks') {
-    drawBadgeAndName(ctx, '合作夥伴', nameText);
+    const badgeLabel = await resolveThanksBadgeLabel(item, content, layout);
+    drawBadgeAndName(ctx, badgeLabel, nameText);
   } else if (type === 'booths') {
     drawBadgeAndName(ctx, '社群攤位', nameText);
   } else if (type === 'speakers') {
-    // 講者排版：靠左對齊 {DevFest} 的左邊 (X: 502)
-    // 規格：第 1 行 [活動講者] 姓名·職稱；換行第 2 行 [議程主題] 議程標題；文字大小皆為 28px
-    const leftX = 502;
+    // 講者排版：整組相對於上方 DevFest 標誌（中心點 X: 794）水平置中
+    // 規格：第 1 區塊 [活動講者] 徽章（靠頂對齊）+ 姓名職稱（最多 2 行，語意優先換行）
+    //       第 2 區塊 [議程主題] 徽章 + 議程標題（若有議程）
+    // 文字大小皆為 28px
+    const centerX = 794;
     const badgeW = 154;
     const badgeH = 44;
     const gap = 16;
-    const textX = leftX + badgeW + gap; // 672
-    const maxTextW = 1140 - textX; // 468px
+    const maxTextW = 490; // 置中於 794 時安全邊界（450 ~ 1138）
     const rowGap = 20;
     const fontSize = 28;
+    const speakerLineH = 38;
 
-    // 1. 組合姓名與職稱 (28px)
+    // 1. 組合姓名、職稱與單位，依語意換行演算法取得文字行（最多 2 行）
     const title = pickLang(item && item.title);
     const org = pickLang(item && item.org);
-    const affil = [title, org].filter(Boolean).join(' · ');
-    const nameLine = affil ? `${nameText} · ${affil}` : nameText;
-
     ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
-    let dispNameLine = nameLine;
-    if (ctx.measureText(dispNameLine).width > maxTextW) {
-      while (dispNameLine.length > 0 && ctx.measureText(`${dispNameLine}…`).width > maxTextW) {
-        dispNameLine = dispNameLine.slice(0, -1);
-      }
-      dispNameLine = `${dispNameLine}…`;
-    }
+    const speakerLines = wrapSpeakerLines(ctx, nameText, title, org, maxTextW, 2);
+    const maxSpeakerTextW = Math.max(...speakerLines.map((l) => ctx.measureText(l).width));
+    const speakerBlockW = badgeW + gap + maxSpeakerTextW;
+    const speakerBlockH = speakerLines.length > 1
+      ? badgeH + (speakerLines.length - 1) * speakerLineH
+      : badgeH;
 
     // 2. 議程主題處理 (28px，可折行最多 2 行)
     const sessionTitle = pickLang(layout && layout.sessionTitle);
     let sessionLines = [];
     const sessionLineH = 36;
+    let sessionBlockW = 0;
+    let sessionBlockH = 0;
 
     if (sessionTitle) {
       ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
@@ -546,16 +631,24 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
       } else {
         sessionLines = rawLines;
       }
+      const maxSessionTextW = Math.max(...sessionLines.map((l) => ctx.measureText(l).width));
+      sessionBlockW = badgeW + gap + maxSessionTextW;
+      sessionBlockH = sessionLines.length > 1 ? 72 : badgeH;
     }
 
-    // 3. 動態計算總高度以維持右側垂直置中
     const hasSession = Boolean(sessionTitle && sessionLines.length > 0);
-    const sessionH = hasSession ? (sessionLines.length > 1 ? 72 : badgeH) : 0;
-    const totalH = badgeH + (hasSession ? rowGap + sessionH : 0);
+
+    // 3. 計算內容區塊水平寬度與起始坐標（對齊上方 Logo 中心點 794）
+    const blockW = hasSession ? Math.max(speakerBlockW, sessionBlockW) : speakerBlockW;
+    const leftX = Math.round(centerX - blockW / 2);
+    const textX = leftX + badgeW + gap;
+
+    // 4. 動態計算總高度以維持垂直置中（Y: 350）
+    const totalH = speakerBlockH + (hasSession ? rowGap + sessionBlockH : 0);
     const zoneCenterY = 350;
     const row1Y = Math.round(zoneCenterY - totalH / 2);
 
-    // 4. 繪製第 1 行：[活動講者] 徽章 + 姓名職稱
+    // 5. 繪製講者區塊：[活動講者] 徽章（靠頂對齊）+ 姓名職稱（最多 2 行）
     ctx.fillStyle = COLORS.badgeBg;
     drawRoundedRect(ctx, leftX, row1Y, badgeW, badgeH, 4.5);
     ctx.fill();
@@ -569,11 +662,18 @@ export async function renderOgImage({ type, item, layout, _config, outPath }) {
     ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText(dispNameLine, textX, row1Y + badgeH / 2 + 1);
 
-    // 5. 繪製第 2 行（若有）：[議程主題] 徽章 + 議程內容（懸掛縮排）
+    if (speakerLines.length === 1) {
+      ctx.fillText(speakerLines[0], textX, row1Y + badgeH / 2 + 1);
+    } else {
+      speakerLines.forEach((line, idx) => {
+        ctx.fillText(line, textX, row1Y + badgeH / 2 + 1 + idx * speakerLineH);
+      });
+    }
+
+    // 6. 繪製議程主題區塊（若有）
     if (hasSession) {
-      const row2Y = row1Y + badgeH + rowGap;
+      const row2Y = row1Y + speakerBlockH + rowGap;
 
       ctx.fillStyle = COLORS.badgeBg;
       drawRoundedRect(ctx, leftX, row2Y, badgeW, badgeH, 4.5);

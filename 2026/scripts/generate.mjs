@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import { ENTITY_TYPES, assetPath, ogPath } from './entity-types.mjs';
-import { renderOgImage } from './render-og.mjs';
+import { renderOgImage, resolveThanksBadgeLabel } from './render-og.mjs';
 import { renderSharePage } from './render-page.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -73,13 +73,16 @@ function firstSessionTitle(item, store) {
   return null;
 }
 
-function buildLayout({ type, typeEntry, item, store, imageAbs }) {
+function buildLayout({ type, typeEntry, item, store, imageAbs, content }) {
   const layout = {
     kind: typeEntry.ogLayout,
     imagePath: imageAbs,
   };
   if (type === 'speakers') {
     layout.sessionTitle = firstSessionTitle(item, store);
+  }
+  if (type === 'thanks') {
+    layout.badgeLabel = resolveThanksBadgeLabel(item, content);
   }
   return layout;
 }
@@ -88,6 +91,7 @@ function hashForItem({ item, layout, imageAbs }) {
   const layoutSummary = {
     kind: layout.kind,
     sessionTitle: layout.sessionTitle || null,
+    badgeLabel: layout.badgeLabel || null,
   };
   const payload = JSON.stringify({
     item,
@@ -102,7 +106,7 @@ async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
 }
 
-async function processEntity({ type, typeEntry, item, config, store, cache, stats }) {
+async function processEntity({ type, typeEntry, item, config, content, store, cache, stats }) {
   const cacheKey = `${type}/${item.id}`;
   const relativeImage = assetPath(type, item.id);
   const relativeOgImage = ogPath(type, item.id);
@@ -111,7 +115,7 @@ async function processEntity({ type, typeEntry, item, config, store, cache, stat
   const pageDir = path.join(SHARE_DIR, type, item.id);
   const pageAbs = path.join(pageDir, 'index.html');
 
-  const layout = buildLayout({ type, typeEntry, item, store, imageAbs });
+  const layout = buildLayout({ type, typeEntry, item, store, imageAbs, content });
   const currentHash = hashForItem({ item, layout, imageAbs });
   const cached = cache[cacheKey];
   const outputsExist = existsSync(ogAbs) && existsSync(pageAbs);
@@ -130,6 +134,7 @@ async function processEntity({ type, typeEntry, item, config, store, cache, stat
       item,
       layout,
       config,
+      content,
       outPath: ogAbs,
     });
     stats.images += 1;
@@ -258,7 +263,7 @@ async function main() {
         continue;
       }
       itemIds.push(item.id);
-      await processEntity({ type, typeEntry, item, config, store, cache, stats });
+      await processEntity({ type, typeEntry, item, config, content, store, cache, stats });
       sitemapUrls.push(`${baseUrl}share/${type}/${item.id}/`);
     }
     await detectOrphans({ type, itemIds, stats, orphans });

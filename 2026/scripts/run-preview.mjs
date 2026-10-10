@@ -23,12 +23,13 @@ await renderOgImage({
   outPath: path.join(PREVIEW_DIR, 'staff-andyawd.png'),
 });
 
-// 2. Thanks: 合作夥伴（純白無框，徽章與名稱上下置中）
+// 2. Thanks: 感謝名單（依群組徽章，純白無框，徽章與名稱上下置中）
 for (const item of content.thanks) {
-  console.warn(`產生合作夥伴預覽：${item.id}...`);
+  console.warn(`產生感謝名單預覽：${item.id}...`);
   await renderOgImage({
     type: 'thanks',
     item,
+    content,
     layout: { imagePath: path.join(ROOT_2026, 'images', 'thanks', `${item.id}.png`) },
     outPath: path.join(PREVIEW_DIR, `thanks-${item.id}.png`),
   });
