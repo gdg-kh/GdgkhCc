@@ -225,13 +225,15 @@ function openSessionModal(session, targetSpeakerId = null) {
   const trackName = t(track2 && track2.name);
   const venue = t(getConfig() && getConfig().site && getConfig().site.venue);
   const meta = [];
-  const timeRange = formatRange(session.start, session.end);
-  if (timeRange) {
-    meta.push({ label: uiLabel('timeLabel') || '時間', value: timeRange });
-  }
-  if (trackName || venue) {
-    const value = [trackName, venue].filter((v) => v && v.length > 0).join(' - ');
-    meta.push({ label: uiLabel('venueLabel') || '會場', value });
+  if (!session.hideMeta) {
+    const timeRange = formatRange(session.start, session.end);
+    if (timeRange) {
+      meta.push({ label: uiLabel('timeLabel') || '時間', value: timeRange });
+    }
+    if (trackName || venue) {
+      const value = [trackName, venue].filter((v) => v && v.length > 0).join(' - ');
+      meta.push({ label: uiLabel('venueLabel') || '會場', value });
+    }
   }
   const subtitleParts = speakers.map((sp) => t(sp && sp.name)).filter((n) => n && n.length > 0);
   const subtitle = subtitleParts.length > 0 ? subtitleParts.join('、') : null;
@@ -263,6 +265,8 @@ function openSessionModal(session, targetSpeakerId = null) {
     image: firstSpeaker ? assetPath('speakers', firstSpeaker.id) : undefined,
     name: session.title,
     subtitle,
+    title: firstSpeaker ? firstSpeaker.title : undefined,
+    org: firstSpeaker ? firstSpeaker.org : undefined,
     sessionTitle: session.title,
     sessionAbstract: session.abstract,
     speakers: speakerPayloads,

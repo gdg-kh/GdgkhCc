@@ -1,4 +1,13 @@
-import { assetPath, getShareUrl, getSessionById, getGroupById } from '../core/store.js';
+import {
+  assetPath,
+  getShareUrl,
+  getSessionById,
+  getGroupById,
+  getConfig,
+  getTrackById,
+} from '../core/store.js';
+import { t } from '../core/i18n.js';
+import { calendarButtons } from './calendar.js';
 
 export function firstSessionOf(speaker) {
   if (!speaker || !Array.isArray(speaker.sessionIds) || speaker.sessionIds.length === 0) {
@@ -24,6 +33,15 @@ function linksOf(item) {
   return Array.isArray(item && item.links) ? item.links : [];
 }
 
+function formatRange(start, end) {
+  const s = typeof start === 'string' && start.length >= 16 ? start.slice(11, 16) : '';
+  const e = typeof end === 'string' && end.length >= 16 ? end.slice(11, 16) : '';
+  if (s && e) {
+    return `${s} - ${e}`;
+  }
+  return s || e;
+}
+
 export function buildSpeakerPayload(speaker) {
   if (!speaker) {
     return null;
@@ -31,6 +49,26 @@ export function buildSpeakerPayload(speaker) {
   const session = firstSessionOf(speaker);
   const groupId = (session && session.groupId) || (speaker && speaker.groupId) || null;
   const group = groupId ? getGroupById(groupId) : null;
+
+  const meta = [];
+  let extraNode = null;
+  if (session && !session.hideMeta) {
+    const config = getConfig();
+    const ui = config && config.ui;
+    const timeRange = formatRange(session.start, session.end);
+    if (timeRange) {
+      meta.push({ label: (ui && ui.timeLabel) || '時間', value: timeRange });
+    }
+    const trackObj = getTrackById(session.trackId);
+    const trackName = t(trackObj && trackObj.name);
+    const venue = t(config && config.site && config.site.venue);
+    if (trackName || venue) {
+      const venueValue = [trackName, venue].filter((v) => v && v.length > 0).join(' - ');
+      meta.push({ label: (ui && ui.venueLabel) || '會場', value: venueValue });
+    }
+    extraNode = calendarButtons(session, 'modal');
+  }
+
   return {
     type: 'speakers',
     id: speaker.id,
@@ -55,6 +93,8 @@ export function buildSpeakerPayload(speaker) {
               ? [speaker.tag]
               : [],
     links: linksOf(speaker),
+    meta,
+    extraNode,
   };
 }
 
