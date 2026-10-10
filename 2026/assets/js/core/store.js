@@ -164,11 +164,14 @@ export function getSortedList(arrayName) {
   if (!Array.isArray(list)) {
     return [];
   }
-  return list.slice().sort((a, b) => {
-    const aOrder = typeof a.order === 'number' ? a.order : Number.MAX_SAFE_INTEGER;
-    const bOrder = typeof b.order === 'number' ? b.order : Number.MAX_SAFE_INTEGER;
-    return aOrder - bOrder;
-  });
+  return list
+    .filter((item) => !item || (item.enabled !== false && item.hidden !== true))
+    .slice()
+    .sort((a, b) => {
+      const aOrder = typeof a.order === 'number' ? a.order : Number.MAX_SAFE_INTEGER;
+      const bOrder = typeof b.order === 'number' ? b.order : Number.MAX_SAFE_INTEGER;
+      return aOrder - bOrder;
+    });
 }
 
 export function assetPath(type, id) {

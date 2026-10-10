@@ -1317,6 +1317,7 @@
       "groupId": "company",
       "subgroupId": "ercheng",
       "order": 6,
+      "enabled": false,
       "tags": [
         {
           "zh-Hant": "二聖路贊助方案",
@@ -1386,13 +1387,13 @@
     {
       "id": "nyakei",
       "groupId": "company",
-      "subgroupId": "ercheng",
+      "subgroupId": "yixin",
       "order": 7,
       "tags": [
         {
-          "zh-Hant": "二聖路贊助方案",
-          "en": "Ercheng Tier",
-          "ja": "二聖プラン"
+          "zh-Hant": "一心路贊助方案",
+          "en": "Yixin Tier",
+          "ja": "一心プラン"
         }
       ],
       "name": {
@@ -1418,13 +1419,13 @@
             "en": "Threads",
             "ja": "Threads"
           },
-          "url": "https://www.threads.net/@_aidanwu"
+          "url": "https://www.threads.com/@nyakei.taiwan"
         }
       ],
       "description": {
-        "zh-Hant": "貓缶簿: 一款讓你在花錢前先問的 AI 支出計畫 App",
-        "en": "NYAKEI: an AI budgeting app you ask before you spend",
-        "ja": "NYAKEI: an AI budgeting app you ask before you spend"
+        "zh-Hant": "一款讓你在花錢前先問的 AI 支出計畫 App",
+        "en": "an AI budgeting app you ask before you spend",
+        "ja": "an AI budgeting app you ask before you spend"
       }
     }
   ],
