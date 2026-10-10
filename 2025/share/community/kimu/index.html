@@ -143,7 +143,7 @@
       // 載入社群資料
       async function loadCommunityData(communityId) {
         try {
-          const response = await fetch('../../../data/community.json');
+          const response = await fetch('../../../data/community.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load community data');
           }

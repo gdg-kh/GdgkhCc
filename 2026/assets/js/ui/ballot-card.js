@@ -45,11 +45,11 @@ export function ballotCard(opts) {
   if (typeof options.image === 'string' && options.image.length > 0) {
     let src = options.image;
     let srcset = '';
-    const match = options.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    const match = options.image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
     if (match) {
-      const [, type, id] = match;
-      src = `images/${type}/${id}-160.webp`;
-      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+      const [, type, id, , query = ''] = match;
+      src = `images/${type}/${id}-160.webp${query}`;
+      srcset = `images/${type}/${id}-160.webp${query} 160w, images/${type}/${id}-320.webp${query} 320w, images/${type}/${id}-640.webp${query} 640w`;
     }
     const attrs = {
       src,

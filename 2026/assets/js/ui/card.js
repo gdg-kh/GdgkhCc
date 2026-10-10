@@ -44,11 +44,11 @@ function makePersonImage(image, name, fallback = PERSON_PLACEHOLDER) {
   if (typeof image === 'string' && image.length > 0) {
     let src = image;
     let srcset = '';
-    const match = image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    const match = image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
     if (match) {
-      const [, type, id] = match;
-      src = `images/${type}/${id}-320.webp`;
-      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+      const [, type, id, , query = ''] = match;
+      src = `images/${type}/${id}-320.webp${query}`;
+      srcset = `images/${type}/${id}-160.webp${query} 160w, images/${type}/${id}-320.webp${query} 320w, images/${type}/${id}-640.webp${query} 640w`;
     }
     const attrs = {
       src,
@@ -191,10 +191,10 @@ export function sessionCard(opts) {
       }
       if (typeof speaker.image === 'string' && speaker.image.length > 0) {
         let avatarSrc = speaker.image;
-        const match = speaker.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+        const match = speaker.image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
         if (match) {
-          const [, type, id] = match;
-          avatarSrc = `images/${type}/${id}-64.webp`;
+          const [, type, id, , query = ''] = match;
+          avatarSrc = `images/${type}/${id}-64.webp${query}`;
         }
         const avatarImg = el('img', {
           class: 'gk-session-speaker-avatar',

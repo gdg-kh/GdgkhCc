@@ -139,7 +139,7 @@
       // 載入技術創作市集攤位資料
       async function loadBoothData(boothId) {
         try {
-          const response = await fetch('../../../data/twm.json');
+          const response = await fetch('../../../data/twm.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load TWM data');
           }

@@ -99,11 +99,12 @@ function renderMedia(payload) {
   let src = payload.image;
   let srcset = '';
   const match =
-    typeof payload.image === 'string' && payload.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+    typeof payload.image === 'string' &&
+    payload.image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
   if (match) {
-    const [, type, id] = match;
-    src = `images/${type}/${id}-640.webp`;
-    srcset = `images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w`;
+    const [, type, id, , query = ''] = match;
+    src = `images/${type}/${id}-640.webp${query}`;
+    srcset = `images/${type}/${id}-320.webp${query} 320w, images/${type}/${id}-640.webp${query} 640w`;
   }
   const attrs = {
     src,
@@ -529,11 +530,12 @@ function renderSpeakerCard(speaker) {
     let src = speaker.image;
     let srcset = '';
     const match =
-      typeof speaker.image === 'string' && speaker.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+      typeof speaker.image === 'string' &&
+      speaker.image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
     if (match) {
-      const [, type, id] = match;
-      src = `images/${type}/${id}-320.webp`;
-      srcset = `images/${type}/${id}-160.webp 160w, images/${type}/${id}-320.webp 320w`;
+      const [, type, id, , query = ''] = match;
+      src = `images/${type}/${id}-320.webp${query}`;
+      srcset = `images/${type}/${id}-160.webp${query} 160w, images/${type}/${id}-320.webp${query} 320w`;
     }
     const attrs = {
       src,
@@ -696,10 +698,12 @@ function renderMultiSpeakerContent(payload) {
 
     if (sp.image) {
       let avatarSrc = sp.image;
-      const match = typeof sp.image === 'string' && sp.image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+      const match =
+        typeof sp.image === 'string' &&
+        sp.image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
       if (match) {
-        const [, type, id] = match;
-        avatarSrc = `images/${type}/${id}-160.webp`;
+        const [, type, id, , query = ''] = match;
+        avatarSrc = `images/${type}/${id}-160.webp${query}`;
       }
       const avatarImg = el('img', {
         class: 'gk-modal-speaker-tab-avatar',

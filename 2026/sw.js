@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'gk-2026-v3';
+const CACHE_VERSION = 'gk-2026-v5';
 const STATIC_CACHE = `gk-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `gk-images-${CACHE_VERSION}`;
 const DATA_CACHE = `gk-data-${CACHE_VERSION}`;
@@ -62,6 +62,12 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET') {
@@ -70,15 +76,124 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
-  // 1. 靜態圖片：Cache-First
-  const isImage = request.destination === 'image' || /\.(png|jpe?g|webp|svg|ico)(\?.*)?$/i.test(url.pathname);
+  // 判斷是否為明確要求跳過快取（例如條件式 no-cache、編輯器 no-store、時間戳標記、瀏覽器重新整理 reload）
+  const isExplicitBypass =
+    request.cache === 'reload' ||
+    request.cache === 'no-store' ||
+    request.cache === 'no-cache' ||
+    url.searchParams.has('_t') ||
+    url.searchParams.has('nocache');
+
+  // 1. 靜態圖片：採用 Network-First 策略，連線時保證取得最新圖檔並寫入快取，離線時自動降級讀取快取；
+  // 優先精確匹配 URL 查詢參數（如 ?v=... 版號參數），離線時才退回 ignoreSearch: true 降級。
+  const isImage = request.destination === 'image' || /\.(png|jpe?g|webp|svg|ico)$/i.test(url.pathname);
 
   if (isImage) {
+    if (isExplicitBypass) {
+      event.respondWith(
+        fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(IMAGE_CACHE).then((cache) => cache.put(request, clone));
+            }
+            return networkResponse;
+          })
+          .catch(async () => {
+            return (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+          })
+      );
+      return;
+    }
+
     event.respondWith(
       caches.open(IMAGE_CACHE).then(async (cache) => {
-        const cachedResponse = await cache.match(request, { ignoreSearch: true });
-        if (cachedResponse) {
-          return cachedResponse;
+        try {
+          const networkResponse = await fetch(request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch {
+          // 網路請求失敗（離線），先精確比對，再使用 ignoreSearch 降級
+          const cachedResponse = await cache.match(request);
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          const fallback = await cache.match(request, { ignoreSearch: true });
+          if (fallback) {
+            return fallback;
+          }
+          throw new Error('[sw] Image fetch failed and no cache available');
+        }
+      })
+    );
+    return;
+  }
+
+  // 2. 資料檔案 (JSON)：採用 Network-First 策略，連線時保證取得最新資料，離線時自動降級至快取
+  const isData = url.pathname.endsWith('.json') || url.pathname.includes('/data/');
+
+  if (isData) {
+    if (isExplicitBypass) {
+      event.respondWith(
+        fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(DATA_CACHE).then((cache) => cache.put(request, clone));
+            }
+            return networkResponse;
+          })
+          .catch(async () => {
+            return (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+          })
+      );
+      return;
+    }
+
+    event.respondWith(
+      caches.open(DATA_CACHE).then(async (cache) => {
+        try {
+          const networkResponse = await fetch(request);
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(request, networkResponse.clone());
+          }
+          return networkResponse;
+        } catch {
+          // 網路請求失敗（離線），讀取快取
+          const cachedResponse = (await cache.match(request)) || (await cache.match(request, { ignoreSearch: true }));
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          throw new Error('[sw] Data fetch failed and no cache available');
+        }
+      })
+    );
+    return;
+  }
+
+  // 3. 頁面導航（HTML）：採用 Network-First 策略，連線時確保載入最新 HTML，離線時使用快取外殼
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      caches.open(STATIC_CACHE).then(async (cache) => {
+        if (isExplicitBypass) {
+          return fetch(request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                cache.put(request, networkResponse.clone());
+              }
+              return networkResponse;
+            })
+            .catch(async () => {
+              return (
+                (await cache.match(request)) ||
+                (await cache.match('index.html')) ||
+                (await cache.match('./')) ||
+                (await cache.match('index.html', { ignoreSearch: true })) ||
+                (await cache.match('./', { ignoreSearch: true }))
+              );
+            });
         }
         try {
           const networkResponse = await fetch(request);
@@ -86,51 +201,41 @@ self.addEventListener('fetch', (event) => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (err) {
-          const fallback = await caches.match(request, { ignoreSearch: true });
-          if (fallback) {
-            return fallback;
+        } catch {
+          const fallbackNav =
+            (await cache.match(request)) ||
+            (await cache.match('index.html')) ||
+            (await cache.match('./')) ||
+            (await cache.match('index.html', { ignoreSearch: true })) ||
+            (await cache.match('./', { ignoreSearch: true }));
+          if (fallbackNav) {
+            return fallbackNav;
           }
-          throw err;
+          throw new Error('[sw] Navigation failed and no offline shell available');
         }
       })
     );
     return;
   }
 
-  // 2. 資料檔案 (JSON)：Stale-While-Revalidate
-  const isData = url.pathname.endsWith('.json') || url.pathname.includes('/data/');
-
-  if (isData) {
-    event.respondWith(
-      caches.open(DATA_CACHE).then(async (cache) => {
-        const cachedResponse = await cache.match(request, { ignoreSearch: true });
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              cache.put(request, networkResponse.clone());
-            }
-            return networkResponse;
-          })
-          .catch((err) => {
-            console.warn('[sw] Data revalidation failed:', err.message);
-            if (cachedResponse) {
-              return cachedResponse;
-            }
-            throw err;
-          });
-
-        return cachedResponse || fetchPromise;
-      })
-    );
-    return;
-  }
-
-  // 3. 靜態資源 (HTML / CSS / JS)：Stale-While-Revalidate
+  // 4. 其餘靜態資源 (CSS / JS / Fonts)：Stale-While-Revalidate，且不盲目 ignoreSearch
   if (url.origin === self.location.origin) {
     event.respondWith(
       caches.open(STATIC_CACHE).then(async (cache) => {
-        const cachedResponse = await cache.match(request, { ignoreSearch: true });
+        if (isExplicitBypass) {
+          return fetch(request)
+            .then((networkResponse) => {
+              if (networkResponse && networkResponse.status === 200) {
+                cache.put(request, networkResponse.clone());
+              }
+              return networkResponse;
+            })
+            .catch(async () => {
+              return (await cache.match(request)) || (await cache.match(request, { ignoreSearch: true }));
+            });
+        }
+
+        const cachedResponse = await cache.match(request);
         const fetchPromise = fetch(request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
@@ -142,13 +247,9 @@ self.addEventListener('fetch', (event) => {
             if (cachedResponse) {
               return cachedResponse;
             }
-            if (request.mode === 'navigate') {
-              const fallbackNav =
-                (await cache.match('index.html', { ignoreSearch: true })) ||
-                (await cache.match('./', { ignoreSearch: true }));
-              if (fallbackNav) {
-                return fallbackNav;
-              }
+            const fallback = await cache.match(request, { ignoreSearch: true });
+            if (fallback) {
+              return fallback;
             }
             throw err;
           });

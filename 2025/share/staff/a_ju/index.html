@@ -142,7 +142,7 @@
       // 載入工作人員資料
       async function loadStaffData(staffId) {
         try {
-          const response = await fetch('../../../data/staff.json');
+          const response = await fetch('../../../data/staff.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load staff data');
           }

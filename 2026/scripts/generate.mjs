@@ -19,6 +19,7 @@ const IMAGES_OG_DIR = path.join(ROOT_2026, 'images', 'og');
 const SITEMAP_PATH = path.join(ROOT_2026, 'sitemap.xml');
 const ROBOTS_PATH = path.join(REPO_ROOT, 'robots.txt');
 const RENDER_OG_PATH = path.join(__dirname, 'render-og.mjs');
+const TEMPLATE_PATH = path.join(__dirname, 'share-template.html');
 
 async function readJson(p) {
   const raw = await fs.readFile(p, 'utf8');
@@ -98,6 +99,7 @@ function hashForItem({ item, layout, imageAbs }) {
     layout: layoutSummary,
     imageMtime: statMtime(imageAbs),
     renderMtime: statMtime(RENDER_OG_PATH),
+    templateMtime: statMtime(TEMPLATE_PATH),
   });
   return hashKey(payload);
 }

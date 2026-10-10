@@ -147,7 +147,7 @@
       // 載入組織資料
       async function loadAboutData(aboutId) {
         try {
-          const response = await fetch('../../../data/about.json');
+          const response = await fetch('../../../data/about.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load about data');
           }

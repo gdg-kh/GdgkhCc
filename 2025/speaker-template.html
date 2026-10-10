@@ -106,7 +106,7 @@
       // 載入講者資料
       async function loadSpeakerData(speakerId) {
         try {
-          const response = await fetch('../../../data/speakers.json');
+          const response = await fetch('../../../data/speakers.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load speaker data');
           }

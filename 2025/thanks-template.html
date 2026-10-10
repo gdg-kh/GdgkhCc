@@ -105,7 +105,7 @@
       // 載入感謝名單資料
       async function loadThanksData(thanksId) {
         try {
-          const response = await fetch('../../../data/thanks.json');
+          const response = await fetch('../../../data/thanks.json', { cache: 'no-cache' });
           if (!response.ok) {
             throw new Error('Failed to load thanks data');
           }

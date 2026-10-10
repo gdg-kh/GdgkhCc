@@ -100,11 +100,11 @@ function renderMapSection(container) {
     const rawFile = map.file || '';
     let src = `images/${rawFile}`;
     let srcset = '';
-    const match = rawFile.match(/^([^/.]+)\.(jpg|jpeg|png)$/i);
+    const match = rawFile.match(/^([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
     if (match) {
-      const [, base] = match;
-      src = `images/${base}-720.webp`;
-      srcset = `images/${base}-720.webp 720w, images/${base}-1200.webp 1200w`;
+      const [, base, , query = ''] = match;
+      src = `images/${base}-720.webp${query}`;
+      srcset = `images/${base}-720.webp${query} 720w, images/${base}-1200.webp${query} 1200w`;
     }
     const alt = t(map.caption);
     image.dataset.gkOriginalSrc = `images/${rawFile}`;
@@ -150,10 +150,10 @@ function renderMapSection(container) {
     }
     const rawFile = map.file || '';
     let src = `images/${rawFile}`;
-    const match = rawFile.match(/^([^/.]+)\.(jpg|jpeg|png)$/i);
+    const match = rawFile.match(/^([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
     if (match) {
-      const [, base] = match;
-      src = `images/${base}-1200.webp`;
+      const [, base, , query = ''] = match;
+      src = `images/${base}-1200.webp${query}`;
     }
     openImageViewer({ src, alt: t(map.caption) });
     track('view_venue_map', { map_file: rawFile });

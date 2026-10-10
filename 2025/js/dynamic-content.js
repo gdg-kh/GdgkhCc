@@ -67,7 +67,7 @@ class DynamicContentManager {
 
   // 載入 JSON 檔案
   async loadJSON(url) {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: 'no-cache' });
     if (!response.ok) {
       throw new Error(`Failed to load ${url}: ${response.status}`);
     }

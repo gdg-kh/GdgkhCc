@@ -532,15 +532,43 @@ function applyTokenColorMetas() {
 function registerServiceWorker() {
   if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
     const register = () => {
-      navigator.serviceWorker.register('sw.js', { scope: './' }).catch((err) => {
-        console.warn('ServiceWorker registration failed:', err);
-      });
+      navigator.serviceWorker
+        .register('sw.js', { scope: './', updateViaCache: 'none' })
+        .then((registration) => {
+          registration.update().catch(() => {});
+        })
+        .catch((err) => {
+          console.warn('ServiceWorker registration failed:', err);
+        });
     };
     if (document.readyState === 'complete') {
       register();
     } else {
       window.addEventListener('load', register);
     }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.ready.then((reg) => reg.update()).catch(() => {});
+        }
+        loadData()
+          .then(() => {
+            renderAll();
+            initNavOverflow();
+          })
+          .catch(() => {});
+      }
+    });
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      loadData()
+        .then(() => {
+          renderAll();
+          initNavOverflow();
+        })
+        .catch(() => {});
+    });
   }
 }
 

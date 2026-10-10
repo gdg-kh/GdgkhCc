@@ -53,11 +53,12 @@ function getAssetVersion() {
 }
 
 async function fetchJson(path) {
-  const version = getAssetVersion();
-  const url = version ? `${path}?v=${encodeURIComponent(version)}` : path;
+  const version = getAssetVersion() || '2026.10.10';
+  const sep = path.includes('?') ? '&' : '?';
+  const url = `${path}${sep}v=${encodeURIComponent(version)}`;
   let response;
   try {
-    response = await fetch(url);
+    response = await fetch(url, { cache: 'no-cache' });
   } catch (err) {
     throw new Error(`載入 ${path} 失敗：${err.message}`);
   }
@@ -176,15 +177,21 @@ export function getSortedList(arrayName) {
 
 export function assetPath(type, id) {
   const ext = JPG_TYPES.includes(type) ? '.jpg' : PNG_TYPES.includes(type) ? '.png' : '';
-  return `images/${type}/${id}${ext}`;
+  const version = getAssetVersion();
+  const base = `images/${type}/${id}${ext}`;
+  return version ? `${base}?v=${encodeURIComponent(version)}` : base;
 }
 
 export function responsiveAssetPath(type, id, size = 320, format = 'webp') {
-  return `images/${type}/${id}-${size}.${format}`;
+  const version = getAssetVersion();
+  const base = `images/${type}/${id}-${size}.${format}`;
+  return version ? `${base}?v=${encodeURIComponent(version)}` : base;
 }
 
 export function ogPath(type, id) {
-  return `images/og/${type}/${id}.png`;
+  const version = getAssetVersion();
+  const base = `images/og/${type}/${id}.png`;
+  return version ? `${base}?v=${encodeURIComponent(version)}` : base;
 }
 
 export function getShareUrl(type, id) {

@@ -43,11 +43,11 @@ function makeImageBlock(image, altText) {
   const wrapper = el('div', { class: 'gk-about-media' });
   let src = image;
   let srcset = '';
-  const match = image.match(/^images\/([^/]+)\/([^/.]+)\.(jpg|jpeg|png)$/i);
+  const match = image.match(/^images\/([^/]+)\/([^/?#.]+)\.(jpg|jpeg|png)(?:(\?[^#]*)?(#.*)?)?$/i);
   if (match) {
-    const [, type, id] = match;
-    src = `images/${type}/${id}-640.webp`;
-    srcset = `images/${type}/${id}-320.webp 320w, images/${type}/${id}-640.webp 640w, images/${type}/${id}-1024.webp 1024w`;
+    const [, type, id, , query = ''] = match;
+    src = `images/${type}/${id}-640.webp${query}`;
+    srcset = `images/${type}/${id}-320.webp${query} 320w, images/${type}/${id}-640.webp${query} 640w, images/${type}/${id}-1024.webp${query} 1024w`;
   }
   const attrs = {
     src,
