@@ -29,8 +29,8 @@
         },
         "body": {
           "zh-Hant": "DevFest 高雄場是 GDG Kaohsiung 舉辦的軟體技術年會。我們致力邀請外地的技術大神，讓高雄的開發者不用舟車勞頓就能與頂尖講者交流；我們更希望能打造一個專屬「高雄」的技術年會，讓高雄的講者、社群、和社群友善企業有更多交流的機會！",
-          "en": "DevFest Kaohsiung is the annual software conference hosted by the GDG Kaohsiung community. We're committed to bringing top-tier tech speakers to Kaohsiung so local developers can connect with world-class experts without having to travel. We also want to build a tech conference that truly belongs to Kaohsiung — inviting local Kaohsiung speakers to the stage and giving them greater visibility!",
-          "ja": "DevFest 高雄は GDG Kaohsiung コミュニティが主催するソフトウェア年次カンファレンスです。各地のトップエンジニアを高雄にお招きし、高雄のデベロッパーが遠出することなく一流のスピーカーと交流できる機会を提供することを目指しています。さらに、「高雄」ならではのテックカンファレンスを作り、高雄在住のスピーカーに登壇の場を提供し、より多くの露出機会を届けたいと願っています！"
+          "en": "DevFest Kaohsiung is the annual software conference hosted by the GDG Kaohsiung community. We're committed to bringing top-tier tech speakers to Kaohsiung so local developers can connect with world-class experts without having to travel. We also hope to build a tech conference that truly belongs to Kaohsiung, creating more opportunities for local speakers, communities, and community-friendly companies to connect!",
+          "ja": "DevFest 高雄は GDG Kaohsiung コミュニティが主催するソフトウェア年次カンファレンスです。各地のトップエンジニアを高雄にお招きし、高雄のデベロッパーが遠出することなく一流のスピーカーと交流できる機会を提供することを目指しています。さらに、「高雄」ならではのテックカンファレンスを作り、高雄のスピーカー、コミュニティ、そしてコミュニティフレンドリーな企業がより多く交流できる機会を届けたいと願っています！"
         },
         "order": 2,
         "links": [],
@@ -96,8 +96,8 @@
         },
         "body": {
           "zh-Hant": "為了讓活動辦得更好，我們徵求贊助夥伴，有以下四種贊助方案\n\n1. 一心路贊助方案：$5,000 金額贊助（可以打統編）\n2. 二聖路贊助方案：$5,000 等值贈品贊助\n3. 三多路贊助方案：帆布輸出一面（約三千台幣，可以打統編）\n4. 四維路贊助方案：贈品贊助（我們再討論）",
-          "en": "To make the event even better, we are seeking sponsorship partners with the following four sponsorship tiers:\n\n1. Yixin Tier: NT$5,000 monetary sponsorship (official tax invoice provided)\n2. Ercheng Tier: NT$5,000 equivalent in swag/giveaway sponsorship\n3. Sanduo Tier: One canvas banner print (approx. NT$3,000, official tax invoice provided)\n4. Siwei Tier: Custom swag/gift sponsorship (details open for discussion)\n\nSponsor Application Link:\nhttps://forms.gle/VG2BVe9nW8PntyvF6",
-          "ja": "イベントをより素晴らしいものにするため、協賛パートナーを募集しております。以下の4つの協賛プランをご用意しています：\n\n1. 一心（イーシン）プラン：5,000 台湾元の資金協賛（統一編號・公式領収書対応可）\n2. 二聖（アーシェン）プラン：5,000 台湾元相当のノベルティ協賛\n3. 三多（サンドゥオ）プラン：横断幕出力1面（約 3,000 台湾元、統一編號・公式領収書対応可）\n4. 四維（スーウェイ）プラン：ノベルティ協賛（個別相談）\n\n協賛パートナー募集リンク：\nhttps://forms.gle/VG2BVe9nW8PntyvF6"
+          "en": "To make the event even better, we are seeking sponsorship partners with the following four sponsorship tiers:\n\n1. Yixin Tier: NT$5,000 monetary sponsorship (official tax invoice provided)\n2. Ercheng Tier: NT$5,000 equivalent in swag/giveaway sponsorship\n3. Sanduo Tier: One canvas banner print (approx. NT$3,000, official tax invoice provided)\n4. Siwei Tier: Custom swag/gift sponsorship (details open for discussion)",
+          "ja": "イベントをより素晴らしいものにするため、協賛パートナーを募集しております。以下の4つの協賛プランをご用意しています：\n\n1. 一心（イーシン）プラン：5,000 台湾元の資金協賛（統一編號・公式領収書対応可）\n2. 二聖（アーシェン）プラン：5,000 台湾元相当のノベルティ協賛\n3. 三多（サンドゥオ）プラン：横断幕出力1面（約 3,000 台湾元、統一編號・公式領収書対応可）\n4. 四維（スーウェイ）プラン：ノベルティ協賛（個別相談）"
         },
         "order": 6,
         "links": [
@@ -105,7 +105,9 @@
             "platform": "website",
             "url": "https://forms.gle/VG2BVe9nW8PntyvF6",
             "label": {
-              "zh-Hant": "徵求贊助夥伴連結"
+              "zh-Hant": "徵求贊助夥伴連結",
+              "en": "Sponsor Application Link",
+              "ja": "協賛パートナー募集リンク"
             }
           }
         ],
@@ -121,8 +123,8 @@
         },
         "body": {
           "zh-Hant": "今年我們一樣邀請社群共襄盛舉，如果您有意願參與「第二屆技術創作市集」販售您的技術書典，歡迎填表",
-          "en": "This year, we once again invite tech communities to join us! If you are interested in participating in the \"2nd Tech Creation Market\" to sell your technical publications or zines, please fill out the form.\n\nBooth Application Link:\nhttps://forms.gle/nSMiMj7dP32PjCrM8",
-          "ja": "今年もコミュニティの皆様のご参加をお待ちしております。「第 2 回技術創作マーケット」に出展し、技術書典・同人誌を販売したい方は、ぜひフォームよりお申し込みください。\n\n出展応募リンク：\nhttps://forms.gle/nSMiMj7dP32PjCrM8"
+          "en": "This year, we once again invite tech communities to join us! If you are interested in participating in the \"2nd Tech Creation Market\" to sell your technical publications or zines, please fill out the form.",
+          "ja": "今年もコミュニティの皆様のご参加をお待ちしております。「第 2 回技術創作マーケット」に出展し、技術書典・同人誌を販売したい方は、ぜひフォームよりお申し込みください。"
         },
         "order": 7,
         "links": [
@@ -130,7 +132,9 @@
             "platform": "website",
             "url": "https://forms.gle/nSMiMj7dP32PjCrM8",
             "label": {
-              "zh-Hant": "邀請擺攤連結"
+              "zh-Hant": "邀請擺攤連結",
+              "en": "Booth Application Link",
+              "ja": "出展応募リンク"
             }
           }
         ],
@@ -147,8 +151,8 @@
         },
         "body": {
           "zh-Hant": "去年我們在「DevFest 高雄場 X 南臺灣技術社群大聚 2025」成功舉辦「第一屆技術創作市集 TWM #1」，今年我們將再次舉辦「第二屆技術創作市集 TWM #2」\n\n「技術創作市集」發想自日本的「技術書典」，這是一個專為技術社群打造的創作展示平台。透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動。\n\n這是一個專為技術社群打造的創作展示平台，透過實體攤位，創作者可以直接與會眾互動，展示並販售自己的技術創作作品，讓知識與創意在社群中流動交流。\n\n媒介主要是透過製作書本為主，一本書的頁數大約在 15-30 頁左右 (僅為參考，實際並無限制)。我們歡迎所有與資訊技術相關的創作內容",
-          "en": "Inspired by Japan's \"TechBookFest\", this is a creative showcase platform designed specifically for the tech community. Through physical booths, creators can directly interact with attendees to display and sell their technical publications and creations, letting knowledge and creativity flow across the community.\n\nFollowing our successful inaugural edition at \"DevFest Kaohsiung X S. TW Communities Gathering 2025\", we are proud to host it once again this year!",
-          "ja": "日本の「技術書典」に着想を得た、技術コミュニティのための創作展示・頒布プラットフォームです。実際のブースを通じて、クリエイターは参加者と直接交流しながら自身の技術創作物を展示・販売し、知識と創造性をコミュニティ内で循環させます。\n\n昨年の「DevFest 高雄 X 南台湾技術コミュニティ大集合 2025」における第 1 回の成功を受け、今年も再び開催いたします！"
+          "en": "Inspired by Japan's \"TechBookFest\", this is a creative showcase platform designed specifically for the tech community. Through physical booths, creators can directly interact with attendees to display and sell their technical publications and creations, letting knowledge and creativity flow across the community.\n\nThe main medium is self-published books, typically around 15–30 pages each (for reference only; there is no actual limit). We welcome all creative works related to information technology.\n\nFollowing our successful inaugural edition at \"DevFest Kaohsiung X S. TW Communities Gathering 2025\", we are proud to host it once again this year!",
+          "ja": "日本の「技術書典」に着想を得た、技術コミュニティのための創作展示・頒布プラットフォームです。実際のブースを通じて、クリエイターは参加者と直接交流しながら自身の技術創作物を展示・販売し、知識と創造性をコミュニティ内で循環させます。\n\n主な媒体は本の制作で、1 冊あたり 15〜30 ページ程度が目安です（あくまで参考であり、実際の制限はありません）。情報技術に関するあらゆる創作物を歓迎します。\n\n昨年の「DevFest 高雄 X 南台湾技術コミュニティ大集合 2025」における第 1 回の成功を受け、今年も再び開催いたします！"
         },
         "order": 8,
         "links": [],
@@ -210,7 +214,9 @@
             "platform": "website",
             "url": "https://www.gachago.net/zh-tw",
             "label": {
-              "zh-Hant": "搶先體驗 GACHAGO"
+              "zh-Hant": "搶先體驗 GACHAGO",
+              "en": "Try GACHAGO Now",
+              "ja": "GACHAGO を体験する"
             }
           }
         ],
@@ -225,9 +231,9 @@
           "ja": "アフタービュッフェ（自己負担）"
         },
         "body": {
-          "zh-Hant": "議程結束，Buffet 開始！讓我們一起到「高雄商旅 Urban Café 都會美饌」享用美味的 After Buffet，邊吃邊聊邊交流",
-          "en": "Sessions wrap up, buffet begins! Let's head to \"Urban Café at Kaohsiung Business Hotel\" to enjoy a delicious After Buffet dinner — eating, chatting, and connecting together!\n\nNote: For attendees who registered for \"DevFest Kaohsiung + After Buffet (NT$1,200 collected on-site)\", please pay at the check-in desk upon arrival.",
-          "ja": "セッション終了後はビュッフェの始まりです！「高雄商旅 Urban Café 都会美饌」に集まり、美味しいアフタービュッフェを堪能しながら、食事と会話と交流を楽しみましょう！\n\n注：「DevFest 高雄およびアフタービュッフェに参加（現地支払い 1,200 台湾元）」をお申し込みの方は、当日の受付時に現地にてお支払いください。"
+          "zh-Hant": "議程結束，Buffet 開始！讓我們一起到「高雄商旅 Urban Café 都會美饌」享用美味的 After Buffet，邊吃邊聊邊交流\n\n註：After Buffet 需另外報名，報名後請於報到時現場付費。",
+          "en": "Sessions wrap up, buffet begins! Let's head to \"Urban Café at Kaohsiung Business Hotel\" to enjoy a delicious After Buffet dinner — eating, chatting, and connecting together!\n\nNote: The After Buffet requires a separate registration (the registration page is in Chinese). After registering, please pay on-site at check-in.",
+          "ja": "セッション終了後はビュッフェの始まりです！「高雄商旅 Urban Café 都会美饌」に集まり、美味しいアフタービュッフェを堪能しながら、食事と会話と交流を楽しみましょう！\n\n注：アフタービュッフェは別途お申し込みが必要です（申し込みページは中国語です）。お申し込み後、当日の受付にて現地でお支払いください。"
         },
         "order": 12,
         "image": "images/about/after_buffet.jpg",
@@ -236,7 +242,9 @@
             "platform": "website",
             "url": "https://gdg.community.dev/events/details/google-gdg-kaohsiung-presents-devfest-kaohsiung-2026-after-buffet/",
             "label": {
-              "zh-Hant": "點我報名"
+              "zh-Hant": "點我報名",
+              "en": "Register",
+              "ja": "申し込む"
             }
           }
         ],
@@ -251,9 +259,9 @@
           "ja": "地下鉄駅から徒歩すぐの会場"
         },
         "body": {
-          "zh-Hant": "今年我們一樣在交通更便利的「KO-IN 智高點」，距離捷運橘線信義國小站 3 號出口僅需 1 分鐘步程，出站即達！\n\n",
-          "en": "This year, we are once again hosting at the highly accessible \"KO-IN Smart Innovation Hub\", just a 1-minute walk from Exit 3 of the MRT Orange Line Sinyi Elementary School Station — right outside the exit!\n\nGoogle Maps: https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
-          "ja": "今年も交通アクセスの良い「KO-IN 智高点」で開催します。高雄メトロ（MRT）オレンジ線「信義國小駅」3 番出口から徒歩わずか 1 分、駅を出てすぐの好立地です！\n\nGoogle マップ：https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7"
+          "zh-Hant": "今年我們一樣在交通更便利的「KO-IN 智高點」，距離捷運橘線信義國小站 3 號出口僅需 1 分鐘步程，出站即達！",
+          "en": "This year, we are once again hosting at the highly accessible \"KO-IN Smart Innovation Hub\", just a 1-minute walk from Exit 3 of the MRT Orange Line Sinyi Elementary School Station — right outside the exit!",
+          "ja": "今年も交通アクセスの良い「KO-IN 智高点」で開催します。高雄メトロ（MRT）オレンジ線「信義国小駅」3 番出口から徒歩わずか 1 分、駅を出てすぐの好立地です！"
         },
         "order": 13,
         "links": [
@@ -261,7 +269,9 @@
             "platform": "website",
             "url": "https://maps.app.goo.gl/NSmtz1yTWxeH5LQi7",
             "label": {
-              "zh-Hant": "Google Map"
+              "zh-Hant": "Google Map",
+              "en": "Google Maps",
+              "ja": "Google マップ"
             }
           }
         ],
@@ -277,8 +287,8 @@
         },
         "body": {
           "zh-Hant": "所有參與者皆需遵守 GDG 活動行為準則，以確保所有人都能在一個安全友善的環境中學習與交流。",
-          "en": "All participants are required to adhere to the GDG Code of Conduct to ensure a safe, welcoming, and inclusive environment for everyone to learn and connect.\n\nFor details, please visit: https://gdg.tw/code_of_conduct/",
-          "ja": "すべての参加者は、誰もが安心・安全で心地よい環境で学び交流できるよう、GDG 行動規範（Code of Conduct）を遵守する必要があります。\n\n詳細はこちらをご参照ください：https://gdg.tw/code_of_conduct/"
+          "en": "All participants are required to adhere to the GDG Code of Conduct to ensure a safe, welcoming, and inclusive environment for everyone to learn and connect.",
+          "ja": "すべての参加者は、誰もが安心・安全で心地よい環境で学び交流できるよう、GDG 行動規範（Code of Conduct）を遵守する必要があります。"
         },
         "order": 14,
         "links": [
@@ -286,7 +296,9 @@
             "platform": "website",
             "url": "https://gdg.tw/code_of_conduct/",
             "label": {
-              "zh-Hant": "行為準則"
+              "zh-Hant": "行為準則",
+              "en": "Code of Conduct",
+              "ja": "行動規範"
             }
           }
         ],
@@ -302,8 +314,8 @@
         },
         "body": {
           "zh-Hant": "我們尊重並保護您的個人隱私，詳細內容請參閱",
-          "en": "We respect and protect your personal privacy.\n\nFor details, please refer to: https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
-          "ja": "私たちは皆様のプライバシーを尊重し、適切に保護いたします。\n\n詳細はこちらをご参照ください：https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4"
+          "en": "We respect and protect your personal privacy. For details, please refer to the link below.",
+          "ja": "私たちは皆様のプライバシーを尊重し、適切に保護いたします。詳細は下記リンクをご参照ください。"
         },
         "order": 15,
         "links": [
@@ -311,7 +323,9 @@
             "platform": "website",
             "url": "https://docs.google.com/document/d/1_rTlfAkLMl5ZfFwxZrNPhwzGQ5xU8g96bXyKZ3siW-4",
             "label": {
-              "zh-Hant": "蒐集個人資料告知事項暨個人資料提供同意聲明"
+              "zh-Hant": "蒐集個人資料告知事項暨個人資料提供同意聲明",
+              "en": "Personal Data Collection Notice and Privacy Consent Statement",
+              "ja": "個人情報の収集に関する告知および同意書"
             }
           }
         ],
@@ -384,17 +398,17 @@
       },
       "org": {
         "zh-Hant": "精誠集團",
-        "en": "精誠集團",
-        "ja": "精誠集團"
+        "en": "SYSTEX Group",
+        "ja": "SYSTEX グループ"
       },
       "title": {
         "zh-Hant": "技術處長",
-        "en": "技術處長",
-        "ja": "技術處長"
+        "en": "Director of Technology",
+        "ja": "技術部長"
       },
       "bio": {
         "zh-Hant": "現任精誠集團技術處長，創立 I.D.E.A. 團隊並率先導入 FDE（前線部署工程）與 AI 驅動工作流，致力於 UI/UX 策略與系統架構的深度整合。曾創立 Able Studio（獲 2020 德國國家設計獎），帶領團隊主持千萬級「勞保局 e 化服務系統」重構。具備豐富跨領域實戰經驗，涵蓋金融交易系統、半導體供應鏈 CPQ 平台、零售與娛樂 POS/ERP/SCO 系統、FMCG 食品巨頭經銷數據整合，以及製造業 ERP 升級 POC 等高難度專案。獲選為 Gamma 全球創始品牌大使，相信透過深刻洞察與高確定性架構執行力，能持續為企業創造成長。",
-        "en": "",
+        "en": "Director of Technology at SYSTEX Group and founder of the I.D.E.A. team, Steve pioneered the adoption of FDE (Forward Deployed Engineering) and AI-driven workflows, with a focus on deeply integrating UI/UX strategy and system architecture. Steve previously founded Able Studio (2020 German Design Award winner) and led the NT$10-million-scale rebuild of the Bureau of Labor Insurance e-service system. Steve brings extensive cross-domain experience in demanding projects, including financial trading systems, a semiconductor supply-chain CPQ platform, retail and entertainment POS/ERP/SCO systems, distribution data integration for a leading FMCG food company, and a manufacturing ERP upgrade POC. Selected as a Gamma Global Founding Brand Ambassador, Steve believes that deep insight combined with high-certainty architectural execution can continuously drive business growth.",
         "ja": ""
       },
       "sessionIds": ["panel_7_1"],
@@ -522,17 +536,17 @@
       },
       "org": {
         "zh-Hant": "高雄榮總",
-        "en": "高雄榮總",
-        "ja": "高雄榮總"
+        "en": "Kaohsiung Veterans General Hospital",
+        "ja": "高雄栄民総医院"
       },
       "title": {
         "zh-Hant": "主治醫師",
-        "en": "主治醫師",
-        "ja": "主治醫師"
+        "en": "Attending Physician",
+        "ja": "主治医"
       },
       "bio": {
         "zh-Hant": "我是黃士峯，目前在高雄榮總大腸直腸外科擔任主治醫師，同時也是成功大學資訊工程系醫學資訊組的博士生。臨床上主要做機器人微創手術，研究方向是把手術影像、術中資料跟臨床結果結合起來做預測模型。我把自己定位成 surgical data scientist，希望讓外科的經驗不只留在刀房裡，而是能變成可以被驗證、被複製的資料與模型。",
-        "en": "",
+        "en": "I'm Fredric Huang, an attending physician in the Division of Colorectal Surgery at Kaohsiung Veterans General Hospital and a PhD student in the Medical Informatics group of the Department of Computer Science and Information Engineering at National Cheng Kung University. Clinically, I focus on robotic minimally invasive surgery; my research combines surgical video, intraoperative data, and clinical outcomes to build predictive models. I see myself as a surgical data scientist, hoping that surgical experience will not stay inside the operating room but become data and models that can be validated and reproduced.",
         "ja": ""
       },
       "sessionIds": ["session_2_3"],
@@ -605,8 +619,8 @@
       },
       "title": {
         "zh-Hant": "Founder / 創辦人",
-        "en": "Founder / 創辦人",
-        "ja": "Founder / 創辦人"
+        "en": "Founder",
+        "ja": "創業者"
       },
       "bio": {
         "zh-Hant": "Arturs Vancans 是科技創業者，也是高雄 Second Space 的創辦人。專注在 AI、軟體與自動化，只有一個執念：讓小團隊也能做到大團隊的戰鬥力。",
@@ -689,7 +703,7 @@
       },
       "bio": {
         "zh-Hant": "現任企業 DevOps / SRE 工程師，熱衷鑽研前瞻技術與自動化實踐。\n\n開發背景深厚，具備從 App 原生開發到容器化架構的完整資歷。\n\n同時也是社群技術推廣者，不定時會在各社群出沒，喜歡玩一些有意思的東西。",
-        "en": "",
+        "en": "An enterprise DevOps / SRE engineer, passionate about exploring emerging technologies and automation in practice.\n\nWith a strong development background, Johnny has hands-on experience ranging from native app development to containerized architectures.\n\nAlso a tech community advocate who pops up at community events from time to time and loves playing with interesting things.",
         "ja": ""
       },
       "sessionIds": ["session_5_2"],
@@ -832,7 +846,7 @@
       },
       "bio": {
         "zh-Hant": "目前於高雄的網頁設計師，參與「診所通」網頁與 APP 的開發，以及多款系統後台介面製作。個人專案的部分，目前持續製作 3D 互動的 GACHAGO 抽獎網站、LINE 群組機器人以及開源字體「饅頭黑體」等。",
-        "en": "",
+        "en": "A web designer based in Kaohsiung who has worked on the website and app for the clinic platform 診所通, as well as admin interfaces for a range of systems. Ongoing personal projects include GACHAGO, a 3D interactive lucky-draw website; a LINE group bot; and the open-source typeface Mantou Sans (饅頭黑體).",
         "ja": ""
       },
       "sessionIds": ["panel_7_1"],
@@ -860,7 +874,7 @@
       },
       "bio": {
         "zh-Hant": "喜歡電腦、也愛寫程式，去年還在手作，今年風雲變色。變化很大，但也有更多的東西等著去學習。\n前幾週參加了神秘活動代班 AI 警察，事後卻來介紹 AI。\n請不要告訴之前那個活動的相關人員。🫢",
-        "en": "",
+        "en": "I love computers and writing code. Last year I was still handcrafting everything; this year, the tables turned. A lot has changed, but there is also so much more waiting to be learned.\nA few weeks ago I filled in as an \"AI cop\" at a mysterious event, and now I am here to introduce AI.\nPlease don't tell anyone from that event. 🫢",
         "ja": ""
       },
       "sessionIds": ["session_3_1"],
@@ -911,12 +925,12 @@
       },
       "title": {
         "zh-Hant": "理事長",
-        "en": "理事長",
+        "en": "Chairperson",
         "ja": "理事長"
       },
       "bio": {
         "zh-Hant": "一位苦苦跟隨在AI進步的浪潮下為罕病身障家庭傳授AI工具能力的講師。 \n\n南台/大仁/輔英科大業界講師 \n\n生命分享教育課程>880場 \n\n勞動部職訓AI課程講師 \n\n屏果新報環宇時報記者 \n\n創業輔導顧問",
-        "en": "",
+        "en": "An instructor racing to keep up with the wave of AI progress, teaching AI tool skills to families affected by rare diseases and disabilities.\n\nIndustry lecturer at Southern Taiwan University of Science and Technology, Tajen University, and Fooyin University\n\n880+ life-sharing education sessions\n\nAI course instructor for Ministry of Labor vocational training programs\n\nReporter, 屏果新報環宇時報\n\nStartup mentoring consultant",
         "ja": ""
       },
       "sessionIds": ["session_3_3"],
@@ -952,7 +966,7 @@
       },
       "bio": {
         "zh-Hant": "一位愛亂玩 AI 各式工具的腎臟科醫師，透過 AI 的幫助實現腦中各式的胡思亂想",
-        "en": "",
+        "en": "A nephrologist who loves tinkering with all kinds of AI tools, using AI to bring all sorts of wild ideas to life.",
         "ja": ""
       },
       "sessionIds": ["session_1_1"],
@@ -978,13 +992,13 @@
       },
       "org": {
         "zh-Hant": "高雄市立中醫醫院",
-        "en": "高雄市立中醫醫院",
-        "ja": "高雄市立中醫醫院"
+        "en": "Kaohsiung Municipal Chinese Medicine Hospital",
+        "ja": "高雄市立中医医院"
       },
       "title": {
         "zh-Hant": "主治醫師",
-        "en": "主治醫師",
-        "ja": "主治醫師"
+        "en": "Attending Physician",
+        "ja": "主治医"
       },
       "bio": {
         "zh-Hant": "高雄市立中醫醫院 主治醫師\n\n喜歡研究 AI、程式設計與醫療資訊工具，並將這些技術實際應用在病歷生成、醫療資料整理與臨床工作流程改善上。關注的並不是「AI 能否取代醫師」，而是第一線醫療人員能否利用 AI 與軟體，重新設計真正符合臨床需求的醫療工具。",
@@ -1111,12 +1125,12 @@
       "trackId": "track_2",
       "title": {
         "zh-Hant": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事",
-        "en": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事",
+        "en": "From Clinical Pain Points to a Chrome Extension: How Physicians Built \"Better NHI MediCloud 2.0\"",
         "ja": "從臨床痛點到 Chrome Extension：醫師打造「更好的健保雲端 2.0」的實戰故事"
       },
       "abstract": {
         "zh-Hant": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。",
-        "en": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。",
+        "en": "Starting from the real pain points of frontline clinicians, this talk shows how we used a Chrome extension to reorganize data from the NHI MediCloud System and build \"Better NHI MediCloud 2.0\", a tool that fits clinical workflows far better.\n\nAlong the way, we went from simple ad-hoc collaboration to GitHub and AI-assisted development, and gradually faced challenges in feature expansion, team collaboration, testing, refactoring, and maintainability. This is not just a story about building a tool; it is also the hands-on journey of physicians without an engineering background going from system users to tool builders.",
         "ja": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。"
       },
       "tags": ["Chrome Extension", "Vibe Coding", "Healthcare"],
@@ -1191,12 +1205,12 @@
       "trackId": "track_2",
       "title": {
         "zh-Hant": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」",
-        "en": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」",
+        "en": "From Aid Recipients to Enablers: How AI Is Reshaping \"Digital Equity\" in the Social Safety Net",
         "ja": "從受助者到賦能者：AI 如何重塑社會安全網的「數位平權」"
       },
       "abstract": {
         "zh-Hant": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。",
-        "en": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。",
+        "en": "As generative AI sweeps across every industry, the social welfare system is undergoing a qualitative shift from \"passive relief\" to \"active empowerment.\" Grounded in local frontline practice, this talk shares cases of how generative AI toolchains have helped people with rare diseases and disabilities take on a wide range of professional roles, work independently, and even become \"digital instructors.\"\nDrawing on frontline observations, the speaker will also walk developers through the real challenges of putting technology into practice: the lack of accessible human-computer interfaces, the hardware gap in edge devices, and the fraud and security threats brought by generative technology. The talk aims to inspire the local developer community to rethink the social value and impact of technology through the lens of Inclusive Design.",
         "ja": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。"
       },
       "tags": ["數位平權", "AI機會", "主動賦能"],
@@ -1271,12 +1285,12 @@
       "trackId": "track_2",
       "title": {
         "zh-Hant": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具",
-        "en": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具",
+        "en": "When API Gateway Meets MCP: Turning Existing Enterprise APIs into Tools for AI Agents",
         "ja": "當 API Gateway 遇上 MCP：讓企業既有 API 變成 AI Agent 的工具"
       },
       "abstract": {
         "zh-Hant": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。",
-        "en": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。",
+        "en": "As AI agents move from \"answering questions\" to \"actually executing tasks,\" enabling them to use existing enterprise systems safely and effectively has become a new integration challenge. Many enterprises have already built mature service architectures on REST APIs and API gateways. If adopting AI agents means developing and maintaining a large number of new MCP servers, it not only raises development costs but may also force existing authentication, access control, rate limiting, and auditing mechanisms to be rebuilt from scratch.\n\nAs MCP becomes a key interface for AI agents to access external tools and services, API gateways are taking on a new role: not just managing APIs, but serving as the bridge between existing services and AI agents. Starting from common enterprise REST API architectures, this talk shows how to use an API gateway to turn existing APIs into MCP tools that agents can discover and call, and explores the practical issues that come up during adoption, including authentication, authorization, rate limiting, logging, and tool discovery.",
         "ja": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。"
       },
       "tags": ["API Gateway", "MCP", "Cloud"],
@@ -1352,12 +1366,12 @@
       "title": {
         "zh-Hant": "當設計遇到 AI — 末日崛起",
         "en": "When Design Meets AI: Rise of Doomsday",
-        "ja": "デザインがAIに出会う時：終末の台頭"
+        "ja": "デザインがAIに出会う時：終末の幕開け"
       },
       "abstract": {
         "zh-Hant": "座談由饅頭、設計師勞哥、史蒂夫•葉共同帶來「當設計遇到 AI — 末日崛起」探討。",
         "en": "Panel discussion by Mantou, maylogger, and Steve Yeh on \"When Design Meets AI: Rise of Doomsday\".",
-        "ja": "饅頭、設計師勞哥、Steve Yehによる「デザインがAIに出会う時：終末の台頭」についてのパネルディスカッション。"
+        "ja": "Mantou、maylogger、Steve Yehによる「デザインがAIに出会う時：終末の幕開け」についてのパネルディスカッション。"
       },
       "tags": ["AI", "設計", "FDE", "座談"],
       "speakerIds": ["mantou", "maylogger", "steve_yeh"],
@@ -1378,7 +1392,7 @@
       "abstract": {
         "zh-Hant": "活動結束感謝。",
         "en": "Closing remarks and acknowledgments.",
-        "ja": "終わりの挨拶と感謝。"
+        "ja": "閉会の挨拶と謝辞。"
       },
       "tags": ["Closing"],
       "speakerIds": [],
@@ -1397,10 +1411,14 @@
         "ja": "Andy"
       },
       "role": {
-        "zh-Hant": "總召"
+        "zh-Hant": "總召",
+        "en": "Lead Organizer",
+        "ja": "リードオーガナイザー"
       },
       "bio": {
-        "zh-Hant": "GDG Kaohsiung 組織者\n目前應該還是個安卓工程師...吧"
+        "zh-Hant": "GDG Kaohsiung 組織者\n目前應該還是個安卓工程師...吧",
+        "en": "GDG Kaohsiung Organizer\nProbably still an Android engineer... I think?",
+        "ja": "GDG Kaohsiung オーガナイザー\nたぶん今もまだ Android エンジニア……のはず"
       },
       "links": [
         {

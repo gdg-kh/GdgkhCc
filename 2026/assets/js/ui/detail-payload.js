@@ -50,14 +50,14 @@ export function buildSpeakerPayload(speaker) {
     const ui = config && config.ui;
     const timeRange = formatRange(session.start, session.end);
     if (timeRange) {
-      meta.push({ label: (ui && ui.timeLabel) || '時間', value: timeRange });
+      meta.push({ label: t(ui && ui.timeLabel) || '時間', value: timeRange });
     }
     const trackObj = getTrackById(session.trackId);
     const trackName = t(trackObj && trackObj.name);
     const venue = t(config && config.site && config.site.venue);
     if (trackName || venue) {
       const venueValue = [trackName, venue].filter((v) => v && v.length > 0).join(' - ');
-      meta.push({ label: (ui && ui.venueLabel) || '會場', value: venueValue });
+      meta.push({ label: t(ui && ui.venueLabel) || '會場', value: venueValue });
     }
     extraNode = calendarButtons(session, 'modal');
   }

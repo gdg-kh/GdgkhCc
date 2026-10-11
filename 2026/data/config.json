@@ -144,7 +144,7 @@
       "label": {
         "zh-Hant": "議程時間表",
         "en": "Agenda",
-        "ja": "日程"
+        "ja": "タイムテーブル"
       }
     },
     {
@@ -185,7 +185,7 @@
       "label": {
         "zh-Hant": "特別感謝",
         "en": "Special Thanks",
-        "ja": "協賛"
+        "ja": "スペシャルサンクス"
       }
     },
     {
@@ -236,7 +236,7 @@
       "label": {
         "zh-Hant": "取得折扣",
         "en": "Get Discount",
-        "ja": "割引を取得"
+        "ja": "割引を申請"
       }
     }
   ],
@@ -260,6 +260,21 @@
       "zh-Hant": "議程介紹",
       "en": "Abstract",
       "ja": "セッション概要"
+    },
+    "agendaTitle": {
+      "zh-Hant": "議程",
+      "en": "Agenda",
+      "ja": "タイムテーブル"
+    },
+    "timeLabel": {
+      "zh-Hant": "時間",
+      "en": "Time",
+      "ja": "時間"
+    },
+    "venueLabel": {
+      "zh-Hant": "會場",
+      "en": "Venue",
+      "ja": "会場"
     },
     "groupLabel": {
       "zh-Hant": "分類",
@@ -299,7 +314,7 @@
     "discountCta": {
       "zh-Hant": "取得折扣",
       "en": "Get Discount",
-      "ja": "割引を取得"
+      "ja": "割引を申請"
     },
     "speakerNumberPrefix": {
       "zh-Hant": "號",
@@ -429,7 +444,7 @@
     "sponsorMarqueeTitle": {
       "zh-Hant": "特別感謝",
       "en": "Special Thanks",
-      "ja": "協賛"
+      "ja": "スペシャルサンクス"
     },
     "ballotHeaderText": {
       "zh-Hant": "GDG Kaohsiung 感謝票",
