@@ -480,6 +480,7 @@ function handleAutoOpen() {
   if (!payload) {
     return;
   }
+  window.__GK_AUTO_OPEN = null;
   track('share_page_entry', { type, id });
   openModal(payload);
 }
@@ -547,29 +548,108 @@ function registerServiceWorker() {
       window.addEventListener('load', register);
     }
 
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.ready.then((reg) => reg.update()).catch(() => {});
-        }
-        loadData()
-          .then(() => {
-            renderAll();
-            initNavOverflow();
-          })
-          .catch(() => {});
-      }
-    });
-
     navigator.serviceWorker.addEventListener('controllerchange', () => {
-      loadData()
+      loadData({ forceRefresh: true })
         .then(() => {
           renderAll();
           initNavOverflow();
+          handleAutoOpen();
         })
         .catch(() => {});
     });
   }
+}
+
+let appBootstrapped = false;
+
+function initLifecycleListeners() {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then((reg) => reg.update()).catch(() => {});
+      }
+      if (!appBootstrapped) {
+        bootstrap();
+        return;
+      }
+      const currentContent = getContent();
+      const currentSessions = currentContent && Array.isArray(currentContent.sessions) ? currentContent.sessions : [];
+      const prevSessionsCount = currentSessions.length;
+      const needsForce = prevSessionsCount === 0;
+      const refreshPromise = needsForce ? loadData({ forceRefresh: true }) : loadData();
+      refreshPromise
+        .then((refreshed) => {
+          const sessions =
+            refreshed && refreshed.content && Array.isArray(refreshed.content.sessions)
+              ? refreshed.content.sessions
+              : [];
+          if ((needsForce && sessions.length > 0) || sessions.length !== prevSessionsCount) {
+            renderAll();
+            initNavOverflow();
+            handleAutoOpen();
+          }
+        })
+        .catch(() => {});
+    }
+  });
+
+  window.addEventListener('online', () => {
+    if (!appBootstrapped) {
+      bootstrap();
+      return;
+    }
+    const currentContent = getContent();
+    const currentSessions = currentContent && Array.isArray(currentContent.sessions) ? currentContent.sessions : [];
+    const prevSessionsCount = currentSessions.length;
+    const needsForce = prevSessionsCount === 0;
+    const refreshPromise = needsForce ? loadData({ forceRefresh: true }) : loadData();
+    refreshPromise
+      .then((refreshed) => {
+        const sessions =
+          refreshed && refreshed.content && Array.isArray(refreshed.content.sessions) ? refreshed.content.sessions : [];
+        if ((needsForce && sessions.length > 0) || sessions.length !== prevSessionsCount) {
+          renderAll();
+          initNavOverflow();
+          handleAutoOpen();
+        }
+      })
+      .catch((err) => {
+        console.warn('[main] 網路復原重載失敗：', err);
+      });
+  });
+}
+
+let hasRetriedEmptyData = false;
+
+function scheduleEmptyDataRetry(initialContent) {
+  if (hasRetriedEmptyData) {
+    return;
+  }
+  const initialSessions = initialContent && Array.isArray(initialContent.sessions) ? initialContent.sessions : [];
+  if (initialSessions.length > 0) {
+    return;
+  }
+
+  hasRetriedEmptyData = true;
+  window.setTimeout(async () => {
+    const currentContent = getContent();
+    const currentSessions = currentContent && Array.isArray(currentContent.sessions) ? currentContent.sessions : [];
+    if (currentSessions.length > 0) {
+      return;
+    }
+    try {
+      const refreshed = await loadData({ forceRefresh: true });
+      const newSessions =
+        refreshed && refreshed.content && Array.isArray(refreshed.content.sessions) ? refreshed.content.sessions : [];
+      if (newSessions.length > 0) {
+        renderAll();
+        initNavOverflow();
+        handleAutoOpen();
+      }
+    } catch (err) {
+      console.warn('[main] 空資料靜默重試失敗：', err);
+    }
+  }, 1500);
 }
 
 async function bootstrap() {
@@ -581,6 +661,7 @@ async function bootstrap() {
     renderLoadError(err);
     return;
   }
+  appBootstrapped = true;
   initI18n(data.config && data.config.i18n);
   initAnalytics(data.config && data.config.analytics && data.config.analytics.ga4Id);
 
@@ -592,10 +673,13 @@ async function bootstrap() {
   handleAutoOpen();
   registerServiceWorker();
 
+  scheduleEmptyDataRetry(data.content);
+
   window.addEventListener('gk:langchange', () => {
     renderAll();
     initNavOverflow();
   });
 }
 
+initLifecycleListeners();
 bootstrap();

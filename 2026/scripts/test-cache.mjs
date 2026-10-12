@@ -37,10 +37,16 @@ test('CACHE_VERSION 已升級至 gk-2026-v5 以上以廢除舊有快取', () => 
 test('資料 (JSON) 請求採用 Network-First 策略以確保連線時獲得最新資料', () => {
   const isDataIdx = swContent.indexOf('資料檔案 (JSON)');
   assert.ok(isDataIdx !== -1, '必須存在資料檔案區塊');
-  const dataBlock = swContent.slice(isDataIdx, isDataIdx + 1200);
+  const dataBlock = swContent.slice(isDataIdx, isDataIdx + 2500);
   assert.ok(dataBlock.includes('Network-First'), '資料區塊應註明 Network-First 策略');
   assert.ok(dataBlock.includes('const networkResponse = await fetch(request);'), '資料檔案應優先從網路拉取最新內容');
   assert.ok(dataBlock.includes('ignoreSearch: true'), '資料檔案離線時應支援 ignoreSearch 降級');
+});
+
+test('資料 (JSON) 請求遭遇破快取時間戳時，清理參數並同步更新標準快取路徑避免快取污染', () => {
+  assert.ok(swContent.includes("cleanUrl.searchParams.delete('_t')"), 'sw.js 應自快取 URL 移除 _t');
+  assert.ok(swContent.includes("cleanUrl.searchParams.delete('nocache')"), 'sw.js 應自快取 URL 移除 nocache');
+  assert.ok(swContent.includes('cleanUrl.origin + cleanUrl.pathname'), 'sw.js 應同步更新不帶 query 的標準快取路徑');
 });
 
 test('導航請求 (HTML) 採用 Network-First 策略以確保重新整理載入最新頁面', () => {
@@ -99,6 +105,11 @@ test('getAssetVersion 於 meta 缺失時仍能安全提供預設版本防呆', (
   );
 });
 
+test('fetchJson 與 loadData 支援 forceRefresh 選項以 _t 時間戳強制穿透快取', () => {
+  assert.ok(storeContent.includes('options.forceRefresh'), 'fetchJson 應檢查 options.forceRefresh');
+  assert.ok(storeContent.includes('&_t=${Date.now()}'), 'forceRefresh 時應附加 _t 時間戳');
+});
+
 console.warn('\n=== 3. 響應式圖片解析與查詢參數保留驗證 (card.js / detail-modal.js / about.js / ballot-card.js) ===');
 
 const cardContent = fs.readFileSync(path.join(SITE, 'assets', 'js', 'ui', 'card.js'), 'utf8');
@@ -107,37 +118,25 @@ const aboutContent = fs.readFileSync(path.join(SITE, 'assets', 'js', 'sections',
 const ballotContent = fs.readFileSync(path.join(SITE, 'assets', 'js', 'ui', 'ballot-card.js'), 'utf8');
 
 test('card.js makePersonImage 正確保留圖片版本查詢參數至 webp 與 srcset', () => {
+  assert.ok(cardContent.includes('images/${type}/${id}-320.webp${query}'), 'makePersonImage 應保留 query 至 320.webp');
   assert.ok(
-    cardContent.includes("images/${type}/${id}-320.webp${query}"),
-    'makePersonImage 應保留 query 至 320.webp'
-  );
-  assert.ok(
-    cardContent.includes("images/${type}/${id}-160.webp${query} 160w"),
+    cardContent.includes('images/${type}/${id}-160.webp${query} 160w'),
     'makePersonImage 應保留 query 至 srcset'
   );
 });
 
 test('card.js 議程講者頭像正確保留圖片版本查詢參數', () => {
-  assert.ok(
-    cardContent.includes("images/${type}/${id}-64.webp${query}"),
-    '議程講者小頭像應保留 query 至 64.webp'
-  );
+  assert.ok(cardContent.includes('images/${type}/${id}-64.webp${query}'), '議程講者小頭像應保留 query 至 64.webp');
 });
 
 test('detail-modal.js renderMedia 正確保留圖片版本查詢參數至 640.webp 與 srcset', () => {
-  assert.ok(
-    modalContent.includes("images/${type}/${id}-640.webp${query}"),
-    'detail-modal 應保留 query 至 640.webp'
-  );
-  assert.ok(
-    modalContent.includes("images/${type}/${id}-320.webp${query} 320w"),
-    'detail-modal 應保留 query 至 srcset'
-  );
+  assert.ok(modalContent.includes('images/${type}/${id}-640.webp${query}'), 'detail-modal 應保留 query 至 640.webp');
+  assert.ok(modalContent.includes('images/${type}/${id}-320.webp${query} 320w'), 'detail-modal 應保留 query 至 srcset');
 });
 
 test('about.js 與 ballot-card.js 正確保留圖片版本查詢參數', () => {
-  assert.ok(aboutContent.includes("images/${type}/${id}-640.webp${query}"), 'about.js 應保留 query');
-  assert.ok(ballotContent.includes("images/${type}/${id}-160.webp${query}"), 'ballot-card.js 應保留 query');
+  assert.ok(aboutContent.includes('images/${type}/${id}-640.webp${query}'), 'about.js 應保留 query');
+  assert.ok(ballotContent.includes('images/${type}/${id}-160.webp${query}'), 'ballot-card.js 應保留 query');
 });
 
 console.warn('\n=== 4. 主頁與範本檔快取標頭 (Cache-Control & version) ===');
@@ -214,6 +213,28 @@ test('監聽 controllerchange 自動確保新版 Service Worker 啟用時更新�
     mainContent.includes("navigator.serviceWorker.addEventListener('controllerchange'"),
     '必須監聽 controllerchange'
   );
+  assert.ok(
+    mainContent.includes("controllerchange', () => {\n      loadData({ forceRefresh: true })"),
+    '新版 SW 啟用時應強制穿透快取更新資料'
+  );
+});
+
+test('監聽 online 事件確保網路延遲復原時自動重載最新資料', () => {
+  assert.ok(mainContent.includes("window.addEventListener('online'"), '必須監聽 online 事件');
+});
+
+test('handleAutoOpen 執行成功後清空 window.__GK_AUTO_OPEN 避免重複彈窗與重複追蹤', () => {
+  assert.ok(
+    mainContent.includes('window.__GK_AUTO_OPEN = null;'),
+    'handleAutoOpen 成功開啟彈窗後應重設 window.__GK_AUTO_OPEN'
+  );
+});
+
+test('開站具備空資料靜默重試機制 (scheduleEmptyDataRetry) 於 1.5 秒後背景重試並動態刷新', () => {
+  assert.ok(mainContent.includes('scheduleEmptyDataRetry'), 'main.js 必須宣告 scheduleEmptyDataRetry');
+  assert.ok(mainContent.includes('hasRetriedEmptyData'), '重試機制必須包含單次重試守衛避免無窮迴圈');
+  assert.ok(mainContent.includes('loadData({ forceRefresh: true })'), '重試時應強制穿透快取');
+  assert.ok(mainContent.includes('1500'), '應設定 1.5 秒延遲以等待連線恢復或 SW 更新');
 });
 
 console.warn('\n=== 6. 2025 動態內容與範本快取驗證 ===');

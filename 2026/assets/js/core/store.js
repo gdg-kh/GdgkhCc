@@ -52,10 +52,13 @@ function getAssetVersion() {
   return null;
 }
 
-async function fetchJson(path) {
+async function fetchJson(path, options = {}) {
   const version = getAssetVersion() || '2026.10.10';
   const sep = path.includes('?') ? '&' : '?';
-  const url = `${path}${sep}v=${encodeURIComponent(version)}`;
+  let url = `${path}${sep}v=${encodeURIComponent(version)}`;
+  if (options && options.forceRefresh) {
+    url += `&_t=${Date.now()}`;
+  }
   let response;
   try {
     response = await fetch(url, { cache: 'no-cache' });
@@ -72,8 +75,11 @@ async function fetchJson(path) {
   }
 }
 
-export async function loadData() {
-  const [config, content] = await Promise.all([fetchJson('data/config.json'), fetchJson('data/content.json')]);
+export async function loadData(options) {
+  const [config, content] = await Promise.all([
+    fetchJson('data/config.json', options),
+    fetchJson('data/content.json', options),
+  ]);
   configData = config;
   contentData = content;
   buildIndexes(content);
