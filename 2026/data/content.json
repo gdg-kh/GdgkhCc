@@ -1479,6 +1479,431 @@
         }
       ],
       "order": 1
+    },
+    {
+      "id": "leigh",
+      "name": {
+        "zh-Hant": "森麟",
+        "en": "Leigh",
+        "ja": "Leigh"
+      },
+      "role": {
+        "zh-Hant": "報到桌解說",
+        "en": "Registration Desk Guide",
+        "ja": "受付案内"
+      },
+      "bio": {
+        "zh-Hant": "閱讀與編織狂熱者。",
+        "en": "Falling in love with books and all things creative.",
+        "ja": "読書と編み物に夢中なクリエイター。"
+      },
+      "links": [
+        {
+          "platform": "youtube",
+          "url": "https://youtube.com/@readtree_du?si=T0mAceGV6IJM8tXs",
+          "label": {
+            "zh-Hant": "YouTube"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://facebook.com/ReadTreeDu",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "brook",
+      "name": {
+        "zh-Hant": "布魯克",
+        "en": "Brook",
+        "ja": "ブルック"
+      },
+      "role": {
+        "zh-Hant": "報到桌解說",
+        "en": "Registration Desk Guide",
+        "ja": "受付案内"
+      },
+      "bio": {
+        "zh-Hant": "前端工程師，開發者 Buffet 成員，喜歡交朋友但不擅長認臉",
+        "en": "Frontend Engineer and a member of Developer Buffet. I enjoy making friends but am bad at recognizing faces.",
+        "ja": "フロントエンドエンジニア であり、開発者ビュッフェ（Developer Buffet）のメンバー。人と交流するのは好きですが、顔を覚えるのが苦手です。"
+      },
+      "links": [],
+      "order": 3
+    },
+    {
+      "id": "mac",
+      "name": {
+        "zh-Hant": "Mac",
+        "en": "Mac",
+        "ja": "マク"
+      },
+      "role": {
+        "zh-Hant": "報到桌解說",
+        "en": "Registration Desk Guide",
+        "ja": "受付案内"
+      },
+      "bio": {
+        "zh-Hant": "RWD - Response Wow Developer",
+        "en": "RWD - Response Wow Developer",
+        "ja": "マクです"
+      },
+      "links": [],
+      "order": 4
+    },
+    {
+      "id": "a_ju",
+      "name": {
+        "zh-Hant": "阿朱",
+        "en": "A Ju",
+        "ja": "A Ju"
+      },
+      "role": {
+        "zh-Hant": "報到桌解說",
+        "en": "Registration Desk Guide",
+        "ja": "受付案内"
+      },
+      "bio": {
+        "zh-Hant": "你好你好👋",
+        "en": "Hello hello 👋",
+        "ja": "こんにちは👋"
+      },
+      "links": [],
+      "order": 5
+    },
+    {
+      "id": "corey",
+      "name": {
+        "zh-Hant": "種子",
+        "en": "Corey",
+        "ja": "コリー"
+      },
+      "role": {
+        "zh-Hant": "影像紀錄者",
+        "en": "Photographer",
+        "ja": "フォトグラファー"
+      },
+      "bio": {
+        "zh-Hant": "Hello 大家安安，我是 Corey，也可以叫我種子，目前住高雄，主要做 System Analyst。以前在新創產業當了八年一條龍網站工程師，從 MIS + Programmer 一路摸到 MVC、前後端分離架構，最後變成 SA、Team Leader。現在則持續在系統分析、跨團隊協作、雲端與 GenAI 之間到處亂跑。興趣是動漫、遊戲、旅行、3C，歡迎認識聊聊～",
+        "en": "Hello everyone! I’m Corey. I’m currently based in Kaohsiung and work mainly as a System Analyst.\n\nI spent about eight years in startups as an all-around web developer, starting as an MIS + Programmer, then moving into MVC and frontend/backend architecture, and eventually becoming an SA and Team Leader.\n\nThese days, I work across system analysis, cross-team collaboration, cloud services, and GenAI — basically running around between different kinds of problems.\n\nOutside of work, I enjoy anime, games, traveling, and tech gadgets. Nice to meet you, and feel free to say hi and chat!",
+        "ja": "みなさん、こんにちは！Coreyです。現在は高雄に住んでいて、主にSystem Analystとして働いています。\n\n以前はスタートアップ業界で約8年間、Webエンジニアとして働いていました。MIS＋プログラマーから始まり、MVCやフロントエンド／バックエンドの開発を経験し、最終的にはSAやTeam Leaderも担当しました。\n\n現在はシステム分析、チーム間の連携、クラウド、GenAIなど、いろいろな分野を行ったり来たりしながら仕事をしています。\n\n仕事以外では、アニメ、ゲーム、旅行、ガジェットが好きです。よろしくお願いします！気軽に声をかけてもらえるとうれしいです。"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/corey924",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "order": 6
+    },
+    {
+      "id": "zhejia_zhang",
+      "name": {
+        "zh-Hant": "張哲嘉",
+        "en": "Zhe-Jia Zhang",
+        "ja": "Zhe-Jia Zhang"
+      },
+      "role": {
+        "zh-Hant": "影片紀錄者",
+        "en": "Videographer",
+        "ja": "ビデオグラファー"
+      },
+      "bio": {
+        "zh-Hant": "嗨，我是哲嘉，資深全端工程師。\n目前在高雄活躍於各類技術社群活動。\n經營 YouTube「ZJ 科技誌」，分享規格驅動開發、實用 AI 工具落地與技術深度訪談。\n\nLinkedIn: https://www.linkedin.com/in/zhejiazhang\nYouTube: https://youtube.com/@zjtech-cl6wk",
+        "en": "Hi, I'm Zhe-Jia, a Senior Full-Stack Engineer.\nI am currently actively involved in tech community events in Kaohsiung.\nI run the YouTube channel \"ZJ Tech,\" where I share content on Spec-Driven Development, practical AI tool implementations, and in-depth technical interviews.\nLinkedIn: https://www.linkedin.com/in/zhejiazhang\nYouTube: https://youtube.com/@zjtech-cl6wk",
+        "ja": "シニアフルスタックエンジニアの哲嘉（Zhe-Jia）です。\n高雄の技術コミュニティで活動中。\nYouTubeチャンネル「ZJ 科技誌」を運営し、仕様駆動開発やAIツールの実務適用、技術インタビューなどを発信しています。"
+      },
+      "links": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/zhejiazhang",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "youtube",
+          "url": "https://youtube.com/@zjtech-cl6wk",
+          "label": {
+            "zh-Hant": "YouTube"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/share/19aHXusZQR/",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "order": 7
+    },
+    {
+      "id": "aaron_ng",
+      "name": {
+        "zh-Hant": "黃立仁",
+        "en": "Aaron Ng",
+        "ja": "Aaron Ng"
+      },
+      "role": {
+        "zh-Hant": "專業掃描手",
+        "en": "Check-in Scanner",
+        "ja": "スキャン担当"
+      },
+      "bio": {
+        "zh-Hant": "從 AI 演算法開發到致力於將 AI 技術落地到真實場域問題",
+        "en": "From Frontier AI Algorithm Development to Bringing AI into the Real World",
+        "ja": "AIアルゴリズム開発から、AI技術を実世界の課題へ応用することに注力しています。"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/liren0907/",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/liren0907/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        },
+        {
+          "platform": "github",
+          "url": "https://github.com/liren0907",
+          "label": {
+            "zh-Hant": "GitHub"
+          }
+        }
+      ],
+      "order": 8
+    },
+    {
+      "id": "rix",
+      "name": {
+        "zh-Hant": "鄭詠鴻",
+        "en": "Rix",
+        "ja": "Rix"
+      },
+      "role": {
+        "zh-Hant": "專業掃描手",
+        "en": "Check-in Scanner",
+        "ja": "スキャン担当"
+      },
+      "bio": {
+        "zh-Hant": "嗨~我是Rix，我是GDGoC NSYSU的成員！",
+        "en": "Hello~ I'm Rix. I'm a member of GDGoC NSYSU！",
+        "ja": "こんにちは！Rixです。GDGoC NSYSUのメンバーです！"
+      },
+      "links": [],
+      "order": 9
+    },
+    {
+      "id": "mantou",
+      "name": {
+        "zh-Hant": "饅頭",
+        "en": "Mant0u",
+        "ja": "Mant0u"
+      },
+      "role": {
+        "zh-Hant": "視覺設計師",
+        "en": "Visual Designer",
+        "ja": "ビジュアルデザイナー"
+      },
+      "bio": {
+        "zh-Hant": "曾經做了一個開源字體，也做了一個神奇的抽獎網站，現在是一個打雜的介面設計師",
+        "en": "Creator of an open-source typeface and an interactive lucky-draw website. Currently a multifaceted UI/UX designer.",
+        "ja": "オープンソースフォントやユニークな抽選サイトを制作。現在はUIデザイナーとして活動中。"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://www.mant0u.com/",
+          "label": {
+            "zh-Hant": "個人網站"
+          }
+        }
+      ],
+      "order": 10
+    },
+    {
+      "id": "ka_iu",
+      "name": {
+        "zh-Hant": "Ka-iu 小吳",
+        "en": "Ka-iu",
+        "ja": "Ka-iu"
+      },
+      "role": {
+        "zh-Hant": "餐飲小天使",
+        "en": "Catering Assistant",
+        "ja": "ケータリング係"
+      },
+      "bio": {
+        "zh-Hant": "低調和善的後端工程師。\n不管是寫程式還是看劇情，都會忍不住想追究背後的邏輯與假設。\n#WFH #Linux-gamer #ACG",
+        "en": "A friendly, low-key backend engineer who loves delving into the underlying logic and assumptions of both code and stories. #WFH #Linux-gamer #ACG",
+        "ja": "穏やかなバックエンドエンジニア。コードでもストーリーでも、背後にあるロジックと前提を追求せずにはいられないタイプです。#WFH #Linux-gamer #ACG"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/jiayou.wu.9",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "website",
+          "url": "https://t.me/kaiu2048",
+          "label": {
+            "zh-Hant": "Telegram"
+          }
+        }
+      ],
+      "order": 11
+    },
+    {
+      "id": "chixiang",
+      "name": {
+        "zh-Hant": "淇翔",
+        "en": "Aaron",
+        "ja": "Aaron"
+      },
+      "role": {
+        "zh-Hant": "餐飲小天使",
+        "en": "Catering Assistant",
+        "ja": "ケータリング係"
+      },
+      "bio": {
+        "zh-Hant": "假日無聊出來走走",
+        "en": "Just hanging out on the weekend.",
+        "ja": "休日にふらっと参加しました。"
+      },
+      "links": [],
+      "order": 12
+    },
+    {
+      "id": "ting_zhe",
+      "name": {
+        "zh-Hant": "高挺哲",
+        "en": "Ko Theng Tiat",
+        "ja": "Ko Theng Tiat"
+      },
+      "role": {
+        "zh-Hant": "議程廳助手",
+        "en": "Session Hall Assistant",
+        "ja": "セッションホールアシスタント"
+      },
+      "bio": {
+        "zh-Hant": "智慧產品的工程師 PM です！",
+        "en": "Hardware PM & Engineer for smart products!",
+        "ja": "スマートプロダクトのエンジニア PM です！"
+      },
+      "links": [],
+      "order": 13
+    },
+    {
+      "id": "ace",
+      "name": {
+        "zh-Hant": "文博",
+        "en": "Ace",
+        "ja": "Ace"
+      },
+      "role": {
+        "zh-Hant": "議程廳助手",
+        "en": "Session Hall Assistant",
+        "ja": "セッションホールアシスタント"
+      },
+      "bio": {
+        "zh-Hant": "大家好，我是 文博！\n熱愛交流與團隊協作，平時喜歡接觸新事物。\n很高興能以志工身分參與，期待在活動現場為大家提供最好的協助！",
+        "en": "Hi everyone, I'm Ace! I love communication and teamwork, and enjoy exploring new things. Excited to contribute as a volunteer and assist everyone at the event!",
+        "ja": "みなさんこんにちは、Ace（文博）です！チームワークや新しいことに挑戦するのが大好きです。ボランティアとしてイベントをサポートできるのを楽しみにしています！"
+      },
+      "links": [],
+      "order": 14
+    },
+    {
+      "id": "taick",
+      "name": {
+        "zh-Hant": "莊承恩",
+        "en": "Taick",
+        "ja": "Taick"
+      },
+      "role": {
+        "zh-Hant": "議程廳助手",
+        "en": "Session Hall Assistant",
+        "ja": "セッションホールアシスタント"
+      },
+      "bio": {
+        "zh-Hant": "我是 Taick，是 GDGoc NSYSU 的教學",
+        "en": "I'm Taick, Instructor at GDG on Campus NSYSU.",
+        "ja": "Taickです。GDGoC NSYSUの講師を担当しています。"
+      },
+      "links": [],
+      "order": 15
+    },
+    {
+      "id": "david_chen",
+      "name": {
+        "zh-Hant": "陳展皝",
+        "en": "David",
+        "ja": "David"
+      },
+      "role": {
+        "zh-Hant": "議程廳助手",
+        "en": "Session Hall Assistant",
+        "ja": "セッションホールアシスタント"
+      },
+      "bio": {
+        "zh-Hant": "離不開GDG的人",
+        "en": "Someone who just can't stay away from GDG.",
+        "ja": "GDGから離れられない人。"
+      },
+      "links": [],
+      "order": 16
+    },
+    {
+      "id": "pidan",
+      "name": {
+        "zh-Hant": "皮蛋",
+        "en": "Pidan",
+        "ja": "Pidan"
+      },
+      "role": {
+        "zh-Hant": "議程廳助手",
+        "en": "Session Hall Assistant",
+        "ja": "セッションホールアシスタント"
+      },
+      "bio": {
+        "zh-Hant": "嗨，這裡是皮蛋。\n目前中山資工大二，同時也是 GDGoC NSYSU 的 Organizer。\n\n主要寫 Discord Bot，歡迎大家互相交流！\n也歡迎來我的 Blog 逛逛：https://bruh0422.xyz/",
+        "en": "Hi, I'm Pidan, a sophomore CS student at NSYSU and Organizer of GDGoC NSYSU.\nI mainly build Discord Bots. Feel free to connect and check out my blog: https://bruh0422.xyz/",
+        "ja": "こんにちは、皮蛋（Pidan）です。\n中山大学情報工学科2年生で、GDGoC NSYSUのオーガナイザーでもあります。\n主にDiscord Botを開発しています。ブログにもぜひお越しください：https://bruh0422.xyz/"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://bruh0422.xyz",
+          "label": {
+            "zh-Hant": "個人網站"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/bruh0422",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "order": 17
     }
   ],
   "thanksGroups": [

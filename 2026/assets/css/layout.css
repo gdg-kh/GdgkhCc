@@ -991,6 +991,12 @@ button {
   }
 }
 
+@media (min-width: 1280px) {
+  .gk-staff-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
 .gk-staff-empty,
 .gk-agenda-empty,
 .gk-speakers-empty {
