@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'gk-2026-v5';
+const CACHE_VERSION = 'gk-2026-v6';
 const STATIC_CACHE = `gk-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `gk-images-${CACHE_VERSION}`;
 const DATA_CACHE = `gk-data-${CACHE_VERSION}`;
@@ -100,7 +100,11 @@ self.addEventListener('fetch', (event) => {
             return networkResponse;
           })
           .catch(async () => {
-            return (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+            const fallback = (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+            if (fallback) {
+              return fallback;
+            }
+            throw new Error('[sw] Image bypass fetch failed and no cache fallback');
           })
       );
       return;
@@ -140,13 +144,34 @@ self.addEventListener('fetch', (event) => {
         fetch(request)
           .then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
-              const clone = networkResponse.clone();
-              caches.open(DATA_CACHE).then((cache) => cache.put(request, clone));
+              const cloneForUrl = networkResponse.clone();
+              const cloneForPath = cloneForUrl.clone();
+              caches
+                .open(DATA_CACHE)
+                .then((cache) => {
+                  if (url.searchParams.has('_t') || url.searchParams.has('nocache')) {
+                    const cleanUrl = new URL(request.url);
+                    cleanUrl.searchParams.delete('_t');
+                    cleanUrl.searchParams.delete('nocache');
+                    return Promise.all([
+                      cache.put(cleanUrl.toString(), cloneForUrl),
+                      cache.put(cleanUrl.origin + cleanUrl.pathname, cloneForPath),
+                    ]);
+                  }
+                  return cache.put(request, cloneForUrl);
+                })
+                .catch((err) => {
+                  console.warn('[sw] Data cache put failed:', err);
+                });
             }
             return networkResponse;
           })
           .catch(async () => {
-            return (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+            const fallback = (await caches.match(request)) || (await caches.match(request, { ignoreSearch: true }));
+            if (fallback) {
+              return fallback;
+            }
+            throw new Error('[sw] Data bypass fetch failed and no cache fallback');
           })
       );
       return;
@@ -186,13 +211,16 @@ self.addEventListener('fetch', (event) => {
               return networkResponse;
             })
             .catch(async () => {
-              return (
+              const fallbackNav =
                 (await cache.match(request)) ||
                 (await cache.match('index.html')) ||
                 (await cache.match('./')) ||
                 (await cache.match('index.html', { ignoreSearch: true })) ||
-                (await cache.match('./', { ignoreSearch: true }))
-              );
+                (await cache.match('./', { ignoreSearch: true }));
+              if (fallbackNav) {
+                return fallbackNav;
+              }
+              throw new Error('[sw] Navigation bypass failed and no offline shell');
             });
         }
         try {
@@ -231,7 +259,11 @@ self.addEventListener('fetch', (event) => {
               return networkResponse;
             })
             .catch(async () => {
-              return (await cache.match(request)) || (await cache.match(request, { ignoreSearch: true }));
+              const fallback = (await cache.match(request)) || (await cache.match(request, { ignoreSearch: true }));
+              if (fallback) {
+                return fallback;
+              }
+              throw new Error('[sw] Static resource bypass failed and no cache fallback');
             });
         }
 

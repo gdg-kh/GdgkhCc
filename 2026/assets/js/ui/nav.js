@@ -49,7 +49,8 @@ let mobileDrawerEl = null;
 let mobileBackdropEl = null;
 let mobileMoreTabEl = null;
 let mobilePrimaryIds = [];
-let overflowInitialized = false;
+let overflowObserver = null;
+let overflowGlobalListenersBound = false;
 let mobileHandlersBound = false;
 let currentSectionId = '';
 
@@ -682,10 +683,9 @@ function recomputeOverflow() {
 }
 
 export function initNavOverflow() {
-  if (overflowInitialized || !mainListEl) {
+  if (!mainListEl) {
     return;
   }
-  overflowInitialized = true;
   let frame = 0;
   const schedule = () => {
     if (frame) {
@@ -696,14 +696,25 @@ export function initNavOverflow() {
       recomputeOverflow();
     });
   };
+
+  if (overflowObserver) {
+    overflowObserver.disconnect();
+    overflowObserver = null;
+  }
+
   const wrapper = mainListEl.parentElement;
   if (typeof ResizeObserver === 'function' && wrapper) {
-    const observer = new ResizeObserver(schedule);
-    observer.observe(wrapper);
+    overflowObserver = new ResizeObserver(schedule);
+    overflowObserver.observe(wrapper);
   }
-  window.addEventListener('gk:langchange', schedule);
-  document.addEventListener('click', handleGlobalClickForMore);
-  document.addEventListener('keydown', handleGlobalKeydownForMore);
+
+  if (!overflowGlobalListenersBound) {
+    overflowGlobalListenersBound = true;
+    window.addEventListener('gk:langchange', schedule);
+    document.addEventListener('click', handleGlobalClickForMore);
+    document.addEventListener('keydown', handleGlobalKeydownForMore);
+  }
+
   schedule();
 }
 

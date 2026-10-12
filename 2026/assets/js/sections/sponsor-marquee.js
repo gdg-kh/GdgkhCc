@@ -132,8 +132,9 @@ function attachResizeObserver(container, doLayout) {
   if (typeof ResizeObserver === 'function') {
     const observer = new ResizeObserver(schedule);
     observer.observe(container);
+  } else {
+    window.addEventListener('resize', schedule);
   }
-  window.addEventListener('resize', schedule);
 }
 
 export function renderSponsorMarquee(container) {
