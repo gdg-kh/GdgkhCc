@@ -335,24 +335,34 @@
   },
   "sessionGroups": [
     {
+      "id": "keynote",
+      "name": {
+        "zh-Hant": "主旨演講",
+        "en": "Keynote",
+        "ja": "基調講演"
+      },
+      "color": "#f8d8d8",
+      "order": 1
+    },
+    {
       "id": "developer_track",
       "name": {
-        "zh-Hant": "開發者軌",
-        "en": "Developer Track",
-        "ja": "デベロッパートラック"
+        "zh-Hant": "開發者",
+        "en": "Developer",
+        "ja": "デベロッパー"
       },
       "color": "#c3ecf6",
-      "order": 1
+      "order": 2
     },
     {
       "id": "builder_track",
       "name": {
-        "zh-Hant": "建構者軌",
-        "en": "Builder Track",
-        "ja": "ビルダートラック"
+        "zh-Hant": "建構者",
+        "en": "Builder",
+        "ja": "ビルダー"
       },
       "color": "#ccf6c5",
-      "order": 2
+      "order": 3
     }
   ],
   "tracks": [
@@ -389,51 +399,107 @@
   ],
   "speakers": [
     {
-      "id": "steve_yeh",
+      "id": "eric_shangkuan",
       "order": 1,
       "name": {
-        "zh-Hant": "史蒂夫•葉",
-        "en": "Steve Yeh",
-        "ja": "Steve Yeh"
+        "zh-Hant": "Eric ShangKuan",
+        "en": "Eric ShangKuan",
+        "ja": "Eric ShangKuan"
       },
       "org": {
-        "zh-Hant": "精誠集團",
-        "en": "SYSTEX Group",
-        "ja": "SYSTEX グループ"
+        "zh-Hant": "Google",
+        "en": "Google",
+        "ja": "Google"
       },
       "title": {
-        "zh-Hant": "技術處長",
-        "en": "Director of Technology",
-        "ja": "技術部長"
+        "zh-Hant": "Google 大中華區開發者生態系負責人",
+        "en": "Lead of Developer Ecosystem, Greater China, Google",
+        "ja": "Google 大中華圏 デベロッパーエコシステム責任者"
       },
       "bio": {
-        "zh-Hant": "現任精誠集團技術處長，創立 I.D.E.A. 團隊並率先導入 FDE（前線部署工程）與 AI 驅動工作流，致力於 UI/UX 策略與系統架構的深度整合。曾創立 Able Studio（獲 2020 德國國家設計獎），帶領團隊主持千萬級「勞保局 e 化服務系統」重構。具備豐富跨領域實戰經驗，涵蓋金融交易系統、半導體供應鏈 CPQ 平台、零售與娛樂 POS/ERP/SCO 系統、FMCG 食品巨頭經銷數據整合，以及製造業 ERP 升級 POC 等高難度專案。獲選為 Gamma 全球創始品牌大使，相信透過深刻洞察與高確定性架構執行力，能持續為企業創造成長。",
-        "en": "Director of Technology at SYSTEX Group and founder of the I.D.E.A. team, Steve pioneered the adoption of FDE (Forward Deployed Engineering) and AI-driven workflows, with a focus on deeply integrating UI/UX strategy and system architecture. Steve previously founded Able Studio (2020 German Design Award winner) and led the NT$10-million-scale rebuild of the Bureau of Labor Insurance e-service system. Steve brings extensive cross-domain experience in demanding projects, including financial trading systems, a semiconductor supply-chain CPQ platform, retail and entertainment POS/ERP/SCO systems, distribution data integration for a leading FMCG food company, and a manufacturing ERP upgrade POC. Selected as a Gamma Global Founding Brand Ambassador, Steve believes that deep insight combined with high-certainty architectural execution can continuously drive business growth.",
+        "zh-Hant": "現任 Google 大中華區開發者生態系計劃主持人，透過 Google 開發技術、GDG 及 GDE 計劃來提供開發人員瞭解學習 Google 開發技術的資源，也協助討論並使用 Google 開發技術的開發人員成功。\n\n過去 Eric 曾在 Microsoft 擔任資深技術傳教士、GDG Taipei 創辦人、中華電信從事開發的工作，持續與開發社群互動",
+        "en": "Eric ShangKuan currently leads the Google Developer Ecosystem programs in Greater China, helping developers discover and learn Google technologies through developer resources, GDG, and GDE programs, while empowering developers who build with Google technologies to succeed.\n\nPreviously, Eric served as a Senior Technical Evangelist at Microsoft, founder of GDG Taipei, and worked in software development at Chunghwa Telecom, maintaining active engagement with the developer community.",
+        "ja": "現在、Googleにて大中華圏（グレーターチャイナ）のデベロッパーエコシステムプログラム責任者を務める。Googleの開発技術、GDG、GDEプログラムを通じて開発者がGoogleの技術を学び活用するためのリソースを提供し、開発者の成功を支援している。\n\n過去にはMicrosoftでシニアテクニカルエバンジェリスト、GDG Taipeiの創設者、中華電信（Chunghwa Telecom）でソフトウェア開発などに従事し、開発者コミュニティと深く関わり続けている。"
+      },
+      "sessionIds": ["keynote"],
+      "links": [],
+      "groupId": "keynote",
+      "tag": ["外地講者", "AI", "Keynote"]
+    },
+    {
+      "id": "simon_liu",
+      "order": 2,
+      "name": {
+        "zh-Hant": "劉育維",
+        "en": "Simon Liu",
+        "ja": "Simon Liu"
+      },
+      "org": {
+        "zh-Hant": "Google 開發者專家（GDE）",
+        "en": "Google Developer Expert (GDE)",
+        "ja": "Google Developer Expert (GDE)"
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
         "ja": ""
       },
-      "sessionIds": ["panel_7_1"],
+      "bio": {
+        "zh-Hant": "大家好，我是 Simon 劉育維，是一位 AI 領域解決方案專家，目前也擔任 Google Cloud AI 領域開發者專家 (GDE)，期待能夠幫助企業導入人工智慧相關技術解決問題。歡迎追蹤我的 Medium 和我的個人帳號，這樣您就可以隨時閱讀我所撰寫的文章，期待我的分享，能夠對大家有所幫助！",
+        "en": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!",
+        "ja": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!"
+      },
+      "sessionIds": ["session_5_1"],
+      "links": [],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"]
+    },
+    {
+      "id": "kai_wu",
+      "order": 3,
+      "name": {
+        "zh-Hant": "吳楷鈞",
+        "en": "Kai",
+        "ja": "Kai"
+      },
+      "org": {
+        "zh-Hant": "GDGoC NSYSU",
+        "en": "GDGoC NSYSU",
+        "ja": "GDGoC NSYSU"
+      },
+      "title": {
+        "zh-Hant": "GDGoC NSYSU ex Organizer",
+        "en": "GDGoC NSYSU ex Organizer",
+        "ja": "GDGoC NSYSU ex Organizer"
+      },
+      "bio": {
+        "zh-Hant": "大家好我是 Kai，中山資工大四，目前在實驗室做最佳化與 AI 研究。近期在鑽研如何讓 Agent 更穩定地執行多步驟任務，很期待在 DevFest Kaohsiung 與大家見面，分享 Google ADK 的實務開發心得與技巧！",
+        "en": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!",
+        "ja": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!"
+      },
+      "sessionIds": ["session_1_2"],
       "links": [
         {
-          "platform": "facebook",
-          "url": "https://www.facebook.com/steven.yeh",
-          "label": {
-            "zh-Hant": "Facebook"
-          }
-        },
-        {
           "platform": "linkedin",
-          "url": "https://www.linkedin.com/in/steven0128",
+          "url": "https://www.linkedin.com/in/kai-chun-wu-b871b3314/",
           "label": {
             "zh-Hant": "LinkedIn"
           }
+        },
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/gdg.nsysu/",
+          "label": {
+            "zh-Hant": "GDGoC NSYSU Instagram"
+          }
         }
       ],
-      "groupId": "builder_track",
-      "tag": ["外地講者", "AI", "設計", "FDE"]
+      "groupId": "developer_track",
+      "tag": ["在地講者", "AI", "Google ADK", "AI application", "AI workflow"]
     },
     {
       "id": "bruce_lee",
-      "order": 2,
+      "order": 4,
       "name": {
         "zh-Hant": "李冠緯",
         "en": "Bruce Lee",
@@ -481,11 +547,11 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "WebMCP", "AI Agent", "Web Development"]
+      "tag": ["外地講者", "Web", "WebMCP", "AI Agent", "Web Development"]
     },
     {
       "id": "fngi_shiu",
-      "order": 3,
+      "order": 5,
       "name": {
         "zh-Hant": "徐方繹（Fngi）",
         "en": "Fngi Shiu",
@@ -524,11 +590,204 @@
         }
       ],
       "groupId": "developer_track",
-      "tag": ["外地講者", "Gemma 4", "Prompt Injection", "Guardrails"]
+      "tag": ["外地講者", "AI", "Gemma 4", "Prompt Injection", "Guardrails"]
+    },
+    {
+      "id": "arturs_vancans",
+      "order": 6,
+      "name": {
+        "zh-Hant": "韋亞圖",
+        "en": "Arturs Vancans",
+        "ja": "Arturs Vancans"
+      },
+      "org": {
+        "zh-Hant": "Second Space",
+        "en": "Second Space",
+        "ja": "Second Space"
+      },
+      "title": {
+        "zh-Hant": "Founder / 創辦人",
+        "en": "Founder",
+        "ja": "創業者"
+      },
+      "bio": {
+        "zh-Hant": "Arturs Vancans 是科技創業者，也是高雄 Second Space 的創辦人。專注在 AI、軟體與自動化，只有一個執念：讓小團隊也能做到大團隊的戰鬥力。",
+        "en": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones.",
+        "ja": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones."
+      },
+      "sessionIds": ["session_2_1"],
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://www.secondspace.dev/",
+          "label": {
+            "zh-Hant": "Second Space"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["在地講者", "Cloud", "Google Cloud", "Playwright", "Cluster"]
+    },
+    {
+      "id": "johnny_sung",
+      "order": 7,
+      "name": {
+        "zh-Hant": "Johnny Sung (宋岡諺)",
+        "en": "Johnny Sung",
+        "ja": "Johnny Sung"
+      },
+      "org": {
+        "zh-Hant": "GDG Taipei",
+        "en": "GDG Taipei",
+        "ja": "GDG Taipei"
+      },
+      "title": {
+        "zh-Hant": "DevOps/SRE",
+        "en": "DevOps/SRE",
+        "ja": "DevOps/SRE"
+      },
+      "bio": {
+        "zh-Hant": "現任企業 DevOps / SRE 工程師，熱衷鑽研前瞻技術與自動化實踐。\n\n開發背景深厚，具備從 App 原生開發到容器化架構的完整資歷。\n\n同時也是社群技術推廣者，不定時會在各社群出沒，喜歡玩一些有意思的東西。",
+        "en": "An enterprise DevOps / SRE engineer, passionate about exploring emerging technologies and automation in practice.\n\nWith a strong development background, Johnny has hands-on experience ranging from native app development to containerized architectures.\n\nAlso a tech community advocate who pops up at community events from time to time and loves playing with interesting things.",
+        "ja": ""
+      },
+      "sessionIds": ["session_5_2"],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/j796160836",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/johnnysung-tw/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "Cloud", "API Gateway", "MCP"]
+    },
+    {
+      "id": "john_lu",
+      "order": 8,
+      "name": {
+        "zh-Hant": "John Lu",
+        "en": "John Lu",
+        "ja": "John Lu"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "Senior Machine Learning Engineer",
+        "en": "Senior Machine Learning Engineer",
+        "ja": "Senior Machine Learning Engineer"
+      },
+      "bio": {
+        "zh-Hant": "John 是一線大廠的 Senior Machine Learning Engineer，實務經驗涵蓋大型語言模型 (LLM) 與視覺語言模型 (VLM) 的訓練，以及 RAG 與 AI Agent 的建構。他喜歡拆解事物的底層邏輯，再重組成可執行的程式，應用到真實問題上。曾在 PyCon APAC 與 COSCUP 擔任講者，分享機器學習應用與 On-Device ML，講題包括「TasteGram：以 TensorFlow 與 Python 進行影像美學評分」與「Kimoji：以 On-Device LLM 打造心情日記的智慧撰稿系統」。",
+        "en": "John is a Senior Machine Learning Engineer from a Top Silicon Microchip Company, with hands-on production experience training Large Language Models and Vision Language Models, and building RAG and Agentic AI systems. He likes pulling apart the \"magic\" of modern AI and rebuilding it as clear, runnable code, then applying it to real problems. He has spoken at PyCon APAC and COSCUP on applied ML and on-device AI, including TasteGram (image aesthetic assessment with TensorFlow and Python) and Kimoji (an on-device LLM mood-journal assistant).",
+        "ja": "Johnは大手テック企業に勤めるSenior Machine Learning Engineerです。大規模言語モデル（LLM）や視覚言語モデル（VLM）の学習、RAGやAIエージェントの構築を実務で手がけています。物事の仕組みを分解し、実行可能なコードとして組み立て直し、実際の課題に応用することを得意としています。これまでPyCon APACやCOSCUPに登壇し、機械学習の応用やオンデバイスMLについて発表しました。主な講演に「TasteGram：TensorFlowとPythonによる画像の美的評価」と「Kimoji：オンデバイスLLMで作る気分日記の文章作成支援システム」があります。"
+      },
+      "sessionIds": ["session_6_2"],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/john.forge.93",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "website",
+          "url": "https://www.youtube.com/channel/UCgKlcTDUe0GyY2iwnHTPmNw",
+          "label": {
+            "zh-Hant": "YouTube"
+          }
+        }
+      ],
+      "groupId": "developer_track",
+      "tag": ["外地講者", "AI", "AI Safety", "LLM Security", "Jailbreak"]
+    },
+    {
+      "id": "ray_yuan_liu",
+      "order": 9,
+      "name": {
+        "zh-Hant": "劉瑞元",
+        "en": "Ray Yuan Liu",
+        "ja": "Ray Yuan Liu"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "喜歡電腦、也愛寫程式，去年還在手作，今年風雲變色。變化很大，但也有更多的東西等著去學習。\n前幾週參加了神秘活動代班 AI 警察，事後卻來介紹 AI。\n請不要告訴之前那個活動的相關人員。🫢",
+        "en": "I love computers and writing code. Last year I was still handcrafting everything; this year, the tables turned. A lot has changed, but there is also so much more waiting to be learned.\nA few weeks ago I filled in as an \"AI cop\" at a mysterious event, and now I am here to introduce AI.\nPlease don't tell anyone from that event. 🫢",
+        "ja": ""
+      },
+      "sessionIds": ["session_3_1"],
+      "links": [],
+      "groupId": "developer_track",
+      "tag": ["在地講者", "AI", "Agentic Workflow", "Agent"]
+    },
+    {
+      "id": "steve_yeh",
+      "order": 10,
+      "name": {
+        "zh-Hant": "史蒂夫•葉",
+        "en": "Steve Yeh",
+        "ja": "Steve Yeh"
+      },
+      "org": {
+        "zh-Hant": "精誠集團",
+        "en": "SYSTEX Group",
+        "ja": "SYSTEX グループ"
+      },
+      "title": {
+        "zh-Hant": "技術處長",
+        "en": "Director of Technology",
+        "ja": "技術部長"
+      },
+      "bio": {
+        "zh-Hant": "現任精誠集團技術處長，創立 I.D.E.A. 團隊並率先導入 FDE（前線部署工程）與 AI 驅動工作流，致力於 UI/UX 策略與系統架構的深度整合。曾創立 Able Studio（獲 2020 德國國家設計獎），帶領團隊主持千萬級「勞保局 e 化服務系統」重構。具備豐富跨領域實戰經驗，涵蓋金融交易系統、半導體供應鏈 CPQ 平台、零售與娛樂 POS/ERP/SCO 系統、FMCG 食品巨頭經銷數據整合，以及製造業 ERP 升級 POC 等高難度專案。獲選為 Gamma 全球創始品牌大使，相信透過深刻洞察與高確定性架構執行力，能持續為企業創造成長。",
+        "en": "Director of Technology at SYSTEX Group and founder of the I.D.E.A. team, Steve pioneered the adoption of FDE (Forward Deployed Engineering) and AI-driven workflows, with a focus on deeply integrating UI/UX strategy and system architecture. Steve previously founded Able Studio (2020 German Design Award winner) and led the NT$10-million-scale rebuild of the Bureau of Labor Insurance e-service system. Steve brings extensive cross-domain experience in demanding projects, including financial trading systems, a semiconductor supply-chain CPQ platform, retail and entertainment POS/ERP/SCO systems, distribution data integration for a leading FMCG food company, and a manufacturing ERP upgrade POC. Selected as a Gamma Global Founding Brand Ambassador, Steve believes that deep insight combined with high-certainty architectural execution can continuously drive business growth.",
+        "ja": ""
+      },
+      "sessionIds": ["panel_7_1"],
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/steven.yeh",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        },
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/steven0128",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["外地講者", "AI", "設計", "FDE"]
     },
     {
       "id": "fredric_huang",
-      "order": 4,
+      "order": 11,
       "name": {
         "zh-Hant": "黃士峯",
         "en": "Fredric",
@@ -574,11 +833,11 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"]
+      "tag": ["在地講者", "AI", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"]
     },
     {
       "id": "zonble",
-      "order": 5,
+      "order": 12,
       "name": {
         "zh-Hant": "zonble",
         "en": "zonble",
@@ -605,173 +864,8 @@
       "tag": ["外地講者", "AI", "Gemini", "Antigravity"]
     },
     {
-      "id": "arturs_vancans",
-      "order": 6,
-      "name": {
-        "zh-Hant": "韋亞圖",
-        "en": "Arturs Vancans",
-        "ja": "Arturs Vancans"
-      },
-      "org": {
-        "zh-Hant": "Second Space",
-        "en": "Second Space",
-        "ja": "Second Space"
-      },
-      "title": {
-        "zh-Hant": "Founder / 創辦人",
-        "en": "Founder",
-        "ja": "創業者"
-      },
-      "bio": {
-        "zh-Hant": "Arturs Vancans 是科技創業者，也是高雄 Second Space 的創辦人。專注在 AI、軟體與自動化，只有一個執念：讓小團隊也能做到大團隊的戰鬥力。",
-        "en": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones.",
-        "ja": "Arturs Vancans is a tech founder and founder of Second Space in Kaohsiung. He builds with AI, software, and automation, with one obsession: making tiny teams perform like huge ones."
-      },
-      "sessionIds": ["session_2_1"],
-      "links": [
-        {
-          "platform": "website",
-          "url": "https://www.secondspace.dev/",
-          "label": {
-            "zh-Hant": "Second Space"
-          }
-        }
-      ],
-      "groupId": "developer_track",
-      "tag": ["在地講者", "Google Cloud", "Playwright", "Cluster"]
-    },
-    {
-      "id": "kai_wu",
-      "order": 7,
-      "name": {
-        "zh-Hant": "吳楷鈞",
-        "en": "Kai",
-        "ja": "Kai"
-      },
-      "org": {
-        "zh-Hant": "GDGoC NSYSU",
-        "en": "GDGoC NSYSU",
-        "ja": "GDGoC NSYSU"
-      },
-      "title": {
-        "zh-Hant": "GDGoC NSYSU ex Organizer",
-        "en": "GDGoC NSYSU ex Organizer",
-        "ja": "GDGoC NSYSU ex Organizer"
-      },
-      "bio": {
-        "zh-Hant": "大家好我是 Kai，中山資工大四，目前在實驗室做最佳化與 AI 研究。近期在鑽研如何讓 Agent 更穩定地執行多步驟任務，很期待在 DevFest Kaohsiung 與大家見面，分享 Google ADK 的實務開發心得與技巧！",
-        "en": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!",
-        "ja": "Hi, I'm Kai, a senior in Computer Science and Engineering at National Sun Yat-sen University (NSYSU). My research in the lab focuses on optimization and AI. Recently, I've been diving into enhancing the reliability of agents executing multi-step tasks. I'm excited to connect with everyone at DevFest Kaohsiung and share practical tips and hands-on experience developing with the Google ADK!"
-      },
-      "sessionIds": ["session_1_2"],
-      "links": [
-        {
-          "platform": "linkedin",
-          "url": "https://www.linkedin.com/in/kai-chun-wu-b871b3314/",
-          "label": {
-            "zh-Hant": "LinkedIn"
-          }
-        },
-        {
-          "platform": "instagram",
-          "url": "https://www.instagram.com/gdg.nsysu/",
-          "label": {
-            "zh-Hant": "GDGoC NSYSU Instagram"
-          }
-        }
-      ],
-      "groupId": "developer_track",
-      "tag": ["在地講者", "Google ADK", "AI application", "AI workflow"]
-    },
-    {
-      "id": "johnny_sung",
-      "order": 8,
-      "name": {
-        "zh-Hant": "Johnny Sung (宋岡諺)",
-        "en": "Johnny Sung",
-        "ja": "Johnny Sung"
-      },
-      "org": {
-        "zh-Hant": "GDG Taipei",
-        "en": "GDG Taipei",
-        "ja": "GDG Taipei"
-      },
-      "title": {
-        "zh-Hant": "DevOps/SRE",
-        "en": "DevOps/SRE",
-        "ja": "DevOps/SRE"
-      },
-      "bio": {
-        "zh-Hant": "現任企業 DevOps / SRE 工程師，熱衷鑽研前瞻技術與自動化實踐。\n\n開發背景深厚，具備從 App 原生開發到容器化架構的完整資歷。\n\n同時也是社群技術推廣者，不定時會在各社群出沒，喜歡玩一些有意思的東西。",
-        "en": "An enterprise DevOps / SRE engineer, passionate about exploring emerging technologies and automation in practice.\n\nWith a strong development background, Johnny has hands-on experience ranging from native app development to containerized architectures.\n\nAlso a tech community advocate who pops up at community events from time to time and loves playing with interesting things.",
-        "ja": ""
-      },
-      "sessionIds": ["session_5_2"],
-      "links": [
-        {
-          "platform": "facebook",
-          "url": "https://www.facebook.com/j796160836",
-          "label": {
-            "zh-Hant": "Facebook"
-          }
-        },
-        {
-          "platform": "linkedin",
-          "url": "https://www.linkedin.com/in/johnnysung-tw/",
-          "label": {
-            "zh-Hant": "LinkedIn"
-          }
-        }
-      ],
-      "groupId": "developer_track",
-      "tag": ["外地講者", "API Gateway", "MCP", "Cloud"]
-    },
-    {
-      "id": "john_lu",
-      "order": 9,
-      "name": {
-        "zh-Hant": "John Lu",
-        "en": "John Lu",
-        "ja": "John Lu"
-      },
-      "org": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
-      },
-      "title": {
-        "zh-Hant": "Senior Machine Learning Engineer",
-        "en": "Senior Machine Learning Engineer",
-        "ja": "Senior Machine Learning Engineer"
-      },
-      "bio": {
-        "zh-Hant": "John 是一線大廠的 Senior Machine Learning Engineer，實務經驗涵蓋大型語言模型 (LLM) 與視覺語言模型 (VLM) 的訓練，以及 RAG 與 AI Agent 的建構。他喜歡拆解事物的底層邏輯，再重組成可執行的程式，應用到真實問題上。曾在 PyCon APAC 與 COSCUP 擔任講者，分享機器學習應用與 On-Device ML，講題包括「TasteGram：以 TensorFlow 與 Python 進行影像美學評分」與「Kimoji：以 On-Device LLM 打造心情日記的智慧撰稿系統」。",
-        "en": "John is a Senior Machine Learning Engineer from a Top Silicon Microchip Company, with hands-on production experience training Large Language Models and Vision Language Models, and building RAG and Agentic AI systems. He likes pulling apart the \"magic\" of modern AI and rebuilding it as clear, runnable code, then applying it to real problems. He has spoken at PyCon APAC and COSCUP on applied ML and on-device AI, including TasteGram (image aesthetic assessment with TensorFlow and Python) and Kimoji (an on-device LLM mood-journal assistant).",
-        "ja": "Johnは大手テック企業に勤めるSenior Machine Learning Engineerです。大規模言語モデル（LLM）や視覚言語モデル（VLM）の学習、RAGやAIエージェントの構築を実務で手がけています。物事の仕組みを分解し、実行可能なコードとして組み立て直し、実際の課題に応用することを得意としています。これまでPyCon APACやCOSCUPに登壇し、機械学習の応用やオンデバイスMLについて発表しました。主な講演に「TasteGram：TensorFlowとPythonによる画像の美的評価」と「Kimoji：オンデバイスLLMで作る気分日記の文章作成支援システム」があります。"
-      },
-      "sessionIds": ["session_6_2"],
-      "links": [
-        {
-          "platform": "facebook",
-          "url": "https://www.facebook.com/john.forge.93",
-          "label": {
-            "zh-Hant": "Facebook"
-          }
-        },
-        {
-          "platform": "website",
-          "url": "https://www.youtube.com/channel/UCgKlcTDUe0GyY2iwnHTPmNw",
-          "label": {
-            "zh-Hant": "YouTube"
-          }
-        }
-      ],
-      "groupId": "developer_track",
-      "tag": ["外地講者", "AI Safety", "LLM Security", "Jailbreak"]
-    },
-    {
       "id": "maylogger",
-      "order": 10,
+      "order": 13,
       "name": {
         "zh-Hant": "設計師勞哥",
         "en": "maylogger",
@@ -788,9 +882,9 @@
         "ja": "Founder and Design Engineer"
       },
       "bio": {
-        "zh-Hant": "Design Engineer，也是 SOTA 的創辦人。SOTA 是一間專注於大型網站與數位產品的介面設計工作室。",
-        "en": "Design Engineer based in Taipei and founder of SOTA, an interface design studio specializing in large-scale websites and digital products.",
-        "ja": "Design Engineer。大規模Webサイトやデジタルプロダクトのインターフェースデザインを専門とするSOTAを創業。"
+        "zh-Hant": "設計師勞哥 maylogger（formerly Even Wu），擁有超過 20 年的設計與數位產品開發經驗，現為 SOTA Design 創辦人。曾任 Gogoro Digital Design Lead、臺北市政府數位服務設計顧問，以及實踐大學 UI/UX 專業講師。\n\n跨足使用者體驗、產品設計與前端工程，長期參與大型網站、數位服務及複雜產品系統的設計與開發。曾參與科技、智慧交通、網路媒體、公共服務、文化創意及教育科技等不同產業領域的數位產品與使用者體驗設計。",
+        "en": "maylogger (formerly Even Wu) has over 20 years of experience in design and digital product development and is the founder of SOTA Design. He previously served as Digital Design Lead at Gogoro, Digital Service Design Consultant for the Taipei City Government, and UI/UX Lecturer at Shih Chien University.\n\nBridging user experience, product design, and frontend engineering, he has long been involved in the design and development of large-scale websites, digital services, and complex product systems. His experience spans digital products and user experience design across diverse sectors, including technology, smart mobility, digital media, public services, cultural and creative industries, and EdTech.",
+        "ja": "maylogger（旧：Even Wu）は、20年以上にわたるデザインおよびデジタルプロダクト開発の経験を持つSOTA Designの創業者。過去にはGogoroのDigital Design Lead、台北市政府のデジタルサービスデザイン顧問、実践大学のUI/UX専門講師などを歴任。\n\nユーザー体験（UX）、プロダクトデザイン、フロントエンドエンジニアリングを横断し、大規模Webサイト、デジタルサービス、複雑なプロダクトシステムの設計・開発に長年携わる。テクノロジー、スマートモビリティ、Webメディア、公共サービス、文化クリエイティブ、教育テクノロジー（EdTech）など、多岐にわたる業界でデジタルプロダクトおよびユーザー体験の設計を手がけてきた。"
       },
       "sessionIds": ["panel_7_1"],
       "links": [
@@ -824,11 +918,11 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["外地講者"]
+      "tag": ["外地講者", "Web"]
     },
     {
       "id": "mantou",
-      "order": 11,
+      "order": 14,
       "name": {
         "zh-Hant": "王晟譯 / 饅頭",
         "en": "Mantou",
@@ -852,67 +946,11 @@
       "sessionIds": ["panel_7_1"],
       "links": [],
       "groupId": "builder_track",
-      "tag": ["在地講者", "設計"]
-    },
-    {
-      "id": "ray_yuan_liu",
-      "order": 12,
-      "name": {
-        "zh-Hant": "劉瑞元",
-        "en": "Ray Yuan Liu",
-        "ja": "Ray Yuan Liu"
-      },
-      "org": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
-      },
-      "title": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
-      },
-      "bio": {
-        "zh-Hant": "喜歡電腦、也愛寫程式，去年還在手作，今年風雲變色。變化很大，但也有更多的東西等著去學習。\n前幾週參加了神秘活動代班 AI 警察，事後卻來介紹 AI。\n請不要告訴之前那個活動的相關人員。🫢",
-        "en": "I love computers and writing code. Last year I was still handcrafting everything; this year, the tables turned. A lot has changed, but there is also so much more waiting to be learned.\nA few weeks ago I filled in as an \"AI cop\" at a mysterious event, and now I am here to introduce AI.\nPlease don't tell anyone from that event. 🫢",
-        "ja": ""
-      },
-      "sessionIds": ["session_3_1"],
-      "links": [],
-      "groupId": "developer_track",
-      "tag": ["在地講者", "AI", "Agentic Workflow", "Agent"]
-    },
-    {
-      "id": "simon_liu",
-      "order": 13,
-      "name": {
-        "zh-Hant": "劉育維",
-        "en": "Simon Liu",
-        "ja": "Simon Liu"
-      },
-      "org": {
-        "zh-Hant": "Google 開發者專家（GDE）",
-        "en": "Google Developer Expert (GDE)",
-        "ja": "Google Developer Expert (GDE)"
-      },
-      "title": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
-      },
-      "bio": {
-        "zh-Hant": "大家好，我是 Simon 劉育維，是一位 AI 領域解決方案專家，目前也擔任 Google Cloud AI 領域開發者專家 (GDE)，期待能夠幫助企業導入人工智慧相關技術解決問題。歡迎追蹤我的 Medium 和我的個人帳號，這樣您就可以隨時閱讀我所撰寫的文章，期待我的分享，能夠對大家有所幫助！",
-        "en": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!",
-        "ja": "Hello everyone, I’m Simon Liu (Liu Yu-wei), an AI solutions expert and a Google Cloud Developer Expert (GDE) in AI. I look forward to helping businesses implement AI technologies to solve real-world problems. Please feel free to follow me on Medium and my personal accounts to stay updated on my latest articles; I hope my insights prove helpful to you all!"
-      },
-      "sessionIds": ["session_5_1"],
-      "links": [],
-      "groupId": "developer_track",
-      "tag": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"]
+      "tag": ["在地講者", "Web", "設計"]
     },
     {
       "id": "chih_ming",
-      "order": 14,
+      "order": 15,
       "name": {
         "zh-Hant": "賴志銘",
         "en": "Jimmy Lai",
@@ -944,11 +982,11 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "數位平權", "AI機會", "主動賦能"]
+      "tag": ["在地講者", "AI", "數位平權", "AI機會", "主動賦能"]
     },
     {
       "id": "kunfeng_li",
-      "order": 15,
+      "order": 16,
       "name": {
         "zh-Hant": "李坤峰",
         "en": "Kunfeng Lee",
@@ -980,11 +1018,11 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["外地講者", "生成式AI", "教育科技", "產品設計"]
+      "tag": ["外地講者", "AI", "生成式AI", "教育科技", "產品設計"]
     },
     {
       "id": "jianlin",
-      "order": 16,
+      "order": 17,
       "name": {
         "zh-Hant": "曾建霖",
         "en": "Tseng Chien Lin",
@@ -1016,7 +1054,7 @@
         }
       ],
       "groupId": "builder_track",
-      "tag": ["在地講者", "Chrome Extension", "Vibe Coding", "Healthcare"]
+      "tag": ["在地講者", "Web", "Chrome Extension", "Vibe Coding", "Healthcare"]
     }
   ],
   "sessions": [
@@ -1044,17 +1082,17 @@
       "id": "keynote",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "主旨演講",
-        "en": "Keynote",
-        "ja": "基調講演"
+        "zh-Hant": "AI Agents 新典範：軟體工程師在 Agentic Era 的重塑與機遇",
+        "en": "A New Paradigm for AI Agents: Reshaping and Opportunities for Software Engineers in the Agentic Era",
+        "ja": "AI Agentの新パラダイム：Agentic Eraにおけるソフトウェアエンジニアの再定義と好機"
       },
       "abstract": {
-        "zh-Hant": "議程資訊即將公布。",
-        "en": "Keynote session details coming soon.",
-        "ja": "基調講演の詳細は近日公開予定です。"
+        "zh-Hant": "主旨演講：AI Agents 新典範：軟體工程師在 Agentic Era 的重塑與機遇",
+        "en": "Keynote: A New Paradigm for AI Agents: Reshaping and Opportunities for Software Engineers in the Agentic Era",
+        "ja": "基調講演：AI Agentの新パラダイム：Agentic Eraにおけるソフトウェアエンジニアの再定義と好機"
       },
-      "tags": ["Keynote"],
-      "speakerIds": [],
+      "tags": ["外地講者", "AI", "Keynote"],
+      "speakerIds": ["eric_shangkuan"],
       "start": "2026-11-14T09:20",
       "end": "2026-11-14T09:50",
       "type": "talk",
@@ -1073,7 +1111,7 @@
         "en": "If Free AI Can Explain Exam Questions, Why Build an Exam Prep Platform?\nIf AI can generate explanations and diagrams in seconds, why do exam candidates still need a dedicated study platform? Using ExamWise as an example, this talk explores how structured question categories, answer history, incorrect-question review, and related questions across healthcare professions can turn individual practice sessions into a continuous exam-preparation workflow.\nAs AI-generated explanations become widely available, how can question-bank platforms create lasting value and give learners a reason to keep coming back?",
         "ja": "免費 AI 就能解題，為什麼還要做考古題平台？\n當 AI 可以快速產生解析與圖解，考生為什麼還需要一個備考平台？本場將以 ExamWise 為例，從題目分類、作答紀錄、錯題回顧與跨職類相關題等功能，分享如何把一次解題延伸成持續的備考流程。\n當 AI 解析逐漸普及，考古題平台又該如何創造價值、找到值得考生持續使用的理由？"
       },
-      "tags": ["生成式AI", "教育科技", "產品設計"],
+      "tags": ["外地講者", "AI", "生成式AI", "教育科技", "產品設計"],
       "speakerIds": ["kunfeng_li"],
       "start": "2026-11-14T10:00",
       "end": "2026-11-14T10:40",
@@ -1093,7 +1131,7 @@
         "en": "Recently, social media has seen a resurgence of posts proclaiming that \"the era of AGI has arrived.\" Yet back in real-world everyday applications, AI still frequently loses its way during tool-calling and multi-step workflows—skipping steps, looping redundantly, or drifting away from original goals during task handoffs. Ensuring that AI completes jobs consistently and reliably remains a critical challenge in application development.\nThink of a Main Agent as an engineering manager and Sub-agents as team members with specialized skill sets. The manager assigns tasks and orchestrates workflows based on project needs. However, as complexity grows, the team demands clear division of labor, explicit handoff protocols, and concrete acceptance criteria. For instance, when a personal assistant takes on a pipeline to \"gather research, synthesize key takeaways, and generate a final report,\" every phase requires well-defined inputs, expected deliverables, and fallback strategies for edge cases. Without these strict boundaries, even the most capable agents will cause the workflow to break down.\nUsing the Google ADK personal assistant as a case study alongside Antigravity-assisted development, this session explores how to package common multi-step tasks into stable, reusable task toolkits. Through well-defined I/O contracts, deterministic workflow orchestration, error handling, and output verification, the Main Agent can reliably dispatch pre-tested task modules on demand. Much like a manager leading a team armed with robust standard operating procedures, this architecture balances operational flexibility with execution reliability—taking practical steps toward an AI assistant built for daily productivity.",
         "ja": "最近AI界再度出現「AGI 時代已經來臨」的社群貼文。但當我們把AI帶回到日常應用時，我們依舊可以看見 AI 在工具調用和多步驟任務中「迷路」：遺漏步驟、重複執行，或在任務交接後偏離原本的目標。如何讓 AI 持續、可靠地完成工作，成為應用開發中值得關注的課題。\n如果把主代理（Main Agent）想像為主管，子代理（Sub-agent）就像各有所長的團隊成員。主管可以依需求分派工作，組合出不同的任務流程。但隨著任務變得複雜，團隊也需要清楚的分工、交接規則與驗收標準。例如：當個人助理接到「蒐集資料、整理重點，再產出報告」的需求，每個階段都需要明確知道應接收什麼、交付什麼，以及遇到問題時如何處理。若這些規則不夠明確，即使成員各具能力，整體流程仍可能出現落差。\n這個的議程將會以 Google ADK 個人助理為例，運用 Antigravity 輔助開發，探討如何將常用的多步驟任務封裝成「穩定、可重用」的任務工具包。以明確的輸入輸出、可控的流程編排和錯誤處理與結果驗證，讓Main Agent 可以依照需求調用經過測試的任務模組，如同主管調度具備標準作業流程的團隊，在保有彈性的同時，提升複雜任務的執行可靠性，逐步打造能融入日常工作的 AI 個人助理。"
       },
-      "tags": ["Google ADK", "AI application", "AI workflow"],
+      "tags": ["在地講者", "AI", "Google ADK", "AI application", "AI workflow"],
       "speakerIds": ["kai_wu"],
       "start": "2026-11-14T10:00",
       "end": "2026-11-14T10:40",
@@ -1113,7 +1151,7 @@
         "en": "I built an events platform without writing a line of code myself. Then I had to test it.\n\n2000 Playwright end-to-end tests against UAT. 5,000 unit tests. Schema tests. Integration tests. The whole thing takes 6h on my machine. So I moved the tests to a cluster of VMs on Google Cloud. Same suite: about 30 minutes, roughly US$0.50 per run.\n\nDuring this talk I will teach how to make sure your spaghetti vibe-coded nightmare is the best quality spaghetti there is.",
         "ja": "自分ではコードを1行も書かずに、イベントプラットフォームを作りました。  でも、作った後に大変だったのがテストです。  UAT環境に対してPlaywrightのE2Eテストを2,000本。   さらにユニットテストが5,000本、Schemaテスト、Integrationテストもあります。  全部自分のPCで回すと、だいたい6時間かかります。  なので、Google Cloud上にVMのクラスターを作って、テストを並列で回すようにしました。  同じテスト一式が、今では約30分。   しかも1回あたりのコストは、だいたい0.5ドルです。  このトークでは、vibe codingで生まれたスパゲッティコードの悪夢を、どうやって「できるだけ品質の高いスパゲッティ」にするかを紹介します。"
       },
-      "tags": ["Google Cloud", "Playwright", "Cluster"],
+      "tags": ["在地講者", "Cloud", "Google Cloud", "Playwright", "Cluster"],
       "speakerIds": ["arturs_vancans"],
       "start": "2026-11-14T11:00",
       "end": "2026-11-14T11:40",
@@ -1133,7 +1171,7 @@
         "en": "Starting from the real pain points of frontline clinicians, this talk shows how we used a Chrome extension to reorganize data from the NHI MediCloud System and build \"Better NHI MediCloud 2.0\", a tool that fits clinical workflows far better.\n\nAlong the way, we went from simple ad-hoc collaboration to GitHub and AI-assisted development, and gradually faced challenges in feature expansion, team collaboration, testing, refactoring, and maintainability. This is not just a story about building a tool; it is also the hands-on journey of physicians without an engineering background going from system users to tool builders.",
         "ja": "這場分享將從第一線臨床醫師的實際痛點出發，介紹我們如何利用 Chrome Extension，重新整理健保雲端資料，打造更符合臨床工作流程的「更好的健保雲端 2.0」。\n\n在開發過程中，我們從最初簡單的協作方式，一路走到 GitHub 與 AI 輔助開發，也逐步面對功能擴充、多人協作、測試、重構與可維護性等問題。這不只是一個工具開發故事，也是一段非工程背景的醫師，如何從系統使用者走向工具打造者的實戰歷程。"
       },
-      "tags": ["Chrome Extension", "Vibe Coding", "Healthcare"],
+      "tags": ["在地講者", "Web", "Chrome Extension", "Vibe Coding", "Healthcare"],
       "speakerIds": ["jianlin"],
       "start": "2026-11-14T11:00",
       "end": "2026-11-14T11:20",
@@ -1153,7 +1191,7 @@
         "en": "By day, I work in the operating room as a colorectal surgeon. Back in the classroom, I am also a computer science student trying to keep up with fast-paced, English-language lectures filled with technical terminology.\n\nIn this talk, I will share how I built my own real-time AI learning assistant using browser audio, FastAPI, WebSockets, Gemini live transcription, and LLM-based summarization. Beyond simply connecting AI APIs, I will cover the engineering problems that appeared during real-world use: long-running streaming sessions, connection failures, session rotation, cascading transcription errors, and recovery after failed AI calls.\n\nThis is a story about turning a personal problem into a tool I actually use—and what it takes to move from an AI demo to a reliable working system.",
         "ja": "白天在手術室工作，回到教室後，我又成了一名學習電腦科學的學生。面對全英語、節奏快速又充滿專有名詞的課程，我開始思考：能不能打造一個真正符合自己需求的 AI 學習助手？\n\n這場分享將介紹我如何從零打造一套即時課堂筆記系統，串接瀏覽器麥克風、FastAPI、WebSocket、Gemini 即時語音辨識與 LLM 摘要，將數小時的課堂內容轉換成可複習的結構化筆記。除了 AI API 串接，我也會分享實際使用後遇到的串流中斷、session rotation、錯誤累積與失敗復原等工程問題，以及如何把一個 AI prototype 做成自己真正每天願意使用的工具。"
       },
-      "tags": ["BuildWithAI", "RealtimeAI", "SurgeonDeveloper"],
+      "tags": ["在地講者", "AI", "BuildWithAI", "RealtimeAI", "SurgeonDeveloper"],
       "speakerIds": ["fredric_huang"],
       "start": "2026-11-14T11:30",
       "end": "2026-11-14T11:50",
@@ -1173,7 +1211,7 @@
         "en": "How can we build an agentic workflow to fit our needs? This talk will introduce tips and tricks for building workflows that make agents more proactive, improve the quality of final outputs, and save some pennies.",
         "ja": "Agent 總是不聽話？明明用了博士模型做出來的效果卻不如預期？本議程分享如何調整平時使用的 Agentic Workflow，讓 Agent 在做事情的時候更符合需求。無論是提升品質、更為主動進行某些作業、省錢以及監督品質，都能在調整的過程之中受惠。"
       },
-      "tags": ["AI", "Agentic Workflow", "Agent"],
+      "tags": ["在地講者", "AI", "Agentic Workflow", "Agent"],
       "speakerIds": ["ray_yuan_liu"],
       "start": "2026-11-14T12:30",
       "end": "2026-11-14T12:50",
@@ -1193,7 +1231,7 @@
         "en": "As AI agents become capable of understanding web pages, calling tools, and executing tasks, websites are evolving from being designed only for human interaction to becoming interfaces that AI can understand and operate.\n\n\n\nIn this session, we will introduce the core concepts of WebMCP and explore how it enables websites to expose their capabilities to AI agents in a more structured and reliable way. From form submissions and search to data retrieval and real actions within a website, AI no longer needs to guess which buttons to click. Instead, it can understand what capabilities a website provides and how to use them correctly.\n\n\n\nThrough practical examples, we will also demonstrate how WebMCP can be integrated into existing websites and web applications, helping developers make their products more accessible and actionable for the emerging AI agent ecosystem.",
         "ja": "隨著 AI Agent 開始能理解網頁、呼叫工具並執行任務，網站也需要從「給人操作」進一步走向「讓 AI 知道可以怎麼操作」。\n\n\n\n這場分享將介紹 WebMCP 的核心概念，以及它如何讓網站把可執行的功能，以更結構化的方式提供給 AI Agent。從表單填寫、搜尋、資料查詢，到觸發網站內的實際操作，AI 不再只能猜測頁面上的按鈕，而是能理解網站提供了哪些能力，以及該如何正確使用。\n\n\n\n現場也會透過實際案例展示 WebMCP 的整合方式，並分享如何在既有網站與 Web 應用中導入，讓你的網站開始具備「AI 可操作」的能力。"
       },
-      "tags": ["WebMCP", "AI Agent", "Web Development"],
+      "tags": ["外地講者", "Web", "WebMCP", "AI Agent", "Web Development"],
       "speakerIds": ["bruce_lee"],
       "start": "2026-11-14T13:00",
       "end": "2026-11-14T13:20",
@@ -1213,7 +1251,7 @@
         "en": "As generative AI sweeps across every industry, the social welfare system is undergoing a qualitative shift from \"passive relief\" to \"active empowerment.\" Grounded in local frontline practice, this talk shares cases of how generative AI toolchains have helped people with rare diseases and disabilities take on a wide range of professional roles, work independently, and even become \"digital instructors.\"\nDrawing on frontline observations, the speaker will also walk developers through the real challenges of putting technology into practice: the lack of accessible human-computer interfaces, the hardware gap in edge devices, and the fraud and security threats brought by generative technology. The talk aims to inspire the local developer community to rethink the social value and impact of technology through the lens of Inclusive Design.",
         "ja": "在生成式 AI 浪潮席捲各行各業之際，社會福利體系正經歷一場從「被動救助」到「主動賦能」的質變。本場演講將立足於在地第一線實踐，分享如何藉由生成式 AI 工具鏈，培育罕病與身心障礙者化身為許多不同職能和個人工作者以及「數位講師」等多種案例。\n同時，講者將以第一線觀察，向現場開發者剖析技術落地時所遭遇的真實挑戰：無障礙人機介面（Accessibility）的匱乏、邊緣端設備的硬體落差，以及生成式技術帶來的詐騙資安威脅。期待喚起在地開發者社群以「共融設計（Inclusive Design）」的視角，重新思考技術的社會價值與影響力。"
       },
-      "tags": ["數位平權", "AI機會", "主動賦能"],
+      "tags": ["在地講者", "AI", "數位平權", "AI機會", "主動賦能"],
       "speakerIds": ["chih_ming"],
       "start": "2026-11-14T12:30",
       "end": "2026-11-14T12:50",
@@ -1233,7 +1271,7 @@
         "en": "Unlike Flow Music, which uses prompts to directly generate audio and video files, Gemini is a multimodal model capable of generating text-based musical scores. Furthermore, with a basic melody of your own choosing, you can ask Gemini to help write chords or continue developing the melody, and then finish the production in a DAW. As a complete musical novice, I managed to write my very first 25-minute symphony with Gemini's assistance.",
         "ja": "不同於 Flow Music 中使用 prompt 直接產生音檔與影片，Gemini 是多模態模型，也可以產生文字型態的樂譜；而且可以在自己決定基本旋律的前提下，要求 Gemini 協助撰寫和弦或是繼續發展旋律，然後在 DAW 中繼續完成製作。身為音樂門外漢的我，就在 Gemini 的協助下，寫出了人生的第一首長度 25 分鐘的交響曲。"
       },
-      "tags": ["AI", "Gemini", "Antigravity"],
+      "tags": ["外地講者", "AI", "Gemini", "Antigravity"],
       "speakerIds": ["zonble"],
       "start": "2026-11-14T13:00",
       "end": "2026-11-14T13:20",
@@ -1273,7 +1311,7 @@
         "en": "As AI Agents evolve, the industry faces a major bottleneck: while agents excel at logic and coding, they struggle with precise formatting in daily productivity tools like Word, PowerPoint, or Figma. Instead of teaching AI to use GUI-based software, we shift the output medium to its native language—code.\n\nThis session introduces the \"Open-X Project\" (including Open-Doc, Open-Slide, and Open-Design-frame), an open-source ecosystem built specifically for agents. We will demonstrate how to build a powerful reasoning brain using Google Antigravity and the Google Agent Development Kit (ADK), connecting seamlessly to Open-X via the Model Context Protocol (MCP). Discover how Agents can natively write React/TSX to autonomously generate pixel-perfect A4 reports, 16:9 slides, and UI design frames, achieving true \"Everything as Code\" and rapid automated delivery.",
         "ja": "隨著 AI Agent 的發展，產業界正面臨一個巨大的痛點：Agent 擅長邏輯推理與撰寫程式碼，但在處理需要精確排版的日常生產力工具（如 Word、PowerPoint 或 Figma）時卻往往力不從心。與其教 AI 怎麼操作所見即所得（WYSIWYG）軟體，不如將輸出媒介轉換為它最熟悉的領域——程式碼。\n\n本議程將帶您深入專為 Agent 打造的開源生態系「Open-X 專案」（包含 Open-Doc, Open-Slide, Open-Design-frame）。我們將實戰展示如何透過 Google Antigravity 與 Google ADK (Agent Development Kit) 打造強大推理大腦，並藉由 MCP (Model Context Protocol) 介面無縫串接 Open-X。看 Agent 如何直接編寫 React/TSX，自動產出像素級完美的 A4 報表、16:9 簡報與互動設計稿，實現真正的「Everything as Code」極速交付。"
       },
-      "tags": ["AI", "Agent", "Google ADK", "Google Antigravity", "MCP"],
+      "tags": ["外地講者", "AI", "Agent", "Google ADK", "Google Antigravity", "MCP"],
       "speakerIds": ["simon_liu"],
       "start": "2026-11-14T13:30",
       "end": "2026-11-14T14:10",
@@ -1293,7 +1331,7 @@
         "en": "As AI agents move from \"answering questions\" to \"actually executing tasks,\" enabling them to use existing enterprise systems safely and effectively has become a new integration challenge. Many enterprises have already built mature service architectures on REST APIs and API gateways. If adopting AI agents means developing and maintaining a large number of new MCP servers, it not only raises development costs but may also force existing authentication, access control, rate limiting, and auditing mechanisms to be rebuilt from scratch.\n\nAs MCP becomes a key interface for AI agents to access external tools and services, API gateways are taking on a new role: not just managing APIs, but serving as the bridge between existing services and AI agents. Starting from common enterprise REST API architectures, this talk shows how to use an API gateway to turn existing APIs into MCP tools that agents can discover and call, and explores the practical issues that come up during adoption, including authentication, authorization, rate limiting, logging, and tool discovery.",
         "ja": "當 AI Agent 開始從「回答問題」走向「實際執行任務」，如何讓 Agent 安全且有效地使用企業既有系統，成為新的整合挑戰。許多企業早已透過 REST API 與 API Gateway 建立成熟的服務架構，如果為了導入 AI Agent，就必須重新開發與維護大量 MCP Server，不僅增加開發成本，也可能讓既有的驗證、權限控管、流量限制與稽核機制重新再造一次。\n\n隨著 MCP 逐漸成為 AI Agent 存取外部工具與服務的重要介面，API Gateway 也開始扮演新的角色：不只是管理 API，而是成為既有服務與 AI Agent 之間的橋樑。本次分享將從企業常見的 REST API 架構出發，介紹如何透過 API Gateway 將既有 API 轉換為 Agent 可以 Discover 與 Call 的 MCP Tools，並探討 Authentication、Authorization、Rate Limit、Logging 與 Tool Discovery 等實際導入時需要面對的問題。"
       },
-      "tags": ["API Gateway", "MCP", "Cloud"],
+      "tags": ["外地講者", "Cloud", "API Gateway", "MCP"],
       "speakerIds": ["johnny_sung"],
       "start": "2026-11-14T13:30",
       "end": "2026-11-14T14:10",
@@ -1333,7 +1371,7 @@
         "en": "You wired Gemma 4 into a customer-service app and told it \"never reveal internal data.\" Are you safe?\n\nI ran a fixed set of 25 attacks mapped to the OWASP LLM Top 10 against Gemma 4 12B and 26B on a DGX Spark, then re-ran the 12B set on a Mac mini. The result: three sets of numbers and one surprise. The model's final answer held the line, but the secrets leaked, verbatim, from its thinking. No jailbreak needed; a harmless order lookup triggers it. Same model, same attacks, different hardware: 5 of 25 outcomes flipped. Model cards don't tell you that.\n\nThis session demos the attacks and fixes live on an ordinary laptop, and walks through three guardrails you should have on day one: an output rail (don't ship the thinking as the answer), a retrieval rail (RAG content is data, not instructions), and an execution rail (an agent's permissions are its blast radius), with a look at the managed options on Google Cloud. All attack scripts and deterministic checks are open source.\n\nFor engineers integrating Gemini or Gemma into products. No security background required.",
         "ja": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集，先在 DGX Spark 上實測 Gemma 4 12B 與 26B，再把 12B 搬到 Mac mini 重跑，得到三組數字和一個意外：模型的正式回答守住了，機密卻從它的思考鏈整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。同一顆模型、同一套攻擊，換一台硬體就有 5/25 題翻盤，這是 model card 不會告訴你的。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。"
       },
-      "tags": ["Gemma 4", "Prompt Injection", "Guardrails"],
+      "tags": ["外地講者", "AI", "Gemma 4", "Prompt Injection", "Guardrails"],
       "speakerIds": ["fngi_shiu"],
       "start": "2026-11-14T15:00",
       "end": "2026-11-14T15:40",
@@ -1353,7 +1391,7 @@
         "en": "Ship an LLM-powered app, and someone will try to break it. This talk takes a security-minded look at AI safety: how attackers get language models to leak system prompts or ignore safety rules, and how developers can defend against them.\n\nWe start with manual jailbreaks (role-play, context framing, multi-turn manipulation), then move to automated attacks such as Greedy Coordinate Gradient (GCG) and AutoDAN, explaining the optimization ideas behind each. On the defense side, we cover prompt-level defenses, perplexity filters, guard models, and circuit breakers, and show how to evaluate them honestly with attack success rate and over-refusal rate.\n\nWe will demonstrate the attacks and defenses on open-weight Gemma models, and you will leave with a checklist for reviewing the safety of your own agents.",
         "ja": "AIエージェントを公開すると、ユーザーのたった一言で、システムプロンプトが漏れたり、安全対策が回避されたり、不適切な内容が出力されたりすることがあります。本講演ではセキュリティの視点からAI Safetyを取り上げ、LLMがどのように破られるのか、そしてどのように何層にも守りを固めるのかを解説します。\n\n内容は次の3部構成です。\n\n1. 攻撃：ロールプレイやシチュエーション設定といった手動のJailbreakから、自動化されたGreedy Coordinate Gradient（GCG）やAutoDANまで、その背後にある最適化の原理と、JailbreakとPrompt Injectionの違いを説明します。\n2. 防御：プロンプトレベルのセルフリマインダー、Perplexityフィルタ、ガードモデル、Circuit Breakersを取り上げ、攻撃成功率（ASR）と過剰拒否率で各防御の効果とコストを評価します。\n3. 実践：なぜ単一の防御では不十分なのか、そして多層防御でAIアプリケーションをどう設計すべきかを紹介します。\n\n原理と実装の両面から各種の攻防手法を解説し、Gemmaオープンモデル上での再現も実演します。聴講後には、LLM攻防の全体像をつかみ、自社のエージェントを点検するためのセキュリティチェックリストを持ち帰っていただけます。"
       },
-      "tags": ["AI Safety", "LLM Security", "Jailbreak"],
+      "tags": ["外地講者", "AI", "AI Safety", "LLM Security", "Jailbreak"],
       "speakerIds": ["john_lu"],
       "start": "2026-11-14T15:00",
       "end": "2026-11-14T15:40",
@@ -1369,9 +1407,9 @@
         "ja": "デザインがAIに出会う時：終末の幕開け"
       },
       "abstract": {
-        "zh-Hant": "座談由饅頭、設計師勞哥、史蒂夫•葉共同帶來「當設計遇到 AI — 末日崛起」探討。",
-        "en": "Panel discussion by Mantou, maylogger, and Steve Yeh on \"When Design Meets AI: Rise of Doomsday\".",
-        "ja": "Mantou、maylogger、Steve Yehによる「デザインがAIに出会う時：終末の幕開け」についてのパネルディスカッション。"
+        "zh-Hant": "設計師的三種生存模式：一個人、一間公司、一個部門\n\nAI 時代，從個人創作、接案經營到企業設計管理的生存策略。\n\n當設計不再只是把東西做好，設計師究竟還能成為什麼？\n\n本場講座邀請三位身處不同位置的設計工作者，從第一線設計師、設計公司經營者到大型企業設計主管，分享各自在創作實務、商業經營與組織管理上的經驗與挑戰。\n\n透過三種不同的職涯視角，探討誰來決定好的設計、如何在理想與現實之間取得平衡，以及 AI 浪潮如何重新定義設計工作的價值。\n\n當一個人、一間公司與一個部門面對相同的設計問題，會做出什麼不同的選擇？一起重新思考設計師的角色、價值與未來的可能性。",
+        "en": "Three Survival Modes for Designers: An Individual, a Studio, and an Enterprise Department\n\nSurvival strategies in the AI era, from individual creation and studio freelancing to enterprise design management.\n\nWhen design is no longer just about crafting good work, what can designers ultimately become?\n\nThis panel brings together three design practitioners with distinctly different perspectives—a frontline designer, an agency founder, and an enterprise design executive—to share their experiences and challenges across creative practice, business operations, and organizational management.\n\nThrough these three career viewpoints, we will explore who defines good design, how to strike a balance between ideals and reality, and how the rise of AI is redefining the true value of design work.\n\nWhen an individual, a studio, and an entire department face the same design dilemma, what different choices will they make? Join us as we rethink the role, value, and future possibilities of designers.",
+        "ja": "デザイナーの3つの生存戦略：個人、スタジオ、そして企業組織\n\nAI時代における生存戦略：個人の創作活動、スタジオ経営から企業のデザインマネジメントまで。\n\nデザインがもはや「良いものをつくる」だけにとどまらなくなった今、デザイナーは何者になり得るのか？\n\n本セッションでは、最前線のデザイナー、デザインスタジオの創業者、大企業のデザイン責任者という、異なる立場に立つ3名のデザイナーを招き、創作の実践、ビジネス経営、組織マネジメントにおけるそれぞれの経験と課題を共有します。\n\n3つの異なるキャリアの視点から、「誰が良いデザインを決めるのか」「理想と現実のバランスをどう取るのか」、そして「AIの波がデザインという仕事の価値をどう再定義するのか」を探求します。\n\n個人、会社、そして組織部門が同じデザイン課題に直面したとき、どのような異なる選択を下すのか？デザイナーの役割、価値、そして未来の可能性を共に問い直します。"
       },
       "tags": ["AI", "設計", "FDE", "座談"],
       "speakerIds": ["mantou", "maylogger", "steve_yeh"],
