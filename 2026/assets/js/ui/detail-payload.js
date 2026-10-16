@@ -76,14 +76,14 @@ export function buildSpeakerPayload(speaker) {
     groupName: group ? group.name : undefined,
     groupColor: groupColorOf(group),
     tags:
-      session && Array.isArray(session.tags) && session.tags.length > 0
-        ? session.tags
-        : Array.isArray(speaker && speaker.tag)
-          ? speaker.tag
-          : Array.isArray(speaker && speaker.tags)
-            ? speaker.tags
-            : speaker && speaker.tag
-              ? [speaker.tag]
+      Array.isArray(speaker && speaker.tag) && speaker.tag.length > 0
+        ? speaker.tag
+        : Array.isArray(speaker && speaker.tags) && speaker.tags.length > 0
+          ? speaker.tags
+          : speaker && speaker.tag
+            ? [speaker.tag]
+            : session && Array.isArray(session.tags) && session.tags.length > 0
+              ? session.tags
               : [],
     links: linksOf(speaker),
     meta,

@@ -566,6 +566,11 @@ function renderSpeakerCard(speaker) {
     mount(main, el('p', { class: 'gk-modal-speaker-card-affiliation', text: affiliation }));
   }
 
+  const speakerTags = renderTags(speaker);
+  if (speakerTags) {
+    mount(main, speakerTags);
+  }
+
   if (hasI18nText(speaker.bio)) {
     mount(main, el('p', { class: 'gk-multiline gk-modal-speaker-card-bio', text: t(speaker.bio) }));
   }

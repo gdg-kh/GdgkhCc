@@ -255,6 +255,7 @@ function openSessionModal(session, targetSpeakerId = null) {
     image: assetPath('speakers', sp.id),
     shareUrl: getShareUrl('speakers', sp.id),
     links: Array.isArray(sp.links) ? sp.links : [],
+    tags: Array.isArray(sp.tag) ? sp.tag : Array.isArray(sp.tags) ? sp.tags : [],
   }));
 
   track('select_session', { session_id: session.id, target_speaker_id: targetSpeakerId || undefined });
