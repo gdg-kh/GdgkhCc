@@ -40,7 +40,7 @@ jobs:
             2026/images/*-*.webp
             2026/images/*.webp
             2026/.optimize-cache.json
-          key: images-webp-${{ hashFiles('2026/images/**/*.jpg', '2026/images/**/*.jpeg', '2026/images/**/*.png', '2026/images/*.png') }}
+          key: images-webp-${{ hashFiles('2026/scripts/optimize-images.mjs', '2026/images/**/*.jpg', '2026/images/**/*.jpeg', '2026/images/**/*.png', '2026/images/*.png') }}
           restore-keys: |
             images-webp-
 
@@ -52,6 +52,9 @@ jobs:
 
       - name: 執行靜態頁面與 OG 圖生成
         run: npm run generate:2026
+
+      - name: 清理建置依賴（避免將 node_modules 打包進部署成品）
+        run: rm -rf node_modules 2026/.generate-cache.json
 
       - name: 設定 GitHub Pages 環境
         uses: actions/configure-pages@v5

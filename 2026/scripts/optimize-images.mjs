@@ -149,7 +149,34 @@ export async function optimizeDirectory(
     }
   }
 
-  const totalPossible = rawSources.length * (sizes.length + (generateFullWebp ? 1 : 0));
+  // 清理無對應母圖的孤兒衍生 WebP 檔（避免 CI cache restore-keys 殘留已刪除或改名的舊圖）
+  const expectedWebpFiles = new Set();
+  for (const baseName of filesByBaseName.keys()) {
+    for (const size of sizes) {
+      expectedWebpFiles.add(`${baseName}-${size}.webp`);
+    }
+    if (generateFullWebp) {
+      expectedWebpFiles.add(`${baseName}.webp`);
+    }
+  }
+
+  for (const file of files) {
+    const isSizedWebp = /-\d+\.webp$/i.test(file);
+    const isFullWebp = generateFullWebp && /\.webp$/i.test(file) && !isSizedWebp;
+    if ((isSizedWebp || isFullWebp) && !expectedWebpFiles.has(file)) {
+      const orphanPath = path.join(dirPath, file);
+      const cacheKey = subDir ? `${subDir}/${file}` : file;
+      try {
+        await fs.unlink(orphanPath);
+        delete cache[cacheKey];
+        console.log(`[清理孤兒檔] 2026/images/${cacheKey}`);
+      } catch {
+        // 忽略刪除失敗
+      }
+    }
+  }
+
+  const totalPossible = filesByBaseName.size * (sizes.length + (generateFullWebp ? 1 : 0));
   return { processed: processedCount, skipped: skippedCount, total: totalPossible };
 }
 
