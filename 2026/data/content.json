@@ -363,6 +363,16 @@
       },
       "color": "#ccf6c5",
       "order": 3
+    },
+    {
+      "id": "workshop_track",
+      "name": {
+        "zh-Hant": "工作坊",
+        "en": "Workshop",
+        "ja": "ワークショップ"
+      },
+      "color": "#ffe7a5",
+      "order": 4
     }
   ],
   "tracks": [
@@ -1055,6 +1065,34 @@
       ],
       "groupId": "builder_track",
       "tag": ["在地講者", "Web", "Chrome Extension", "Vibe Coding", "Healthcare"]
+    },
+    {
+      "id": "kevin_chiu",
+      "order": 18,
+      "name": {
+        "zh-Hant": "邱哲綸",
+        "en": "Kevin Chiu",
+        "ja": "邱哲綸（Kevin Chiu）"
+      },
+      "org": {
+        "zh-Hant": "GDG Taipei",
+        "en": "GDG Taipei",
+        "ja": "GDG Taipei"
+      },
+      "title": {
+        "zh-Hant": "Cloud AI GDE",
+        "en": "Cloud AI GDE",
+        "ja": "Cloud AI GDE"
+      },
+      "bio": {
+        "zh-Hant": "Cloud AI GDE / GDG Taipei Organizer / TPM",
+        "en": "Cloud AI GDE / GDG Taipei Organizer / TPM",
+        "ja": "Cloud AI GDE / GDG Taipei オーガナイザー / TPM"
+      },
+      "sessionIds": ["workshop_4_1"],
+      "links": [],
+      "groupId": "workshop_track",
+      "tag": ["外地講者", "AI", "Google Antigravity", "Google ADK", "Workshop"]
     }
   ],
   "sessions": [
@@ -1282,17 +1320,17 @@
       "id": "workshop_4_1",
       "trackId": "track_3",
       "title": {
-        "zh-Hant": "工作坊",
-        "en": "Workshop",
-        "ja": "ワークショップ"
+        "zh-Hant": "用 Agy 和 Google ADK 打造你的「全自動 AI 虛擬團隊」",
+        "en": "Build your fully automated AI virtual team with Agy and Google ADK",
+        "ja": "AgyとGoogle ADKで構築する「フルオートメーションAIバーチャルチーム」"
       },
       "abstract": {
-        "zh-Hant": "",
-        "en": "",
-        "ja": ""
+        "zh-Hant": "利用 Google ADK 的 Multi-Agent Workflow (多代理工作流) 與 State Management (狀態管理)，為這三位虛擬員工建立一套堅不可摧的跨部門溝通協議！",
+        "en": "Leveraging Google ADK's Multi-Agent Workflow and State Management, we established an unbreakable cross-departmental communication protocol for these three virtual employees!",
+        "ja": "Google ADKのマルチエージェントワークフロー（Multi-Agent Workflow）と状態管理（State Management）を活用し、3名のバーチャル社員間で堅牢な部門間コミュニケーションプロトコルを確立します！"
       },
-      "tags": ["Workshop"],
-      "speakerIds": [],
+      "tags": ["外地講者", "AI", "Google Antigravity", "Google ADK", "Workshop"],
+      "speakerIds": ["kevin_chiu"],
       "start": "2026-11-14T13:00",
       "end": "2026-11-14T14:10",
       "type": "talk",
