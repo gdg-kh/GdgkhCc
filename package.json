@@ -18,6 +18,7 @@
     "generate:about": "node 2025/generate-about-pages.js",
     "generate:all": "npm run generate:speakers && npm run generate:thanks && npm run generate:community && npm run generate:staff && npm run generate:twm && npm run generate:about",
     "generate:2026": "node 2026/scripts/generate.mjs",
+    "generate:agenda-image": "node 2026/scripts/generate-agenda-image.mjs",
     "optimize:images": "node 2026/scripts/optimize-images.mjs",
     "build:2026": "npm run optimize:images && npm run generate:2026",
     "check:2026": "node 2026/scripts/check.mjs",
