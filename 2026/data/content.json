@@ -2414,6 +2414,32 @@
         }
       ],
       "order": 2
+    },
+    {
+      "id": "kalug",
+      "groupId": "community",
+      "name": {
+        "zh-Hant": "KaLUG",
+        "en": "KaLUG",
+        "ja": "KaLUG"
+      },
+      "description": {
+        "zh-Hant": "KaLUG - Kaohsiung Linux User Group: 由一群熱愛 Linux / open source 的高雄人所組成的社群",
+        "en": "KaLUG - Kaohsiung Linux User Group: A community formed by a group of Kaohsiung locals passionate about Linux and open source.",
+        "ja": "KaLUG - Kaohsiung Linux User Group: Linux やオープンソースを愛する高雄の人々によって結成されたコミュニティです。"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://kalug.tw",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          }
+        }
+      ],
+      "order": 3
     }
   ],
   "virtualSpace": {
