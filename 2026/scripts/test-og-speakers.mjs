@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { createCanvas } from 'canvas';
 import {
   wrapSpeakerLines,
+  wrapHeadline,
   renderOgImage,
   registerFontsOnce,
   FONT_FAMILY,
@@ -18,6 +19,20 @@ const CONTENT_PATH = path.join(ROOT_2026, 'data', 'content.json');
 
 const contentRaw = await fs.readFile(CONTENT_PATH, 'utf8');
 const content = JSON.parse(contentRaw);
+
+function findSpeakerSessionTitle(speakerId) {
+  if (!Array.isArray(content.sessions)) {
+    return null;
+  }
+  const matched = content.sessions.find(
+    (sess) =>
+      sess &&
+      sess.enabled !== false &&
+      Array.isArray(sess.speakerIds) &&
+      sess.speakerIds.includes(speakerId)
+  );
+  return matched && matched.title ? matched.title : null;
+}
 
 let passed = 0;
 let total = 0;
@@ -78,6 +93,17 @@ await test('當職稱與單位為空時，應維持單行姓名且無多餘分�
   assert.equal(lines[0], 'zonble');
 });
 
+await test('含換行符號 (\\n) 的議程標題在 wrapHeadline 中應正確分段，不得殘留 \\n 導致重疊', async () => {
+  const kaiTitle = pickLang(findSpeakerSessionTitle('kai_wu'));
+  const rawLines = wrapHeadline(ctx, kaiTitle, 490);
+  assert.ok(rawLines.length >= 2, '應拆分為多行');
+  for (const line of rawLines) {
+    assert.ok(!/[\r\n]/.test(line), `單行文字不得包含換行字元: ${JSON.stringify(line)}`);
+    assert.ok(ctx.measureText(line).width <= 490, `單行寬度應 <= 490: ${line}`);
+  }
+  assert.equal(rawLines[0], '從臨場發揮到穩定交付:');
+});
+
 console.warn('\n=== 2. 全體 16 位講者 OG 水平置中與邊界安全測試 ===');
 
 const badgeW = 154;
@@ -123,6 +149,7 @@ await test('為短姓名講者（史蒂夫•葉）產生 OG 圖，確認正常�
     content,
     layout: {
       imagePath: path.join(ROOT_2026, 'images', 'speakers', 'steve_yeh.jpg'),
+      sessionTitle: findSpeakerSessionTitle('steve_yeh'),
     },
     outPath: tempOut,
   });
@@ -141,6 +168,7 @@ await test('為無職稱講者（zonble）產生單行 OG 圖，確認正常繪�
     content,
     layout: {
       imagePath: path.join(ROOT_2026, 'images', 'speakers', 'zonble.jpg'),
+      sessionTitle: findSpeakerSessionTitle('zonble'),
     },
     outPath: tempOut,
   });
@@ -159,6 +187,7 @@ await test('為長職稱講者（李冠緯 Bruce Lee）產生雙行 OG 圖，確
     content,
     layout: {
       imagePath: path.join(ROOT_2026, 'images', 'speakers', 'bruce_lee.jpg'),
+      sessionTitle: findSpeakerSessionTitle('bruce_lee'),
     },
     outPath: tempOut,
   });

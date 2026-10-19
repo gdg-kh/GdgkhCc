@@ -94,9 +94,9 @@ export function registerFontsOnce() {
   }
 }
 
-// 智慧詞彙分詞
+// 智慧詞彙分詞（僅匹配水平空白，避免將換行字元視為單行空白 token）
 function tokenizeText(text) {
-  const regex = /(\s+|[A-Za-z0-9_#+@./:-]+|[^\s])/gu;
+  const regex = /([^\S\r\n]+|[A-Za-z0-9_#+@./:-]+|[^\s])/gu;
   const tokens = [];
   let match;
   while ((match = regex.exec(text)) !== null) {
@@ -175,36 +175,43 @@ export function drawWrappedText(ctx, text, x, y, maxWidth, lineHeight, maxLines 
   return lines.length;
 }
 
-function wrapHeadline(ctx, text, maxWidth) {
-  const tokens = tokenizeText(text);
+export function wrapHeadline(ctx, text, maxWidth) {
+  if (!text) {
+    return [];
+  }
+  const paragraphs = String(text).split(/\r?\n/);
   const lines = [];
-  let current = '';
 
-  for (const tok of tokens) {
-    if (!current && /^\s+$/.test(tok)) {
-      continue;
-    }
-    const attempt = current + tok;
-    if (ctx.measureText(attempt).width <= maxWidth) {
-      current = attempt;
-    } else {
-      if (current) {
-        lines.push(current);
-        current = /^\s+$/.test(tok) ? '' : tok;
+  for (const para of paragraphs) {
+    const tokens = tokenizeText(para);
+    let current = '';
+
+    for (const tok of tokens) {
+      if (!current && /^\s+$/.test(tok)) {
+        continue;
+      }
+      const attempt = current + tok;
+      if (ctx.measureText(attempt).width <= maxWidth) {
+        current = attempt;
       } else {
-        for (const ch of Array.from(tok)) {
-          if (ctx.measureText(current + ch).width <= maxWidth) {
-            current += ch;
-          } else {
-            lines.push(current);
-            current = ch;
+        if (current) {
+          lines.push(current);
+          current = /^\s+$/.test(tok) ? '' : tok;
+        } else {
+          for (const ch of Array.from(tok)) {
+            if (ctx.measureText(current + ch).width <= maxWidth) {
+              current += ch;
+            } else {
+              lines.push(current);
+              current = ch;
+            }
           }
         }
       }
     }
-  }
-  if (current) {
-    lines.push(current);
+    if (current) {
+      lines.push(current);
+    }
   }
   return lines;
 }
