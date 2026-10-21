@@ -2278,13 +2278,13 @@
     {
       "id": "jetbrains",
       "groupId": "company",
-      "subgroupId": "siwei",
+      "subgroupId": "ercheng",
       "order": 7,
       "tags": [
         {
-          "zh-Hant": "四維路贊助方案",
-          "en": "Siwei Tier",
-          "ja": "四維プラン"
+          "zh-Hant": "二聖路贊助方案",
+          "en": "Ercheng Tier",
+          "ja": "二聖プラン"
         }
       ],
       "name": {
