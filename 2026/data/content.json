@@ -1740,6 +1740,34 @@
       "order": 7
     },
     {
+      "id": "bella",
+      "name": {
+        "zh-Hant": "胤瑄",
+        "en": "Bella",
+        "ja": "Bella"
+      },
+      "role": {
+        "zh-Hant": "影片紀錄者",
+        "en": "Videographer",
+        "ja": "ビデオグラファー"
+      },
+      "bio": {
+        "zh-Hant": "軟體有pipeline，我是管實體的pipeline",
+        "en": "Software has pipelines, and I manage physical pipelines.",
+        "ja": "ソフトウェアにはパイプラインがありますが、私は物理的なパイプラインを管理しています。"
+      },
+      "links": [
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/wuisabellais",
+          "label": {
+            "zh-Hant": "Facebook"
+          }
+        }
+      ],
+      "order": 8
+    },
+    {
       "id": "aaron_ng",
       "name": {
         "zh-Hant": "黃立仁",
@@ -1779,7 +1807,7 @@
           }
         }
       ],
-      "order": 8
+      "order": 9
     },
     {
       "id": "rix",
@@ -1799,7 +1827,7 @@
         "ja": "こんにちは！Rixです。GDGoC NSYSUのメンバーです！"
       },
       "links": [],
-      "order": 9
+      "order": 10
     },
     {
       "id": "mantou",
@@ -1827,7 +1855,7 @@
           }
         }
       ],
-      "order": 10
+      "order": 11
     },
     {
       "id": "ka_iu",
@@ -1862,7 +1890,7 @@
           }
         }
       ],
-      "order": 11
+      "order": 12
     },
     {
       "id": "chixiang",
@@ -1882,7 +1910,7 @@
         "ja": "休日にふらっと参加しました。"
       },
       "links": [],
-      "order": 12
+      "order": 13
     },
     {
       "id": "ting_zhe",
@@ -1902,7 +1930,7 @@
         "ja": "スマートプロダクトのエンジニア PM です！"
       },
       "links": [],
-      "order": 13
+      "order": 14
     },
     {
       "id": "ace",
@@ -1922,7 +1950,7 @@
         "ja": "みなさんこんにちは、Ace（文博）です！チームワークや新しいことに挑戦するのが大好きです。ボランティアとしてイベントをサポートできるのを楽しみにしています！"
       },
       "links": [],
-      "order": 14
+      "order": 15
     },
     {
       "id": "taick",
@@ -1942,7 +1970,7 @@
         "ja": "Taickです。GDGoC NSYSUの講師を担当しています。"
       },
       "links": [],
-      "order": 15
+      "order": 16
     },
     {
       "id": "david_chen",
@@ -1962,7 +1990,7 @@
         "ja": "GDGから離れられない人。"
       },
       "links": [],
-      "order": 16
+      "order": 17
     },
     {
       "id": "pidan",
@@ -1997,7 +2025,7 @@
           }
         }
       ],
-      "order": 17
+      "order": 18
     }
   ],
   "thanksGroups": [
