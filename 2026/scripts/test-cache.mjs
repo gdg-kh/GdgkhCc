@@ -31,7 +31,7 @@ const swContent = fs.readFileSync(path.join(SITE, 'sw.js'), 'utf8');
 test('CACHE_VERSION 已升級至 gk-2026-v5 以上以廢除舊有快取', () => {
   const match = swContent.match(/CACHE_VERSION\s*=\s*'([^']+)'/);
   assert.ok(match, '必須定義 CACHE_VERSION');
-  assert.match(match[1], /^gk-2026-v[5-9]\d*$/, '快取版本應為 gk-2026-v5 以上');
+  assert.match(match[1], /^gk-2026-v([5-9]|[1-9]\d+)$/, '快取版本應為 gk-2026-v5 以上');
 });
 
 test('資料 (JSON) 請求採用 Network-First 策略以確保連線時獲得最新資料', () => {
@@ -100,7 +100,7 @@ test('assetPath 與 responsiveAssetPath 支援帶入版本參數 (?v=...) 進行
 
 test('getAssetVersion 於 meta 缺失時仍能安全提供預設版本防呆', () => {
   assert.ok(
-    storeContent.includes("getAssetVersion() || '2026.10.16'"),
+    storeContent.includes("getAssetVersion() || '2026.10.23'"),
     '當 meta 不存在時應有版本備援，避免回傳空字串或 null'
   );
 });
@@ -146,7 +146,7 @@ const rootIndex = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const shareTemplate = fs.readFileSync(path.join(SITE, 'scripts', 'share-template.html'), 'utf8');
 
 test('2026/index.html 包含 meta version 與 Cache-Control', () => {
-  assert.ok(index2026.includes('<meta name="version" content="2026.10.16" />'), '2026/index.html 應有 meta version');
+  assert.ok(index2026.includes('<meta name="version" content="2026.10.23" />'), '2026/index.html 應有 meta version');
   assert.ok(
     index2026.includes('<meta http-equiv="Cache-Control" content="no-cache, must-revalidate" />'),
     '2026/index.html 應有 Cache-Control 標籤'
@@ -164,7 +164,7 @@ test('根目錄 index.html 轉址頁面設定防快取標籤避免轉址鎖死',
 
 test('2026 分享頁範本 share-template.html 包含 meta version 與 Cache-Control', () => {
   assert.ok(
-    shareTemplate.includes('<meta name="version" content="2026.10.16" />'),
+    shareTemplate.includes('<meta name="version" content="2026.10.23" />'),
     'share-template.html 應包含 meta version'
   );
   assert.ok(
