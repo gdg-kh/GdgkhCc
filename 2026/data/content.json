@@ -2494,6 +2494,32 @@
         }
       ],
       "order": 3
+    },
+    {
+      "id": "uiux_kaohsiung",
+      "groupId": "community",
+      "name": {
+        "zh-Hant": "UIUX 高雄",
+        "en": "UIUX Kaohsiung",
+        "ja": "UIUX 高雄"
+      },
+      "description": {
+        "zh-Hant": "嗨！高雄的朋友們 👋 我們是高雄UIUX社群，是個輕鬆的設計師互助聚會。每個月第一個禮拜的星期六晚上都會有社群聚會",
+        "en": "Hi Kaohsiung friends! 👋 We are the Kaohsiung UI/UX Community, a casual and supportive meetup for designers. We host our community gatherings on the first Saturday evening of every month.",
+        "ja": "高雄の皆さん、こんにちは！👋 私たちは「高雄UI/UXコミュニティ」です。デザイナー同士が気軽に参加してサポートし合える集まりです。毎月第1土曜日の夜にミートアップを開催しています。"
+      },
+      "links": [
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/uiux.kaohsiung/",
+          "label": {
+            "zh-Hant": "Instagram",
+            "en": "Instagram",
+            "ja": "Instagram"
+          }
+        }
+      ],
+      "order": 4
     }
   ],
   "virtualSpace": {
