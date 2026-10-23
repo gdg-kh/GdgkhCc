@@ -53,7 +53,7 @@ function getAssetVersion() {
 }
 
 async function fetchJson(path, options = {}) {
-  const version = getAssetVersion() || '2026.10.23';
+  const version = getAssetVersion() || '2026.10.24';
   const sep = path.includes('?') ? '&' : '?';
   let url = `${path}${sep}v=${encodeURIComponent(version)}`;
   if (options && options.forceRefresh) {
