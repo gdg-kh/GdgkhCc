@@ -2520,6 +2520,32 @@
         }
       ],
       "order": 4
+    },
+    {
+      "id": "sitcon",
+      "groupId": "community",
+      "name": {
+        "zh-Hant": "SITCON 學生計算機年會",
+        "en": "SITCON",
+        "ja": "SITCON 学生計算機年会"
+      },
+      "description": {
+        "zh-Hant": "SITCON 由不同地區的學生組成，致力推廣資訊教育、開源與交流彼此想法，讓每一個人都可以被看見，實踐「學以致用、教學相長」的精神。\nSITCON 2027 將於明年的 3/13 於中央研究院人文社會科學館舉行，目前議程徵稿正在火熱進行中，無論是軟體開發、人工智慧、開源社群等與資訊相關的議題，都歡迎來投稿分享，在 11/29 前投稿還有機會獲得早鳥回饋呦！",
+        "en": "SITCON is formed by students from various regions, dedicated to promoting computing education, open source, and exchanging ideas so that everyone can be seen and realize the spirit of \"learning by doing and teaching each other.\"\nSITCON 2027 will be held on March 13 next year at the Humanities and Social Sciences Building, Academia Sinica. The Call for Proposals (CFP) is currently underway. Whether it is software development, artificial intelligence, open-source communities, or other IT-related topics, you are welcome to submit your proposals. Submissions before November 29 even have a chance to receive early-bird rewards!",
+        "ja": "SITCON は各地の学生たちによって結成され、情報教育の普及、オープンソース、そしてアイデアの交流を推進し、誰もが活躍できる場を提供するとともに、「学んだことを活かし、互いに教え合い成長する」という精神を実践しています。\nSITCON 2027 は来年 3 月 13 日に中央研究院人文社会科学館にて開催予定で、現在セッションの公募（CFP）を積極的に受け付けています。ソフトウェア開発、人工知能、オープンソースコミュニティなど、IT 関連のあらゆるトピックでのご応募を歓迎します。11 月 29 日までにご応募いただくと、早期応募特典を獲得できるチャンスもあります！"
+      },
+      "links": [
+        {
+          "platform": "instagram",
+          "url": "https://www.instagram.com/sitcon.tw/",
+          "label": {
+            "zh-Hant": "Instagram",
+            "en": "Instagram",
+            "ja": "Instagram"
+          }
+        }
+      ],
+      "order": 5
     }
   ],
   "virtualSpace": {
