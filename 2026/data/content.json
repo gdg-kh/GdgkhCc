@@ -586,14 +586,14 @@
         "ja": "Fngi Shiu"
       },
       "org": {
-        "zh-Hant": "GDG Taipei",
-        "en": "GDG Taipei",
-        "ja": "GDG Taipei"
+        "zh-Hant": "GDG Taipei Organizer",
+        "en": "GDG Taipei Organizer",
+        "ja": "GDG Taipei Organizer"
       },
       "title": {
-        "zh-Hant": "AIDefendLabs Fngi",
-        "en": "AIDefendLabs Fngi",
-        "ja": "AIDefendLabs Fngi"
+        "zh-Hant": "AIDEFEND Labs AI 資安資深研究員",
+        "en": "Senior AI Security Researcher at AIDEFEND Labs",
+        "ja": "AIDEFEND Labs AI セキュリティシニアリサーチャー"
       },
       "bio": {
         "zh-Hant": "GDG Taipei Organizer，DevFest Taipei 2024、2026 總召，開源 AI 資安組織 AIDEFEND Labs 兼任資深研究員。\n十五年以上全端工程與資安經驗，主要在受監理的金融體系，近年專注 LLM 紅隊、Agentic AI 安全架構與 AI 治理框架（NIST AI RMF、ISO 42001、OWASP LLM／Agentic Top 10、MITRE ATLAS）。\n曾於 RSAC 2026、InfoSec Taiwan 2026、COSCUP x UbuCon Asia 2026 分享 AI 安全實戰。平常用 DGX Spark 和 Mac 跑各種模型攻防，相信「先量出來，再談安全」。",
@@ -1418,14 +1418,14 @@
       "id": "session_6_1",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "它拒絕了，但思考鏈出賣了它：\nGemma 4 紅隊成績單與上線前的三道護欄",
-        "en": "It Refused, But Its Thinking Gave It Away:\nRed-Teaming Gemma 4 and Three Guardrails Before You Ship",
-        "ja": "它拒絕了，但思考鏈出賣了它：\nGemma 4 紅隊成績單與上線前的三道護欄"
+        "zh-Hant": "它拒絕了，但思考鏈出賣了它：Gemma 4 紅隊實測、一個我撤回的結論，與上線前的三道護欄",
+        "en": "It Refused, But Its Thinking Gave It Away: Red-Teaming Gemma 4, a Retracted Finding, and Three Guardrails Before You Ship",
+        "ja": "拒絶したのに、思考の連鎖が漏らしていた：Gemma 4 レッドチーム実測、撤回した一つの結論、そして本番投入前の3つのガードレール"
       },
       "abstract": {
-        "zh-Hant": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集，先在 DGX Spark 上實測 Gemma 4 12B 與 26B，再把 12B 搬到 Mac mini 重跑，得到三組數字和一個意外：模型的正式回答守住了，機密卻從它的思考鏈整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。同一顆模型、同一套攻擊，換一台硬體就有 5/25 題翻盤，這是 model card 不會告訴你的。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。",
-        "en": "You wired Gemma 4 into a customer-service app and told it \"never reveal internal data.\" Are you safe?\n\nI ran a fixed set of 25 attacks mapped to the OWASP LLM Top 10 against Gemma 4 12B and 26B on a DGX Spark, then re-ran the 12B set on a Mac mini. The result: three sets of numbers and one surprise. The model's final answer held the line, but the secrets leaked, verbatim, from its thinking. No jailbreak needed; a harmless order lookup triggers it. Same model, same attacks, different hardware: 5 of 25 outcomes flipped. Model cards don't tell you that.\n\nThis session demos the attacks and fixes live on an ordinary laptop, and walks through three guardrails you should have on day one: an output rail (don't ship the thinking as the answer), a retrieval rail (RAG content is data, not instructions), and an execution rail (an agent's permissions are its blast radius), with a look at the managed options on Google Cloud. All attack scripts and deterministic checks are open source.\n\nFor engineers integrating Gemini or Gemma into products. No security background required.",
-        "ja": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集，先在 DGX Spark 上實測 Gemma 4 12B 與 26B，再把 12B 搬到 Mac mini 重跑，得到三組數字和一個意外：模型的正式回答守住了，機密卻從它的思考鏈整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。同一顆模型、同一套攻擊，換一台硬體就有 5/25 題翻盤，這是 model card 不會告訴你的。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。"
+        "zh-Hant": "把 Gemma 4 接進客服 app、寫好「絕不透露內部資料」的系統提示，就安全了嗎？\n\n我用 25 條對應 OWASP LLM Top 10 的固定攻擊集實測 Gemma 4，得到一個令人警惕的意外：模型的正式回答守住了，機密卻從它的思考鏈（Chain-of-Thought）整段漏出來——不需要越獄，一句無害的訂單查詢就會觸發。此外，現場也會坦誠分享「紅隊數字什麼時候不能信」，剖析跨平台測試的驗證陷阱與評估邊界。\n\n這場會用一台普通筆電現場示範攻擊與修復，帶你裝上上線第一天就該有的三道護欄：output rail（別把思考鏈當回應吐出去）、retrieval rail（RAG 讀到的內容不是指令）、execution rail（Agent 的權限就是爆炸半徑），並對照 Google Cloud 上的託管選項。攻擊腳本與判定邏輯全部開源、確定性可重現。\n\n適合正在把 Gemini／Gemma 接進產品的工程師，不需要資安背景。",
+        "en": "You wired Gemma 4 into a customer-service app and told it \"never reveal internal data.\" Are you safe?\n\nI ran a fixed set of 25 attacks mapped to the OWASP LLM Top 10 against Gemma 4, uncovering a critical vulnerability: while the model's formal answer held the line, confidential data leaked verbatim from its thinking (Chain-of-Thought)—no jailbreak needed; a simple order lookup triggers it. In this talk, I will also share \"when red-team numbers cannot be trusted,\" breaking down cross-platform testing pitfalls and evaluation limits.\n\nThis session demos the attacks and fixes live on an ordinary laptop, and walks through three guardrails you should have on day one: an output rail (don't ship the thinking as the answer), a retrieval rail (RAG content is data, not instructions), and an execution rail (an agent's permissions are its blast radius), with a look at the managed options on Google Cloud. All attack scripts and deterministic checks are open source.\n\nFor engineers integrating Gemini or Gemma into products. No security background required.",
+        "ja": "Gemma 4 をカスタマーサポートアプリに組み込み、「社内データを絶対に開示しない」というシステムプロンプトを設定すれば、本当に安全でしょうか？\n\nOWASP LLM Top 10 に対応した25の固定攻撃パターンを用いて Gemma 4 を検証したところ、警戒すべき挙動が判明しました。モデルの最終的な回答は守られていたものの、機密情報がその思考の連鎖（Chain-of-Thought）からそのまま漏洩していました。脱獄（Jailbreak）は不要で、無害な注文照会プロンプトだけでトリガーされます。さらに本セッションでは、「レッドチームの検証数値を鵜呑みにしてはいけない理由」として、クロスプラットフォーム検証における落とし穴と評価の境界についても率直に共有します。\n\n本セッションでは、通常のノートPCを用いて攻撃と修正の実演（Live Demo）を行い、本番運用初日に実装すべき3つのガードレール（output rail：思考プロセスを出力として返さない、retrieval rail：RAGで取得した内容は指示ではなくデータである、execution rail：Agentの権限を爆破半径に抑える）を、Google Cloud のマネージドソリューションと対照しながら解説します。攻撃スクリプトと判定ロジックはすべてオープンソースで公開され、完全に再現可能です。\n\nGemini や Gemma をプロダクトに導入しているエンジニアに最適です。セキュリティの専門知識は不要です。"
       },
       "tags": ["外地講者", "AI", "Gemma 4", "Prompt Injection", "Guardrails"],
       "speakerIds": ["fngi_shiu"],
