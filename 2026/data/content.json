@@ -89,6 +89,7 @@
       },
       {
         "id": "invite_partner",
+        "enabled": false,
         "title": {
           "zh-Hant": "徵求贊助夥伴",
           "en": "Call for Sponsors",
@@ -116,6 +117,7 @@
       },
       {
         "id": "invite_community",
+        "enabled": false,
         "title": {
           "zh-Hant": "邀請擺攤",
           "en": "Community Booth Invitation",

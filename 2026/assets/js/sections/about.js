@@ -159,10 +159,16 @@ export function renderAbout(container) {
   if (sections.length === 0) {
     return;
   }
+  const activeSections = sections.filter(
+    (section) => !section || (section.enabled !== false && section.hidden !== true)
+  );
+  if (activeSections.length === 0) {
+    return;
+  }
   const columns = clampColumns(about && about.columns);
   container.classList.add('gk-about-section-wrapper');
   container.style.setProperty('--gk-about-columns', String(columns));
-  sections.forEach((section, index) => {
+  activeSections.forEach((section, index) => {
     mount(container, makeSection(section, index, columns));
   });
 }

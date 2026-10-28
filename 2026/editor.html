@@ -4812,6 +4812,7 @@
                 summary: 'title',
                 createItem: () => ({
                   id: '',
+                  enabled: true,
                   span: 2,
                   title: {},
                   body: {},
@@ -4820,6 +4821,13 @@
                 }),
                 fields: [
                   { key: 'id', type: 'slug', label: 'id' },
+                  {
+                    key: 'enabled',
+                    type: 'boolean',
+                    label: '啟用',
+                    checkboxLabel: '在頁面中顯示',
+                    default: true,
+                  },
                   {
                     key: 'span',
                     type: 'number',
