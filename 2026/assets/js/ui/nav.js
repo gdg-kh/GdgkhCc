@@ -722,14 +722,17 @@ function findSection(sectionId) {
   if (typeof sectionId !== 'string' || sectionId.length === 0) {
     return null;
   }
-  const normalized = sectionId.replace(/_2026$/, '');
+  const normalized = sectionId.replace(/_2026$/, '').replace(/^section-/, '');
   try {
     const escaped = typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(sectionId) : sectionId;
     const escapedNorm =
       typeof CSS !== 'undefined' && typeof CSS.escape === 'function' ? CSS.escape(normalized) : normalized;
     return (
       document.querySelector(`[data-section-id="${escaped}"]`) ||
-      document.querySelector(`[data-section-id="${escapedNorm}"]`)
+      document.querySelector(`[data-section-id="${escapedNorm}"]`) ||
+      document.getElementById(sectionId) ||
+      document.getElementById(`section-${normalized}`) ||
+      document.getElementById(normalized)
     );
   } catch {
     return null;
@@ -745,12 +748,144 @@ function getScrollBehavior() {
   return 'smooth';
 }
 
-function scrollToSection(sectionId) {
+function getNavHeight() {
+  const nav = document.getElementById('gk-nav');
+  if (nav) {
+    const rect = nav.getBoundingClientRect();
+    if (rect.height > 0) {
+      return rect.height;
+    }
+  }
+  return 64;
+}
+
+let userHasInteracted = false;
+let interactionListenersBound = false;
+let currentCorrectionCleanup = null;
+
+function bindUserInteractionListeners() {
+  if (interactionListenersBound || typeof window === 'undefined') {
+    return;
+  }
+  interactionListenersBound = true;
+  const onUserInteraction = () => {
+    userHasInteracted = true;
+  };
+  window.addEventListener('touchstart', onUserInteraction, { passive: true });
+  window.addEventListener('wheel', onUserInteraction, { passive: true });
+  window.addEventListener('pointerdown', onUserInteraction, { passive: true });
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Spacebar', ' '].includes(e.key)) {
+      onUserInteraction();
+    }
+  });
+}
+
+function checkAndAlignTarget(target, behavior = 'smooth') {
+  if (userHasInteracted || !target || !target.isConnected) {
+    return;
+  }
+  const navHeight = getNavHeight();
+  const rect = target.getBoundingClientRect();
+  const diff = rect.top - navHeight;
+
+  const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  const isAtBottom = window.pageYOffset >= maxScroll - 5;
+  if (isAtBottom && diff > 0) {
+    return;
+  }
+
+  if (Math.abs(diff) > 8) {
+    const correctedTop = Math.max(0, window.pageYOffset + diff);
+    window.scrollTo({ top: correctedTop, behavior });
+  }
+}
+
+function scheduleScrollCorrection(target, behavior = 'smooth') {
+  bindUserInteractionListeners();
+  userHasInteracted = false;
+
+  if (typeof currentCorrectionCleanup === 'function') {
+    currentCorrectionCleanup();
+    currentCorrectionCleanup = null;
+  }
+
+  if (behavior === 'auto') {
+    const timer = window.setTimeout(() => {
+      checkAndAlignTarget(target, 'auto');
+    }, 60);
+    currentCorrectionCleanup = () => window.clearTimeout(timer);
+    return;
+  }
+
+  let isSettled = false;
+  let scrollDebounceTimer = null;
+  let safetyTimer = null;
+
+  const onSettled = () => {
+    if (isSettled) {
+      return;
+    }
+    isSettled = true;
+    cleanup();
+    checkAndAlignTarget(target, 'smooth');
+  };
+
+  const handleScrollEnd = () => {
+    onSettled();
+  };
+
+  const handleScroll = () => {
+    if (scrollDebounceTimer) {
+      window.clearTimeout(scrollDebounceTimer);
+    }
+    scrollDebounceTimer = window.setTimeout(onSettled, 140);
+  };
+
+  const cleanup = () => {
+    if (scrollDebounceTimer) {
+      window.clearTimeout(scrollDebounceTimer);
+      scrollDebounceTimer = null;
+    }
+    if (safetyTimer) {
+      window.clearTimeout(safetyTimer);
+      safetyTimer = null;
+    }
+    if ('onscrollend' in window) {
+      window.removeEventListener('scrollend', handleScrollEnd);
+    }
+    window.removeEventListener('scroll', handleScroll);
+    if (currentCorrectionCleanup === cleanup) {
+      currentCorrectionCleanup = null;
+    }
+  };
+
+  currentCorrectionCleanup = cleanup;
+
+  if ('onscrollend' in window) {
+    window.addEventListener('scrollend', handleScrollEnd, { once: true });
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  safetyTimer = window.setTimeout(onSettled, 1200);
+
+  if (document.fonts && typeof document.fonts.ready === 'object' && typeof document.fonts.ready.then === 'function') {
+    document.fonts.ready
+      .then(() => {
+        if (isSettled && !userHasInteracted && target.isConnected) {
+          checkAndAlignTarget(target, 'smooth');
+        }
+      })
+      .catch(() => {});
+  }
+}
+
+function scrollToSection(sectionId, options = {}) {
   if (!sectionId) {
     return;
   }
+  const behavior = options.behavior || getScrollBehavior();
   if (sectionId === 'home' || sectionId === 'home_2026') {
-    window.scrollTo({ top: 0, behavior: getScrollBehavior() });
+    window.scrollTo({ top: 0, behavior });
     return;
   }
   const sections = document.querySelectorAll('[data-section-id]');
@@ -758,8 +893,25 @@ function scrollToSection(sectionId) {
     node.classList.remove('gk-section-hidden');
   }
   const target = findSection(sectionId);
-  if (target) {
-    target.scrollIntoView({ behavior: getScrollBehavior() });
+  if (!target) {
+    return;
+  }
+
+  void target.offsetHeight;
+
+  const doScroll = () => {
+    target.scrollIntoView({ behavior, block: 'start' });
+    scheduleScrollCorrection(target, behavior);
+  };
+
+  if (behavior === 'auto') {
+    doScroll();
+  } else if (typeof requestAnimationFrame === 'function') {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(doScroll);
+    });
+  } else {
+    setTimeout(doScroll, 30);
   }
 }
 
@@ -793,11 +945,12 @@ export function navigateTo(sectionId) {
 }
 
 function highlightActive(sectionId) {
-  const normalized = typeof sectionId === 'string' ? sectionId.replace(/_2026$/, '') : sectionId;
+  const normalized =
+    typeof sectionId === 'string' ? sectionId.replace(/_2026$/, '').replace(/^section-/, '') : sectionId;
   const nodes = document.querySelectorAll('[data-menu-id]');
   for (const node of nodes) {
     const menuId = node.getAttribute('data-menu-id');
-    const menuNorm = typeof menuId === 'string' ? menuId.replace(/_2026$/, '') : menuId;
+    const menuNorm = typeof menuId === 'string' ? menuId.replace(/_2026$/, '').replace(/^section-/, '') : menuId;
     const isActive = menuId === sectionId || menuNorm === sectionId || menuId === normalized || menuNorm === normalized;
     node.classList.toggle('gk-nav-item-active', isActive);
     if (node.classList.contains('gk-nav-mobile-tab')) {
@@ -810,18 +963,24 @@ function highlightActive(sectionId) {
       sectionId !== 'home' &&
       sectionId !== 'home_2026' &&
       mobilePrimaryIds.length > 0 &&
-      !mobilePrimaryIds.some((mid) => mid === sectionId || mid.replace(/_2026$/, '') === normalized);
+      !mobilePrimaryIds.some(
+        (mid) => mid === sectionId || mid.replace(/_2026$/, '').replace(/^section-/, '') === normalized
+      );
     mobileMoreTabEl.classList.toggle('gk-nav-mobile-tab-active', !!overflowActive);
   }
 }
 
 function getHashSectionId() {
   const hash = window.location.hash;
-  const match = hash.match(/^#\/(.+)$/);
+  const match = hash.match(/^#\/?([a-zA-Z0-9_-]+)/);
   if (match && match[1]) {
     const candidate = match[1];
-    if (candidate === 'home' || candidate === 'home_2026') {
+    const clean = candidate.replace(/_2026$/, '').replace(/^section-/, '');
+    if (clean === 'home' || candidate === 'home') {
       return 'home';
+    }
+    if (findSection(clean)) {
+      return clean;
     }
     if (findSection(candidate)) {
       return candidate;
@@ -888,8 +1047,15 @@ export function initNav() {
     const hashId = getHashSectionId();
     if (hashId) {
       currentSectionId = hashId;
-      scrollToSection(hashId);
+      if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+        window.dispatchEvent(new CustomEvent('gk:navigate', { detail: { sectionId: hashId } }));
+      }
+      scrollToSection(hashId, { behavior: 'auto' });
       highlightActive(hashId);
+    } else {
+      currentSectionId = 'home';
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      highlightActive('home');
     }
   });
 
@@ -905,7 +1071,7 @@ export function initNav() {
   applyMode();
   if (hashId) {
     currentSectionId = hashId;
-    scrollToSection(hashId);
+    scrollToSection(hashId, { behavior: 'auto' });
     highlightActive(hashId);
   } else {
     currentSectionId = getFallbackSectionId();

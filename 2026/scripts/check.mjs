@@ -21,6 +21,7 @@ import './test-share.mjs';
 import './test-og-thanks.mjs';
 import './test-og-speakers.mjs';
 import './test-cache.mjs';
+import './test-navigation.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(__dirname, '..');

@@ -330,6 +330,27 @@ function mountSection(target) {
   }
 }
 
+function mountSectionsUpTo(target) {
+  if (!target) {
+    return;
+  }
+  const targetId = typeof target === 'string' ? target.replace(/_2026$/, '').replace(/^section-/, '') : target.id || '';
+  const targetIndex = SECONDARY_SECTIONS.findIndex(
+    (s) =>
+      s.id === targetId ||
+      s.sectionId === targetId ||
+      s.sectionId === `section-${targetId}` ||
+      s.containerId === targetId
+  );
+  if (targetIndex >= 0) {
+    for (let i = 0; i <= targetIndex; i += 1) {
+      mountSection(SECONDARY_SECTIONS[i]);
+    }
+  } else {
+    mountSection(target);
+  }
+}
+
 function scheduleIdleHydration() {
   const scheduleCallback =
     typeof window.requestIdleCallback === 'function'
@@ -386,7 +407,7 @@ function setupProgressiveHydration() {
     const match = hash.match(/^#\/?([a-zA-Z0-9_-]+)/);
     if (match && match[1]) {
       const clean = match[1].replace(/^section-/, '');
-      mountSection(clean);
+      mountSectionsUpTo(clean);
     }
   }
   checkHash();
@@ -395,7 +416,7 @@ function setupProgressiveHydration() {
   window.addEventListener('gk:navigate', (event) => {
     const sectionId = event.detail && event.detail.sectionId;
     if (sectionId) {
-      mountSection(sectionId);
+      mountSectionsUpTo(sectionId);
     }
   });
 
@@ -408,7 +429,7 @@ function setupProgressiveHydration() {
     const menuId = target.getAttribute('data-menu-id') || '';
     const candidate = href.replace(/^#\/?(section-)?/, '') || menuId.replace(/_2026$/, '');
     if (candidate) {
-      mountSection(candidate);
+      mountSectionsUpTo(candidate);
     }
   });
 
@@ -667,9 +688,9 @@ async function bootstrap() {
 
   renderAll();
   clearSkeletons();
+  setupProgressiveHydration();
   initNav();
   initNavOverflow();
-  setupProgressiveHydration();
   handleAutoOpen();
   registerServiceWorker();
 
