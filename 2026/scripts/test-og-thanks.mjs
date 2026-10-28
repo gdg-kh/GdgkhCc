@@ -113,6 +113,7 @@ await test('所有現有 content.thanks 項目皆能正確動態解析所屬分�
     developer_buffet: '合作夥伴',
     jetbrains: '贊助夥伴',
     nyakei: '贊助夥伴',
+    meet_startup: '贊助夥伴',
   };
   for (const item of content.thanks) {
     const label = resolveThanksBadgeLabel(item, content);

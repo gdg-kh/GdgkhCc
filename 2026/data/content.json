@@ -2382,6 +2382,50 @@
         "en": "JetBrains is an international software development company best known for its professional IDEs, including IntelliJ IDEA, PyCharm, and WebStorm. JetBrains is also the creator of the Kotlin programming language.\n\nThe newly introduced JetBrains Air is an open ecosystem for agentic software development that brings together IDEs, AI agents, team collaboration, and enterprise governance. It enables developers to work flexibly with different AI models and coding agents, including JetBrains' own Junie. Built on JetBrains' extensive expertise in code intelligence, JetBrains Air helps developers improve productivity, validate code quality, and enables teams and organizations to coordinate, manage, and deliver software more effectively.",
         "ja": "JetBrains は、IntelliJ IDEA、PyCharm、WebStorm などのプロフェッショナル向け IDE で知られる国際的なソフトウェア開発企業です。また、プログラミング言語 Kotlin の開発元でもあります。\n\n新たに発表された JetBrains Air は、IDE、AI エージェント、チームコラボレーション、エンタープライズガバナンスを統合した、オープンなエージェント型ソフトウェア開発のための製品エコシステムです。JetBrains が開発した Junie をはじめ、さまざまな AI モデルやコーディングエージェントを柔軟に活用できます。JetBrains が長年培ってきたコードインテリジェンス技術を基盤に、開発者の生産性向上やコード品質の検証を支援するとともに、チームや組織全体でのソフトウェア開発の連携、管理、デリバリーをより効率的に実現します。"
       }
+    },
+    {
+      "id": "meet_startup",
+      "groupId": "company",
+      "subgroupId": "wufu",
+      "order": 8,
+      "tags": [
+        {
+          "zh-Hant": "五福路贊助方案",
+          "en": "Wufu Tier",
+          "ja": "五福プラン"
+        }
+      ],
+      "name": {
+        "zh-Hant": "Meet 創業小聚",
+        "en": "Meet",
+        "ja": "Meet 創業小聚"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          },
+          "url": "https://meet.bnext.com.tw/"
+        },
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "Meet Taipei",
+            "en": "Meet Taipei",
+            "ja": "Meet Taipei"
+          },
+          "url": "https://meettaipei.tw/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "由《數位時代》自2011年起開始推動，透過跨平台的專業媒體以及交流月會、企業或投資媒合、年度 Neo Star Demo Show、新創展會 Meet Taipei/Meet 大南方、海外新創來台參展、國際參訪與交流活動、矽谷與東京新創基地經營等多元企劃所打造的創新創業社群網絡，也是一個最具傳播影響力、商業價值與國際關係鏈結的新創機會交流平台，致力於促成資訊、資金、資源、人才與人脈能夠廣泛交流與精準媒合。",
+        "en": "Launched by Business Next Media in 2011, Meet is a leading startup community platform that provides the latest news on the startup scene, industry trends, venture capital funding, and industry events. With the mission of fostering a strong startup ecosystem in Taiwan, Meet supports the next generation of startups by bringing together the entrepreneurship community via its online platform and events, which include Meet Taipei, the largest tech startup trade show in Asia.",
+        "ja": "『數位時代（Business Next Media）』が2011年より立ち上げたイノベーション＆スタートアップコミュニティネットワークです。クロスメディアによる専門的な報道をはじめ、月例ミートアップ、企業や投資家とのマッチング、年次「Neo Star Demo Show」、スタートアップ展示会「Meet Taipei」「Meet 大南方」、海外スタートアップの台湾出展誘致、国際視察・交流イベント、シリコンバレーや東京のスタートアップ拠点運営など、多彩なプロジェクトを展開しています。情報・資金・リソース・人材・ネットワークの広範な交流と的確なマッチングを促進し、高い影響力と商業価値、国際的な繋がりを持つプラットフォームです。"
+      }
     }
   ],
   "boothGroups": [
