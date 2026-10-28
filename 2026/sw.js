@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'gk-2026-v14';
+const CACHE_VERSION = 'gk-2026-v15';
 const STATIC_CACHE = `gk-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `gk-images-${CACHE_VERSION}`;
 const DATA_CACHE = `gk-data-${CACHE_VERSION}`;
