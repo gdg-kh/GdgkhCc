@@ -2426,6 +2426,94 @@
         "en": "Launched by Business Next Media in 2011, Meet is a leading startup community platform that provides the latest news on the startup scene, industry trends, venture capital funding, and industry events. With the mission of fostering a strong startup ecosystem in Taiwan, Meet supports the next generation of startups by bringing together the entrepreneurship community via its online platform and events, which include Meet Taipei, the largest tech startup trade show in Asia.",
         "ja": "『數位時代（Business Next Media）』が2011年より立ち上げたイノベーション＆スタートアップコミュニティネットワークです。クロスメディアによる専門的な報道をはじめ、月例ミートアップ、企業や投資家とのマッチング、年次「Neo Star Demo Show」、スタートアップ展示会「Meet Taipei」「Meet 大南方」、海外スタートアップの台湾出展誘致、国際視察・交流イベント、シリコンバレーや東京のスタートアップ拠点運営など、多彩なプロジェクトを展開しています。情報・資金・リソース・人材・ネットワークの広範な交流と的確なマッチングを促進し、高い影響力と商業価値、国際的な繋がりを持つプラットフォームです。"
       }
+    },
+    {
+      "id": "titansoft",
+      "groupId": "company",
+      "subgroupId": "yixin",
+      "order": 9,
+      "tags": [
+        {
+          "zh-Hant": "一心路贊助方案",
+          "en": "Yixin Tier",
+          "ja": "一心プラン"
+        }
+      ],
+      "name": {
+        "zh-Hant": "新加坡商鈦坦科技",
+        "en": "Titansoft PTE LTD",
+        "ja": "シンガポール商タイタンソフト"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "鈦坦全頻道",
+            "en": "Titansoft Channels",
+            "ja": "タイタンソフト全チャンネル"
+          },
+          "url": "https://gotica.io/鈦坦全頻道/DevFest"
+        },
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          },
+          "url": "https://titansoft.com/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "鈦坦科技，是一間總部位於新加坡的軟體開發公司，提供線上軟體平台客製開發與維護，以及代理 Atlassian 旗下產品 Jira Software & Confluence、線上視覺化白板 Miro，以自身實際使用經驗提供一站式導入服務。身處快速變動的軟體產業，我們採用敏捷開發，同時將敏捷思維注入公司文化，目的是快速、靈活地應對客戶和市場需求的變化，在多年導入及迭代的經驗下，我們也開始提供企業客製化敏捷課程及顧問諮詢服務。\n\n鈦坦在台北、台中、高雄都有辦公室，而三地最大的共同點，就是舒適開放的大空間，以及擺放著各式酒類的吧台。我們相信員工都是「成年人」，只要能夠將事情做好做完，想喝酒、玩桌遊、打電動都是沒有問題的，因為我們相信夥伴能自主安排、對工作負責！",
+        "en": "Titansoft is a software development company dedicated to the development and maintenance of online software platforms through Agile Software Development. With extensive experience in software engineering, we offer a wide range of consulting services, including market research, server and network development and management, network infrastructure, and cloud deployment. Our product lines are diversified, best known for: Project Management Systems, System Performance Monitoring Centers, Subscriber Accounting Systems, and Business Intelligence Management Systems.",
+        "ja": "タイタンソフト（Titansoft）は、シンガポールに本社を置くソフトウェア開発会社です。オンラインソフトウェアプラットフォームの受託開発・保守をはじめ、Atlassian 製品（Jira Software / Confluence）やオンラインホワイトボード Miro の代理店として、自社の実践経験に基づくワンストップ導入支援サービスを提供しています。変化の激しい業界に対応するためアジャイル開発を採用し、企業のカスタム研修やコンサルティングも手掛けています。台北、台中、高雄にオフィスを構え、自律的でオープンな企業文化を大切にしています。"
+      }
+    },
+    {
+      "id": "msi",
+      "groupId": "company",
+      "subgroupId": "siwei",
+      "order": 10,
+      "tags": [
+        {
+          "zh-Hant": "四維路贊助方案",
+          "en": "Siwei Tier",
+          "ja": "四維プラン"
+        }
+      ],
+      "name": {
+        "zh-Hant": "微星科技",
+        "en": "MSI",
+        "ja": "MSI"
+      },
+      "marquee": true,
+      "links": [
+        {
+          "platform": "facebook",
+          "label": {
+            "zh-Hant": "MSI Taiwan Facebook",
+            "en": "MSI Taiwan Facebook",
+            "ja": "MSI Taiwan Facebook"
+          },
+          "url": "https://www.facebook.com/MSITaiwan/"
+        },
+        {
+          "platform": "website",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          },
+          "url": "https://tw.msi.com/"
+        }
+      ],
+      "description": {
+        "zh-Hant": "作為全球電競與尖端科技的領導品牌，MSI 微星科技完美結合了極致工藝與深厚的研發底蘊，將引以為傲的高效能設計經驗，全面延伸至 AI 運算領域與專業級硬體解決方案。MSI 始終以卓越效能、極致穩定性與工藝美學為核心，為全球玩家、數位創作者、企業用戶及各界專業人士，打造最值得信賴的高效率運算設備。",
+        "en": "As a global leader in gaming, creator, and AI PC technology, MSI seamlessly combines exquisite craftsmanship with deep R&D heritage, extending its high-performance engineering expertise into AI computing and professional hardware solutions. Dedicated to supreme performance, ultimate stability, and aesthetic design, MSI creates the most reliable, high-efficiency computing equipment for gamers, creators, and professionals worldwide.",
+        "ja": "世界を牽引するゲーミングおよび先端テクノロジーのリーディングブランドとして、MSI（エムエスアイ）は洗練されたクラフトマンシップと卓越した研究開発力を融合させ、AI コンピューティング領域やプロフェッショナル向けハードウェアソリューションを展開しています。卓越したパフォーマンス、究極の安定性、そして機能美を追求し、世界中のゲーマー、クリエイター、ビジネスユーザーに信頼性の高い高効率なコンピューティング環境を提供しています。"
+      }
     }
   ],
   "boothGroups": [

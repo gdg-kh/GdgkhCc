@@ -114,6 +114,8 @@ await test('所有現有 content.thanks 項目皆能正確動態解析所屬分�
     jetbrains: '贊助夥伴',
     nyakei: '贊助夥伴',
     meet_startup: '贊助夥伴',
+    titansoft: '贊助夥伴',
+    msi: '贊助夥伴',
   };
   for (const item of content.thanks) {
     const label = resolveThanksBadgeLabel(item, content);
