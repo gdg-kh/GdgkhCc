@@ -82,8 +82,17 @@ export function renderVirtualSpace(container) {
   }
   clear(container);
   const vs = getVirtualConfig();
+  const parentSection = container.closest ? container.closest('section') : document.getElementById('section-virtual');
   if (!vs) {
+    if (parentSection) {
+      parentSection.hidden = true;
+      parentSection.style.display = 'none';
+    }
     return;
+  }
+  if (parentSection) {
+    parentSection.hidden = false;
+    parentSection.style.display = '';
   }
   container.classList.add('gk-virtual-section');
 

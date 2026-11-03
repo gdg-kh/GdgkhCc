@@ -28,6 +28,7 @@ function findMenuItem(id) {
     menu.find(
       (item) =>
         item &&
+        item.enabled !== false &&
         (item.id === id ||
           item.id === `${id}_2026` ||
           (typeof item.id === 'string' && item.id.replace(/_2026$/, '') === id))
@@ -437,6 +438,20 @@ function setupProgressiveHydration() {
 }
 
 function renderAll() {
+  const config = getConfig();
+  const vs = config && config.virtualSpace;
+  const virtualSection = byId('section-virtual');
+  if (virtualSection) {
+    const isVirtualEnabled = Boolean(vs && vs.enabled === true && vs.url);
+    if (!isVirtualEnabled) {
+      virtualSection.hidden = true;
+      virtualSection.style.display = 'none';
+    } else {
+      virtualSection.hidden = false;
+      virtualSection.style.display = '';
+    }
+  }
+
   renderSectionTitles();
   renderHero();
   const nav = byId('gk-nav');

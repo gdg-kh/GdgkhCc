@@ -62,9 +62,18 @@ function uiLabel(key) {
 
 function sortedMenuItems() {
   const config = getConfig();
+  const vs = config && config.virtualSpace;
   const menu = config && Array.isArray(config.menu) ? config.menu : [];
   return menu
-    .filter((item) => item && item.enabled !== false)
+    .filter((item) => {
+      if (!item || item.enabled === false) {
+        return false;
+      }
+      if ((item.id === 'virtual' || item.id === 'virtual_2026') && (!vs || vs.enabled !== true)) {
+        return false;
+      }
+      return true;
+    })
     .slice()
     .sort((a, b) => {
       const ao = typeof a.order === 'number' ? a.order : Number.MAX_SAFE_INTEGER;

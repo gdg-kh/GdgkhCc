@@ -99,7 +99,7 @@
     "reviewDays": 3
   },
   "virtualSpace": {
-    "enabled": true,
+    "enabled": false,
     "url": "https://leapie.leapdesign.ai/",
     "embed": false,
     "qrImage": "images/virtual-space-qr.png"
@@ -149,7 +149,7 @@
     },
     {
       "id": "virtual_2026",
-      "enabled": true,
+      "enabled": false,
       "order": 4,
       "label": {
         "zh-Hant": "虛擬會場",
