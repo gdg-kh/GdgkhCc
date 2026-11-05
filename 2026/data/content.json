@@ -187,9 +187,9 @@
           "ja": "ピザタイム"
         },
         "body": {
-          "zh-Hant": "下午的交流時間一起享用美味 Pizza 為大腦充電繼續精彩議程。",
-          "en": "Enjoy delicious pizza during the afternoon networking break to recharge your brain for the exciting sessions ahead!",
-          "ja": "午後の交流時間に美味しいピザを楽しんでエネルギーを補給し、引き続き魅力的なセッションを楽しみましょう！"
+          "zh-Hant": "中午的交流時間一起享用美味 Pizza 為大腦充電繼續精彩議程。",
+          "en": "Enjoy delicious pizza during the lunch networking break to recharge your brain for the exciting sessions ahead!",
+          "ja": "お昼の交流時間に美味しいピザを楽しんでエネルギーを補給し、引き続き魅力的なセッションを楽しみましょう！"
         },
         "order": 10,
         "image": "images/about/pizza_time.jpg",
@@ -1257,6 +1257,26 @@
       "links": []
     },
     {
+      "id": "pizza_time",
+      "trackId": "all",
+      "title": {
+        "zh-Hant": "Pizza Time",
+        "en": "Pizza Time",
+        "ja": "ピザタイム"
+      },
+      "abstract": {
+        "zh-Hant": "Pizza 交流時段。",
+        "en": "Pizza and networking break.",
+        "ja": "ピザタイム＆交流時間。"
+      },
+      "tags": ["Break", "Networking"],
+      "speakerIds": [],
+      "start": "2026-11-14T11:50",
+      "end": "2026-11-14T12:30",
+      "type": "break",
+      "links": []
+    },
+    {
       "id": "session_3_1",
       "trackId": "track_1",
       "title": {
@@ -1397,23 +1417,23 @@
       "links": []
     },
     {
-      "id": "pizza_time",
-      "trackId": "all",
+      "id": "session_5_3",
+      "trackId": "track_1",
       "title": {
-        "zh-Hant": "Pizza Time",
-        "en": "Pizza Time",
-        "ja": "ピザタイム"
+        "zh-Hant": "議程準備中",
+        "en": "Session TBA",
+        "ja": "準備中"
       },
       "abstract": {
-        "zh-Hant": "Pizza 交流時段。",
-        "en": "Pizza and networking break.",
-        "ja": "ピザタイム＆交流時間。"
+        "zh-Hant": "議程內容準備中，敬請期待。",
+        "en": "Session details coming soon.",
+        "ja": "セッション詳細は準備中です。"
       },
-      "tags": ["Break", "Networking"],
+      "tags": [],
       "speakerIds": [],
-      "start": "2026-11-14T14:10",
+      "start": "2026-11-14T14:20",
       "end": "2026-11-14T14:50",
-      "type": "break",
+      "type": "talk",
       "links": []
     },
     {

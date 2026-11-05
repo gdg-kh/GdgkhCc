@@ -120,16 +120,22 @@ function wrapTextLines(ctx, text, maxWidth, firstLineMaxWidth = maxWidth) {
   return lines;
 }
 
-function drawPill(ctx, x, y, text, {
-  bg = TOKENS.white,
-  fg = TOKENS.ink,
-  borderColor = TOKENS.ink,
-  borderWidth = 1.5,
-  font = `600 13px ${FONT_SANS}`,
-  padX = 12,
-  height = 26,
-  shadow = 0,
-} = {}) {
+function drawPill(
+  ctx,
+  x,
+  y,
+  text,
+  {
+    bg = TOKENS.white,
+    fg = TOKENS.ink,
+    borderColor = TOKENS.ink,
+    borderWidth = 1.5,
+    font = `600 13px ${FONT_SANS}`,
+    padX = 12,
+    height = 26,
+    shadow = 0,
+  } = {}
+) {
   ctx.save();
   ctx.font = font;
   const textW = ctx.measureText(text).width;
@@ -193,11 +199,7 @@ function drawSpanRow(ctx, x, y, w, h, session, trackColor) {
   ctx.restore();
 }
 
-function drawBorderlessSession(ctx, x, y, w, h, session, {
-  speakerMap,
-  groupMap,
-  trackColor,
-}) {
+function drawBorderlessSession(ctx, x, y, w, h, session, { speakerMap, groupMap, trackColor }) {
   ctx.save();
 
   // 1. 左側會場垂直色線（無外框設計，對齊去年圖片風格）
@@ -325,11 +327,11 @@ export async function generateSquareAgenda() {
   // 無外框設計下，每一列的高度配置（總高度剛好完美填滿 1800px 方形畫布）
   const rowHeights = timePoints.map((tp) => {
     const rowSessions = sessions.filter((s) => s.start === tp);
-    if (rowSessions.every((s) => isSpanSession(s))) return 54; // 14:10 Pizza Time
+    if (rowSessions.every((s) => isSpanSession(s))) return 52; // 11:50 Pizza Time
     const maxSpeakers = Math.max(0, ...rowSessions.map((s) => (s.speakerIds || []).length));
-    if (maxSpeakers === 0) return 52; // 09:00 開幕 / 17:30 閉幕
-    if (maxSpeakers > 1) return 156; // 16:00 三位講者座談
-    return 132;
+    if (maxSpeakers === 0) return 50; // 09:00 開幕 / 14:20 準備中 / 17:30 閉幕
+    if (maxSpeakers > 1) return 152; // 16:00 三位講者座談
+    return 128;
   });
 
   // Canvas 1800 x 1800 (1:1 Square)
@@ -444,7 +446,7 @@ export async function generateSquareAgenda() {
   const gridTop = 120;
   const timeColW = 92;
   const colGap = 18;
-  const rowGap = 14;
+  const rowGap = 12;
   const tracksStartX = padX + timeColW + colGap;
   const totalTracksW = W - tracksStartX - padX;
   const colW = (totalTracksW - colGap * (tracks.length - 1)) / tracks.length;

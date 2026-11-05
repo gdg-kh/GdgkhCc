@@ -22,6 +22,7 @@ import './test-og-thanks.mjs';
 import './test-og-speakers.mjs';
 import './test-cache.mjs';
 import './test-navigation.mjs';
+import './test-agenda.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE = path.join(__dirname, '..');
@@ -208,6 +209,26 @@ if (content) {
     for (let i = 1; i < sorted.length; i += 1) {
       if (toMinutes(sorted[i].start) < toMinutes(sorted[i - 1].end)) {
         err(`會場 ${track}: ${sorted[i - 1].id} 與 ${sorted[i].id} 時間重疊`);
+      }
+    }
+  }
+
+  // 跨全館議程 (trackId: 'all') 與各分場的時間重疊
+  const allSessions = (content.sessions || []).filter((s) => s.trackId === 'all');
+  for (const allSes of allSessions) {
+    const allStart = toMinutes(allSes.start);
+    const allEnd = toMinutes(allSes.end);
+    for (const [track, list] of Object.entries(byTrack)) {
+      for (const ses of list) {
+        const sStart = toMinutes(ses.start);
+        const sEnd = toMinutes(ses.end);
+        if (allStart !== null && allEnd !== null && sStart !== null && sEnd !== null) {
+          if (Math.max(allStart, sStart) < Math.min(allEnd, sEnd)) {
+            err(
+              `跨全館議程 ${allSes.id} (${allSes.start}~${allSes.end}) 與會場 ${track} 議程 ${ses.id} (${ses.start}~${ses.end}) 時間重疊`
+            );
+          }
+        }
       }
     }
   }
