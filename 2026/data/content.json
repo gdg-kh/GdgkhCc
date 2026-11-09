@@ -2761,5 +2761,15 @@
       }
     ]
   },
-  "venueMaps": []
+  "venueMaps": [
+    {
+      "id": "venue_map_14f",
+      "file": "venue-map.png",
+      "caption": {
+        "zh-Hant": "KO-IN 智高點 14 樓場地地圖",
+        "en": "KO-IN Smart Innovation Hub 14F Venue Map",
+        "ja": "KO-IN 智高点 14階 会場マップ"
+      }
+    }
+  ]
 }
