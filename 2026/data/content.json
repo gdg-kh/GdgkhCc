@@ -2575,9 +2575,9 @@
       "id": "kaohsiung_pyladies",
       "groupId": "community",
       "name": {
-        "zh-Hant": "Kaohsiung PyLadies",
-        "en": "Kaohsiung PyLadies",
-        "ja": "Kaohsiung PyLadies"
+        "zh-Hant": "PyLadies Kaohsiung",
+        "en": "PyLadies Kaohsiung",
+        "ja": "PyLadies Kaohsiung"
       },
       "description": {
         "zh-Hant": "PyLadies Kaohsiung 是 PyLadies 國際組織的一員，以高雄為基地推動女性技術社群的發展， 致力於打造讓女性能安心、自信地學習、交流與成長的環境。\n我們舉辦各種工作坊、經驗分享等交流活動，讓大家能透過 Python 提升技術、拓展人脈與視野， 進而在科技領域中成為主動的參與者與領導者。\n同時也積極與高雄在地及全台社群建立連結、相互支持，讓整體技術社群更加茁壯。",
@@ -2700,6 +2700,41 @@
         }
       ],
       "order": 5
+    },
+    {
+      "id": "barrier_free_player",
+      "groupId": "community",
+      "name": {
+        "zh-Hant": "社團法人無礙玩家生活關懷協會",
+        "en": "Barrier-Free Player Life Care Association",
+        "ja": "社団法人無礙玩家生活関懐協会"
+      },
+      "description": {
+        "zh-Hant": "社團法人無礙玩家生活關懷協會是一個支持和關懷罕病身心障礙家庭的非營利組織。\n協會成立的宗旨希望可以透過數位培力，幫助罕病身障家庭學習數位 AI 技能，提升自信心，並獲得經濟自立的能力。",
+        "en": "Barrier-Free Player Life Care Association is a non-profit organization dedicated to supporting and caring for families affected by rare diseases and disabilities.\nThe mission of the association is to empower rare disease and disabled families through digital literacy and AI skills training, boosting their confidence and helping them achieve economic independence.",
+        "ja": "社団法人無礙玩家生活関懐協会は、難病や障がいを持つ家庭を支援・ケアする非営利団体です。\nデジタル教育と AI スキル学習を通じて難病や障がいを持つ家庭をエンパワーし、自信を高め、経済的自立を達成できるようにすることを目的としています。"
+      },
+      "links": [
+        {
+          "platform": "website",
+          "url": "https://sites.google.com/view/brfreelifecare/",
+          "label": {
+            "zh-Hant": "官網",
+            "en": "Official Website",
+            "ja": "公式サイト"
+          }
+        },
+        {
+          "platform": "facebook",
+          "url": "https://www.facebook.com/lovetravelloveaffect/",
+          "label": {
+            "zh-Hant": "Facebook",
+            "en": "Facebook",
+            "ja": "Facebook"
+          }
+        }
+      ],
+      "order": 6
     }
   ],
   "virtualSpace": {
@@ -2726,5 +2761,15 @@
       }
     ]
   },
-  "venueMaps": []
+  "venueMaps": [
+    {
+      "id": "venue_map_14f",
+      "file": "venue-map.png",
+      "caption": {
+        "zh-Hant": "KO-IN 智高點 14 樓場地地圖",
+        "en": "KO-IN Smart Innovation Hub 14F Venue Map",
+        "ja": "KO-IN 智高点 14階 会場マップ"
+      }
+    }
+  ]
 }
