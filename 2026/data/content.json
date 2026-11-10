@@ -1113,6 +1113,42 @@
       "links": [],
       "groupId": "workshop_track",
       "tag": ["外地講者", "AI", "Google Antigravity", "Google ADK", "Workshop"]
+    },
+    {
+      "id": "sylph_lin",
+      "order": 19,
+      "name": {
+        "zh-Hant": "林政君",
+        "en": "Sylph Lin",
+        "ja": "Sylph Lin"
+      },
+      "org": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "title": {
+        "zh-Hant": "",
+        "en": "",
+        "ja": ""
+      },
+      "bio": {
+        "zh-Hant": "Sylph 是一位熱情的新興技術佈道者，專注於探索雲端和 AI 的前沿應用的無限可能，相信透過新興技術的與真實應用的連結，可以協助產業轉型與團隊升級。Sylph 在Google協助大中華區的開發者與合作夥伴建立可複製的AI解決方案，協助銜接AI解決方案落地並創造商業價值。\n\nSylph 擅長AI解決方案、雲端技術架構規劃、產品規劃與管理、技術團隊管理等相關工作，擁有豐富的跨國團隊管理與國際專案實務經驗。",
+        "en": "Sylph is a passionate emerging technology evangelist dedicated to exploring the infinite possibilities of cloud and AI frontiers. He believes bridging cutting-edge technology with real-world applications empowers industrial transformation and team advancement. At Google, Sylph assists developers and partners across Greater China in building scalable AI solutions, bridging AI implementations to create tangible business value.\n\nHe specializes in AI solutions, cloud architecture planning, product strategy and management, and engineering team leadership, with extensive cross-border team management and international project experience.",
+        "ja": "SylphはクラウドとAIの最前線における無限の可能性を探求することに情熱を注ぐ新興技術エバンジェリストです。先端技術と実社会の応用を結びつけることで、産業の変革とチームの成長を支援できると確信しています。Googleにて大中華圏の開発者やパートナーをサポートし、再現性の高いAIソリューションの構築や導入を支援し、ビジネス価値の創出に貢献しています。\n\nAIソリューション、クラウドアーキテクチャ設計、プロダクト企画・管理、技術チームマネジメントなどを得意とし、豊富なグローバルチームマネジメントおよび国際プロジェクトの実務經驗を有しています。"
+      },
+      "sessionIds": ["session_5_3"],
+      "links": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/in/sylphlin/",
+          "label": {
+            "zh-Hant": "LinkedIn"
+          }
+        }
+      ],
+      "groupId": "builder_track",
+      "tag": ["外地講者", "AI", "Agent", "Antigravity"]
     }
   ],
   "sessions": [
@@ -1420,17 +1456,17 @@
       "id": "session_5_3",
       "trackId": "track_1",
       "title": {
-        "zh-Hant": "議程準備中",
-        "en": "Session TBA",
-        "ja": "準備中"
+        "zh-Hant": "代理影片生成的新時代",
+        "en": "A New Era of Agentic Video Generation",
+        "ja": "エージェント型動画生成の新時代"
       },
       "abstract": {
-        "zh-Hant": "議程內容準備中，敬請期待。",
-        "en": "Session details coming soon.",
-        "ja": "セッション詳細は準備中です。"
+        "zh-Hant": "在寫程式的時候，我們經歷了自主撰寫到Coding Agent的過程。影片生成現在也在經歷一樣的路徑，這個講題會介紹透過Antigravity來當作影片生成的Agent，讓你跳脫出繁瑣的工作，聚焦在導演的角度來處理影片",
+        "en": "Just as software development transitioned from manual coding to Coding Agents, video generation is undergoing a similar evolution. This session will explore using Antigravity as an Agent for video creation—freeing you from tedious tasks so you can focus on directing and orchestrating the creative vision.",
+        "ja": "プログラミングにおいて、私たちは自力でのコーディングからCoding Agentへの移行を経験しました。動画生成も現在、同様の道を辿っています。本セッションでは、Antigravityを動画生成Agentとして活用し、煩雑な作業から解放され、ディレクターの視点で映像制作に集中する方法をご紹介します。"
       },
-      "tags": [],
-      "speakerIds": [],
+      "tags": ["外地講者", "AI", "Agent", "Antigravity"],
+      "speakerIds": ["sylph_lin"],
       "start": "2026-11-14T14:20",
       "end": "2026-11-14T14:50",
       "type": "talk",

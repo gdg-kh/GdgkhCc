@@ -37,15 +37,15 @@ test('Pizza Time 必須設定於 11:50 ~ 12:30 且 trackId 為 all', () => {
   assert.equal(pizza.type, 'break', 'pizza_time 類型應為 break');
 });
 
-test('第一會場 14:20 ~ 14:50 必須存在空白待補議程 (session_5_3)', () => {
-  const tba = sessions.find((s) => s.id === 'session_5_3');
-  assert.ok(tba, '必須存在 id 為 session_5_3 的議程');
-  assert.equal(tba.trackId, 'track_1', 'session_5_3 應位於第一會場 (track_1)');
-  assert.equal(tba.start, '2026-11-14T14:20', '開始時間應為 14:20');
-  assert.equal(tba.end, '2026-11-14T14:50', '結束時間應為 14:50');
-  assert.equal(tba.type, 'talk', '類型應為 talk');
-  assert.deepEqual(tba.speakerIds, [], '因講者表單待補，speakerIds 應為空陣列');
-  assert.ok(tba.title && tba.title['zh-Hant'], '必須提供繁中標題（如「議程準備中」）');
+test('第一會場 14:20 ~ 14:50 必須存在議程 (session_5_3)', () => {
+  const ses = sessions.find((s) => s.id === 'session_5_3');
+  assert.ok(ses, '必須存在 id 為 session_5_3 的議程');
+  assert.equal(ses.trackId, 'track_1', 'session_5_3 應位於第一會場 (track_1)');
+  assert.equal(ses.start, '2026-11-14T14:20', '開始時間應為 14:20');
+  assert.equal(ses.end, '2026-11-14T14:50', '結束時間應為 14:50');
+  assert.equal(ses.type, 'talk', '類型應為 talk');
+  assert.deepEqual(ses.speakerIds, ['sylph_lin'], '講者應包含 sylph_lin');
+  assert.equal(ses.title && ses.title['zh-Hant'], '代理影片生成的新時代', '必須提供繁中標題');
 });
 
 test('各會場所有議程時間不得有重疊衝突', () => {

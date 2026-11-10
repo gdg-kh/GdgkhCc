@@ -104,7 +104,7 @@ await test('含換行符號 (\\n) 的議程標題在 wrapHeadline 中應正確�
   assert.equal(rawLines[0], '從臨場發揮到穩定交付:');
 });
 
-console.warn('\n=== 2. 全體 16 位講者 OG 水平置中與邊界安全測試 ===');
+console.warn('\n=== 2. 全體講者 OG 水平置中與邊界安全測試 ===');
 
 const badgeW = 154;
 const gap = 16;

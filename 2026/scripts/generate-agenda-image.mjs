@@ -329,9 +329,9 @@ export async function generateSquareAgenda() {
     const rowSessions = sessions.filter((s) => s.start === tp);
     if (rowSessions.every((s) => isSpanSession(s))) return 52; // 11:50 Pizza Time
     const maxSpeakers = Math.max(0, ...rowSessions.map((s) => (s.speakerIds || []).length));
-    if (maxSpeakers === 0) return 50; // 09:00 開幕 / 14:20 準備中 / 17:30 閉幕
-    if (maxSpeakers > 1) return 152; // 16:00 三位講者座談
-    return 128;
+    if (maxSpeakers === 0) return 50; // 09:00 開幕 / 17:30 閉幕
+    if (maxSpeakers > 1) return 148; // 16:00 三位講者座談
+    return 124;
   });
 
   // Canvas 1800 x 1800 (1:1 Square)
@@ -446,7 +446,7 @@ export async function generateSquareAgenda() {
   const gridTop = 120;
   const timeColW = 92;
   const colGap = 18;
-  const rowGap = 12;
+  const rowGap = 11;
   const tracksStartX = padX + timeColW + colGap;
   const totalTracksW = W - tracksStartX - padX;
   const colW = (totalTracksW - colGap * (tracks.length - 1)) / tracks.length;
