@@ -1,3 +1,5 @@
+import os
+import sys
 import docx
 from docx.shared import Mm, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -5,7 +7,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import parse_xml, OxmlElement
 from docx.oxml.ns import qn, nsdecls
 
-def create_serial_document():
+def create_serial_document(total_count=120):
     doc = docx.Document()
     
     # ----------------------------------------------------
@@ -16,9 +18,9 @@ def create_serial_document():
     section.page_width = Mm(210)
     section.page_height = Mm(297)
     
-    # 2. 頁邊距（Margins）：上 10 mm、下 10 mm、左 12 mm、右 12 mm
-    section.top_margin = Mm(10)
-    section.bottom_margin = Mm(10)
+    # 2. 頁邊距（Margins）：上 7 mm、下 7 mm、左 12 mm、右 12 mm
+    section.top_margin = Mm(7)
+    section.bottom_margin = Mm(7)
     section.left_margin = Mm(12)
     section.right_margin = Mm(12)
     
@@ -84,12 +86,12 @@ def create_serial_document():
             tblPr.remove(old_layout)
         tblPr.append(parse_xml(f'<w:tblLayout {nsdecls("w")} w:type="fixed"/>'))
         
-        # 2. 儲存格內距（Cell Padding）：上下各 4 pt (80 dxa)、左右各 6 pt (120 dxa)
+        # 2. 儲存格內距（Cell Padding）：上下各 3 pt (60 dxa)、左右各 6 pt (120 dxa)
         tblCellMar = parse_xml(f'''
             <w:tblCellMar {nsdecls("w")}>
-                <w:top w:w="80" w:type="dxa"/>
+                <w:top w:w="60" w:type="dxa"/>
                 <w:left w:w="120" w:type="dxa"/>
-                <w:bottom w:w="80" w:type="dxa"/>
+                <w:bottom w:w="60" w:type="dxa"/>
                 <w:right w:w="120" w:type="dxa"/>
             </w:tblCellMar>
         ''')
@@ -170,13 +172,12 @@ def create_serial_document():
         left_items = [
             ("開立日期：", "2026/11/14", 0, 2),
             ("付款人／單位抬頭：", None, 2, 0),
-            ("_" * 28, None, 6, 2), # 抬頭填寫底線
+            ("_" * 28, None, 4, 2), # 抬頭填寫底線
             ("活動名稱：", "DevFest Kaohsiung 2026", 2, 2),
             ("收款事由：", "場地與活動成本分攤款（代收代付）", 0, 2),
             ("實收金額：", "新臺幣肆佰元整（$400）", 0, 2),
-            ("", None, 0, 2), # （空一行）
-            ("收款經手人簽名：", None, 4, 0),
-            ("_" * 28, None, 20, 6)  # 簽名底線：上方加大留白 20 pt 方便簽名！
+            ("收款經手人簽名：", None, 3, 0),
+            ("_" * 28, None, 14, 4)  # 簽名底線
         ]
         
         for item in left_items:
@@ -217,7 +218,7 @@ def create_serial_document():
         set_font_run(r, size_pt=9.5, bold=True)
 
         p_payer_line = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_payer_line, before_pt=8, after_pt=3, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_payer_line, before_pt=4, after_pt=2, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_payer_line.add_run("_" * 68)
         set_font_run(r, size_pt=9.5, bold=False)
 
@@ -252,21 +253,21 @@ def create_serial_document():
 
         # 聯絡信箱（字級 9.5 pt）
         p_email = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_email, before_pt=1, after_pt=3, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_email, before_pt=1, after_pt=2, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_email.add_run("聯絡信箱：")
         set_font_run(r, size_pt=9.5, bold=True)
         r = p_email.add_run("gdgkaohsiung@gmail.com")
         set_font_run(r, size_pt=9.5, bold=False)
 
         # 收款經手人（簽名）（字級 9.5 pt）
-        # 標題與底線獨立分行，並在文字與底線間提供 18 pt 的充足簽名高度，下方留 8 pt 避開印章邊框
+        # 標題與底線獨立分行，並在文字與底線間提供 14 pt 的充足簽名高度，下方留 4 pt 避開印章邊框
         p_sign_label = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_sign_label, before_pt=3, after_pt=0, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_sign_label, before_pt=2, after_pt=0, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_sign_label.add_run("收款經手人（簽名）：")
         set_font_run(r, size_pt=9.5, bold=True)
 
         p_sign_line = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_sign_line, before_pt=18, after_pt=8, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_sign_line, before_pt=14, after_pt=4, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_sign_line.add_run("_" * 68)
         set_font_run(r, size_pt=9.5, bold=False)
 
@@ -322,8 +323,8 @@ def create_serial_document():
         
         nt_row = nested_table.rows[0]
         nt_trPr = nt_row._tr.get_or_add_trPr()
-        # 固定高度 24 mm = 1361 dxa
-        nt_trPr.append(parse_xml(f'<w:trHeight {nsdecls("w")} w:val="1361" w:hRule="exact"/>'))
+        # 固定高度 22 mm = 1247 dxa
+        nt_trPr.append(parse_xml(f'<w:trHeight {nsdecls("w")} w:val="1247" w:hRule="exact"/>'))
         
         for i, c in enumerate(nt_row.cells):
             tcPr = c._tc.get_or_add_tcPr()
@@ -362,9 +363,9 @@ def create_serial_document():
         set_font_run(r, size_pt=8.0, bold=False, color_hex="555555")
 
     # ====================================================
-    # 二、 迴圈產生 15 頁、30 份證明單（DFK2026-001 ~ DFK2026-030）
+    # 二、 迴圈產生證明單（預設 60 頁、120 份：DFK2026-001 ~ DFK2026-120）
     # ====================================================
-    total_pages = 15
+    total_pages = (total_count + 1) // 2
     for page_idx in range(1, total_pages + 1):
         odd_num = (page_idx - 1) * 2 + 1
         even_num = odd_num + 1
@@ -377,7 +378,7 @@ def create_serial_document():
         
         # 2. 【水平裁切線段落】
         p_cut = doc.add_paragraph()
-        set_paragraph_spacing(p_cut, before_pt=6, after_pt=6, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.CENTER)
+        set_paragraph_spacing(p_cut, before_pt=3, after_pt=3, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.CENTER)
         r_cut = p_cut.add_run("✂ ---------------------------------------- 裁 切 線 ---------------------------------------- ✂")
         set_font_run(r_cut, size_pt=9.0, bold=False, color_hex="666666")
         
@@ -385,7 +386,7 @@ def create_serial_document():
         t_bottom = doc.add_table(rows=2, cols=2)
         build_receipt_table(t_bottom, serial_bottom)
         
-        # 4. 除第 15 頁外，插入分頁符號
+        # 4. 除最後一頁外，插入分頁符號
         if page_idx < total_pages:
             p_break = doc.add_paragraph()
             # 將分頁段落設為極小，避免在表格與分頁符號間產生不必要的空白高度
@@ -403,18 +404,42 @@ def create_serial_document():
             rPr_b.append(parse_xml(f'<w:szCs {nsdecls("w")} w:val="2"/>'))
             run_break.add_break(docx.enum.text.WD_BREAK.PAGE)
 
-    # 清理末尾空段落以防最後一頁溢出產生第 16 頁
+    # 在最末尾加入極小高度（1 pt）段落，防止 Word 在最後一個表格後自動插入預設高度段落導致第 61 頁空白頁溢出
+    p_end = doc.add_paragraph()
+    p_end.paragraph_format.space_before = Pt(0)
+    p_end.paragraph_format.space_after = Pt(0)
+    p_end.paragraph_format.line_spacing = Pt(1)
+    pPr_end = p_end._p.get_or_add_pPr()
+    spPr_end = parse_xml(f'<w:spacing {nsdecls("w")} w:before="0" w:after="0" w:line="20" w:lineRule="exact"/>')
+    pPr_end.append(spPr_end)
+    r_end = p_end.add_run()
+    r_end.font.size = Pt(1)
+    rPr_end = r_end._r.get_or_add_rPr()
+    rPr_end.append(parse_xml(f'<w:sz {nsdecls("w")} w:val="2"/>'))
+    rPr_end.append(parse_xml(f'<w:szCs {nsdecls("w")} w:val="2"/>'))
+
+    # 清理所有空段落以防任何頁面溢出
     for p in doc.paragraphs:
         if len(p.text.strip()) == 0 and not any(child.tag.endswith('br') for child in p._p.iter()):
             p.paragraph_format.space_before = Pt(0)
             p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.line_spacing = Pt(1)
+            pPr_p = p._p.get_or_add_pPr()
+            spPr_p = parse_xml(f'<w:spacing {nsdecls("w")} w:before="0" w:after="0" w:line="20" w:lineRule="exact"/>')
+            pPr_p.append(spPr_p)
             for r in p.runs:
                 r.font.size = Pt(1)
                 
-    output_path = "DevFest_Kaohsiung_2026_活動費用分攤證明單_含流水號.docx"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(base_dir, "DevFest_Kaohsiung_2026_活動費用分攤證明單_含流水號.docx")
     doc.save(output_path)
-    print(f"Saved: {output_path}")
+    print(f"Saved: {output_path} (共 {total_pages} 頁，{total_count} 份證明單，編號至 DFK2026-{total_count:03d})")
 
 if __name__ == "__main__":
-    create_serial_document()
+    count = 120
+    if len(sys.argv) > 1:
+        try:
+            count = int(sys.argv[1])
+        except ValueError:
+            pass
+    create_serial_document(total_count=count)

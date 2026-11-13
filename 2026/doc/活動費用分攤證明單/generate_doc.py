@@ -1,3 +1,4 @@
+import os
 import docx
 from docx.shared import Mm, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -16,9 +17,9 @@ def create_document():
     section.page_width = Mm(210)
     section.page_height = Mm(297)
     
-    # 2. 頁邊距（Margins）：上 10 mm、下 10 mm、左 12 mm、右 12 mm
-    section.top_margin = Mm(10)
-    section.bottom_margin = Mm(10)
+    # 2. 頁邊距（Margins）：上 7 mm、下 7 mm、左 12 mm、右 12 mm
+    section.top_margin = Mm(7)
+    section.bottom_margin = Mm(7)
     section.left_margin = Mm(12)
     section.right_margin = Mm(12)
     
@@ -85,12 +86,12 @@ def create_document():
             tblPr.remove(old_layout)
         tblPr.append(parse_xml(f'<w:tblLayout {nsdecls("w")} w:type="fixed"/>'))
         
-        # 2. 儲存格內距（Cell Padding）：上下各 4 pt (80 dxa)、左右各 6 pt (120 dxa)
+        # 2. 儲存格內距（Cell Padding）：上下各 3 pt (60 dxa)、左右各 6 pt (120 dxa)
         tblCellMar = parse_xml(f'''
             <w:tblCellMar {nsdecls("w")}>
-                <w:top w:w="80" w:type="dxa"/>
+                <w:top w:w="60" w:type="dxa"/>
                 <w:left w:w="120" w:type="dxa"/>
-                <w:bottom w:w="80" w:type="dxa"/>
+                <w:bottom w:w="60" w:type="dxa"/>
                 <w:right w:w="120" w:type="dxa"/>
             </w:tblCellMar>
         ''')
@@ -171,13 +172,12 @@ def create_document():
         left_items = [
             ("開立日期：", "2026/11/14", 0, 2),
             ("付款人／單位抬頭：", None, 2, 0),
-            ("_" * 28, None, 6, 2),
+            ("_" * 28, None, 4, 2),
             ("活動名稱：", "DevFest Kaohsiung 2026", 2, 2),
             ("收款事由：", "場地與活動成本分攤款（代收代付）", 0, 2),
             ("實收金額：", "新臺幣肆佰元整（$400）", 0, 2),
-            ("", None, 0, 2), # （空一行）
-            ("收款經手人簽名：", None, 4, 0),
-            ("_" * 28, None, 20, 6)
+            ("收款經手人簽名：", None, 3, 0),
+            ("_" * 28, None, 14, 4)
         ]
         
         for item in left_items:
@@ -218,7 +218,7 @@ def create_document():
         set_font_run(r, size_pt=9.5, bold=True)
 
         p_payer_line = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_payer_line, before_pt=8, after_pt=3, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_payer_line, before_pt=4, after_pt=2, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_payer_line.add_run("_" * 68)
         set_font_run(r, size_pt=9.5, bold=False)
 
@@ -253,12 +253,12 @@ def create_document():
 
         # 收款經手人與聯絡信箱
         p_sign_label = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_sign_label, before_pt=3, after_pt=0, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_sign_label, before_pt=2, after_pt=0, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_sign_label.add_run("收款經手人（親筆簽名）：")
         set_font_run(r, size_pt=9.5, bold=True)
 
         p_sign_line = cell1_1.add_paragraph()
-        set_paragraph_spacing(p_sign_line, before_pt=18, after_pt=8, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
+        set_paragraph_spacing(p_sign_line, before_pt=14, after_pt=4, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.LEFT)
         r = p_sign_line.add_run("戴維廷 ____________    ")
         set_font_run(r, size_pt=9.5, bold=False)
         r = p_sign_line.add_run("聯絡信箱：")
@@ -318,8 +318,8 @@ def create_document():
         
         nt_row = nested_table.rows[0]
         nt_trPr = nt_row._tr.get_or_add_trPr()
-        # 固定高度 24 mm = 1361 dxa
-        nt_trPr.append(parse_xml(f'<w:trHeight {nsdecls("w")} w:val="1361" w:hRule="exact"/>'))
+        # 固定高度 22 mm = 1247 dxa
+        nt_trPr.append(parse_xml(f'<w:trHeight {nsdecls("w")} w:val="1247" w:hRule="exact"/>'))
         
         for i, c in enumerate(nt_row.cells):
             tcPr = c._tc.get_or_add_tcPr()
@@ -366,10 +366,10 @@ def create_document():
     build_receipt_table(t1)
     
     # 2. 【水平裁切線段落】
-    # 置中對齊、字級 9 pt、段前與段後各 6 pt
+    # 置中對齊、字級 9 pt、段前與段後各 3 pt
     # 文字：✂ ---------------------------------------- 裁 切 線 ---------------------------------------- ✂
     p_cut = doc.add_paragraph()
-    set_paragraph_spacing(p_cut, before_pt=6, after_pt=6, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.CENTER)
+    set_paragraph_spacing(p_cut, before_pt=3, after_pt=3, line_spacing=1.1, align=WD_ALIGN_PARAGRAPH.CENTER)
     r_cut = p_cut.add_run("✂ ---------------------------------------- 裁 切 線 ---------------------------------------- ✂")
     set_font_run(r_cut, size_pt=9.0, bold=False, color_hex="666666")
     
@@ -377,16 +377,34 @@ def create_document():
     t2 = doc.add_table(rows=2, cols=2)
     build_receipt_table(t2)
     
+    # 在最末尾加入極小高度（1 pt）段落，防止 Word 在最後一個表格後自動插入預設高度段落導致第 2 頁空白頁溢出
+    p_end = doc.add_paragraph()
+    p_end.paragraph_format.space_before = Pt(0)
+    p_end.paragraph_format.space_after = Pt(0)
+    p_end.paragraph_format.line_spacing = Pt(1)
+    pPr_end = p_end._p.get_or_add_pPr()
+    spPr_end = parse_xml(f'<w:spacing {nsdecls("w")} w:before="0" w:after="0" w:line="20" w:lineRule="exact"/>')
+    pPr_end.append(spPr_end)
+    r_end = p_end.add_run()
+    r_end.font.size = Pt(1)
+    rPr_end = r_end._r.get_or_add_rPr()
+    rPr_end.append(parse_xml(f'<w:sz {nsdecls("w")} w:val="2"/>'))
+    rPr_end.append(parse_xml(f'<w:szCs {nsdecls("w")} w:val="2"/>'))
+
     # 清理末尾空段落以防溢出
     for p in doc.paragraphs:
         if p != p_cut and len(p.text.strip()) == 0:
             p.paragraph_format.space_before = Pt(0)
             p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.line_spacing = Pt(1)
+            pPr_p = p._p.get_or_add_pPr()
+            spPr_p = parse_xml(f'<w:spacing {nsdecls("w")} w:before="0" w:after="0" w:line="20" w:lineRule="exact"/>')
+            pPr_p.append(spPr_p)
             for r in p.runs:
                 r.font.size = Pt(1)
                 
-    output_path = "DevFest_Kaohsiung_2026_活動費用分攤證明單.docx"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(base_dir, "DevFest_Kaohsiung_2026_活動費用分攤證明單.docx")
     doc.save(output_path)
     print(f"Saved: {output_path}")
 
