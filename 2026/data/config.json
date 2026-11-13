@@ -228,7 +228,7 @@
     },
     {
       "id": "discount",
-      "enabled": true,
+      "enabled": false,
       "order": 11,
       "type": "cta",
       "placement": "home",
@@ -237,6 +237,19 @@
         "zh-Hant": "取得折扣",
         "en": "Get Discount",
         "ja": "割引を申請"
+      }
+    },
+    {
+      "id": "captions",
+      "enabled": true,
+      "order": 12,
+      "type": "cta",
+      "placement": "home",
+      "url": "https://gdgkh.lirenlabs.com/captions",
+      "label": {
+        "zh-Hant": "即時翻譯",
+        "en": "Live Captions",
+        "ja": "リアルタイム字幕"
       }
     }
   ],

@@ -322,6 +322,11 @@ body.gk-loading {
   color: var(--gk-ink);
 }
 
+.gk-hero-cta.gk-hero-cta-captions {
+  background-color: var(--gk-blue);
+  color: var(--gk-paper);
+}
+
 .gk-hero-countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
