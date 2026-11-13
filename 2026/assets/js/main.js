@@ -188,11 +188,7 @@ function renderHero() {
       });
       link.addEventListener('click', () => {
         const eventName =
-          item.id === 'discount'
-            ? 'click_discount'
-            : item.id === 'captions'
-              ? 'click_captions'
-              : 'click_ticket';
+          item.id === 'discount' ? 'click_discount' : item.id === 'captions' ? 'click_captions' : 'click_ticket';
         track(eventName, { entry: 'hero' });
       });
       mount(actions, link);
