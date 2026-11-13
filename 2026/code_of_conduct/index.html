@@ -159,6 +159,28 @@
         font-weight: var(--gk-fw-bold);
       }
 
+      .gk-coc-footer {
+        margin-top: var(--gk-sp-6);
+        padding-top: var(--gk-sp-5);
+        border-top: 2px solid var(--gk-line);
+        font-size: var(--gk-fs-small);
+        line-height: 1.7;
+      }
+
+      .gk-coc-footer-title {
+        font-family: var(--gk-font-display);
+        font-size: var(--gk-fs-body);
+        font-weight: var(--gk-fw-bold);
+        margin-bottom: var(--gk-sp-2);
+      }
+
+      .gk-coc-footer-link {
+        color: var(--gk-blue);
+        font-weight: var(--gk-fw-medium);
+        text-decoration: underline;
+        word-break: break-all;
+      }
+
       @media (max-width: 640px) {
         .gk-coc-card {
           padding: var(--gk-sp-4);
@@ -223,6 +245,20 @@
           <h2 class="gk-coc-heading" data-coc="license.title"></h2>
           <p data-coc="license.description"></p>
         </article>
+
+        <footer class="gk-coc-footer">
+          <h2 class="gk-coc-footer-title" data-coc="footer.disclaimer"></h2>
+          <p>
+            <span data-coc="footer.disclaimerText"></span>
+            <a
+              class="gk-coc-footer-link"
+              href="https://developers.google.com/community/gdg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >https://developers.google.com/community/gdg/</a
+            >
+          </p>
+        </footer>
       </div>
     </main>
 
@@ -275,6 +311,11 @@
               description:
                 '此政策以知識共享零許可證（Creative Commons Zero license）授權。此政策基於並受到其他多個社群政策的影響，包括：俄亥俄LinuxFest反騷擾政策、Con反騷擾項目、Geek Feminism Wiki（由Ada Initiative創建）、ConfCodeofConduct.com、JSconf、Rust、Python中的多樣性以及Write / Speak / Code。',
             },
+            footer: {
+              disclaimer: '免責聲明',
+              disclaimerText:
+                'GDG Taiwan 是一個獨立的團體，我們的活動和意見表達與 Google 公司無任何關聯。欲了解更多資訊，請參閱',
+            },
           },
           en: {
             backHome: '← Back to Event Home',
@@ -323,6 +364,11 @@
               description:
                 'This policy is licensed under the Creative Commons Zero license. This policy is based on and influenced by multiple other community policies, including: Ohio LinuxFest anti-harassment policy, Con anti-harassment project, Geek Feminism Wiki (created by Ada Initiative), ConfCodeofConduct.com, JSconf, Rust, Diversity in Python, and Write / Speak / Code.',
             },
+            footer: {
+              disclaimer: 'Disclaimer',
+              disclaimerText:
+                'GDG Taiwan is an independent group; our activities and opinions have no affiliation with Google. For more information, see',
+            },
           },
           ja: {
             backHome: '← イベントトップへ戻る',
@@ -369,6 +415,11 @@
               title: 'ライセンスと公開',
               description:
                 'このポリシーはクリエイティブ・コモンズ・ゼロ・ライセンス（Creative Commons Zero license）で提供されています。このポリシーは、オハイオLinuxFestアンチハラスメントポリシー、Con Anti-Harassment Project、Geek Feminism Wiki（Ada Initiativeによる）、ConfCodeofConduct.com、JSconf、Rust、Pythonの多様性、Write / Speak / Codeなど、他の複数のコミュニティポリシーに基づき、影響を受けています。',
+            },
+            footer: {
+              disclaimer: '免責事項',
+              disclaimerText:
+                'GDG台湾は独立したグループであり、私たちの活動や意見はGoogleとは無関係です。詳細については、',
             },
           },
         };
