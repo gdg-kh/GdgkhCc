@@ -145,7 +145,7 @@
       },
       {
         "id": "what_is_twm",
-        "span": 4,
+        "span": 2,
         "title": {
           "zh-Hant": "什麼是「第二屆技術創作市集 TWM #2」",
           "en": "What is the \"2nd Tech Creation Market\"?",
@@ -157,6 +157,24 @@
           "ja": "日本の「技術書典」に着想を得た、技術コミュニティのための創作展示・頒布プラットフォームです。実際のブースを通じて、クリエイターは参加者と直接交流しながら自身の技術創作物を展示・販売し、知識と創造性をコミュニティ内で循環させます。\n\n主な媒体は本の制作で、1 冊あたり 15〜30 ページ程度が目安です（あくまで参考であり、実際の制限はありません）。情報技術に関するあらゆる創作物を歓迎します。\n\n昨年の「DevFest 高雄 X 南台湾技術コミュニティ大集合 2025」における第 1 回の成功を受け、今年も再び開催いたします！"
         },
         "order": 8,
+        "links": [],
+        "valign": "top"
+      },
+      {
+        "id": "kaohsiung_annual",
+        "span": 2,
+        "title": {
+          "zh-Hant": "什麼是「高雄社群年刊」",
+          "en": "What is the \"Kaohsiung Community Annual\"?",
+          "ja": "「高雄コミュニティ年刊」とは？"
+        },
+        "body": {
+          "zh-Hant": "製作《高雄社群年刊》的想法起源於看到高雄社群的組織者們每個月都在辦很有趣的社群活動，如果沒有被記錄下來就被時間遺忘覺得很可惜，所以想要有個實體回顧的地方。\n\n剛好 DevFest 2026 高雄場有「第二屆技術創作市集（TWM #2）」，來參與擺攤的社群也會販售技術同人誌，因此邀請王晟譯（饅頭）擔任年刊設計，打造出這本高達 51 頁的實體年刊！\n\n【參與製作社群】\n．Google Developer Groups Kaohsiung & 高雄社群名牌卡官網 & TOOCON\n．開發者 Buffet & 南臺灣技術社群大聚\n．Second Space\n．K.NET\n．PyLadies Kaohsiung\n．vLAB Online - ICT SecOps\n．UIUX Kaohsiung\n\n【感謝贊助夥伴】\n雜誌當然少不了支持我們的夥伴！感謝 DevFest 2026 高雄場贊助夥伴減輕年刊製作的經濟負擔：\n．貓缶簿\n．新加坡商鈦坦科技\n．JetBrains",
+          "en": "The idea behind the \"Kaohsiung Community Annual\" came from seeing local community organizers in Kaohsiung host amazing events every month. It felt like a shame if those moments weren't recorded and faded with time, so we wanted to create a physical keepsake to look back on.\n\nCoinciding with the 2nd Tech Creation Market (TWM #2) at DevFest Kaohsiung 2026, where participating communities also sell their technical zines, we invited Cheng-Yi Wang (Mantou) to design this 51-page printed annual!\n\n[Participating Communities]\n• Google Developer Groups Kaohsiung & Kaohsiung Community Card & TOOCON\n• Developer Buffet & S. TW Communities Gathering\n• Second Space\n• K.NET\n• PyLadies Kaohsiung\n• vLAB Online - ICT SecOps\n• UIUX Kaohsiung\n\n[Sponsors]\nSpecial thanks to our DevFest Kaohsiung 2026 sponsors for supporting the production of this annual:\n• Nekocanbo\n• Titansoft\n• JetBrains",
+          "ja": "「高雄コミュニティ年刊」の制作は、高雄のコミュニティ主催者たちが毎月開催している魅力的なイベントが記録されないまま忘れられてしまうのを惜しく思い、形に残る振り返りの場を作りたいという想いから始まりました。\n\nちょうど DevFest 2026 高雄で「第 2 回技術創作マーケット（TWM #2）」が開催され、出展コミュニティが技術同人誌を販売する機会に合わせて、王晟譯（Mantou）氏にデザインを依頼し、全 51 ページの年刊を制作しました！\n\n【参加コミュニティ】\n・Google Developer Groups Kaohsiung & 高雄コミュニティ名札公式サイト & TOOCON\n・開発者 Buffet & 南台湾技術コミュニティ大集合\n・Second Space\n・K.NET\n・PyLadies Kaohsiung\n・vLAB Online - ICT SecOps\n・UIUX Kaohsiung\n\n【協賛パートナー】\n年刊の制作にあたり、ご支援いただいた DevFest 2026 高雄のスポンサー各社に心より感謝申し上げます：\n・猫缶簿（Nekocanbo）\n・Titansoft（シンガポール商チタンソフト）\n・JetBrains"
+        },
+        "order": 9,
+        "image": "images/about/kaohsiung_annual.jpg",
         "links": [],
         "valign": "top"
       },
