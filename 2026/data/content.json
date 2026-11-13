@@ -314,7 +314,7 @@
         "links": [
           {
             "platform": "website",
-            "url": "https://gdg.tw/code_of_conduct/",
+            "url": "code_of_conduct/",
             "label": {
               "zh-Hant": "行為準則",
               "en": "Code of Conduct",
