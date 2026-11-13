@@ -1,0 +1,123 @@
+{
+  "source": "DevFest Kaohsiung 2026 資料 / 講者表單",
+  "spreadsheetId": "1Vwc1j7wBJUBdByJ1hU9Q-Tvfp9iiS6uIzgMkBk0eSms",
+  "sheetName": "講者表單",
+  "updatedAt": "2026-11-13T14:40:00+08:00",
+  "ruleNote": "未勾選同意者皆視為不同意；同場多人議程若任一位講者不同意，該場海報從嚴標示為不同意。",
+  "speakers": {
+    "eric_shangkuan": {
+      "name": "Eric ShangKuan",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "simon_liu": {
+      "name": "劉育維",
+      "rawConsent": "同意拍照, 不同意錄影",
+      "photo": true,
+      "video": false
+    },
+    "kai_wu": {
+      "name": "吳楷鈞",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "bruce_lee": {
+      "name": "李冠緯",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "fngi_shiu": {
+      "name": "徐方繹（Fngi）",
+      "rawConsent": "同意拍照, 不同意錄影",
+      "photo": true,
+      "video": false
+    },
+    "arturs_vancans": {
+      "name": "韋亞圖",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "johnny_sung": {
+      "name": "Johnny Sung (宋岡諺)",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "john_lu": {
+      "name": "John Lu",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "ray_yuan_liu": {
+      "name": "劉瑞元",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "steve_yeh": {
+      "name": "史蒂夫•葉",
+      "rawConsent": "同意拍照",
+      "photo": true,
+      "video": false
+    },
+    "fredric_huang": {
+      "name": "黃士峯",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "zonble": {
+      "name": "zonble",
+      "rawConsent": "同意拍照",
+      "photo": true,
+      "video": false
+    },
+    "maylogger": {
+      "name": "設計師勞哥",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "mantou": {
+      "name": "王晟譯 / 饅頭",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "chih_ming": {
+      "name": "賴志銘",
+      "rawConsent": "同意拍照",
+      "photo": true,
+      "video": false
+    },
+    "kunfeng_li": {
+      "name": "李坤峰",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "jianlin": {
+      "name": "曾建霖",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "kevin_chiu": {
+      "name": "邱哲綸",
+      "rawConsent": "同意拍照, 同意錄影",
+      "photo": true,
+      "video": true
+    },
+    "sylph_lin": {
+      "name": "林政君",
+      "rawConsent": "同意拍照, 不同意錄影",
+      "photo": true,
+      "video": false
+    }
+  }
+}
