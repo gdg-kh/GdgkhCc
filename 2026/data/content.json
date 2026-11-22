@@ -2789,6 +2789,192 @@
         }
       ],
       "order": 6
+    },
+    {
+      "id": "twm2_ray_yuan_liu",
+      "groupId": "twm_2",
+      "order": 1,
+      "name": {
+        "zh-Hant": "現在面試還用得到！快樂學習物件導向程式設計",
+        "en": "Still Useful for Interviews! Happy Learning Object-Oriented Programming",
+        "ja": "今でも面接で役立つ！楽しく学ぶオブジェクト指向プログラミング"
+      },
+      "author": {
+        "zh-Hant": "劉瑞元",
+        "en": "Ray Yuan Liu",
+        "ja": "Ray Yuan Liu（劉瑞元）"
+      },
+      "boothLocation": {
+        "zh-Hant": "UIUX 高雄",
+        "en": "UIUX Kaohsiung",
+        "ja": "UIUX 高雄"
+      },
+      "description": {
+        "zh-Hant": "Vibe coding 時代到底該怎麼學程式基礎呢？這次直接用做到一半的範例來介紹基本觀念，同時觀察程式碼的變化。明明幾個小時就寫得出一整個系統 （當然是 Vibe），卻還像以前一樣第一課教怎麼寫變數，沒有！不用！直接從一個還沒做完的範例開始！",
+        "en": "How should we learn programming fundamentals in the era of Vibe Coding? This book introduces core concepts using a half-finished project while observing how the code evolves. When you can build an entire system in hours with Vibe Coding, you don't need to start Lesson 1 by declaring variables—jump straight into an unfinished example instead!",
+        "ja": "Vibe Coding 時代にプログラミングの基礎はどう学ぶべきでしょうか？本書では作りかけのサンプルから直接基本概念を紹介し、コードの変化を観察します。Vibe Coding で数時間あればシステム全体が作れる時代に、第 1 課から変数の書き方を学ぶ必要はありません。未完成のサンプルから一気に始めましょう！"
+      },
+      "authorBio": {
+        "zh-Hant": "上一屆也有參加，單純覺得這個活動的強度也太高了。但是聽說有網紅，為了跟他看齊，所以硬著頭皮也寫了一本。",
+        "en": "Participated in the previous edition too and simply thought the bar for this event was insanely high. Hearing that an influencer was joining, I pushed myself to write a book just to keep up.",
+        "ja": "前回も参加しましたが、このイベントのレベルが高すぎると感じました。それでも有名インフルエンサーが参加すると聞き、負けないように意を決して 1 冊書き上げました。"
+      },
+      "links": []
+    },
+    {
+      "id": "twm2_ross_chen",
+      "groupId": "twm_2",
+      "order": 2,
+      "name": {
+        "zh-Hant": "《槍林彈雨下的資安防守》30 天實戰卡片精選",
+        "en": "Cybersecurity Defense Under Fire: 30-Day Practical Card Selection",
+        "ja": "『銃弾飛び交う中でのセキュリティ防衛』30 日間実践カード精選"
+      },
+      "author": {
+        "zh-Hant": "Ross Chen",
+        "en": "Ross Chen",
+        "ja": "Ross Chen"
+      },
+      "boothLocation": {
+        "zh-Hant": "台灣路由網路實驗中心",
+        "en": "Taiwan Routing Network Lab Center (vLAB Online)",
+        "ja": "台湾ルーティングネットワーク実験センター（vLAB Online）"
+      },
+      "description": {
+        "zh-Hant": "2026 iThome 鐵人賽「槍林彈雨下的資安防守：從品質觀念切入，帶開發者從零動手作資安 30 天」系列精選",
+        "en": "Selected highlights from the 2026 iThome Ironman series: 'Cybersecurity Defense Under Fire: Approaching Security from Quality Mindset — Guiding Developers to Build Security from Scratch in 30 Days.'",
+        "ja": "2026 年 iThome アイアンマン・チャレンジ連載『銃弾飛び交う中でのセキュリティ防衛：品質の観点から切り込み、開発者がゼロから実践するセキュリティ 30 日間』からの精選集です。"
+      },
+      "authorBio": {
+        "zh-Hant": "傳產 IT 水電工",
+        "en": "Traditional Industry IT Handyman",
+        "ja": "伝統産業の IT なんでも屋"
+      },
+      "links": []
+    },
+    {
+      "id": "twm2_mantou",
+      "groupId": "twm_2",
+      "order": 3,
+      "name": {
+        "zh-Hant": "饅頭 UI",
+        "en": "Mantou UI",
+        "ja": "Mantou UI"
+      },
+      "author": {
+        "zh-Hant": "饅頭",
+        "en": "Mantou",
+        "ja": "饅頭（Mantou）"
+      },
+      "boothLocation": {
+        "zh-Hant": "UIUX 高雄",
+        "en": "UIUX Kaohsiung",
+        "ja": "UIUX 高雄"
+      },
+      "description": {
+        "zh-Hant": "把網頁與 App 常用的 UI 元件整理成一張簡單的對照圖鑑，以後用 AI Vibe Coding 時，就能直接叫出正確的元件名稱啦！",
+        "en": "An easy-to-reference visual guide organizing common Web and App UI components so you can call out the exact component names effortlessly during AI Vibe Coding!",
+        "ja": "Web やアプリでよく使われる UI コンポーネントを分かりやすい対照図鑑にまとめました。これがあれば AI による Vibe Coding の際も、正確なコンポーネント名をすぐに指定できます！"
+      },
+      "authorBio": {
+        "zh-Hant": "上一屆也有參加，就那個出了一本粉粉厚厚的書，今年時間不夠所以出了一本薄薄藍藍的書，的那個饅頭啦！",
+        "en": "Also joined last year—yes, the Mantou who published that thick pink book! Ran short on time this year, so here comes a slim blue book instead.",
+        "ja": "前回も参加しました。あの分厚いピンク色の本を出した饅頭です！今年は時間が足りなかったので、薄い青色の本を出しました！"
+      },
+      "links": []
+    },
+    {
+      "id": "twm2_feifei_zozo",
+      "groupId": "twm_2",
+      "order": 4,
+      "name": {
+        "zh-Hant": "UX 圖鑑",
+        "en": "UX Illustrated Guide",
+        "ja": "UX 図鑑"
+      },
+      "author": {
+        "zh-Hant": "菲菲zozo",
+        "en": "Feifei zozo",
+        "ja": "菲菲zozo"
+      },
+      "boothLocation": {
+        "zh-Hant": "UIUX 高雄",
+        "en": "UIUX Kaohsiung",
+        "ja": "UIUX 高雄"
+      },
+      "description": {
+        "zh-Hant": "常見UX方法的名詞本，如果一時想不起來怎麼運用，即時圖鑑參考！",
+        "en": "A handy glossary of common UX methodologies—your quick visual reference whenever you need a reminder on how to apply them!",
+        "ja": "よく使われる UX 手法の用語集です。使い方を思い出せないときにすぐ参照できる図鑑リファレンスです！"
+      },
+      "authorBio": {
+        "zh-Hant": "6+ UIUX designer。 主辦UIUX Kaohsiung 歡迎大家來玩！",
+        "en": "UI/UX designer with 6+ years of experience. Organizer of UIUX Kaohsiung—welcome to come hang out!",
+        "ja": "経験 6 年以上の UI/UX デザイナー。UIUX Kaohsiung 主催。ぜひ遊びに来てください！"
+      },
+      "links": []
+    },
+    {
+      "id": "twm2_shan_lin",
+      "groupId": "twm_2",
+      "order": 5,
+      "name": {
+        "zh-Hant": "從第一線應變到企業治理：30 天打造資安溝通與營運韌性",
+        "en": "From Frontline Response to Enterprise Governance: 30 Days to Building Cybersecurity Communication & Operational Resilience",
+        "ja": "最前線の対応から企業ガバナンスへ：30 日間で築くセキュリティコミュニケーションと事業レジリエンス"
+      },
+      "author": {
+        "zh-Hant": "Shan Lin",
+        "en": "Shan Lin",
+        "ja": "Shan Lin"
+      },
+      "boothLocation": {
+        "zh-Hant": "台灣路由網路實驗中心",
+        "en": "Taiwan Routing Network Lab Center (vLAB Online)",
+        "ja": "台湾ルーティングネットワーク実験センター（vLAB Online）"
+      },
+      "description": {
+        "zh-Hant": "「Tools change. The way stays. 工具會變,但資安與人溝通、與業務共好的道不會變。」\n\n本書結合 18 年第一線應變與企業治理實務,把複雜的資安威脅、供應鏈風險與弱點,轉化為營運層與決策層聽得懂的商業語言。全書分成四大模組,共 30 天:\n\n破局與戰略(Day 1–7): FAIR 風險量化、董事會簡報、DevSecOps 溝通心理學、合規與實質防禦、企業資安溝通矩陣。\n實戰與韌性(Day 8–15): 事故應變黃金 72 小時、法務與公關協作、CTI 威脅情資落地、現代 SOC 運營與自動化。\n架構與治理(Day 16–23): 弱點優先順序、零信任、第三方與供應鏈風險、影子 IT、資料分類、兵棋推演與 BCP。\n永續與生態(Day 24–30): 資安文化、職涯橫向能力、同行人脈、生成式 AI 的攻防變局。\n\n本書基於「知識共享、專業人脈、廠商中立、持續學習」四大心法,寫給資安從業人員與 IT 主管,協助打破溝通壁壘,打造兼具技術深度與營運韌性的企業資安防務。",
+        "en": "\"Tools change. The way stays.\" While tools evolve, the core principles of communicating cybersecurity with people and aligning with business remain unchanged.\n\nDrawing on 18 years of frontline incident response and enterprise governance experience, this book translates complex cyber threats, supply chain risks, and vulnerabilities into business language that operations and executive leaders understand. Structured into four modules across 30 days:\n\nStrategy & Breakthrough (Day 1–7): FAIR risk quantification, board briefings, DevSecOps communication psychology, compliance vs. real defense, and enterprise security communication matrices.\nPractice & Resilience (Day 8–15): The golden 72 hours of incident response, legal and PR collaboration, operationalizing CTI, and modern SOC operations & automation.\nArchitecture & Governance (Day 16–23): Vulnerability prioritization, Zero Trust, third-party & supply chain risk, shadow IT, data classification, tabletop exercises, and BCP.\nSustainability & Ecosystem (Day 24–30): Security culture, cross-functional career skills, peer networking, and the evolving offense/defense landscape of generative AI.\n\nGrounded in knowledge sharing, professional networking, vendor neutrality, and continuous learning, this book helps cybersecurity practitioners and IT leaders break down communication silos and build resilient enterprise security.",
+        "ja": "「Tools change. The way stays. ツールは変わっても、セキュリティにおける人とのコミュニケーションとビジネスとの共存の道は変わらない。」\n\n18 年にわたる最前線のインシデント対応と企業ガバナンスの実務経験をもとに、複雑なサイバー脅威・サプライチェーンリスク・脆弱性を、現場層や経営層にも伝わるビジネス言語へと翻訳しました。全 4 モジュール・30 日間の構成です：\n\n突破と戦略（Day 1–7）：FAIR リスク定量化、取締役会ブリーフィング、DevSecOps コミュニケーション心理学、コンプライアンスと実質防御、企業セキュリティ・コミュニケーションマトリクス。\n実践とレジリエンス（Day 8–15）：インシデント対応の黄金の 72 時間、法務・広報連携、CTI 脅威インテリジェンスの実践、モダン SOC 運用と自動化。\nアーキテクチャとガバナンス（Day 16–23）：脆弱性の優先順位付け、ゼロトラスト、サードパーティおよびサプライチェーンリスク、シャドー IT、データ分類、机上演習と BCP。\n持続性とエコシステム（Day 24–30）：セキュリティ文化、キャリアの横断スキル、専門家ネットワーク、生成 AI がもたらす攻防の変化。\n\n「知識共有・専門人脈・ベンダー中立・継続学習」の 4 つの信条に基づき、セキュリティ実務者や IT 管理職がコミュニケーションの壁を打ち破り、技術的深みと事業レジリエンスを兼ね備えた企業防衛を築くための 1 冊です。"
+      },
+      "authorBio": {
+        "zh-Hant": "目前為企業的資安分析師，專注於企業與產品資安防禦體系的維運，工作涵蓋威脅情資分析（CTI）、攻擊手法研究（TTPs）、資產狀態監測與事故處理應變。具備 18 年的資安與網路基礎建設整合經驗，歷經經銷商、代理商、資安原廠，一路走到企業端。同時擔任國防工業發展基金會評鑑委員，協助驗證國防供應鏈的資安防護韌性。\n\n在社群方面，目前擔任 vLAB Online 資安社群品牌 PM，負責活動規劃與營運，策劃《資安懂事掌》、《誰來 InSide》、《資安知不知》等帶狀線上活動，以及「一日藍隊實戰工作坊」與大型活動「資安社群嘉年華」。同時參與台灣數位安全聯盟（TWCSA）的社群管理，並推廣 OWASP 與 Meetup 社群日活動。\n\n致力於透過這些系列活動建立資安技術與大眾、決策層與實務者之間的對話橋樑，讓資安不再只是技術問題，而是整體治理與文化的一環。",
+        "en": "Currently an enterprise cybersecurity analyst focused on operating enterprise and product security defense systems, covering Cyber Threat Intelligence (CTI), attacker TTPs research, asset monitoring, and incident response. Brings 18 years of cybersecurity and network infrastructure integration experience across resellers, distributors, security vendors, and enterprises, and serves as an evaluation committee member for the National Defense Industrial Development Foundation verifying defense supply chain cyber resilience.\n\nIn the community, serves as Brand PM for vLAB Online, organizing recurring online programs, Blue Team hands-on workshops, and the Cybersecurity Community Carnival, while contributing to TWCSA community operations and promoting OWASP and Meetup community events.\n\nDedicated to bridging the gap between cybersecurity technology, the public, executives, and practitioners—turning security from a purely technical issue into organizational governance and culture.",
+        "ja": "現在は企業のセキュリティアナリストとして、企業および製品のセキュリティ防御体制の運用に従事。脅威インテリジェンス分析（CTI）、攻撃手法研究（TTPs）、資産状態監視、インシデント対応を担当。販売代理店、ディストリビューター、セキュリティベンダーを経て事業会社に至るまで 18 年のセキュリティおよびネットワーク基盤統合経験を持ち、国防工業発展基金会の評価委員として防衛サプライチェーンのサイバーレジリエンス検証にも携わる。\n\nコミュニティ活動では、vLAB Online セキュリティコミュニティのブランド PM として企画運営を担当し、定期オンライン番組や「1 日ブルーチーム実践ワークショップ」、大型イベント「セキュリティコミュニティ・カーニバル」などを主催。台湾デジタルセキュリティ連盟（TWCSA）のコミュニティ運営や OWASP・Meetup イベントの推進にも参加。\n\n技術と社会、経営層と実務者の対話の架け橋となり、セキュリティを単なる技術課題から組織全体のガバナンスと文化へ昇華させることを目指しています。"
+      },
+      "links": []
+    },
+    {
+      "id": "twm2_kaohsiung_annual",
+      "groupId": "twm_2",
+      "order": 6,
+      "name": {
+        "zh-Hant": "高雄社群年刊 創刊號",
+        "en": "Kaohsiung Tech Community Annual — Inaugural Issue",
+        "ja": "高雄テックコミュニティ年刊 創刊号"
+      },
+      "author": {
+        "zh-Hant": "總編輯：維廷 Andy\n設計：饅頭\n共同創作：GDG Kaohsiung、開發者 Buffet、Second Space、K.NET、PyLadies Kaohsiung、vLAB Online、UIUX Kaohsiung",
+        "en": "Editor-in-Chief: Andy (維廷)\nDesign: Mantou\nCo-created by: GDG Kaohsiung, Developer Buffet, Second Space, K.NET, PyLadies Kaohsiung, vLAB Online, UIUX Kaohsiung",
+        "ja": "編集長：維廷 Andy\nデザイン：饅頭（Mantou）\n共同制作：GDG Kaohsiung、Developer Buffet、Second Space、K.NET、PyLadies Kaohsiung、vLAB Online、UIUX Kaohsiung"
+      },
+      "boothLocation": {
+        "zh-Hant": "DevFest 2026 高雄場 報到台",
+        "en": "DevFest Kaohsiung 2026 Check-in Desk",
+        "ja": "DevFest Kaohsiung 2026 受付デスク"
+      },
+      "description": {
+        "zh-Hant": "匯集高雄活躍的技術與交流社群",
+        "en": "Bringing together Kaohsiung's most active technology and networking communities.",
+        "ja": "高雄で活発に活動する技術・交流コミュニティを一冊にまとめました。"
+      },
+      "authorBio": {
+        "zh-Hant": "年刊總編輯的話\n\n大家好，我是高雄社群年刊總編維廷 Andy。這次高雄社群年刊創刊號能順利出版，首先要感謝饅頭彙整排版和視覺設計，再來是每個高雄社群的內容貢獻，最後是我太太，因為她能忍受我們一起出國玩的時候我晚上都在民宿趕年刊的稿和 DevFest 2026 高雄場的事。\n\n我個人覺得，高雄社群對社群咖來說是個甜蜜點，因為每個領域都能找到對應的社群，而且社群數量適中，想要把全社群跑透是能做到的事情；更難得的是每個社群的組織者和會眾們都是燃燒自己的熱情在經營和參與，所以我想要把這個能量記錄起來，最後歡迎大家多多參加高雄社群活動！\n\n--\n\n封面設計的話\n\n大家好，我是負責這本社群年刊封面的饅頭！自己在高雄參與社群活動大概兩三年了，這幾年跑了各個社群的活動，最大的收穫就是認識了一大群超厲害的工程師與設計師大大，不僅接觸到各種新技術，還激盪出許多有趣的想法，真的非常好玩！這次很榮幸能把今年高雄各社群的精采活動收錄成冊。翻完年刊如果有心動，別猶豫，未來的活動直接衝就對了！",
+        "en": "A Note from the Editor-in-Chief\n\nHi everyone, I'm Andy (維廷), Editor-in-Chief of the Kaohsiung Tech Community Annual. For this inaugural issue to be published smoothly, I first want to thank Mantou for compiling the layout and visual design, next every Kaohsiung community for contributing their stories, and finally my wife—for putting up with me staying up at our guesthouse during our overseas trip to finish both the annual draft and DevFest Kaohsiung 2026 preparations.\n\nPersonally, I think Kaohsiung is a sweet spot for community enthusiasts: every domain has its own community, and the total number of communities is just right that you can realistically visit them all. Even more precious is how organizers and attendees alike pour their passion into running and participating in these groups. I wanted to document that energy, and I warmly welcome everyone to join Kaohsiung's community events!\n\n--\n\nA Note from the Cover Designer\n\nHi everyone, I'm Mantou, the designer behind this community annual's cover! I've been active in Kaohsiung's tech communities for about two to three years. Visiting different meetups has brought me the greatest reward: meeting an amazing group of engineers and designers, learning new technologies, and sparking all sorts of fun ideas—it's been an absolute blast! I'm honored to help compile this year's highlights from Kaohsiung's communities into a book. If flipping through the annual excites you, don't hesitate—just jump right into upcoming events!",
+        "ja": "年刊編集長より\n\n皆さんこんにちは、高雄テックコミュニティ年刊編集長の維廷 Andy です。創刊号を無事に出版できたのは、まずレイアウトとビジュアルデザインをまとめてくれた饅頭さん、そしてコンテンツを提供してくれた高雄の各コミュニティの皆さんのおかげです。最後に、海外旅行中でも毎晩宿で年刊の原稿や DevFest 2026 高雄の準備に追われていた私を温かく見守ってくれた妻に感謝します。\n\n個人的には、高雄のコミュニティはコミュニティ好きにとって絶好の環境だと感じています。あらゆる分野に対応するコミュニティがあり、数もほどよいため全コミュニティを巡ることも可能です。さらに素晴らしいのは、各コミュニティのオーガナイザーも参加者も皆、情熱を燃やして運営・参加していることです。このエネルギーを形として残したいと思い、本誌を制作しました。ぜひ高雄のコミュニティイベントにたくさん参加してください！\n\n--\n\n表紙デザイン担当より\n\n皆さんこんにちは、表紙デザインを担当した饅頭（Mantou）です！高雄でコミュニティ活動に参加して 2〜3 年ほどになりますが、さまざまなコミュニティを巡る中で得た一番の収穫は、素晴らしいエンジニアやデザイナーの皆さんに出会えたことです。新しい技術に触れるだけでなく、面白いアイデアがたくさん生まれ、本当に楽しい日々でした！今年の高雄各コミュニティの素敵な活動を 1 冊にまとめるお手伝いができて光栄です。年刊を読んでワクワクしたら、迷わずこれからのイベントに飛び込んでみてください！"
+      },
+      "links": []
     }
   ],
   "virtualSpace": {
