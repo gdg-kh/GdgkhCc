@@ -150,6 +150,23 @@ function buildBody({ type, item, config, store, imageUrl, backHref, backLabel })
       parts.push(`<p class="gk-share-role">${escapeHtml(role)}</p>`);
     }
   }
+  if (type === 'booths' && (item.author || item.boothLocation)) {
+    const authorText = pickLang(item.author);
+    const locationText = pickLang(item.boothLocation);
+    if (authorText.includes('\n')) {
+      for (const line of authorText.split(/\n+/).map((l) => l.trim()).filter(Boolean)) {
+        parts.push(`<p class="gk-share-affiliation">${escapeHtml(line)}</p>`);
+      }
+      if (locationText) {
+        parts.push(`<p class="gk-share-affiliation">${escapeHtml(locationText)}</p>`);
+      }
+    } else {
+      const affiliation = authorText && locationText ? `${authorText} · ${locationText}` : authorText || locationText;
+      if (affiliation) {
+        parts.push(`<p class="gk-share-affiliation">${escapeHtml(affiliation)}</p>`);
+      }
+    }
+  }
   parts.push(`<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(name)}" width="480" height="480" loading="lazy" />`);
   const bio = bioParagraphs(bioText);
   if (bio) {
@@ -157,6 +174,16 @@ function buildBody({ type, item, config, store, imageUrl, backHref, backLabel })
   }
   if (type === 'speakers') {
     parts.push(speakerSessions(item, store, ui));
+  }
+  if (type === 'booths' && item.authorBio) {
+    const authorBioText = pickLang(item.authorBio);
+    const authorBioHtml = bioParagraphs(authorBioText);
+    if (authorBioHtml) {
+      const authorBioLabel = pickLang(ui.authorBioLabel) || '作者介紹';
+      parts.push(
+        `<section class="gk-share-session"><h2>${escapeHtml(authorBioLabel)}</h2>${authorBioHtml}</section>`
+      );
+    }
   }
   const links = linksList(item.links);
   if (links) {

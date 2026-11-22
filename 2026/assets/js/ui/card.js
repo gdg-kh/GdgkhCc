@@ -39,7 +39,7 @@ function makeCard(className, onClick, ariaLabel) {
   return card;
 }
 
-function makePersonImage(image, name, fallback = PERSON_PLACEHOLDER) {
+function makePersonImage(image, name, fallback = PERSON_PLACEHOLDER, imageFit = 'cover') {
   const wrapper = el('div', { class: 'gk-card-media gk-card-media-person' });
   if (typeof image === 'string' && image.length > 0) {
     let src = image;
@@ -62,8 +62,12 @@ function makePersonImage(image, name, fallback = PERSON_PLACEHOLDER) {
       attrs.srcset = srcset;
       attrs.sizes = '(max-width: 768px) 160px, 320px';
     }
+    const imgClass =
+      imageFit === 'contain'
+        ? 'gk-card-image gk-card-image-person gk-card-image-contain'
+        : 'gk-card-image gk-card-image-person';
     const img = el('img', {
-      class: 'gk-card-image gk-card-image-person',
+      class: imgClass,
       attrs,
     });
     img.dataset.gkOriginalSrc = image;
@@ -87,7 +91,7 @@ function appendTextBlock(card, name, subtitle, description, affiliationText) {
     mount(body, el('h3', { class: 'gk-card-name', text: nameText }));
   }
   if (affiliationText) {
-    mount(body, el('p', { class: 'gk-card-affiliation', text: affiliationText }));
+    mount(body, el('p', { class: 'gk-multiline gk-card-affiliation', text: affiliationText }));
   }
   const subtitleText = t(subtitle);
   if (subtitleText) {
@@ -108,7 +112,7 @@ export function personCard(opts) {
     typeof options.image === 'string' &&
     (options.image.includes('images/booths') || options.image.includes('images/thanks'));
   const fallback = isLogo ? LOGO_PLACEHOLDER : PERSON_PLACEHOLDER;
-  const media = makePersonImage(options.image, nameText, fallback);
+  const media = makePersonImage(options.image, nameText, fallback, options.imageFit);
   mount(card, media);
   const affiliationText = joinAffiliation(t(options.title), t(options.org));
   appendTextBlock(card, options.name, options.subtitle, options.description, affiliationText);

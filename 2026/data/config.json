@@ -528,6 +528,26 @@
       "zh-Hant": "分享講者",
       "en": "Share Speaker",
       "ja": "登壇者を共有"
+    },
+    "authorLabel": {
+      "zh-Hant": "作者",
+      "en": "Author",
+      "ja": "著者"
+    },
+    "authorBioLabel": {
+      "zh-Hant": "作者介紹",
+      "en": "About the Author",
+      "ja": "著者紹介"
+    },
+    "bookIntroLabel": {
+      "zh-Hant": "書本介紹",
+      "en": "About the Book",
+      "ja": "書籍紹介"
+    },
+    "boothLocationLabel": {
+      "zh-Hant": "對應攤位",
+      "en": "Booth Location",
+      "ja": "展示・販売ブース"
     }
   },
   "thanks": {

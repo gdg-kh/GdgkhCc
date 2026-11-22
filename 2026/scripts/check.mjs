@@ -241,6 +241,13 @@ if (content) {
     }
   }
 
+  const boothGroupIds = new Set((content.boothGroups || []).map((g) => g.id));
+  for (const item of content.booths || []) {
+    if (item.groupId && !boothGroupIds.has(item.groupId)) {
+      warn(`booths/${item.id}: groupId「${item.groupId}」不存在，會被歸到未分組`);
+    }
+  }
+
   // 群組顏色必須是 GDG 官方色
   for (const g of content.sessionGroups || []) {
     if (g.color && !GDG_COLORS.has(String(g.color).toLowerCase())) {

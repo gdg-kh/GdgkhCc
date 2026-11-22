@@ -468,6 +468,7 @@ function drawBadgeAndName(ctx, badgeLabel, nameText) {
   let letterGap = 0;
   let nameW = 0;
   let gap = 32;
+  let lines = null;
 
   if (isPureCjk && nameLen === 3) {
     fontSize = 55;
@@ -494,6 +495,19 @@ function drawBadgeAndName(ctx, badgeLabel, nameText) {
       ctx.font = `900 ${fontSize}px ${FONT_FAMILY}`;
       nameW = ctx.measureText(nameText).width;
     }
+    if (nameW > maxNameW) {
+      const rawLines = wrapHeadline(ctx, nameText, maxNameW);
+      if (rawLines.length > 2) {
+        let second = rawLines[1];
+        while (second.length > 0 && ctx.measureText(`${second}…`).width > maxNameW) {
+          second = second.slice(0, -1);
+        }
+        lines = [rawLines[0], `${second}…`];
+      } else {
+        lines = rawLines;
+      }
+      nameW = Math.max(...lines.map((l) => ctx.measureText(l).width));
+    }
     gap = 24;
   }
 
@@ -519,14 +533,20 @@ function drawBadgeAndName(ctx, badgeLabel, nameText) {
   ctx.textAlign = 'left';
 
   const nameStartX = startX + badgeW + gap;
-  if (letterGap > 0) {
+  if (lines && lines.length > 1) {
+    const lineHeight = 36;
+    const startY = centerY - ((lines.length - 1) * lineHeight) / 2 + 1;
+    lines.forEach((line, idx) => {
+      ctx.fillText(line, nameStartX, startY + idx * lineHeight);
+    });
+  } else if (letterGap > 0) {
     let curX = nameStartX;
     for (const ch of Array.from(nameText)) {
       ctx.fillText(ch, curX, centerY + 1);
       curX += ctx.measureText(ch).width + letterGap;
     }
   } else {
-    ctx.fillText(nameText, nameStartX, centerY + 1);
+    ctx.fillText(lines ? lines[0] : nameText, nameStartX, centerY + 1);
   }
 }
 
@@ -574,6 +594,30 @@ export function resolveThanksBadgeLabel(item, passedContent, layout) {
   return '合作夥伴';
 }
 
+export function resolveBoothBadgeLabel(item, passedContent, layout) {
+  if (layout && typeof layout.badgeLabel === 'string' && layout.badgeLabel.trim()) {
+    return layout.badgeLabel.trim();
+  }
+  if (item && item.groupId === 'twm_2') {
+    return '創作市集';
+  }
+  const content = getContentData(passedContent);
+  const boothGroups = Array.isArray(content && content.boothGroups) ? content.boothGroups : [];
+  const targetGroupId = item && item.groupId;
+  if (targetGroupId) {
+    const group = boothGroups.find((g) => g && g.id === targetGroupId);
+    if (group && group.name) {
+      if (typeof group.name === 'string') {
+        return group.name;
+      }
+      if (typeof group.name === 'object') {
+        return group.name['zh-Hant'] || group.name.zh || pickLang(group.name, '社群攤位');
+      }
+    }
+  }
+  return '社群攤位';
+}
+
 // 主渲染函式
 export async function renderOgImage({ type, item, layout, _config, content, outPath }) {
   if (type === 'site' || (outPath && outPath.replace(/\\/g, '/').endsWith('images/og/site.png'))) {
@@ -605,7 +649,8 @@ export async function renderOgImage({ type, item, layout, _config, content, outP
     const badgeLabel = await resolveThanksBadgeLabel(item, content, layout);
     drawBadgeAndName(ctx, badgeLabel, nameText);
   } else if (type === 'booths') {
-    drawBadgeAndName(ctx, '社群攤位', nameText);
+    const badgeLabel = resolveBoothBadgeLabel(item, content, layout);
+    drawBadgeAndName(ctx, badgeLabel, nameText);
   } else if (type === 'speakers') {
     // 講者排版：整組相對於上方 DevFest 標誌（中心點 X: 794）水平置中
     // 規格：第 1 區塊 [活動講者] 徽章（靠頂對齊）+ 姓名職稱（最多 2 行，語意優先換行）

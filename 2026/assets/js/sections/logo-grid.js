@@ -40,12 +40,25 @@ function openLogoModal(type, item) {
 }
 
 function renderItemCard(type, item) {
-  return personCard({
+  const opts = {
     image: assetPath(type, item.id),
     name: item.name,
     description: item.description,
     onClick: () => openLogoModal(type, item),
-  });
+  };
+  if (item && (item.author || item.boothLocation)) {
+    const authorText = t(item.author);
+    opts.title = item.author;
+    if (authorText.includes('\n')) {
+      opts.subtitle = item.boothLocation;
+    } else {
+      opts.org = item.boothLocation;
+    }
+  }
+  if (type === 'booths' && item && item.groupId === 'twm_2') {
+    opts.imageFit = 'contain';
+  }
+  return personCard(opts);
 }
 
 function renderLogoSection(container, groups, type) {

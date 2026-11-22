@@ -112,6 +112,49 @@ function buildLogoPayload(type, item) {
     return null;
   }
   const group = item.groupId ? getGroupById(item.groupId) : null;
+  const tags = Array.isArray(item && item.tags)
+    ? item.tags
+    : Array.isArray(item && item.tag)
+      ? item.tag
+      : item && item.tag
+        ? [item.tag]
+        : [];
+  const isBookBooth =
+    type === 'booths' && (item.groupId === 'twm_2' || Boolean(item.author || item.authorBio || item.boothLocation));
+
+  if (isBookBooth) {
+    const config = getConfig();
+    const ui = config && config.ui;
+    const meta = [];
+    if (item.author) {
+      meta.push({ label: (ui && ui.authorLabel) || '作者', value: item.author });
+    }
+    if (item.boothLocation) {
+      meta.push({ label: (ui && ui.boothLocationLabel) || '對應攤位', value: item.boothLocation });
+    }
+    const sections = [];
+    if (item.description) {
+      sections.push({ title: (ui && ui.bookIntroLabel) || '書本介紹', body: item.description });
+    }
+    if (item.authorBio) {
+      sections.push({ title: (ui && ui.authorBioLabel) || '作者介紹', body: item.authorBio });
+    }
+    return {
+      type,
+      id: item.id,
+      shareUrl: getShareUrl(type, item.id),
+      image: assetPath(type, item.id),
+      imageFit: 'contain',
+      name: item.name,
+      groupName: group ? group.name : undefined,
+      groupColor: groupColorOf(group),
+      meta,
+      sections,
+      tags,
+      links: linksOf(item),
+    };
+  }
+
   return {
     type,
     id: item.id,
@@ -121,13 +164,7 @@ function buildLogoPayload(type, item) {
     bio: item.description,
     groupName: group ? group.name : undefined,
     groupColor: groupColorOf(group),
-    tags: Array.isArray(item && item.tags)
-      ? item.tags
-      : Array.isArray(item && item.tag)
-        ? item.tag
-        : item && item.tag
-          ? [item.tag]
-          : [],
+    tags,
     links: linksOf(item),
   };
 }

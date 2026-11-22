@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import crypto from 'node:crypto';
 import { ENTITY_TYPES, assetPath, ogPath } from './entity-types.mjs';
-import { renderOgImage, resolveThanksBadgeLabel } from './render-og.mjs';
+import { renderOgImage, resolveThanksBadgeLabel, resolveBoothBadgeLabel } from './render-og.mjs';
 import { renderSharePage } from './render-page.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -84,6 +84,9 @@ function buildLayout({ type, typeEntry, item, store, imageAbs, content }) {
   }
   if (type === 'thanks') {
     layout.badgeLabel = resolveThanksBadgeLabel(item, content);
+  }
+  if (type === 'booths') {
+    layout.badgeLabel = resolveBoothBadgeLabel(item, content);
   }
   return layout;
 }

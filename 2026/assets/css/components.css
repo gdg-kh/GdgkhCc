@@ -126,6 +126,10 @@
   background-color: var(--gk-paper);
 }
 
+.gk-modal-image-contain {
+  object-fit: contain;
+}
+
 .gk-modal-heading {
   display: flex;
   flex-direction: column;
@@ -210,6 +214,7 @@
   color: var(--gk-ink);
   opacity: 0.7;
   min-width: 4rem;
+  flex-shrink: 0;
 }
 
 .gk-modal-meta-value {
@@ -628,6 +633,10 @@
   object-position: center;
 }
 
+.gk-card-image-contain {
+  object-fit: contain;
+}
+
 .gk-card-body {
   padding: var(--gk-sp-3) var(--gk-sp-4) var(--gk-sp-4);
   display: flex;
@@ -658,6 +667,7 @@
   font-weight: var(--gk-fw-medium);
   color: var(--gk-ink);
   opacity: 0.85;
+  line-height: 1.45;
 }
 
 .gk-card-description {

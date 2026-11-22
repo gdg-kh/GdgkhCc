@@ -118,8 +118,9 @@ function renderMedia(payload) {
     attrs.srcset = srcset;
     attrs.sizes = '(max-width: 640px) 320px, 512px';
   }
+  const imgClass = payload.imageFit === 'contain' ? 'gk-modal-image gk-modal-image-contain' : 'gk-modal-image';
   const img = el('img', {
-    class: 'gk-modal-image',
+    class: imgClass,
     attrs,
   });
   img.dataset.gkOriginalSrc = payload.image;
@@ -175,6 +176,25 @@ function renderBio(payload) {
   ]);
 }
 
+function renderSections(payload) {
+  if (!Array.isArray(payload.sections) || payload.sections.length === 0) {
+    return [];
+  }
+  const nodes = [];
+  for (const sec of payload.sections) {
+    if (!sec || !hasI18nText(sec.body)) {
+      continue;
+    }
+    const children = [];
+    if (hasI18nText(sec.title)) {
+      children.push(el('h3', { class: 'gk-modal-section-title', text: t(sec.title) }));
+    }
+    children.push(el('p', { class: 'gk-multiline gk-modal-bio', text: t(sec.body) }));
+    nodes.push(el('div', { class: 'gk-modal-section' }, children));
+  }
+  return nodes;
+}
+
 function renderSession(payload) {
   if (!hasI18nText(payload.sessionTitle) && !hasI18nText(payload.sessionAbstract)) {
     return null;
@@ -210,7 +230,7 @@ function renderMeta(payload) {
     rows.push(
       el('div', { class: 'gk-modal-meta-row' }, [
         el('span', { class: 'gk-modal-meta-label', text: t(item.label) }),
-        el('span', { class: 'gk-modal-meta-value', text: t(item.value) }),
+        el('span', { class: 'gk-multiline gk-modal-meta-value', text: t(item.value) }),
       ])
     );
   }
@@ -809,6 +829,9 @@ function renderContent(payload) {
   const meta = renderMeta(payload);
   if (meta) {
     mount(main, meta);
+  }
+  for (const secNode of renderSections(payload)) {
+    mount(main, secNode);
   }
   if (payload.extraNode instanceof Node) {
     mount(main, payload.extraNode);
